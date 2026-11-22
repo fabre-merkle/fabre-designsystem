@@ -1,0 +1,182 @@
+name: Sync design tokens
+
+# Pulls the resolved token CSS from your Tokens Studio project and opens a PR.
+#
+# Runs every export preset the project actually configured — discovered from the
+# committed `.studio-push/exports/*.json` (written once by `@focus/tokens-studio`'s
+# `tokens:studio:prepare` at initial push time) rather than a hardcoded list, so a
+# future extra preset needs no edit to this workflow. `css-storefront.json` is
+# intentionally distinct: it is a split, unlayered source for the checked
+# single-Storefront bundle, never a full-project single-file export.
+# Projects without `.studio-push/exports/` (tokens-studio never installed, or no
+# push has run yet) fall back to the single `css` preset — identical either way.
+#
+# The `css` preset's split layout DOES isolate `semantic-fumadocs`/
+# `semantic-storefront` into their own files correctly — but not in the exact
+# shape their consumers import (Tailwind `@theme` wrap; no cascade-layer
+# wrapper). After pulling, this workflow runs the Fumadocs transform and copies
+# the unlayered semantic bridge from the dedicated `css-storefront` export,
+# gated on their presence, so a recurring sync doesn't quietly regress
+# `css/semantic-fumadocs/theme.css` back into a plain `default.css` the docs app
+# can't import.
+#
+# Triggers:
+#   - repository_dispatch (tokens-published): fires when Tokens Studio publishes a
+#     new release, via the Studio GitHub integration or a webhook→dispatch bridge.
+#   - schedule: a weekly safety-net pull so tokens stay in sync even before the
+#     publish→dispatch wiring is configured.
+#   - workflow_dispatch: manual run from the Actions tab.
+#
+# Auth is OIDC (no long-lived token): the Studio project must have a GitHub
+# inbound OIDC integration configured for this repo, and `id-token: write` is
+# granted below. TOKENS_STUDIO_PROJECT_ID is the Studio project UUID (set it as a
+# repository secret).
+on:
+  repository_dispatch:
+    types: [tokens-published]
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Mon 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write # OIDC for Tokens Studio CI auth
+
+concurrency:
+  group: sync-tokens
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false # create-pull-request authenticates via GITHUB_TOKEN
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "24"
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.3
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # npm runs the native-binary postinstall. An isolated prefix and absolute
+      # executable avoid global permissions and workspace/PATH shadowing.
+      - name: Install Tokens Studio CLI
+        run: |
+          npm install --prefix "$RUNNER_TEMP/tokens-studio-cli" --no-save @tokens-studio/studio-cli@0.3.0
+          echo "STUDIO_BIN=$RUNNER_TEMP/tokens-studio-cli/node_modules/.bin/studio" >> "$GITHUB_ENV"
+
+      # The scaffold commits a v2 .studio.json; never overwrite its authored
+      # outputs/ref with an init command. Fail on project-secret drift.
+      - name: Configure Studio
+        working-directory: packages/tokens
+        env:
+          STUDIO_PROJECT_ID: ${{ secrets.TOKENS_STUDIO_PROJECT_ID }}
+        run: |
+          "$STUDIO_BIN" check --json
+          node -e 'const c=require("./.studio.json");if(!process.env.STUDIO_PROJECT_ID || c.source?.project!==process.env.STUDIO_PROJECT_ID) throw Error("TOKENS_STUDIO_PROJECT_ID does not match packages/tokens/.studio.json")'
+
+      # Discover every export preset this project has configured. Source of truth is
+      # the committed `.studio-push/exports/*.json` (written once by
+      # `tokens:studio:prepare` at initial push time, per preset the project actually
+      # has) — never a hardcoded list. No `.studio-push/exports/` (tokens-studio not
+      # installed, or no push has run yet) means only the single legacy `css` preset
+      # is expected to exist in Studio, matching this workflow's original behaviour.
+      - name: Discover configured export presets
+        id: presets
+        run: |
+          set -euo pipefail
+          if [ -d .studio-push/exports ] && ls .studio-push/exports/*.json >/dev/null 2>&1; then
+            presets=$(cd .studio-push/exports && for f in *.json; do basename "$f" .json; done | sort)
+          else
+            presets="css"
+          fi
+          echo "Configured export presets:"
+          echo "$presets"
+          {
+            echo "list<<PRESETS_EOF"
+            echo "$presets"
+            echo "PRESETS_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      # Run normal presets into css. The Storefront preset is raw material for the
+      # generated dependency-closure bundle, so never let its full split output
+      # overwrite the normal CSS tree.
+      - name: Pull token CSS for every configured preset
+        working-directory: packages/tokens
+        # The preset list is passed through `env:` rather than interpolated into the
+        # script body. A `${{ }}` expression is substituted textually BEFORE bash sees
+        # it, so a preset file named e.g. `css; curl … | sh.json` would execute in CI;
+        # via `env:` the value is only ever data. Filenames are repo-controlled, so
+        # this is defence in depth rather than a live hole — but it costs nothing.
+        env:
+          PRESETS: ${{ steps.presets.outputs.list }}
+        run: |
+          set -euo pipefail
+          storefront_tmp=""
+          cleanup_storefront_tmp() {
+            if [ -n "$storefront_tmp" ]; then
+              rm -rf "$storefront_tmp"
+            fi
+          }
+          trap cleanup_storefront_tmp EXIT
+          while IFS= read -r preset; do
+            if [ -z "$preset" ]; then continue; fi
+            if [ "$preset" = "css-storefront" ]; then
+              storefront_tmp="$(mktemp -d -p . .storefront-export-XXXXXX)"
+              storefront_out="./$(basename "$storefront_tmp")"
+              echo "▶ studio exports run $preset --out $storefront_out --ci"
+              "$STUDIO_BIN" exports run "$preset" --out "$storefront_out" --ci
+            else
+              echo "▶ studio exports run $preset --out css --ci"
+              "$STUDIO_BIN" exports run "$preset" --out css --ci
+            fi
+          done <<< "$PRESETS"
+          if [ -n "$storefront_tmp" ]; then
+            bun scripts/build-storefront-bundle.ts "$storefront_tmp" css/storefront/default.css
+            cp "$storefront_tmp/semantic-storefront/default.css" css/semantic-storefront/default.css
+          fi
+
+      # The regular `css` preset's Fumadocs split needs its Tailwind map. The
+      # Storefront single bundle was already assembled from css-storefront above.
+      - name: Apply Fumadocs post-export transform
+        working-directory: packages/tokens
+        run: |
+          set -euo pipefail
+          if [ -f scripts/emit-fumadocs-theme.mjs ]; then
+            echo "▶ node scripts/emit-fumadocs-theme.mjs css"
+            node scripts/emit-fumadocs-theme.mjs css
+          fi
+
+      # All output (the `css` preset, Fumadocs map, and optional Storefront bundle)
+      # lands under `packages/tokens/css/**` (e.g. `css/semantic-fumadocs/theme.css`,
+      # `css/semantic-storefront/default.css`) — a single directory add-path covers
+      # it.
+      # Skip the PR when the pull changed nothing real (e.g. only studio.lock
+      # metadata churn). Script ships with this item.
+      - name: Detect no-op sync
+        id: noop
+        run: node scripts/tokens-studio/is-noop-sync.mjs --scope packages/tokens/css
+
+      - name: Open PR with refreshed token CSS
+        if: steps.noop.outputs.noop != 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          branch: chore/sync-tokens
+          title: "chore(tokens): sync token CSS from Tokens Studio"
+          commit-message: "chore(tokens): sync token CSS from Tokens Studio"
+          add-paths: |
+            packages/tokens/css
+          labels: tokens
+          body: |
+            Automated pull of the resolved token CSS (`packages/tokens/css/**/*.css`)
+            from every export preset this project has configured, plus the
+            Fumadocs map and optional Storefront dependency bundle when those
+            integrations are installed, via OIDC. Review the diff before merging.

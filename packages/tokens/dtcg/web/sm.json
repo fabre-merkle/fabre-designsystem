@@ -1,0 +1,34 @@
+{
+  "web": {
+    "breakpoint": {
+      "max": {
+        "$value": "{brand.breakpoint.sm.max}",
+        "$type": "dimension"
+      },
+      "min": {
+        "$value": "{brand.breakpoint.sm.min}",
+        "$type": "dimension"
+      },
+      "view": {
+        "$value": "{brand.breakpoint.sm.view}",
+        "$type": "dimension"
+      }
+    },
+    "fontSize": {
+      "scale": {
+        "$value": "{brand.typography.scale.base.fontSize.sm}",
+        "$type": "fontSize"
+      }
+    },
+    "grid": {
+      "gutter": {
+        "$value": "{spacing.200}",
+        "$type": "dimension"
+      },
+      "margin": {
+        "$value": "{spacing.300}",
+        "$type": "dimension"
+      }
+    }
+  }
+}

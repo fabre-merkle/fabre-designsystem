@@ -1,0 +1,9 @@
+{
+  "_comment": "Reference fragment — Manual fallback — the scaffolder does NOT merge this; merge into your project's .mcp.json (Claude Code) only if the official plugin cannot be installed. For Claude Code users who cannot or prefer not to install the official Figma plugin. The official plugin is preferred: `claude plugin install figma@claude-plugins-official`. This fragment points to the Figma Cloud endpoint. Never double-register the 'figma' server id.",
+  "mcpServers": {
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}

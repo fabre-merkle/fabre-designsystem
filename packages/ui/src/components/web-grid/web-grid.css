@@ -1,0 +1,126 @@
+@layer components {
+  /* =========================================================
+     Web grid — a responsive layout utility on the web layer's grid tokens.
+     The variant sets the columns, `gap` maps to the spacing scale (or the
+     breakpoint-aware --web-grid-gutter), `margin` insets by --web-grid-margin.
+     Collapse follows the `data-web` breakpoint (SurfaceProvider); `container`
+     collapses against the grid's own width instead.
+     ========================================================= */
+  [data-ui="grid"] {
+    display: grid;
+    gap: var(--spacing-500);
+    /* The `auto` variant's minimum column: 64 base units, so it scales with the brand. */
+    --grid-min: calc(var(--brand-scale-base-ui) * 64);
+  }
+
+  /* Columns */
+  [data-ui="grid"][data-variant="1up"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-ui="grid"][data-variant="2up"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  [data-ui="grid"][data-variant="3up"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  [data-ui="grid"][data-variant="4up"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  [data-ui="grid"][data-variant="2-1"] {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+  [data-ui="grid"][data-variant="1-2"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  }
+  [data-ui="grid"][data-variant="auto"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min)), 1fr));
+  }
+
+  /* Gap: `base` is the default above */
+  [data-ui="grid"][data-gap="none"] {
+    gap: 0;
+  }
+  [data-ui="grid"][data-gap="sm"] {
+    gap: var(--spacing-300);
+  }
+  [data-ui="grid"][data-gap="lg"] {
+    gap: var(--spacing-700);
+  }
+  [data-ui="grid"][data-gap="gutter"] {
+    gap: var(--web-grid-gutter);
+  }
+
+  /* Margin: the breakpoint-aware page inset */
+  [data-ui="grid"][data-margin] {
+    padding-inline: var(--web-grid-margin);
+  }
+
+  /* Spans */
+  [data-ui="grid"] > [data-ui="grid-item"][data-span="2"] {
+    grid-column: span 2;
+  }
+  [data-ui="grid"] > [data-ui="grid-item"][data-span="3"] {
+    grid-column: span 3;
+  }
+  [data-ui="grid"] > [data-ui="grid-item"][data-span="4"] {
+    grid-column: span 4;
+  }
+  [data-ui="grid"] > [data-ui="grid-item"][data-span="full"] {
+    grid-column: 1 / -1;
+  }
+
+  /* Collapse on the web breakpoint: three and four columns become two at md, every variant but
+     `auto` becomes one at sm. A span wider than the remaining columns would add an implicit
+     column, so spans take the whole row once the grid is narrower than they are. */
+  [data-web="md"] [data-ui="grid"][data-variant="3up"],
+  [data-web="md"] [data-ui="grid"][data-variant="4up"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  [data-web="md"] [data-ui="grid"][data-variant="3up"] > [data-ui="grid-item"][data-span="3"],
+  [data-web="md"] [data-ui="grid"][data-variant="4up"] > [data-ui="grid-item"][data-span="3"],
+  [data-web="md"] [data-ui="grid"][data-variant="4up"] > [data-ui="grid-item"][data-span="4"] {
+    grid-column: 1 / -1;
+  }
+  [data-web="sm"] [data-ui="grid"]:not([data-variant="auto"]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-web="sm"]
+    [data-ui="grid"]:not([data-variant="auto"])
+    > [data-ui="grid-item"]:is([data-span="2"], [data-span="3"], [data-span="4"]) {
+    grid-column: 1 / -1;
+  }
+
+  /* Container mode: collapse against the grid's own width. The pixel widths mirror
+     --brand-breakpoint-sm-max (767px) and --brand-breakpoint-md-max (1023px); var() cannot be
+     read inside a container query condition. */
+  [data-ui="grid-container"] {
+    container-type: inline-size;
+  }
+  @container (max-width: 767px) {
+    [data-ui="grid-container"] [data-ui="grid"]:not([data-variant="auto"]) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    [data-ui="grid-container"]
+      [data-ui="grid"]:not([data-variant="auto"])
+      > [data-ui="grid-item"]:is([data-span="2"], [data-span="3"], [data-span="4"]) {
+      grid-column: 1 / -1;
+    }
+  }
+  @container (min-width: 768px) and (max-width: 1023px) {
+    [data-ui="grid-container"] [data-ui="grid"][data-variant="3up"],
+    [data-ui="grid-container"] [data-ui="grid"][data-variant="4up"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    [data-ui="grid-container"]
+      [data-ui="grid"][data-variant="3up"]
+      > [data-ui="grid-item"][data-span="3"],
+    [data-ui="grid-container"]
+      [data-ui="grid"][data-variant="4up"]
+      > [data-ui="grid-item"][data-span="3"],
+    [data-ui="grid-container"]
+      [data-ui="grid"][data-variant="4up"]
+      > [data-ui="grid-item"][data-span="4"] {
+      grid-column: 1 / -1;
+    }
+  }
+}

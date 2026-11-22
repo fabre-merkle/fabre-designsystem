@@ -1,0 +1,202 @@
+@layer components {
+  [data-ui="slider"] {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+    inline-size: 100%;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  [data-ui="slider"][data-orientation="vertical"] {
+    flex-direction: column;
+    inline-size: auto;
+    block-size: 100%;
+  }
+
+  [data-ui="slider"][data-disabled] {
+    opacity: var(--opacity-soft);
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Value — numeric readout
+     ========================================================= */
+  [data-ui="slider-value"] {
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    color: var(--color-on-surface-subtle);
+    font-variant-numeric: tabular-nums;
+    min-inline-size: var(--spacing-800);
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  /* =========================================================
+     Control — interactive hit area surrounding the track
+     ========================================================= */
+  [data-ui="slider-control"] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    inline-size: 100%;
+    cursor: pointer;
+  }
+
+  [data-ui="slider-control"][data-size="sm"] {
+    block-size: var(--spacing-400);
+  }
+  [data-ui="slider-control"][data-size="md"] {
+    block-size: var(--spacing-500);
+  }
+  [data-ui="slider-control"][data-size="lg"] {
+    block-size: var(--spacing-600);
+  }
+
+  [data-ui="slider-control"][data-orientation="vertical"] {
+    flex-direction: column;
+    inline-size: auto;
+    block-size: 100%;
+  }
+
+  [data-ui="slider-control"][data-orientation="vertical"][data-size="sm"] {
+    inline-size: var(--spacing-400);
+    block-size: 100%;
+  }
+  [data-ui="slider-control"][data-orientation="vertical"][data-size="md"] {
+    inline-size: var(--spacing-500);
+  }
+  [data-ui="slider-control"][data-orientation="vertical"][data-size="lg"] {
+    inline-size: var(--spacing-600);
+  }
+
+  [data-ui="slider-control"][data-disabled] {
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Track — full-range rail
+     ========================================================= */
+  [data-ui="slider-track"] {
+    position: relative;
+    flex: 1 1 auto;
+    background-color: var(--color-surface-border-1);
+    border-radius: var(--radius-full);
+  }
+
+  [data-ui="slider-track"][data-size="sm"] {
+    block-size: var(--spacing-100);
+  }
+  [data-ui="slider-track"][data-size="md"] {
+    block-size: var(--spacing-150);
+  }
+  [data-ui="slider-track"][data-size="lg"] {
+    block-size: var(--spacing-200);
+  }
+
+  [data-ui="slider-track"][data-orientation="vertical"] {
+    inline-size: var(--spacing-150);
+    block-size: 100%;
+  }
+  [data-ui="slider-track"][data-orientation="vertical"][data-size="sm"] {
+    inline-size: var(--spacing-100);
+  }
+  [data-ui="slider-track"][data-orientation="vertical"][data-size="lg"] {
+    inline-size: var(--spacing-200);
+  }
+
+  /* =========================================================
+     Indicator — filled portion of the track
+     ========================================================= */
+  [data-ui="slider-indicator"] {
+    background-color: var(--color-secondary-brand);
+    border-radius: inherit;
+    transition: background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="slider"][data-invalid] [data-ui="slider-indicator"] {
+    background-color: var(--color-intent-error);
+  }
+
+  /* =========================================================
+     Thumb — draggable handle
+     ========================================================= */
+  [data-ui="slider-thumb"] {
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: var(--color-secondary-brand);
+    border: var(--stroke-width-selected) solid var(--color-secondary-brand);
+    box-shadow: var(--shadow-level-2);
+    outline: none;
+    cursor: grab;
+    transition:
+      background-color var(--transition-default-duration) var(--transition-default-easing),
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      box-shadow var(--transition-default-duration) var(--transition-default-easing),
+      scale var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="slider-thumb"][data-size="sm"] {
+    inline-size: var(--spacing-400);
+    block-size: var(--spacing-400);
+  }
+  [data-ui="slider-thumb"][data-size="md"] {
+    inline-size: var(--spacing-500);
+    block-size: var(--spacing-500);
+  }
+  [data-ui="slider-thumb"][data-size="lg"] {
+    inline-size: var(--spacing-600);
+    block-size: var(--spacing-600);
+  }
+
+  @media (hover: hover) {
+    [data-ui="slider-thumb"]:hover:not([data-disabled]) {
+      box-shadow: var(--shadow-level-3);
+    }
+  }
+
+  [data-ui="slider-thumb"]:focus-visible {
+    outline: var(--stroke-width-focused) solid
+      color-mix(
+        in oklch,
+        var(--color-primary-on-surface),
+        transparent calc(var(--opacity-strong) * 100%)
+      );
+    outline-offset: var(--stroke-width-selected);
+  }
+
+  [data-ui="slider-thumb"][data-dragging] {
+    cursor: grabbing;
+    scale: 1.05;
+    box-shadow: var(--shadow-level-3);
+  }
+
+  [data-ui="slider"][data-invalid] [data-ui="slider-thumb"] {
+    background-color: var(--color-intent-error);
+    border-color: var(--color-intent-error);
+  }
+
+  [data-ui="slider"][data-invalid] [data-ui="slider-thumb"]:focus-visible {
+    outline-color: color-mix(
+      in oklch,
+      var(--color-intent-error-on-surface),
+      transparent calc(var(--opacity-strong) * 100%)
+    );
+  }
+
+  [data-ui="slider-thumb"][data-disabled] {
+    cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="slider-indicator"],
+    [data-ui="slider-thumb"] {
+      transition: none;
+    }
+  }
+}

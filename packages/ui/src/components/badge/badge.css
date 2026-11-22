@@ -1,0 +1,120 @@
+@layer components {
+  [data-ui="badge"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-100);
+    border-radius: var(--radius-full);
+    border: var(--stroke-width-none) solid transparent;
+    background-color: transparent;
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  /* Sizes — family/size/weight/tracking all come from the SAME typography
+     tier per size so the tier can bind as one Figma text style (a mix of
+     tiers across these three properties can never bind). */
+  [data-ui="badge"][data-size="sm"] {
+    padding-inline: var(--spacing-150);
+    padding-block: var(--spacing-100);
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+  }
+  [data-ui="badge"][data-size="md"] {
+    padding-inline: var(--spacing-200);
+    padding-block: var(--spacing-150);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    letter-spacing: var(--typography-paragraph-md-letter-spacing);
+  }
+  [data-ui="badge"][data-size="lg"] {
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-150);
+    font-family: var(--typography-paragraph-lg-font-family);
+    font-size: var(--typography-paragraph-lg-font-size);
+    font-weight: var(--typography-paragraph-lg-font-weight);
+    letter-spacing: var(--typography-paragraph-lg-letter-spacing);
+  }
+
+  /* =========================================================
+     Tone × Mode
+     ========================================================= */
+
+  /* Neutral */
+  [data-ui="badge"][data-tone="neutral"][data-mode="filled"] {
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+  }
+  [data-ui="badge"][data-tone="neutral"][data-mode="light"] {
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+  }
+  /* Stroke mode draws a real border: the base border is stroke-width.none (0px). */
+  [data-ui="badge"][data-mode="stroke"] {
+    border-width: var(--stroke-width-selected);
+  }
+  [data-ui="badge"][data-tone="neutral"][data-mode="stroke"] {
+    border-color: var(--color-surface-border-1);
+    color: var(--color-on-surface);
+  }
+
+  /* Info */
+  [data-ui="badge"][data-tone="info"][data-mode="filled"] {
+    background-color: var(--color-intent-info);
+    color: var(--color-intent-info-on-info);
+  }
+  [data-ui="badge"][data-tone="info"][data-mode="light"] {
+    background-color: var(--color-intent-info-surface);
+    color: var(--color-intent-info-on-surface);
+  }
+  [data-ui="badge"][data-tone="info"][data-mode="stroke"] {
+    border-color: var(--color-intent-info-border);
+    color: var(--color-intent-info-on-surface-subtle);
+  }
+
+  /* Success */
+  [data-ui="badge"][data-tone="success"][data-mode="filled"] {
+    background-color: var(--color-intent-success);
+    color: var(--color-intent-success-on-success);
+  }
+  [data-ui="badge"][data-tone="success"][data-mode="light"] {
+    background-color: var(--color-intent-success-surface);
+    color: var(--color-intent-success-on-surface);
+  }
+  [data-ui="badge"][data-tone="success"][data-mode="stroke"] {
+    border-color: var(--color-intent-success-border);
+    color: var(--color-intent-success-on-surface-subtle);
+  }
+
+  /* Warning */
+  [data-ui="badge"][data-tone="warning"][data-mode="filled"] {
+    background-color: var(--color-intent-warning);
+    color: var(--color-intent-warning-on-warning);
+  }
+  [data-ui="badge"][data-tone="warning"][data-mode="light"] {
+    background-color: var(--color-intent-warning-surface);
+    color: var(--color-intent-warning-on-surface);
+  }
+  [data-ui="badge"][data-tone="warning"][data-mode="stroke"] {
+    border-color: var(--color-intent-warning-border);
+    color: var(--color-intent-warning-on-surface-subtle);
+  }
+
+  /* Critical (maps to error tokens) */
+  [data-ui="badge"][data-tone="critical"][data-mode="filled"] {
+    background-color: var(--color-intent-error);
+    color: var(--color-intent-error-on-error);
+  }
+  [data-ui="badge"][data-tone="critical"][data-mode="light"] {
+    background-color: var(--color-intent-error-surface);
+    color: var(--color-intent-error-on-surface);
+  }
+  [data-ui="badge"][data-tone="critical"][data-mode="stroke"] {
+    border-color: var(--color-intent-error-border);
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+}

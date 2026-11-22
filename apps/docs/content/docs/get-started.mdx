@@ -1,0 +1,96 @@
+---
+title: "Overview"
+description: "Set up and build your first interface."
+---
+
+{/* topic:start system-overview */}
+Use this design system in your product project. Start with your agent or follow the manual steps below.
+{/* topic:end system-overview */}
+
+{/* topic:start agent-quick-start */}
+## Start with a prompt
+
+Open your product project in your coding agent and paste this prompt. Replace the bracketed task with the interface you want to build.
+
+<div data-docs-prompt="">
+
+```text title="Copy this prompt into your agent"
+Set up this project to use the design system documented on this site, then build [describe my interface].
+Read the project's AGENTS.md and relevant installed skills first.
+Check the framework, package manager, dependencies and stylesheet entry point; preserve the project's existing setup.
+Read DESIGN.md for the matching brand and theme.
+Follow this site's /docs/registry guide to configure @fabre-designsystem in this product's components.json.
+Discover the published items in @fabre-designsystem; inspect their requirements and install only what the interface needs.
+If the registry is unpublished or an item is unavailable, explain what is missing and stop that installation. Do not substitute another library.
+Follow /docs/mcp to connect Docs MCP and Registry MCP at project scope; preserve existing configuration and verify both connections. If unavailable, read /llms.txt and page Markdown.
+If I provide a Figma design, follow /docs/figma and confirm access to the intended file before using it.
+Reuse installed components and semantic tokens. Preserve accessibility and responsive behaviour.
+Show me the first working interface and the changes made; run the affected project checks before handing it back.
+```
+
+</div>
+
+Review proposed file changes and any credential or access requests before accepting them.
+{/* topic:end agent-quick-start */}
+
+{/* topic:start install-and-run */}
+## Or set up manually
+
+Work in the product repository where you want to build the interface—not a checkout of the documentation site.
+
+<Steps>
+<Step>
+### Connect the registry
+
+<RelatedPage href="/docs/registry">Add the published namespace, URL and any required project access.</RelatedPage>
+Then discover the available items:
+```npm
+npx shadcn@latest search @fabre-designsystem
+```
+</Step>
+<Step>
+### Inspect and install
+
+Replace `<item>` with an exact name returned by registry discovery:
+
+```npm
+npx shadcn@latest view @fabre-designsystem/<item>
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Follow the item's dependency, stylesheet and provider instructions. Review the diff before overwriting local code. If the registry is not published, obtain its URL from the design-system owner before continuing.
+</Step>
+<Step>
+### Connect your agent
+
+<RelatedPage href="/docs/mcp">Install Docs MCP and Registry MCP for your client, then verify both.</RelatedPage>
+</Step>
+<Step>
+### Use a Figma design
+
+<RelatedPage href="/docs/figma">Confirm library access and follow the project's design-to-code guidance.</RelatedPage>
+</Step>
+<Step>
+### Build your first interface
+Use the installed component examples and semantic tokens to implement one screen. Run the product's dev script and affected checks; review keyboard use and the narrow-screen layout.
+</Step>
+</Steps>
+
+<RelatedPage href="/docs/cli">Find CLI commands and the installed design-system scripts.</RelatedPage>
+{/* topic:end install-and-run */}
+
+## Explore when you need more
+
+<Cards>
+<RelatedCard title="Foundations" href="/docs/foundations">Understand the concepts and intent behind the system.</RelatedCard>
+<RelatedCard title="Tokens" href="/docs/tokens/token-architecture">Find the concrete design decisions, roles and themes.</RelatedCard>
+<RelatedCard title="Registry" href="/docs/registry">Discover and install the system into a product project.</RelatedCard>
+<RelatedCard title="CLI" href="/docs/cli">Use terminal commands to inspect, install and work locally.</RelatedCard>
+<RelatedCard title="Figma" href="/docs/figma">Access the design library and follow the selected design-to-code workflow.</RelatedCard>
+<RelatedCard title="DESIGN.md" href="/docs/design-md">Read the portable design guidance and visual quick reference.</RelatedCard>
+<RelatedCard title="Contributing" href="/docs/guidelines/contributing">Propose, review and check changes to the system.</RelatedCard>
+</Cards>
+
+<RelatedPage href="/docs/working-with-ai">Use the project workflow, skills and links to tool-specific guidance.</RelatedPage>
+<RelatedPage href="/docs/mcp">Use Docs MCP for guidance and Registry MCP for installable resources; use both for full coverage.</RelatedPage>
+[Read the documentation index when a connected tool is unavailable.](/llms.txt)

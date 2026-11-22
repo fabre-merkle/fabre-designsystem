@@ -1,0 +1,60 @@
+@layer components {
+  [data-ui="primitive-link"] {
+    /* Renders as a block-level sibling under DocsDescription in the page header,
+       not inline with prose — see apps/docs/app/docs/[[...slug]]/page.tsx. */
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    /* Pull the link up to sit snug under DocsDescription, cancelling most of the
+       header's default spacing-800 gap. The mb below restores normal flow below. */
+    margin-top: calc(var(--spacing-300) - var(--spacing-800));
+    margin-bottom: var(--spacing-800);
+    gap: var(--spacing-100);
+    padding-inline: var(--spacing-200);
+    padding-block: var(--spacing-100);
+    background-color: var(--color-surface-recessed);
+    border: var(--stroke-width-selected) solid var(--color-surface-border-1);
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface-subtle);
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+    letter-spacing: var(--typography-control-md-letter-spacing);
+    line-height: var(--typography-control-md-line-height);
+    text-decoration: none;
+    transition:
+      border-color var(--brand-duration-100) var(--brand-easing-standard),
+      background-color var(--brand-duration-100) var(--brand-easing-standard),
+      color var(--brand-duration-100) var(--brand-easing-standard);
+  }
+
+  @media (hover: hover) {
+    [data-ui="primitive-link"]:hover {
+      background-color: color-mix(
+        in oklch,
+        var(--color-surface-recessed),
+        var(--color-surface-hover) calc(var(--opacity-faint) * 100%)
+      );
+      border-color: var(--color-surface-border-3);
+      color: var(--color-on-surface);
+    }
+  }
+
+  [data-ui="primitive-link"]:focus-visible {
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+
+  [data-ui="primitive-link-icon"] {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="primitive-link"] {
+      transition: none;
+    }
+  }
+}

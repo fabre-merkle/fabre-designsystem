@@ -1,0 +1,22 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Welcome" />
+
+# Component workshop
+
+This is the Storybook for **`@workspace/ui`** — the project's design-system components, rendered
+against the real token cascade.
+
+- **Stories live beside components** in `src/components/<name>/<name>.stories.tsx`. The
+  _Token validation_ story under **Foundations** proves the token chain is wired correctly.
+- **Theme + brand toggles** are in the toolbar — every story can be reviewed in light/dark and per
+  brand.
+- **Tests:** `bun run test-storybook` runs the interaction (play) + a11y checks in a headless browser
+  (needs `bunx playwright install chromium`).
+
+## Authoring new stories
+
+Author stories to the **story standard** with the `skill-storybook-author` agent skill — one
+concept per story, JSDoc on the component and every prop, a per-component a11y + interaction baseline,
+and `!manifest` on anti-pattern stories so agents reading the Storybook MCP get clean, grounded
+context. The same component set powers the generated Figma library, so stories and design stay 1:1.

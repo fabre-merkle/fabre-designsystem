@@ -1,0 +1,181 @@
+---
+title: Elevated
+description: Set surface levels and shadows with Elevated.
+---
+
+import { Elevated } from "@workspace/ui/components/elevated";
+
+## Interactive example
+
+<DocsStory name="elevated" />
+
+## Overview
+
+`Elevated` is the code form of a surface level: a raised surface that reads the level it sits on and
+lands a fixed offset above it. It paints the fill, edge, top highlight and drop shadow for that
+level, then becomes the substrate for its children. It is not a placeable component and has no
+standalone design.
+
+<Callout type="info" title="Not a component">
+  Overlay components (popover, menu, select, dialog) read the same level context themselves, so a
+  select opened in a dialog lands above the dialog with no props. Use `Elevated` to raise your own
+  surfaces into the same ladder.
+</Callout>
+
+## Installation
+
+`Elevated` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Elevated } from "@workspace/ui/components/elevated";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Elevated } from "@workspace/ui/components/elevated";
+
+<Elevated>A card, two levels above the surface it sits on (level 3 on the page)</Elevated>
+```
+
+You choose a level, never a ramp step. Nesting raises the surface level but never the shadow level,
+so pin `shadowLevel` only when a surface needs a heavier or lighter shadow than its default.
+
+### Hover
+
+A hoverable surface paints the `surface.hover` overlay (a 5% translucent tint) over its fill on
+pointer hover, in light and dark, and keeps its edge. Pass `hoverable`, or render it as `<a href>`
+or `<button>` with `render`, which is automatic.
+
+```tsx
+<Elevated hoverable>Hover me</Elevated>
+```
+
+### Sizing the shadow
+
+Shadow defaults stay by role, and nesting never raises them. When you pin `shadowLevel`, size it by
+visual weight as a recommendation: about 3 for a surface under 400px wide, 5 for about 400 to 800px,
+and 7 for over about 800px or fullscreen.
+
+### Shadow headroom
+
+In development, `Elevated` warns once per mount when `shadowLevel` is more than the headroom above
+the surface level (default 2), because a shadow that heavy on a surface that low usually reads as
+floating. Production builds never warn. Raise it with the `elevation.shadowHeadroom` token, which is
+the CSS custom property `--elevation-shadow-headroom` (a whole number from 0 to 8), read from the
+element so a container can override it. Set it to **8 to turn the warning off**.
+
+<ComponentShowcase name="elevated">
+  <Elevated style={{ padding: "var(--spacing-400)" }}>
+    A card on the page
+    <Elevated style={{ padding: "var(--spacing-400)", marginBlockStart: "var(--spacing-200)" }}>
+      Nested, two levels higher
+    </Elevated>
+  </Elevated>
+</ComponentShowcase>
+
+## API Reference
+
+Elevated renders a `<div>` by default. All native props are forwarded, and `render` swaps the
+element (for example `render={<a href="/projects" />}`).
+
+<AutoTypeTable path="elevated/elevated.tsx" name="ElevatedProps" />
+
+### Level context
+
+| Export | Purpose |
+| --- | --- |
+| `SurfaceLevel` | Declares the level for everything inside it. Context passes through portals. |
+| `useSurfaceLevel()` | The level of the surface a component renders on. Defaults to 1, the page. |
+| `useElevation(offset)` | The level a surface lands on when raised `offset` steps. |
+| `SURFACE_OFFSET` | The default offsets: `bar` 1, `card` 2, `overlay` 2, `dialog` 4. |
+| `SHADOW_LEVEL` | The default shadow levels: `card` 1, `tooltip` 2, `overlay` 3, `toast` 4, `dialog` 5. |
+| `clampSurfaceLevel(n)` | Clamps any number onto the 1–8 ladder. |
+
+## The surface level sets the fill and the edge
+
+A surface at level N takes two things from its level: the fill `--color-surface-level-N` and the edge `--color-surface-border-(N+1)`. A level 3 surface has the level 3 fill and the border 4 edge, and a level 5 surface the level 5 fill and the border 6 edge. Only the shadow is separate: it is its own knob, defaulted by role and never raised by nesting. The paint is in `elevated.css`, read from `data-surface-level` and `data-shadow-level`.
+
+| Surface level | Fill | Edge |
+| --- | --- | --- |
+| 1 | `--color-surface-level-1` | None. The page has no edge, highlight or drop shadow |
+| 2 | `--color-surface-level-2` | `--color-surface-border-3` |
+| 3 | `--color-surface-level-3` | `--color-surface-border-4` |
+| 4 | `--color-surface-level-4` | `--color-surface-border-5` |
+| 5 | `--color-surface-level-5` | `--color-surface-border-6` |
+| 6 | `--color-surface-level-6` | `--color-surface-border-7` |
+| 7 | `--color-surface-level-7` | `--color-surface-border-8` |
+| 8 | `--color-surface-level-8` | `--color-surface-border-8` |
+
+So the rule is N+1 for the edge, clamped at 8, and level 1 has no edge. Hover does not change the edge: a hoverable surface paints the `surface.hover` overlay over its fill instead. The shadow level paints `--shadow-level-M` on top, from 1 to 8, whatever the surface level.
+
+### Pairing is by role
+
+Components pair a surface offset with a shadow level by what they are, not by a level number. The offset is added to the level of whatever they are rendered on, and the shadow level never follows nesting. On a level 1 page the pairings land as follows. Pick a role in the hero's Variant menu to see it.
+
+| Role | Surface offset | Shadow level | On a page |
+| --- | --- | --- | --- |
+| Inline bar (menubar, toolbar) | +1 | 1 | Level 2, shadow 1 |
+| Card | +2 | 1 | Level 3, shadow 1 |
+| Popover, menu, select | +2 | 3 | Level 3, shadow 3. Same offset as a card, a stronger shadow because it floats over the layout |
+| Toast | +4 | 4 | Level 5, shadow 4 |
+| Dialog, drawer, sheet | +4 | 5 | Level 5, shadow 5 |
+
+A tooltip sits outside the ladder: it is an inverted label filled with the on-surface colour, so the hero does not show it. Pick a role preset to start from its pairing, then change `level` or `shadowLevel` freely: the numbers are what the role gets in one context, not rules for the role. Levels are contextual, so the same role lands on a different level inside a dialog or another card.
+
+## Card: the canonical example
+
+[Card](/docs/components/card) is `Elevated` with layout. `Card.Root` renders an `Elevated`, so it shows
+both depth settings working as intended: the surface level follows the surface it sits on (a card
+inside a card is raised without any prop), and the shadow level is its own default that nesting never
+raises. Reach for `Card` when you need a header, content and footer. Use `Elevated` directly for a
+raised surface that is not a card, such as a panel with its own layout.
+
+```tsx
+import { Card } from "@workspace/ui/components/card";
+
+<Card.Root>
+  <Card.Content>
+    A card on the page, surface level 3
+    <Card.Root size="sm">A card in a card, surface level 5, still shadow level 1</Card.Root>
+  </Card.Content>
+</Card.Root>;
+```
+
+## Levels and offsets
+
+A surface's level is its **substrate** (the level it renders on) plus an **offset**, clamped to 8.
+On the page a card or menu is level 3, a dialog is level 5, and a popover opened in a dialog is
+level 7. Even levels above 2 are transitional, not resting surfaces.
+
+| Surface | Offset | Default shadow level |
+| --- | --- | --- |
+| Inline bar (menubar, toolbar) | +1 | 1 |
+| Card, `Elevated` | +2 | 1 |
+| Popover, menu, select, combobox | +2 | 3 |
+| Dialog, alert dialog, drawer | +4 | 5 |
+
+The page (level 1) casts no shadow. Tooltips sit outside the ladder: an inverted chip above
+whatever opened it.
+
+## Related
+
+- [Card](/docs/components/card): the canonical use of `Elevated`, with header, content and footer parts.
+- [Surface Provider](/docs/components/surface-provider): sets the viewport breakpoint, not a surface level.
+- [Controls](/docs/components/controls): the control token rules, including `control.border`.

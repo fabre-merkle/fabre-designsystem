@@ -1,0 +1,53 @@
+---
+title: Checkbox
+description: Select an option or show a mixed selection.
+primitive: https://base-ui.com/react/components/checkbox
+---
+
+## Interactive example
+
+<DocsStory name="checkbox" />
+
+## Installation
+
+`Checkbox` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Checkbox } from "@workspace/ui/components/checkbox";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Checkbox } from "@workspace/ui/components/checkbox";
+
+<Checkbox name="terms" defaultChecked />
+```
+
+A checkbox needs an accessible name. Wrap it in a `<label>` (or a `Field.Label`) so the label is visible and clickable. Wrap it in `Field.Root` (with `invalid` or `disabled`) when you need form-level validation.
+
+## API Reference
+
+`Checkbox` adds no props. It forwards every prop to [Base UI Checkbox.Root](https://base-ui.com/react/components/checkbox#api-reference), preserving every prop, event, ARIA attribute and the `render` API, including `checked`, `defaultChecked`, `indeterminate`, `onCheckedChange`, `disabled`, `required`, `readOnly` and `name`.
+
+The Phosphor `Check` and `Minus` icons are rendered inside `Checkbox.Indicator` automatically; there is no slot for a custom indicator. For a different icon, compose with Base UI directly.
+
+## Figma contract
+
+<ComponentContract slug="checkbox" />

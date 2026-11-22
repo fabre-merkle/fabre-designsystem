@@ -1,0 +1,62 @@
+---
+title: Spinner
+description: Indicate that work is in progress.
+---
+
+## Interactive example
+
+<DocsStory name="spinner" />
+
+## Installation
+
+`Spinner` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Spinner } from "@workspace/ui/components/spinner";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+Spinner composes Base UI [Progress](https://base-ui.com/react/components/progress), using only `Progress.Root` held in its indeterminate state with `value={null}`, so it renders `role="progressbar"` with an indeterminate `aria-valuetext`. The track and arc are an SVG inside the root.
+
+```tsx
+import { Spinner } from "@workspace/ui/components/spinner";
+
+<Spinner label="Loading results" />;
+```
+
+## API Reference
+
+<AutoTypeTable path="spinner/spinner.tsx" name="SpinnerProps" />
+
+All other props from [Base UI Progress.Root](https://base-ui.com/react/components/progress#api-reference) are supported, except `value`, `min`, `max` and `format`: a Spinner is always indeterminate. For measurable progress, use [Progress](/docs/components/progress).
+
+## Motion
+
+The arc rotates once per second on `--brand-easing-linear`, only under `prefers-reduced-motion: no-preference`. With reduced motion it doesn't rotate. Instead the arc pulses slowly between full and soft opacity, so loading is still visible.
+
+## Accessibility
+
+- Spinner renders `role="progressbar"` with no `aria-valuenow`, which screen readers report as indeterminate.
+- Give it a `label` that names what's loading ("Loading results"), not just "Loading".
+- The SVG is `aria-hidden`; the name comes from `label`.
+
+## Figma contract
+
+<ComponentContract slug="spinner" />

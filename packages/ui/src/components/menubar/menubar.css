@@ -1,0 +1,79 @@
+@layer components {
+  /* =========================================================
+     Menubar — horizontal bar container
+     ========================================================= */
+  [data-ui="menubar-root"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    padding: var(--spacing-100);
+    /* A raised bar: surface level substrate + 1 (2 on the page).
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-2);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-3),
+      var(--shadow-level-1);
+    border-radius: var(--radius-default);
+    outline: none;
+  }
+
+  [data-ui="menubar-root"][data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* =========================================================
+     Menubar menu triggers — MenubarTrigger items inside Menubar
+     get a flatter, inline-bar styling
+     ========================================================= */
+  [data-ui="menubar-trigger"] {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-150);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-small-elements);
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  @media (hover: hover) {
+    [data-ui="menubar-trigger"]:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  [data-ui="menubar-trigger"][data-popup-open],
+  [data-ui="menubar-trigger"]:focus-visible {
+    background-color: var(--color-surface-selected);
+  }
+
+  [data-ui="menubar-trigger"]:focus-visible {
+    outline: var(--stroke-width-selected) solid var(--color-control-focus-ring);
+    outline-offset: var(--stroke-width-none);
+  }
+
+  [data-ui="menubar-trigger"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="menubar-trigger"] {
+      transition: none;
+    }
+  }
+}

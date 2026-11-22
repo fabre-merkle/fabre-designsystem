@@ -1,0 +1,142 @@
+/* Structural reset — outside @layer so it beats unlayered host-app heading styles (e.g. fumadocs h3 margins). */
+[data-ui="accordion-header"] {
+  margin: 0;
+}
+
+@layer components {
+  /* =========================================================
+     Root — stacks items with a small gap; each item is its own card.
+     ========================================================= */
+  [data-ui="accordion-root"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+    width: 100%;
+  }
+
+  /* =========================================================
+     Item — a single header/panel pair, rendered as a card.
+     The open state lifts the surface to highlight the active content.
+     ========================================================= */
+  [data-ui="accordion-item"] {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-default);
+    background-color: transparent;
+    transition: background-color var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  [data-ui="accordion-item"][data-open] {
+    background-color: var(--color-surface-recessed);
+  }
+
+  /* =========================================================
+     Header — semantic <h3>, no default heading typography.
+     margin: 0 reset lives OUTSIDE @layer (see top of file).
+     ========================================================= */
+  [data-ui="accordion-header"] {
+    font: inherit;
+  }
+
+  /* =========================================================
+     Trigger — full-width button row: label + chevron.
+     ========================================================= */
+  [data-ui="accordion-trigger"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-300);
+    width: 100%;
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-200);
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+    /* The trigger labels a section, so it reads as a heading (the full
+       headline-xs recipe), not as a button. */
+    font-family: var(--typography-headline-xs-font-family);
+    font-size: var(--typography-headline-xs-font-size);
+    font-weight: var(--typography-headline-xs-font-weight);
+    line-height: var(--typography-headline-xs-line-height);
+    letter-spacing: var(--typography-headline-xs-letter-spacing);
+    text-align: start;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    transition: background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  @media (hover: hover) {
+    [data-ui="accordion-trigger"]:not([data-panel-open]):hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  [data-ui="accordion-trigger"]:focus-visible {
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: calc(var(--stroke-width-focused) * -1);
+  }
+
+  [data-ui="accordion-trigger"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+  }
+
+  /* Label takes the remaining width so the chevron stays right-aligned. */
+  [data-ui="accordion-trigger-label"] {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Chevron rotates when the panel opens. */
+  [data-ui="accordion-trigger-icon"] {
+    flex: 0 0 auto;
+    width: var(--spacing-250);
+    height: var(--spacing-250);
+    color: var(--color-on-surface-subtle);
+    transition: rotate var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  [data-ui="accordion-trigger"][data-panel-open] [data-ui="accordion-trigger-icon"] {
+    rotate: 180deg;
+  }
+
+  /* =========================================================
+     Panel — Base UI exposes --accordion-panel-height for animation.
+     Use it to animate from 0 → measured height (and back) on open/close.
+     ========================================================= */
+  [data-ui="accordion-panel"] {
+    overflow: hidden;
+    height: var(--accordion-panel-height);
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-lg-font-family);
+    font-size: var(--typography-paragraph-lg-font-size);
+    font-weight: var(--typography-paragraph-lg-font-weight);
+    line-height: var(--typography-paragraph-lg-line-height);
+    transition: height var(--transition-move-duration) var(--transition-move-easing);
+  }
+
+  [data-ui="accordion-panel"][data-starting-style],
+  [data-ui="accordion-panel"][data-ending-style] {
+    height: 0;
+  }
+
+  /* Inner padding lives on a wrapper so the outer height transition stays
+     pixel-accurate regardless of padding. */
+  [data-ui="accordion-panel"] > * {
+    padding-inline: var(--spacing-300);
+    padding-block-end: var(--spacing-200);
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="accordion-trigger"],
+    [data-ui="accordion-trigger-icon"],
+    [data-ui="accordion-panel"] {
+      transition: none;
+    }
+  }
+}

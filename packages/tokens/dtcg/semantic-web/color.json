@@ -1,0 +1,580 @@
+{
+  "color": {
+    "control": {
+      "border": {
+        "$value": "{theme.control.border}",
+        "$type": "color",
+        "$description": "Border for form controls (inputs, selects, checkboxes). Alpha-fitted for the default palette.",
+        "hover": {
+          "$value": "{theme.control.borderHover}",
+          "$type": "color",
+          "$description": "Form control border on hover. Stronger than control.border; fitted for the default palette."
+        }
+      },
+      "focusRing": {
+        "$value": "{theme.control.focusRing}",
+        "$type": "color",
+        "$description": "Focus ring colour for form controls and interactive elements."
+      }
+    },
+    "intent": {
+      "error": {
+        "$value": "{theme.color.utility.error.9}",
+        "$type": "color",
+        "$description": "Error and destructive surfaces and destructive interactions",
+        "border": {
+          "$value": "{theme.color.utility.error.8}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer.",
+          "hover": {
+            "$value": "{theme.color.utility.error.10}",
+            "$type": "color",
+            "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+          }
+        },
+        "hover": {
+          "$value": "{theme.color.utility.error.10}",
+          "$type": "color",
+          "$description": "Error and destructive surfaces and destructive interactions hover state"
+        },
+        "onError": {
+          "$value": "best_contrast({theme.color.utility.error.9}, [{theme.color.utility.error.1}, {theme.color.utility.error.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function.",
+          "hover": {
+            "$value": "best_contrast({theme.color.utility.error.10}, [{theme.color.utility.error.1},  {theme.color.utility.error.12}])",
+            "$type": "color",
+            "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+          }
+        },
+        "onSurface": {
+          "$value": "{theme.color.utility.error.12}",
+          "$type": "color",
+          "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+          "hover": {
+            "$value": "{theme.color.utility.error.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.error.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "subtle": {
+            "$value": "{theme.color.utility.error.11}",
+            "$type": "color",
+            "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+          }
+        },
+        "surface": {
+          "$value": "{theme.color.utility.error.3}",
+          "$type": "color",
+          "$description": "Error and destructive message and alert surface backgrounds",
+          "hover": {
+            "$value": "{theme.color.utility.error.4}",
+            "$type": "color",
+            "$description": "Hover background for error surfaces (e.g. a hovered error row)."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.error.5}",
+            "$type": "color",
+            "$description": "Selected background for error surfaces."
+          }
+        }
+      },
+      "info": {
+        "$value": "{theme.color.utility.info.9}",
+        "$type": "color",
+        "$description": "Informational surfaces and help text interactions",
+        "border": {
+          "$value": "{theme.color.utility.info.8}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer.",
+          "hover": {
+            "$value": "{theme.color.utility.info.10}",
+            "$type": "color",
+            "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+          }
+        },
+        "hover": {
+          "$value": "{theme.color.utility.info.10}",
+          "$type": "color",
+          "$description": "Informational surfaces and help text interactions hover state"
+        },
+        "onInfo": {
+          "$value": "best_contrast({theme.color.utility.info.9}, [{theme.color.utility.info.1}, {theme.color.utility.info.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function.",
+          "hover": {
+            "$value": "best_contrast({theme.color.utility.info.10}, [{theme.color.utility.info.1}, {theme.color.utility.info.12}])",
+            "$type": "color",
+            "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+          }
+        },
+        "onSurface": {
+          "$value": "{theme.color.utility.info.12}",
+          "$type": "color",
+          "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+          "hover": {
+            "$value": "{theme.color.utility.info.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.info.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "subtle": {
+            "$value": "{theme.color.utility.info.11}",
+            "$type": "color",
+            "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+          }
+        },
+        "surface": {
+          "$value": "{theme.color.utility.info.3}",
+          "$type": "color",
+          "$description": "Info message and alert surface backgrounds",
+          "hover": {
+            "$value": "{theme.color.utility.info.4}",
+            "$type": "color",
+            "$description": "Hover background for info surfaces."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.info.5}",
+            "$type": "color",
+            "$description": "Selected background for info surfaces."
+          }
+        }
+      },
+      "success": {
+        "$value": "{theme.color.utility.success.9}",
+        "$type": "color",
+        "$description": "Success state surfaces and confirmation interactions",
+        "border": {
+          "$value": "{theme.color.utility.success.8}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer.",
+          "hover": {
+            "$value": "{theme.color.utility.success.10}",
+            "$type": "color",
+            "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+          }
+        },
+        "hover": {
+          "$value": "{theme.color.utility.success.10}",
+          "$type": "color",
+          "$description": "Success state surfaces and confirmation interactions hover state"
+        },
+        "onSuccess": {
+          "$value": "best_contrast({theme.color.utility.success.9}, [{theme.color.utility.success.1}, {theme.color.utility.success.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function.",
+          "hover": {
+            "$value": "best_contrast({theme.color.utility.success.10}, [{theme.color.utility.success.1}, {theme.color.utility.success.12}])",
+            "$type": "color",
+            "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+          }
+        },
+        "onSurface": {
+          "$value": "{theme.color.utility.success.12}",
+          "$type": "color",
+          "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+          "hover": {
+            "$value": "{theme.color.utility.success.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.success.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "subtle": {
+            "$value": "{theme.color.utility.success.11}",
+            "$type": "color",
+            "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+          }
+        },
+        "surface": {
+          "$value": "{theme.color.utility.success.3}",
+          "$type": "color",
+          "$description": "Success message and alert surface backgrounds",
+          "hover": {
+            "$value": "{theme.color.utility.success.4}",
+            "$type": "color",
+            "$description": "Hover background for success surfaces."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.success.5}",
+            "$type": "color",
+            "$description": "Selected background for success surfaces."
+          }
+        }
+      },
+      "warning": {
+        "$value": "{theme.color.utility.warning.9}",
+        "$type": "color",
+        "$description": "Warning state surfaces and caution interactions",
+        "border": {
+          "$value": "{theme.color.utility.warning.8}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer.",
+          "hover": {
+            "$value": "{theme.color.utility.warning.10}",
+            "$type": "color",
+            "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+          }
+        },
+        "hover": {
+          "$value": "{theme.color.utility.warning.10}",
+          "$type": "color",
+          "$description": "Warning state surfaces and caution interactions hover state"
+        },
+        "onSurface": {
+          "$value": "{theme.color.utility.warning.12}",
+          "$type": "color",
+          "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+          "hover": {
+            "$value": "{theme.color.utility.warning.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.warning.12}",
+            "$type": "color",
+            "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved."
+          },
+          "subtle": {
+            "$value": "{theme.color.utility.warning.11}",
+            "$type": "color",
+            "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+          }
+        },
+        "onWarning": {
+          "$value": "best_contrast({theme.color.utility.warning.9}, [{theme.color.utility.warning.1}, {theme.color.utility.warning.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function.",
+          "hover": {
+            "$value": "best_contrast({theme.color.utility.warning.10}, [{theme.color.utility.warning.1}, {theme.color.utility.warning.12}])",
+            "$type": "color",
+            "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+          }
+        },
+        "surface": {
+          "$value": "{theme.color.utility.warning.3}",
+          "$type": "color",
+          "$description": "Warning surface backgrounds",
+          "hover": {
+            "$value": "{theme.color.utility.warning.4}",
+            "$type": "color",
+            "$description": "Hover background for warning surfaces."
+          },
+          "selected": {
+            "$value": "{theme.color.utility.warning.5}",
+            "$type": "color",
+            "$description": "Selected background for warning surfaces."
+          }
+        }
+      }
+    },
+    "onSurface": {
+      "$value": "{theme.color.neutral.12}",
+      "$type": "color",
+      "$description": "Default text and icon color on surfaces",
+      "inverted": {
+        "$value": "{theme.color.neutral.2}",
+        "$type": "color",
+        "$description": "Inversed default text and icon colour utility to ensure contrast during mode swaps"
+      },
+      "subtle": {
+        "$value": "{theme.color.neutral.11}",
+        "$type": "color",
+        "$description": "Lower priority text and icons on surfaces"
+      }
+    },
+    "primary": {
+      "border": {
+        "$value": "{theme.color.primary.8}",
+        "$type": "color",
+        "$description": "Primary border. Meets 3:1 against surface levels.",
+        "hover": {
+          "$value": "{theme.color.primary.10}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+        }
+      },
+      "brand": {
+        "$value": "{theme.color.primary.9}",
+        "$type": "color",
+        "$description": "Key brand color for primary interactions, statuses and surfaces",
+        "hover": {
+          "$value": "{theme.color.primary.10}",
+          "$type": "color",
+          "$description": "Hover state for primary interactions, statuses and surfaces"
+        }
+      },
+      "onBrand": {
+        "$value": "best_contrast({theme.color.primary.9}, [{theme.color.primary.1}, {theme.color.primary.12}])",
+        "$type": "color",
+        "$description": "Text and icon colour for primary surfaces and interactions",
+        "hover": {
+          "$value": "best_contrast({theme.color.primary.10}, [{theme.color.primary.1}, {theme.color.primary.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+        }
+      },
+      "onSurface": {
+        "$value": "{theme.color.primary.12}",
+        "$type": "color",
+        "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+        "subtle": {
+          "$value": "{theme.color.primary.11}",
+          "$type": "color",
+          "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+        }
+      },
+      "surface": {
+        "$value": "{theme.color.primary.3}",
+        "$type": "color",
+        "$description": "Surface and background color for primary and high priority surfaces",
+        "hover": {
+          "$value": "{theme.color.primary.4}",
+          "$type": "color",
+          "$description": "Hover fill for primary tinted controls. Pairs with color.primary.surface."
+        },
+        "selected": {
+          "$value": "{theme.color.primary.5}",
+          "$type": "color",
+          "$description": "Selected fill for primary tinted controls. Pairs with color.primary.surface."
+        }
+      }
+    },
+    "secondary": {
+      "border": {
+        "$value": "{theme.color.secondary.8}",
+        "$type": "color",
+        "$description": "Secondary border. Meets 3:1 against surface levels.",
+        "hover": {
+          "$value": "{theme.color.secondary.10}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+        }
+      },
+      "brand": {
+        "$value": "{theme.color.secondary.9}",
+        "$type": "color",
+        "$description": "Color for secondary interactions, statuses and surfaces",
+        "hover": {
+          "$value": "{theme.color.secondary.10}",
+          "$type": "color",
+          "$description": "Hover state secondary interactions, statuses and surfaces"
+        }
+      },
+      "onBrand": {
+        "$value": "best_contrast({theme.color.secondary.9}, [{theme.color.secondary.1}, {theme.color.secondary.12}])",
+        "$type": "color",
+        "$description": "Text and icon colour for secondary surfaces and interactions",
+        "hover": {
+          "$value": "best_contrast({theme.color.secondary.10}, [{theme.color.secondary.1}, {theme.color.secondary.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+        }
+      },
+      "onSurface": {
+        "$value": "{theme.color.secondary.12}",
+        "$type": "color",
+        "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+        "subtle": {
+          "$value": "{theme.color.secondary.11}",
+          "$type": "color",
+          "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+        }
+      },
+      "surface": {
+        "$value": "{theme.color.secondary.3}",
+        "$type": "color",
+        "$description": "Secondary surfaces and interaction surfaces",
+        "hover": {
+          "$value": "{theme.color.secondary.4}",
+          "$type": "color",
+          "$description": "Hover fill for secondary tinted controls. Pairs with color.secondary.surface."
+        },
+        "selected": {
+          "$value": "{theme.color.secondary.5}",
+          "$type": "color",
+          "$description": "Selected fill for secondary tinted controls. Pairs with color.secondary.surface."
+        }
+      }
+    },
+    "surface": {
+      "body": {
+        "$value": "{color.surface.level.1}",
+        "$type": "color",
+        "$description": "Default page background, an alias of surface level 1. Pairs with color.onSurface."
+      },
+      "border": {
+        "1": {
+          "$value": "{theme.surface.border.1}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 1 (page). Alpha-fitted for the default palette."
+        },
+        "2": {
+          "$value": "{theme.surface.border.2}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 2 (content container). Alpha-fitted for the default palette."
+        },
+        "3": {
+          "$value": "{theme.surface.border.3}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 3 (raised content container). Alpha-fitted for the default palette."
+        },
+        "4": {
+          "$value": "{theme.surface.border.4}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 4 (dropdown). Alpha-fitted for the default palette."
+        },
+        "5": {
+          "$value": "{theme.surface.border.5}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 5 (dialog). Alpha-fitted for the default palette."
+        },
+        "6": {
+          "$value": "{theme.surface.border.6}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 6. Alpha-fitted for the default palette."
+        },
+        "7": {
+          "$value": "{theme.surface.border.7}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 7. Alpha-fitted for the default palette."
+        },
+        "8": {
+          "$value": "{theme.surface.border.8}",
+          "$type": "color",
+          "$description": "Hairline border for content on surface level 8, the highest. Alpha-fitted for the default palette."
+        }
+      },
+      "highlight": {
+        "$value": "{theme.surface.highlight}",
+        "$type": "color",
+        "$description": "Top inner highlight on raised surfaces, visible in dark mode. Pairs with shadow.level.3 to 5."
+      },
+      "hover": {
+        "$value": "{theme.surface.hover}",
+        "$type": "color",
+        "$description": "Hover overlay on rows and ghost controls at any level. Pairs with color.surface.selected."
+      },
+      "level": {
+        "1": {
+          "$value": "{theme.surface.tint.level.1}",
+          "$type": "color",
+          "$description": "Page background, substrate for content containers. Pairs with color.onSurface and color.surface.level.2."
+        },
+        "2": {
+          "$value": "{theme.surface.tint.level.2}",
+          "$type": "color",
+          "$description": "Content container surface sitting on the page. Pairs with shadow.level.2 and color.surface.edge."
+        },
+        "3": {
+          "$value": "{theme.surface.tint.level.3}",
+          "$type": "color",
+          "$description": "Popover, menu and select surface. Pairs with shadow.level.3."
+        },
+        "4": {
+          "$value": "{theme.surface.tint.level.4}",
+          "$type": "color",
+          "$description": "Dialog surface. Pairs with shadow.level.4."
+        },
+        "5": {
+          "$value": "{theme.surface.tint.level.5}",
+          "$type": "color",
+          "$description": "Popover surface opened inside a dialog. Pairs with shadow.level.5."
+        },
+        "6": {
+          "$value": "{theme.surface.tint.level.6}",
+          "$type": "color",
+          "$description": "Surface level 6, above dialog-level popovers. Pairs with shadow.level.6 and surface.border.6."
+        },
+        "7": {
+          "$value": "{theme.surface.tint.level.7}",
+          "$type": "color",
+          "$description": "Surface level 7, above level 6. Pairs with shadow.level.7 and surface.border.7."
+        },
+        "8": {
+          "$value": "{theme.surface.tint.level.8}",
+          "$type": "color",
+          "$description": "Surface level 8, the highest elevation. Pairs with shadow.level.8 and surface.border.8."
+        }
+      },
+      "recessed": {
+        "$value": "{theme.surface.recessed}",
+        "$type": "color",
+        "$description": "Recessed surface for wells and inset fields, translucent so it follows the surface beneath."
+      },
+      "selected": {
+        "$value": "{theme.surface.selected}",
+        "$type": "color",
+        "$description": "Selected overlay on rows and segments at any level. Pairs with color.surface.hover."
+      }
+    },
+    "tertiary": {
+      "border": {
+        "$value": "{theme.color.tertiary.8}",
+        "$type": "color",
+        "$description": "Tertiary border. Meets 3:1 against surface levels.",
+        "hover": {
+          "$value": "{theme.color.tertiary.10}",
+          "$type": "color",
+          "$description": "Family-coloured boundary. Preserve its current ramp alias and rest/hover mapping; no additional border fitting or tint layer."
+        }
+      },
+      "brand": {
+        "$value": "{theme.color.tertiary.9}",
+        "$type": "color",
+        "$description": "Color for tertiary interactions, statuses and surfaces",
+        "hover": {
+          "$value": "{theme.color.tertiary.10}",
+          "$type": "color",
+          "$description": "Hover state for tertiary interactions, statuses and surfaces"
+        }
+      },
+      "onBrand": {
+        "$value": "best_contrast({theme.color.tertiary.9}, [{theme.color.tertiary.1}, {theme.color.tertiary.12}])",
+        "$type": "color",
+        "$description": "Text and icon color for tertiary surfaces and interactions",
+        "hover": {
+          "$value": "best_contrast({theme.color.tertiary.10}, [{theme.color.tertiary.1}, {theme.color.tertiary.12}])",
+          "$type": "color",
+          "$description": "Paired foreground for text, icons, glyphs and other foreground graphics on the family's existing solid colour in this state. Preserve its contrast-selection function."
+        }
+      },
+      "onSurface": {
+        "$value": "{theme.color.tertiary.12}",
+        "$type": "color",
+        "$description": "Default foreground for text, icons, glyphs and other foreground graphics on the intended surface. Existing foreground mapping is preserved.",
+        "subtle": {
+          "$value": "{theme.color.tertiary.11}",
+          "$type": "color",
+          "$description": "Subtle foreground for text, icons, glyphs and other foreground graphics on the intended surface. Step 11 today; emphasis is the role, not a fixed ramp-step contract."
+        }
+      },
+      "surface": {
+        "$value": "{theme.color.tertiary.3}",
+        "$type": "color",
+        "$description": "Surface and background color for tertiary and lower priority surfaces",
+        "hover": {
+          "$value": "{theme.color.tertiary.4}",
+          "$type": "color",
+          "$description": "Hover fill for tertiary tinted controls. Pairs with color.tertiary.surface."
+        },
+        "selected": {
+          "$value": "{theme.color.tertiary.5}",
+          "$type": "color",
+          "$description": "Selected fill for tertiary tinted controls. Pairs with color.tertiary.surface."
+        }
+      }
+    }
+  }
+}

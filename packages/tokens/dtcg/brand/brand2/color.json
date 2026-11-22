@@ -1,0 +1,97 @@
+{
+  "brand": {
+    "color": {
+      "base": {
+        "neutral": {
+          "dark": {
+            "$value": "oklch(0.25, 0, 180)",
+            "$type": "color",
+            "$description": "Anchor hue for the dark mode neutral ramp (steps 1–12). Choose a near-black with a whisper of brand chroma — pure greys read clinical."
+          },
+          "light": {
+            "$value": "oklch(0.94, 0, 161.57)",
+            "$type": "color",
+            "$description": "Anchor hue for the light mode neutral ramp. Choose a near-white / very light grey, slightly tinted toward the brand for warmth."
+          }
+        },
+        "primary": {
+          "$value": "oklch(0.41, 0.17, 26.86)",
+          "$type": "color",
+          "$description": "Primary brand colour. Drives the action ramp (CTAs, links, focus rings). Pick the hue with the strongest brand recall — APCA Silver requires Lc ≥ 60 on body text against this at step 9."
+        },
+        "secondary": {
+          "$value": "oklch(0.2, 0.08, 26.46)",
+          "$type": "color",
+          "$description": "Supporting brand colour used for secondary actions, selected states, and informational accents. Should be visually distinct from primary and tertiary in hue (≥ 30° apart in OKLCH)."
+        },
+        "tertiary": {
+          "$value": "oklch(0.74, 0.16, 156.4)",
+          "$type": "color",
+          "$description": "Third brand accent for promos, highlights, and decorative surfaces. Used sparingly; must not compete with primary for action affordance."
+        },
+        "utility": {
+          "error": {
+            "$value": "oklch(0.688, 0.187, 24.817)",
+            "$type": "color",
+            "$description": "Destructive / failure state ramp (delete, validation errors). Stick to a red — users have learned the convention."
+          },
+          "info": {
+            "$value": "oklch(0.628, 0.149, 297.657)",
+            "$type": "color",
+            "$description": "Neutral informational ramp (toasts, hints). Usually a blue. Distinct from primary to avoid action-vs-info confusion."
+          },
+          "success": {
+            "$value": "oklch(0.777, 0.225, 146.374)",
+            "$type": "color",
+            "$description": "Positive confirmation ramp (saved, completed). Usually a green."
+          },
+          "warning": {
+            "$value": "oklch(0.889, 0.101, 78.524)",
+            "$type": "color",
+            "$description": "Cautionary ramp (unsaved changes, risky actions). Usually an amber / yellow. Note: yellow is APCA-difficult — verify Lc against onWarning text."
+          }
+        }
+      },
+      "tint": {
+        "dark": {
+          "chroma": {
+            "shadow": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "dark mode shadow tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            },
+            "surface": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "dark mode surface tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            }
+          },
+          "source": {
+            "$value": "{brand.color.base.neutral.dark}",
+            "$type": "color",
+            "$description": "dark mode shared structural-surface/shadow hue source. Brand-specific primitive behind the corresponding theme tint control."
+          }
+        },
+        "light": {
+          "chroma": {
+            "shadow": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "light mode shadow tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            },
+            "surface": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "light mode surface tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            }
+          },
+          "source": {
+            "$value": "{brand.color.base.neutral.light}",
+            "$type": "color",
+            "$description": "light mode shared structural-surface/shadow hue source. Brand-specific primitive behind the corresponding theme tint control."
+          }
+        }
+      }
+    }
+  }
+}

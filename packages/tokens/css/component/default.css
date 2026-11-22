@@ -1,0 +1,28 @@
+@layer fabre-designsystem-base {
+  :root,
+  [data-brand],
+  [data-theme],
+  [data-web] {
+    --button-height-regular: var(--control-height-md);
+    --button-height-small: var(--control-height-sm);
+    --button-size-regular-corner-radius: var(--radius-default);
+    --button-size-regular-padding-horizontal: var(--control-padding-x-md);
+    --button-size-regular-padding-vertical: var(--spacing-200);
+    --button-size-small-corner-radius: var(--radius-default);
+    --button-size-small-padding-horizontal: var(--control-padding-x-sm);
+    --button-size-small-padding-vertical: var(--spacing-100);
+    --button-type-primary-background-color: var(--color-primary-brand);
+    --button-type-primary-stroke-color: var(--color-surface-border-3);
+    --button-type-primary-stroke-width: var(--stroke-width-default);
+    --button-type-primary-text-color: var(--color-primary-on-brand);
+    --button-type-secondary-background-color: var(--color-secondary-brand);
+    --button-type-secondary-stroke-color: var(--color-surface-border-3);
+    --button-type-secondary-stroke-width: var(--stroke-width-selected);
+    --button-type-secondary-text-color: var(--color-secondary-on-brand);
+    --button-typography-font-family: var(--typography-control-md-font-family);
+    --button-typography-font-size: var(--typography-control-md-font-size);
+    --button-typography-font-weight: var(--typography-control-md-font-weight);
+    --button-typography-letter-spacing: var(--typography-control-md-letter-spacing);
+    --button-typography-line-height: var(--typography-control-md-line-height);
+  }
+}

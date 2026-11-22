@@ -1,0 +1,989 @@
+{
+  "brand": {
+    "shadow": {
+      "1": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -0.67px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -0.67px, 2)",
+              "blur": "0.47px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.07px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.07px, 2)",
+              "blur": "0.67px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-0.8px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -2.67px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -2.67px, 2)",
+              "blur": "1.67px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-1.67px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 1 (dark): level 2 geometry x0.667."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -0.67px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -0.67px, 2)",
+              "blur": "0.47px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.07px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.07px, 2)",
+              "blur": "0.67px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-0.8px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -2.67px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -2.67px, 2)",
+              "blur": "1.67px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-1.67px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 1 (light): level 2 geometry x0.667."
+        }
+      },
+      "2": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.7px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.6px, 2)",
+              "blur": "1px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1.2px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -4px, 2)",
+              "blur": "2.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 2 (content container / tooltip), dark mode. Layers: Comeau stack, set_alpha(brand.shadow.color.dark, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.7px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.6px, 2)",
+              "blur": "1px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1.2px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -4px, 2)",
+              "blur": "2.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 2 (content container / tooltip), light mode. Layers: Comeau stack, set_alpha(brand.shadow.color.light, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        }
+      },
+      "3": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.7px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -3.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -3.2px, 2)",
+              "blur": "2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-0.8px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -8.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -8.2px, 2)",
+              "blur": "5.2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-1.7px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -20px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -20px, 2)",
+              "blur": "12.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 3 (popover / menu), dark mode. Layers: Comeau stack, set_alpha(brand.shadow.color.dark, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.7px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -3.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -3.2px, 2)",
+              "blur": "2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-0.8px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -8.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -8.2px, 2)",
+              "blur": "5.2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-1.7px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -20px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -20px, 2)",
+              "blur": "12.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 3 (popover / menu), light mode. Layers: Comeau stack, set_alpha(brand.shadow.color.light, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        }
+      },
+      "4": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -4.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -4.2px, 2)",
+              "blur": "2.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-0.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -8px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -8px, 2)",
+              "blur": "4.4px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -14.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -14.6px, 2)",
+              "blur": "8px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -25.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -25.6px, 2)",
+              "blur": "14px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-2px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -42.8px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -42.8px, 2)",
+              "blur": "23.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -68px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -68px, 2)",
+              "blur": "37px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-3px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -103px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -103px, 2)",
+              "blur": "56.2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-3.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 4 (toast / nested popover), dark mode. Layers: Comeau stack, set_alpha(brand.shadow.color.dark, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1px, 2)",
+              "blur": "0.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -4.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -4.2px, 2)",
+              "blur": "2.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-0.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -8px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -8px, 2)",
+              "blur": "4.4px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -14.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -14.6px, 2)",
+              "blur": "8px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -25.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -25.6px, 2)",
+              "blur": "14px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-2px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -42.8px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -42.8px, 2)",
+              "blur": "23.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-2.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -68px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -68px, 2)",
+              "blur": "37px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-3px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -103px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -103px, 2)",
+              "blur": "56.2px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-3.5px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 4 (toast / nested popover), light mode. Layers: Comeau stack, set_alpha(brand.shadow.color.light, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        }
+      },
+      "5": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.5px, 2)",
+              "blur": "0.9px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -6.3px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -6.3px, 2)",
+              "blur": "3.45px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-0.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -12px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -12px, 2)",
+              "blur": "6.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -21.9px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -21.9px, 2)",
+              "blur": "12px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-2.25px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -38.4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -38.4px, 2)",
+              "blur": "21px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-3px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -64.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -64.2px, 2)",
+              "blur": "34.95px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-3.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -102px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -102px, 2)",
+              "blur": "55.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-4.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -154.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -154.5px, 2)",
+              "blur": "84.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-5.25px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 5 (dialog / sheet), dark mode. Layers: Comeau stack, set_alpha(brand.shadow.color.dark, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -1.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -1.5px, 2)",
+              "blur": "0.9px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -6.3px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -6.3px, 2)",
+              "blur": "3.45px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-0.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -12px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -12px, 2)",
+              "blur": "6.6px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -21.9px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -21.9px, 2)",
+              "blur": "12px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-2.25px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -38.4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -38.4px, 2)",
+              "blur": "21px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-3px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -64.2px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -64.2px, 2)",
+              "blur": "34.95px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-3.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -102px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -102px, 2)",
+              "blur": "55.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-4.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -154.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -154.5px, 2)",
+              "blur": "84.3px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-5.25px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow primitive, level 5 (dialog / sheet), light mode. Layers: Comeau stack, set_alpha(brand.shadow.color.light, brand.opacity.20|10), offsets from brand.shadow.lightSource."
+        }
+      },
+      "6": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -2.25px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -2.25px, 2)",
+              "blur": "1.35px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -9.45px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -9.45px, 2)",
+              "blur": "5.18px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -18px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -18px, 2)",
+              "blur": "9.9px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-2.25px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -32.85px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -32.85px, 2)",
+              "blur": "18px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-3.37px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -57.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -57.6px, 2)",
+              "blur": "31.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-4.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -96.3px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -96.3px, 2)",
+              "blur": "52.43px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-5.62px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -153px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -153px, 2)",
+              "blur": "83.25px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-6.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -231.75px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -231.75px, 2)",
+              "blur": "126.45px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-7.87px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 6 (dark): level 5 geometry x1.5."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -2.25px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -2.25px, 2)",
+              "blur": "1.35px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -9.45px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -9.45px, 2)",
+              "blur": "5.18px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -18px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -18px, 2)",
+              "blur": "9.9px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-2.25px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -32.85px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -32.85px, 2)",
+              "blur": "18px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-3.37px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -57.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -57.6px, 2)",
+              "blur": "31.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-4.5px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -96.3px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -96.3px, 2)",
+              "blur": "52.43px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-5.62px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -153px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -153px, 2)",
+              "blur": "83.25px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-6.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -231.75px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -231.75px, 2)",
+              "blur": "126.45px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-7.87px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 6 (light): level 5 geometry x1.5."
+        }
+      },
+      "7": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -3.38px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -3.38px, 2)",
+              "blur": "2.03px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -14.18px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -14.18px, 2)",
+              "blur": "7.76px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-1.69px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -27px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -27px, 2)",
+              "blur": "14.85px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-3.37px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -49.28px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -49.28px, 2)",
+              "blur": "27px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-5.06px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -86.4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -86.4px, 2)",
+              "blur": "47.25px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-6.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -144.45px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -144.45px, 2)",
+              "blur": "78.64px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-8.44px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -229.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -229.5px, 2)",
+              "blur": "124.88px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-10.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -347.63px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -347.63px, 2)",
+              "blur": "189.68px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-11.81px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 7 (dark): level 5 geometry x2.25."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -3.38px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -3.38px, 2)",
+              "blur": "2.03px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -14.18px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -14.18px, 2)",
+              "blur": "7.76px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-1.69px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -27px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -27px, 2)",
+              "blur": "14.85px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-3.37px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -49.28px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -49.28px, 2)",
+              "blur": "27px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-5.06px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -86.4px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -86.4px, 2)",
+              "blur": "47.25px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-6.75px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -144.45px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -144.45px, 2)",
+              "blur": "78.64px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-8.44px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -229.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -229.5px, 2)",
+              "blur": "124.88px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-10.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -347.63px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -347.63px, 2)",
+              "blur": "189.68px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-11.81px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 7 (light): level 5 geometry x2.25."
+        }
+      },
+      "8": {
+        "dark": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -5.06px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -5.06px, 2)",
+              "blur": "3.04px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -21.26px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -21.26px, 2)",
+              "blur": "11.64px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-2.53px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -40.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -40.5px, 2)",
+              "blur": "22.28px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-5.06px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -73.91px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -73.91px, 2)",
+              "blur": "40.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.20})",
+              "spread": "-7.59px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -129.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -129.6px, 2)",
+              "blur": "70.88px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-10.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -216.68px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -216.68px, 2)",
+              "blur": "117.96px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-12.66px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -344.25px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -344.25px, 2)",
+              "blur": "187.31px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-15.19px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -521.44px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -521.44px, 2)",
+              "blur": "284.51px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.dark}, {brand.opacity.10})",
+              "spread": "-17.72px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 8 (dark): level 5 geometry x3.375."
+        },
+        "light": {
+          "$value": [
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -5.06px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -5.06px, 2)",
+              "blur": "3.04px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "0px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -21.26px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -21.26px, 2)",
+              "blur": "11.64px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-2.53px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -40.5px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -40.5px, 2)",
+              "blur": "22.28px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-5.06px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -73.91px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -73.91px, 2)",
+              "blur": "40.5px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.20})",
+              "spread": "-7.59px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -129.6px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -129.6px, 2)",
+              "blur": "70.88px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-10.12px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -216.68px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -216.68px, 2)",
+              "blur": "117.96px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-12.66px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -344.25px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -344.25px, 2)",
+              "blur": "187.31px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-15.19px"
+            },
+            {
+              "x": "round_to({brand.shadow.lightSource.x} * -521.44px, 2)",
+              "y": "round_to({brand.shadow.lightSource.y} * -521.44px, 2)",
+              "blur": "284.51px",
+              "type": "dropShadow",
+              "color": "set_alpha({brand.shadow.color.light}, {brand.opacity.10})",
+              "spread": "-17.72px"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "Shadow 8 (light): level 5 geometry x3.375."
+        }
+      },
+      "color": {
+        "dark": {
+          "$value": "variable result: Color = set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.1}); if ({brand.color.tint.dark.chroma.shadow} \u003e 0) [ result = set_chroma(adjust_chroma(set_hue(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.1}), hue({brand.color.tint.dark.source})), {brand.color.tint.dark.chroma.shadow}), chroma(to_gamut(adjust_chroma(set_hue(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.1}), hue({brand.color.tint.dark.source})), {brand.color.tint.dark.chroma.shadow})))); ]; result;",
+          "$type": "color",
+          "$description": "dark shadow colour. Zero strength preserves the neutral-derived baseline without tint hue/chroma or tint-specific gamut processing; positive strength uses this mode's independent brand shadow tint."
+        },
+        "light": {
+          "$value": "variable result: Color = set_lightness({brand.color.base.neutral.dark}, {foundation.color.light.lightness.8}); if ({brand.color.tint.light.chroma.shadow} \u003e 0) [ result = set_chroma(adjust_chroma(set_hue(set_lightness({brand.color.base.neutral.dark}, {foundation.color.light.lightness.8}), hue({brand.color.tint.light.source})), {brand.color.tint.light.chroma.shadow}), chroma(to_gamut(adjust_chroma(set_hue(set_lightness({brand.color.base.neutral.dark}, {foundation.color.light.lightness.8}), hue({brand.color.tint.light.source})), {brand.color.tint.light.chroma.shadow})))); ]; result;",
+          "$type": "color",
+          "$description": "light shadow colour. Zero strength preserves the neutral-derived baseline without tint hue/chroma or tint-specific gamut processing; positive strength uses this mode's independent brand shadow tint."
+        }
+      },
+      "headroom": {
+        "$value": 2,
+        "$type": "number",
+        "$description": "Sets how many levels a surface's shadow level may exceed its surface level before the design system warns in development, for this brand. Set it to 8 to turn the warning off."
+      },
+      "lightSource": {
+        "x": {
+          "$value": -0.25,
+          "$type": "number",
+          "$description": "Light position x (−1…1; 0 = light overhead, no offset). Every brand.shadow.N layer's x offset = 2·y₀·−x. Default −0.25 / −0.5 (light up-left) reproduces the reference offsets. Generator: Light position pad."
+        },
+        "y": {
+          "$value": -0.5,
+          "$type": "number",
+          "$description": "Light position y (−1…1; 0 = light overhead, no offset). Every brand.shadow.N layer's y offset = 2·y₀·−y. Default −0.25 / −0.5 (light up-left) reproduces the reference offsets. Generator: Light position pad."
+        }
+      }
+    },
+    "z-index": {
+      "00": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "The default stacking layer."
+      },
+      "10": {
+        "$value": 10,
+        "$type": "number",
+        "$description": "Use for content lifted slightly above the page."
+      },
+      "20": {
+        "$value": 20,
+        "$type": "number",
+        "$description": "The mid floating layer."
+      },
+      "30": {
+        "$value": 30,
+        "$type": "number",
+        "$description": "The high floating layer."
+      },
+      "40": {
+        "$value": 40,
+        "$type": "number",
+        "$description": "The layer for dialogs."
+      },
+      "50": {
+        "$value": 50,
+        "$type": "number",
+        "$description": "The layer for backdrops behind modals."
+      },
+      "60": {
+        "$value": 60,
+        "$type": "number",
+        "$description": "The top layer for toasts."
+      },
+      "behind": {
+        "$value": -1,
+        "$type": "number",
+        "$description": "The layer behind page content."
+      }
+    }
+  }
+}

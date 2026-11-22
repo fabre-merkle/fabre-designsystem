@@ -1,0 +1,65 @@
+---
+title: Progress
+description: Show progress for ongoing work.
+primitive: https://base-ui.com/react/components/progress
+---
+
+## Interactive example
+
+<DocsStory name="progress" />
+
+## Installation
+
+`Progress` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Progress } from "@workspace/ui/components/progress";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Progress } from "@workspace/ui/components/progress";
+
+<Progress.Root value={60}>
+  <Progress.Label>Uploading</Progress.Label>
+  <Progress.Value />
+  <Progress.Track>
+    <Progress.Indicator />
+  </Progress.Track>
+</Progress.Root>
+```
+
+Pass `value={null}` to render an indeterminate bar.
+
+## API Reference
+
+`Progress.Root` adds one prop (`size`) on top of [Base UI Progress.Root](https://base-ui.com/react/components/progress#api-reference); every other part forwards its primitive props untouched. Props below are all on `Progress.Root`.
+
+<AutoTypeTable path="progress/progress.tsx" name="DocsRootProps" type="RootProps" />
+
+`Progress.Value` accepts a function child `(formattedValue, value) => ReactNode` if you need to render the value differently from the default formatter.
+
+## When to use
+
+Use `Progress` for a determinate or indeterminate horizontal indicator of a single, ongoing operation — uploads, installs, multi-step tasks. For step counts within a known workflow prefer a stepper; for a small inline activity hint use a spinner.
+
+## Figma contract
+
+<ComponentContract slug="progress" />

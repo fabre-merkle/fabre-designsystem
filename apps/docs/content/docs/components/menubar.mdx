@@ -1,0 +1,76 @@
+---
+title: Menubar
+description: Group application menus in a horizontal bar.
+primitive: https://base-ui.com/react/components/menubar
+---
+
+## Interactive example
+
+<DocsStory name="menubar" />
+
+## Installation
+
+`Menubar` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Menubar } from "@workspace/ui/components/menubar";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Menu } from "@workspace/ui/components/menu";
+import { Menubar } from "@workspace/ui/components/menubar";
+
+<Menubar.Root>
+  <Menu.Root>
+    <Menu.Trigger>File</Menu.Trigger>
+    <Menu.Portal>
+      <Menu.Positioner>
+        <Menu.Popup>
+          <Menu.Item>New</Menu.Item>
+          <Menu.Item>Open…</Menu.Item>
+        </Menu.Popup>
+      </Menu.Positioner>
+    </Menu.Portal>
+  </Menu.Root>
+  <Menu.Root>
+    <Menu.Trigger>Edit</Menu.Trigger>
+    {/* … */}
+  </Menu.Root>
+</Menubar.Root>
+```
+
+## API Reference
+
+`Menubar.Root` forwards to the [Base UI Menubar](https://base-ui.com/react/components/menubar#api-reference) primitive, preserving every prop, event, ARIA attribute, and the polymorphic `render` API — including `modal`, `disabled`, `orientation`, and `loopFocus`.
+
+Compose `Menu.Root` children inside the menubar; each `Menu` participates in the menubar's roving-focus and hover-to-open behavior automatically.
+
+## When to use
+
+Use `Menubar` for persistent, horizontal application menus — file/edit/view bars in desktop-style apps, IDEs, or canvas tools. For a single click-triggered menu use `Menu`. For a right-click menu use `ContextMenu`. For site navigation use `NavigationMenu`.
+
+## Composition
+
+`Menubar.Root` is just the bar container; each `Menu.Root` child supplies its own trigger and popup. Trigger surfaces inside a menubar render with flatter, inline-bar styling — the popup, items, and submenu styling come from the shared `Menu` primitive.
+
+## Figma contract
+
+<ComponentContract slug="menubar" />

@@ -1,0 +1,73 @@
+# Figma Code Connect: check the generated templates on every pull request (no token), publish on main.
+#
+# The publish job follows Figma's CI guide: it runs on pushes to main that change Code Connect files,
+# with `--exit-on-unreadable-files`, and reads a token from the CI secret FIGMA_ACCESS_TOKEN. Use a
+# Plan Access Token on Organization and Enterprise plans (a personal access token on Professional),
+# with the Code Connect (write) and File content (read) scopes.
+#
+# Actions are pinned to commit SHAs (supply-chain hardening). Enable Renovate or Dependabot
+# (github-actions ecosystem) in your repo to keep these pins current; they will rewrite the
+# `# vX` comments to the exact version on update.
+name: figma-code-connect
+
+on:
+  pull_request:
+    # Component source and the generator are included too: a prop change (say, a size union becoming
+    # a string) changes the expected template even when no Code Connect file is touched.
+    paths:
+      - "**/*.figma.ts"
+      - "**/*.figma.contract.ts"
+      - ".agents/figma.json"
+      - ".agents/figma-generation-contract.json"
+      - "figma.config.json"
+      - "packages/ui/src/components/**"
+      - "packages/contracts/**"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.figma.ts"
+      - "**/*.figma.contract.ts"
+      - ".agents/figma.json"
+      - ".agents/figma-generation-contract.json"
+      - "figma.config.json"
+
+jobs:
+  templates:
+    # Regenerates the templates from the contract and the manifest and fails on any difference
+    # (a missing, hand-edited or obsolete generated template). Needs no token.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.3
+      - run: bun install --frozen-lockfile
+      # The templates come from the compiled contract, so check that it is current first.
+      - run: bun run figma:contract:check
+      - run: bun run figma:connect:check
+
+  publish:
+    # Only on main, after the templates match, and only when the publish token is configured
+    # (soft-skip otherwise).
+    needs: templates
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.3
+      - run: bun install --frozen-lockfile
+      - name: Publish Code Connect templates
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$FIGMA_ACCESS_TOKEN" ]; then
+            echo "FIGMA_ACCESS_TOKEN not set, skipping publish. See .agents/figma-connect.md."
+            exit 0
+          fi
+          bun run figma:connect:publish

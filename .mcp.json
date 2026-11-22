@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "docs": {
+      "type": "http",
+      "url": "http://localhost:3001/api/mcp"
+    },
+    "focus": {
+      "type": "http",
+      "url": "https://focus.merkle.design/mcp"
+    },
+    "shadcn": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    },
+    "storybook": {
+      "type": "http",
+      "url": "http://localhost:6006/mcp"
+    },
+    "tokens-studio": {
+      "type": "http",
+      "url": "https://api-production.tokens.studio/mcp",
+      "oauth": {
+        "callbackPort": 8080
+      }
+    }
+  }
+}

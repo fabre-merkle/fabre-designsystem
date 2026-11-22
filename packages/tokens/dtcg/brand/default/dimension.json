@@ -1,0 +1,94 @@
+{
+  "brand": {
+    "breakpoint": {
+      "lg": {
+        "max": {
+          "$value": "1600px",
+          "$type": "dimension",
+          "$description": "Maximum viewport width of the lg breakpoint. Pairs with brand.breakpoint.lg.min."
+        },
+        "min": {
+          "$value": "1024px",
+          "$type": "dimension",
+          "$description": "Minimum viewport width at which the lg breakpoint applies. Pairs with brand.breakpoint.lg.max."
+        },
+        "view": {
+          "$value": "1440px",
+          "$type": "dimension",
+          "$description": "Reference design viewport width for lg layouts."
+        }
+      },
+      "md": {
+        "max": {
+          "$value": "1023px",
+          "$type": "dimension",
+          "$description": "Maximum viewport width of the md breakpoint. Pairs with brand.breakpoint.md.min."
+        },
+        "min": {
+          "$value": "768px",
+          "$type": "dimension",
+          "$description": "Minimum viewport width at which the md breakpoint applies. Pairs with brand.breakpoint.md.max."
+        },
+        "view": {
+          "$value": "768px",
+          "$type": "dimension",
+          "$description": "Reference design viewport width for md layouts."
+        }
+      },
+      "sm": {
+        "max": {
+          "$value": "767px",
+          "$type": "dimension",
+          "$description": "Maximum viewport width of the sm breakpoint. Pairs with brand.breakpoint.sm.min."
+        },
+        "min": {
+          "$value": "320px",
+          "$type": "dimension",
+          "$description": "Minimum viewport width at which the sm breakpoint applies. Pairs with brand.breakpoint.sm.max."
+        },
+        "view": {
+          "$value": "375px",
+          "$type": "dimension",
+          "$description": "Reference design viewport width for sm layouts."
+        }
+      }
+    },
+    "grid": {
+      "lg": {
+        "margin": {
+          "$value": "80px",
+          "$type": "dimension",
+          "$description": "Page grid side margin at the lg breakpoint."
+        }
+      },
+      "md": {
+        "margin": {
+          "$value": "60px",
+          "$type": "dimension",
+          "$description": "Page grid side margin at the md breakpoint."
+        }
+      },
+      "sm": {
+        "margin": {
+          "$value": "40px",
+          "$type": "dimension",
+          "$description": "Page grid side margin at the sm breakpoint."
+        }
+      }
+    },
+    "scale": {
+      "base": {
+        "control": {
+          "$value": "4px",
+          "$type": "dimension",
+          "$description": "Base unit for independently sizing controls. Control heights, horizontal padding and gaps derive from this value; spacing and radius scales are unaffected."
+        },
+        "ui": {
+          "$value": "4px",
+          "$type": "dimension",
+          "$description": "Base UI unit. Every spacing step and radius primitive multiplies it."
+        }
+      }
+    }
+  }
+}

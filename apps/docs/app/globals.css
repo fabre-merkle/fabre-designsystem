@@ -1,0 +1,126 @@
+/* =========================================================
+   apps/docs global styles — Base UI Fumadocs + token bridge
+
+   Ships the default theme: the installed @focus token package exposes the
+   reference CSS cascade (brand/fabre-designsystem.css etc.) and this file bridges it onto
+   Base UI Fumadocs's --color-fd-* vars. Trimmed to what a Fumadocs-only docs app
+   needs (no shadcn theme vars). Retheme by swapping the token package.
+
+   The Fumadocs chrome is themed by the `@theme` --color-fd-* block below, sourced
+   from the token cascade. Cascade-layer order is declared first so the token
+   layers cascade predictably under this app's own layers.
+   ========================================================= */
+@layer fabre-designsystem-base, fabre-designsystem-brand, fabre-designsystem-theme, fabre-designsystem-web;
+
+@import "tailwindcss";
+
+/* Base UI Fumadocs preset — STRUCTURE ONLY (base reset + component CSS, via
+   preset.css → lib/base.css + generated/*). We deliberately do NOT import a
+   Fumadocs colour theme (e.g. `neutral.css` → lib/default-colors.css): that's
+   the only file that ships fumadocs's competing `@theme` (light) + unlayered
+   `.dark {}` (dark) fd defaults. Instead we register + theme the `--color-fd-*`
+   ourselves from the token cascade in the `@theme` block below — one source,
+   theme-aware, no cascade fight. */
+@import "fumadocs-ui/css/preset.css";
+
+/* Default-theme token cascade — the installed @focus token package's reference
+   CSS (brand/fabre-designsystem.css etc.). Each file scopes its vars under [data-*]
+   selectors set by <html> data-* in layout.tsx; swap the token package or the
+   data-brand value to retheme. */
+@import "@fabre-designsystem/tokens/css/foundation/default.css";
+@import "@fabre-designsystem/tokens/css/brand/fabre-designsystem.css";
+@import "@fabre-designsystem/tokens/css/brand/brand2.css";
+@import "@fabre-designsystem/tokens/css/theme/light.css";
+@import "@fabre-designsystem/tokens/css/theme/dark.css";
+@import "@fabre-designsystem/tokens/css/semantic-web/default.css";
+@import "@fabre-designsystem/tokens/css/component/default.css";
+@import "@fabre-designsystem/tokens/css/web/sm.css";
+@import "@fabre-designsystem/tokens/css/web/md.css";
+@import "@fabre-designsystem/tokens/css/web/lg.css";
+/* Fumadocs (Base UI) fd theme — the `@theme --color-fd-*` map (the bg-fd / text-fd
+   surface). Ships from the installed token package as an @theme file (generated
+   from the Tokens Studio semantic-fumadocs set), so the utilities generate from
+   your tokens with nothing hand-authored. Retheme by swapping the token package. */
+@import "@fabre-designsystem/tokens/css/semantic-fumadocs/theme.css";
+/* Surface levels for the Fumadocs chrome (callouts, tabs, popovers, search,
+   code blocks, tables). Token-only; the level map is in the file header. */
+@import "./fumadocs-elevation.css";
+@import "./token-reference.css";
+
+/* @source after all @imports (CSS requires @import first). Scans the compiled
+   base-ui component JS so its bg-fd-* / text-fd-* utilities are generated. */
+@source "../node_modules/fumadocs-ui/dist/**/*.js";
+
+/* Base UI Fumadocs component CSS keys dark off @variant dark
+   (&:where(.dark, .dark *)) — so the `.dark` class is permanent and must stay
+   in lockstep with [data-theme] (next-themes writes both; see layout.tsx).
+   Broaden the variant so app-scanned `dark:` utilities fire on EITHER signal. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* The Fumadocs fd `@theme` map is imported above (semantic-fumadocs/theme.css from
+   the token package) — not hand-authored here. Change it in your Tokens Studio
+   semantic-fumadocs set and re-pull. */
+
+/* Sidebar section separator labels ("---Get started---", "---Components---", …
+   → <p class="inline-flex …">). Styled as small all-caps labels.
+   Colour: --color-fd-muted-foreground (fd-bridge token).
+   Note: font-size / font-weight / letter-spacing / text-transform are raw values. */
+[data-semantic-fumadocs="default"] aside p {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Non-first section separators get a ruled divider.
+   Fumadocs gives every separator mt-6 (1.5rem) naturally; first:mt-0 removes it
+   for the first separator only. border-top + padding-top draws the rule between
+   major sections without touching folder divs — no p ~ div, so folders inside
+   Get Started get zero extra spacing. Colour: --color-fd-border (fd-bridge token). */
+[data-semantic-fumadocs="default"] aside p:not(:first-of-type) {
+  border-top: 1px solid var(--color-fd-border);
+  padding-top: 0.75rem;
+}
+
+/* Copy button inside code blocks — rehype-pretty-code wraps in <figure>.
+   accent-foreground (= primary-on-brand = white) goes invisible on light
+   code-block backgrounds; force a readable dark tone in light mode. */
+[data-theme="light"] [data-rehype-pretty-code-figure] button,
+[data-theme="light"] figure[data-rehype-pretty-code-figure] button {
+  color: var(--color-on-surface-subtle) !important;
+}
+[data-theme="light"] [data-rehype-pretty-code-figure] button:hover,
+[data-theme="light"] figure[data-rehype-pretty-code-figure] button:hover {
+  color: var(--color-on-surface) !important;
+}
+
+/* Prompts retain the native code-block copy action, but read as wrapping prose. */
+[data-docs-prompt] pre {
+  width: 100%;
+  min-width: 0;
+}
+
+[data-docs-prompt] pre,
+[data-docs-prompt] code,
+[data-docs-prompt] .line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+}
+
+[data-docs-ai-guide] p {
+  max-inline-size: 70ch;
+  line-height: 1.6;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+[data-docs-ai-guide] :is(h2, h3) {
+  text-wrap: balance;
+  line-height: 1.3;
+}
+
+[data-docs-ai-resources] > div {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}

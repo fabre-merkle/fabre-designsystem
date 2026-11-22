@@ -1,0 +1,118 @@
+@layer components {
+  /* An annotated Card: callouts either side, dashed leader lines to each part. Annotations are
+     neutral: they label the example, they are not part of the brand. */
+  [data-card-annotated] {
+    --annot: var(--color-on-surface-subtle);
+    container-type: inline-size;
+    margin-block: var(--spacing-400);
+    padding: var(--spacing-600);
+    background-color: var(--color-surface-level-1);
+    border: var(--stroke-width-default) solid var(--color-surface-border-2);
+    border-radius: var(--radius-default);
+  }
+
+  [data-card-annotated] .ca-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(9rem, 15rem) minmax(14rem, 18rem) minmax(9rem, 15rem);
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--spacing-600);
+    min-block-size: 24rem;
+  }
+
+  [data-card-annotated] .ca-subject {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+  }
+
+  [data-card-annotated] .ca-callouts {
+    position: relative;
+    z-index: 1;
+  }
+
+  [data-card-annotated] .ca-callout {
+    position: absolute;
+    inset-inline: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-050);
+    padding: var(--spacing-200) var(--spacing-300);
+    border: var(--stroke-width-default) solid var(--color-surface-border-3);
+    border-radius: var(--radius-default);
+    background-color: var(--color-surface-level-2);
+    color: var(--color-on-surface);
+    font-size: var(--typography-paragraph-xs-font-size);
+    line-height: var(--typography-paragraph-xs-line-height);
+  }
+
+  [data-card-annotated] .ca-head {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+  }
+
+  [data-card-annotated] .ca-head strong {
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-label-font-weight, 500);
+  }
+
+  [data-card-annotated] .ca-value {
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+  }
+
+  [data-card-annotated] .ca-token {
+    font-family: var(--typography-code-sm-font-family);
+    font-size: var(--typography-code-sm-font-size);
+    color: var(--color-on-surface-subtle);
+    overflow-wrap: anywhere;
+  }
+
+  [data-card-annotated] .ca-callout p {
+    margin: 0;
+    color: var(--color-on-surface-subtle);
+  }
+
+  [data-card-annotated] .ca-leaders {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+    pointer-events: none;
+    fill: none;
+    stroke: var(--annot);
+  }
+
+  [data-card-annotated] .ca-leaders path {
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  [data-card-annotated] .ca-leaders circle {
+    fill: var(--annot);
+    stroke: none;
+  }
+
+  /* Too narrow for side columns: stack the callouts under the card and drop the lines. */
+  @container (max-width: 46rem) {
+    [data-card-annotated] .ca-grid {
+      grid-template-columns: minmax(0, 1fr);
+      min-block-size: 0;
+    }
+    [data-card-annotated] .ca-leaders {
+      display: none;
+    }
+    [data-card-annotated] .ca-callouts {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-300);
+    }
+    [data-card-annotated] .ca-callout {
+      position: static;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+---
+title: Component tokens
+description: When and how to use component-specific aliases.
+---
+
+Component-specific token data is optional. The reference below reads the enabled component
+sets from this project's DTCG export; a token's presence does not establish production
+approval. If no set is enabled, the naming examples below are illustrative only.
+
+## Prefer shared roles
+
+Components consume semantic roles whose values adapt across brand, mode and context. This
+keeps shared decisions coherent without maintaining a parallel alias for every component.
+Prefer multi-dimensional theming when a change is about a shared dimension rather than a
+genuinely component-specific need.
+
+<RelatedPage href="/docs/tokens/multi-dimensional-theming">Explore multi-dimensional theming.</RelatedPage>
+
+An additional component alias can be justified when a component has a distinct, stable need
+that shared roles cannot express. Record its reason and ownership, and avoid creating
+aliases solely to repeat an existing role.
+
+## Configured component tokens
+
+<TokenReference category="component" />
+
+## Naming examples
+
+| Example name | Possible purpose |
+| --- | --- |
+| `button.height.regular` | A component-specific size role. |
+| `button.type.primary.background-color` | A role for one component variant's fill. |
+| `button.size.small.corner-radius` | A role for a particular component size. |
+
+These are naming illustrations, not tokens to depend on. A project that adopts component
+tokens should define and document its own approved roles.
+
+<RelatedPage href="/docs/foundations/principles">Read the system principles.</RelatedPage>

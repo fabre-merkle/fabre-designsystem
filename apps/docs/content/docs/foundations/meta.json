@@ -1,0 +1,15 @@
+{
+  "title": "Foundations",
+  "pagesIndex": "../foundations",
+  "pages": [
+    "principles",
+    "brand-and-style",
+    "colour",
+    "typography",
+    "layout-spacing",
+    "elevation",
+    "shape",
+    "motion",
+    "iconography-imagery"
+  ]
+}

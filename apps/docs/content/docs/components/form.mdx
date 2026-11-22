@@ -1,0 +1,67 @@
+---
+title: Form
+description: Coordinate form submission and validation.
+primitive: https://base-ui.com/react/components/form
+---
+
+## Interactive example
+
+<DocsStory name="form" />
+
+## Installation
+
+`Form` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Form } from "@workspace/ui/components/form";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+import { Field } from "@workspace/ui/components/field";
+import { Form } from "@workspace/ui/components/form";
+import { Input } from "@workspace/ui/components/input";
+
+<Form
+  onSubmit={(event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // …submit data
+  }}
+>
+  <Field.Root name="email">
+    <Field.Label>Work email</Field.Label>
+    <Field.Control render={<Input type="email" required />} />
+    <Field.Error match="valueMissing">An email is required.</Field.Error>
+  </Field.Root>
+  <Button type="submit" variant="primary">Send invite</Button>
+</Form>
+```
+
+`Form` lays its fields out in a column and coordinates their validity. Pass server-side errors back through its `errors` prop — they clear automatically when the field changes.
+
+## API Reference
+
+Form adds no props beyond the primitive's. It forwards every prop, event, and ARIA attribute to the [Base UI Form](https://base-ui.com/react/components/form#api-reference) primitive — including `onSubmit`, the `errors` object, and the polymorphic `render` API.
+
+## Figma contract
+
+<ComponentContract slug="form" />

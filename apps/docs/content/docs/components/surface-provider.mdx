@@ -1,0 +1,71 @@
+---
+title: Surface Provider
+description: Keep the active web breakpoint in sync.
+---
+
+import { SurfaceProvider } from "@workspace/ui/components/surface-provider";
+
+## Overview
+
+`SurfaceProvider` has no rendered output. Mount it once near your application root so it can keep
+the `data-web` attribute on `<html>` aligned with the active viewport breakpoint.
+
+<Callout type="info" title="Not a component">
+  It draws nothing and has no design. It is the runtime half of the breakpoint token sets: the
+  `data-web` value selects which set applies.
+</Callout>
+
+## Installation
+
+`SurfaceProvider` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { SurfaceProvider } from "@workspace/ui/components/surface-provider";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { SurfaceProvider } from "@workspace/ui/components/surface-provider";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <SurfaceProvider />
+      {children}
+    </>
+  );
+}
+```
+
+Mount it once. Pair it with an inline `<head>` script that sets `data-web` before first paint, so
+the first render already has the right typography.
+
+## API Reference
+
+<AutoTypeTable path="surface-provider/surface-provider.tsx" name="SurfaceProviderProps" />
+
+## Breakpoints, not levels
+
+`SurfaceProvider` sets the viewport **breakpoint** (`data-web`), which drives the base font size and Control text. It does not set surface levels. A surface's level comes from the level context: `Elevated`, `SurfaceLevel` and `useSurfaceLevel`. Mounting `SurfaceProvider` never raises or lowers a surface.
+
+## Related
+
+- [Elevated](/docs/components/elevated): the level context that sets surface levels.
+- [Controls](/docs/components/controls): the control text and heights that follow the breakpoint.

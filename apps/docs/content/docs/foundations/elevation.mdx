@@ -1,0 +1,52 @@
+---
+title: Elevation
+description: Show structure through raised and recessed surfaces.
+---
+
+{/* Authoring: Foundations explain concepts and intent; concrete references belong to Tokens or components. */}
+
+{/* topic:start depth-model */}
+## Depth model
+
+Depth shows how parts of an interface relate: what belongs together, what sits on top and
+what demands attention. A surface's depth is relative to the surface beneath it.
+
+**Surface level** distinguishes a surface's fill and edge from its surroundings. **Shadow**
+indicates that it floats. Keeping the two ideas independent lets content nest clearly without
+automatically accumulating heavier shadows. The page is the base and casts no shadow. Light
+and dark modes express depth differently while preserving the relationships.
+{/* topic:end depth-model */}
+
+## Depth in action
+
+Move the surface to explore its relationship to the surrounding page. The controls start
+linked to compare matching levels as a preview aid, not a component rule; unlink them to
+adjust surface and shadow independently. The sharing panel and permission menu start open so
+you can compare all three surfaces while their shadows stay independent. The example does not
+share a real project. The inset area is recessed.
+
+<ElevationExample />
+
+{/* topic:start elevation-usage */}
+## When to raise or recess
+
+Raise a surface to show that it sits above its surroundings: a card groups content, a menu
+floats temporarily and a dialog takes focus from what lies beneath. A nested surface rises
+from its immediate surroundings, not from the page.
+
+Recess a region to show that it sits within a surface, such as a code block or a group of
+inputs. A recess is a dip, not negative elevation, and needs no shadow. Use shadow
+deliberately; deeper nesting should not automatically mean a heavier shadow. Avoid adding
+layers without a clear reason.
+{/* topic:end elevation-usage */}
+
+## Prior art
+
+The depth model adapts ideas from [Cubby UI surfaces](https://www.cubby-ui.dev/docs/getting-started/surfaces)
+by joncoronel, [Fluid Functionalism surfaces](https://www.fluidfunctionalism.com/docs/surfaces)
+by Micka Touillaud, and the
+[Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/) by Josh W. Comeau.
+These influences do not imply identical APIs or defaults; retain applicable code licences and
+notices alongside distributed code.
+
+<RelatedPage href="/docs/tokens/elevation">Explore the elevation token reference.</RelatedPage>

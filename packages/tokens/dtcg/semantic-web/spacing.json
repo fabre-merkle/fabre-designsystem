@@ -1,0 +1,333 @@
+{
+  "control": {
+    "gap": {
+      "lg": {
+        "$value": "round_to({brand.scale.base.control} * 2, 0)",
+        "$type": "dimension",
+        "$description": "Space between icon and label in large controls. Pairs with control.icon.lg."
+      },
+      "md": {
+        "$value": "round_to({brand.scale.base.control} * 2, 0)",
+        "$type": "dimension",
+        "$description": "Space between icon and label in default controls. Pairs with control.icon.md."
+      },
+      "sm": {
+        "$value": "round_to({brand.scale.base.control} * 1.5, 0)",
+        "$type": "dimension",
+        "$description": "Space between icon and label in small controls. Pairs with control.icon.sm."
+      },
+      "xs": {
+        "$value": "round_to({brand.scale.base.control} * 1, 0)",
+        "$type": "dimension",
+        "$description": "Space between icon and label in the smallest controls. Pairs with control.icon.xs."
+      }
+    },
+    "height": {
+      "lg": {
+        "$value": "round_to({brand.scale.base.control} * 12, 0)",
+        "$type": "dimension",
+        "$description": "Fixed height for large controls. Pairs with typography.control.lg and control.padding-x.lg."
+      },
+      "md": {
+        "$value": "round_to({brand.scale.base.control} * 10, 0)",
+        "$type": "dimension",
+        "$description": "Fixed height for default controls. Pairs with typography.control.md and control.padding-x.md."
+      },
+      "sm": {
+        "$value": "round_to({brand.scale.base.control} * 8, 0)",
+        "$type": "dimension",
+        "$description": "Fixed height for small controls. Pairs with typography.control.sm and control.padding-x.sm."
+      },
+      "xs": {
+        "$value": "round_to({brand.scale.base.control} * 6, 0)",
+        "$type": "dimension",
+        "$description": "Fixed height for the smallest controls and dense rows. Pairs with control.padding-x.xs."
+      }
+    },
+    "icon": {
+      "lg": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "Icon size inside large controls. Pairs with control.height.lg."
+      },
+      "md": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "Icon size inside default controls. Pairs with control.height.md."
+      },
+      "sm": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Icon size inside small controls. Pairs with control.height.sm."
+      },
+      "xs": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "Icon size inside the smallest controls. Pairs with control.height.xs."
+      }
+    },
+    "inset": {
+      "$value": "round_to({brand.scale.base.control} * 0.5, 0)",
+      "$type": "dimension",
+      "$description": "Inset between a control boundary and nested content such as segments. Pairs with control.height."
+    },
+    "padding-x-icon": {
+      "lg": {
+        "$value": "{control.padding-x.lg} - {spacing.050}",
+        "$type": "dimension",
+        "$description": "Horizontal padding on the side of large controls that holds an icon beside a label. It is control.padding-x.lg less a small optical trim, so the icon side does not look wider than the text side. Alias it to control.padding-x.lg for symmetric padding."
+      },
+      "md": {
+        "$value": "{control.padding-x.md} - {spacing.050}",
+        "$type": "dimension",
+        "$description": "Horizontal padding on the side of default controls that holds an icon beside a label. It is control.padding-x.md less a small optical trim, so the icon side does not look wider than the text side. Alias it to control.padding-x.md for symmetric padding."
+      },
+      "sm": {
+        "$value": "{control.padding-x.sm} - {spacing.050}",
+        "$type": "dimension",
+        "$description": "Horizontal padding on the side of small controls that holds an icon beside a label. It is control.padding-x.sm less a small optical trim, so the icon side does not look wider than the text side. Alias it to control.padding-x.sm for symmetric padding."
+      },
+      "xs": {
+        "$value": "{control.padding-x.xs} - {spacing.050}",
+        "$type": "dimension",
+        "$description": "Horizontal padding on the side of the smallest controls that holds an icon beside a label. It is control.padding-x.xs less a small optical trim, so the icon side does not look wider than the text side. Alias it to control.padding-x.xs for symmetric padding."
+      }
+    },
+    "padding-x": {
+      "lg": {
+        "$value": "round_to({brand.scale.base.control} * 5, 0)",
+        "$type": "dimension",
+        "$description": "Horizontal padding for large controls. Pairs with control.height.lg."
+      },
+      "md": {
+        "$value": "round_to({brand.scale.base.control} * 3, 0)",
+        "$type": "dimension",
+        "$description": "Horizontal padding for default controls. Pairs with control.height.md."
+      },
+      "sm": {
+        "$value": "round_to({brand.scale.base.control} * 2, 0)",
+        "$type": "dimension",
+        "$description": "Horizontal padding for small controls. Pairs with control.height.sm."
+      },
+      "xs": {
+        "$value": "round_to({brand.scale.base.control} * 1.5, 0)",
+        "$type": "dimension",
+        "$description": "Horizontal padding for the smallest controls. Pairs with control.height.xs."
+      }
+    },
+    "target": {
+      "min": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "Minimum touch target for any control. Pairs with control.height tokens via padding or hit areas."
+      }
+    }
+  },
+  "spacing": {
+    "100": {
+      "$value": "{brand.scale.base.ui}",
+      "$type": "dimension",
+      "$description": "Tightest standard gap, between closely related elements such as an icon and its label."
+    },
+    "150": {
+      "$value": "{brand.scale.base.ui} * 1.5",
+      "$type": "dimension",
+      "$description": "Small gap inside compact controls and tags. Pairs with control.gap.sm."
+    },
+    "200": {
+      "$value": "{brand.scale.base.ui} * 2",
+      "$type": "dimension",
+      "$description": "Default small gap between related items, and small control padding."
+    },
+    "250": {
+      "$value": "{brand.scale.base.ui} * 2.5",
+      "$type": "dimension",
+      "$description": "Between-small-and-medium gap for compact lists and form rows."
+    },
+    "300": {
+      "$value": "{brand.scale.base.ui} * 3",
+      "$type": "dimension",
+      "$description": "Default medium gap and padding for content containers, groups and default controls."
+    },
+    "350": {
+      "$value": "{brand.scale.base.ui} * 3.5",
+      "$type": "dimension",
+      "$description": "Medium-plus gap, and icon size in extra-small controls."
+    },
+    "400": {
+      "$value": "{brand.scale.base.ui} * 4",
+      "$type": "dimension",
+      "$description": "Standard section gap and content container padding, and icon size in small controls."
+    },
+    "450": {
+      "$value": "{brand.scale.base.ui} * 4.5",
+      "$type": "dimension",
+      "$description": "Icon size in default controls, and generous inner padding."
+    },
+    "500": {
+      "$value": "{brand.scale.base.ui} * 5",
+      "$type": "dimension",
+      "$description": "Large inner padding, and icon size and padding in large controls."
+    },
+    "550": {
+      "$value": "{brand.scale.base.ui} * 5.5",
+      "$type": "dimension",
+      "$description": "Large gap between groups of related content."
+    },
+    "600": {
+      "$value": "{brand.scale.base.ui} * 6",
+      "$type": "dimension",
+      "$description": "Large gap between components within a section."
+    },
+    "650": {
+      "$value": "{brand.scale.base.ui} * 6.5",
+      "$type": "dimension",
+      "$description": "Large-plus gap for spacious component layouts."
+    },
+    "700": {
+      "$value": "{brand.scale.base.ui} * 7",
+      "$type": "dimension",
+      "$description": "Section-level gap for separating content blocks."
+    },
+    "750": {
+      "$value": "{brand.scale.base.ui} * 7.5",
+      "$type": "dimension",
+      "$description": "Generous section gap on roomy layouts."
+    },
+    "800": {
+      "$value": "{brand.scale.base.ui} * 8",
+      "$type": "dimension",
+      "$description": "Large section gap and page-level padding."
+    },
+    "850": {
+      "$value": "{brand.scale.base.ui} * 8.5",
+      "$type": "dimension",
+      "$description": "Extra-large section gap between page regions."
+    },
+    "900": {
+      "$value": "{brand.scale.base.ui} * 9",
+      "$type": "dimension",
+      "$description": "Very large gap between major page regions."
+    },
+    "950": {
+      "$value": "{brand.scale.base.ui} * 9.5",
+      "$type": "dimension",
+      "$description": "Last half-base step (base × 9.5), for wide gaps between page regions."
+    },
+    "1000": {
+      "$value": "{brand.scale.base.ui} * 10",
+      "$type": "dimension",
+      "$description": "Base × 10. From here each step adds a whole base, not half."
+    },
+    "1050": {
+      "$value": "{brand.scale.base.ui} * 11",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 11."
+    },
+    "1100": {
+      "$value": "{brand.scale.base.ui} * 12",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 12."
+    },
+    "1150": {
+      "$value": "{brand.scale.base.ui} * 13",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 13."
+    },
+    "1200": {
+      "$value": "{brand.scale.base.ui} * 14",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 14."
+    },
+    "1250": {
+      "$value": "{brand.scale.base.ui} * 15",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 15."
+    },
+    "1300": {
+      "$value": "{brand.scale.base.ui} * 16",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 16."
+    },
+    "1350": {
+      "$value": "{brand.scale.base.ui} * 17",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 17."
+    },
+    "1400": {
+      "$value": "{brand.scale.base.ui} * 18",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 18."
+    },
+    "1450": {
+      "$value": "{brand.scale.base.ui} * 19",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 19."
+    },
+    "1500": {
+      "$value": "{brand.scale.base.ui} * 20",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 20."
+    },
+    "1550": {
+      "$value": "{brand.scale.base.ui} * 21",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 21."
+    },
+    "1600": {
+      "$value": "{brand.scale.base.ui} * 22",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 22."
+    },
+    "1650": {
+      "$value": "{brand.scale.base.ui} * 23",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 23."
+    },
+    "1700": {
+      "$value": "{brand.scale.base.ui} * 24",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 24."
+    },
+    "1750": {
+      "$value": "{brand.scale.base.ui} * 25",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 25."
+    },
+    "1800": {
+      "$value": "{brand.scale.base.ui} * 26",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 26."
+    },
+    "1850": {
+      "$value": "{brand.scale.base.ui} * 27",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 27."
+    },
+    "1900": {
+      "$value": "{brand.scale.base.ui} * 28",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 28."
+    },
+    "1950": {
+      "$value": "{brand.scale.base.ui} * 29",
+      "$type": "dimension",
+      "$description": "Large layout spacing, base × 29."
+    },
+    "2000": {
+      "$value": "{brand.scale.base.ui} * 30",
+      "$type": "dimension",
+      "$description": "Largest step in the scale (base × 30), for hero and page-level separation."
+    },
+    "000": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No space. Use to reset a gap or padding to zero."
+    },
+    "050": {
+      "$value": "{brand.scale.base.ui} * 0.5",
+      "$type": "dimension",
+      "$description": "Hairline gap for tightly packed inner elements. Pairs with control.inset."
+    }
+  }
+}

@@ -1,0 +1,39 @@
+/* Control — shared rules for every Control.
+ *
+ * A Control is an interactive element with a single-line label and a fixed
+ * height (Button, Toggle, ToggleGroup item, Tab, Toolbar item, Input, Select
+ * trigger, …). Controls size off the `control.*` tokens:
+ *
+ *   height     --control-height-{xs,sm,md,lg}
+ *   padding-x  --control-padding-x-{xs,sm,md,lg}
+ *   gap        --control-gap-{xs,sm,md,lg}
+ *   icon       --control-icon-{xs,sm,md,lg}
+ *   text       --typography-control-{sm,md,lg}-*  (xs and sm both use sm)
+ *
+ * This file is the single place the library overrides control tokens
+ * globally. Each Control component imports it, so the rule ships with any of
+ * them and the bundler dedupes it.
+ *
+ * Touch: on a coarse pointer the sm and md heights grow to the 44px minimum
+ * target (`--control-target-min`). xs stays compact for dense chrome, and lg is
+ * already taller than the minimum.
+ *
+ * The selector is the token root list, not bare `:root`: the token cascade
+ * re-declares every control height inside nested [data-brand] / [data-theme] /
+ * [data-web] scopes, so with `:root` alone those scopes reset to the base height.
+ *
+ * Anything derived from the difference between two control heights (an inset
+ * such as (md - sm) / 2) is 0 on a coarse pointer, because sm and md are equal
+ * there. Give such values a floor.
+ */
+@layer components {
+  @media (pointer: coarse) {
+    :root,
+    [data-brand],
+    [data-theme],
+    [data-web] {
+      --control-height-sm: var(--control-target-min);
+      --control-height-md: var(--control-target-min);
+    }
+  }
+}

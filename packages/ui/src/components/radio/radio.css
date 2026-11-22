@@ -1,0 +1,108 @@
+@layer components {
+  [data-ui="radio"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    inline-size: var(--spacing-500);
+    block-size: var(--spacing-500);
+    padding: 0;
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-recessed);
+    color: var(--color-primary-on-brand);
+    cursor: pointer;
+    outline: none;
+    transition:
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  @media (hover: hover) {
+    [data-ui="radio"]:hover:not([data-disabled]):not([data-invalid]):not([data-checked]):not(
+        :focus-visible
+      ) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  /* Focused — focus-colour border plus a 2px ring. */
+  [data-ui="radio"]:focus-visible {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid
+      color-mix(
+        in oklch,
+        var(--color-control-focus-ring),
+        transparent calc(var(--opacity-strong) * 100%)
+      );
+    outline-offset: 0;
+  }
+
+  [data-ui="radio"][data-checked] {
+    border-color: var(--color-primary-brand);
+    background-color: var(--color-primary-brand);
+  }
+
+  [data-ui="radio"][data-invalid] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="radio"][data-invalid][data-checked] {
+    border-color: var(--color-intent-error-border);
+    background-color: var(--color-intent-error);
+  }
+
+  [data-ui="radio"][data-invalid]:focus-visible {
+    outline-color: color-mix(
+      in oklch,
+      var(--color-intent-error-border),
+      transparent calc(var(--opacity-strong) * 100%)
+    );
+  }
+
+  [data-ui="radio"][data-disabled] {
+    opacity: var(--opacity-soft);
+    cursor: not-allowed;
+  }
+
+  [data-ui="radio-indicator"] {
+    display: inline-block;
+    inline-size: var(--spacing-250);
+    block-size: var(--spacing-250);
+    border-radius: 50%;
+    background-color: var(--color-primary-on-brand);
+    transform: scale(0);
+    transition: transform var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="radio-indicator"][data-checked] {
+    transform: scale(1);
+  }
+
+  /* Label — a <label> wrapping the radio (or a Field.Label around it) reads at
+     control.sm, beside the box. :where() keeps it overridable. */
+  :where(label:has([data-ui="radio"])),
+  :where([data-ui="field-label"]:has([data-ui="radio"])) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--control-gap-md);
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+    cursor: pointer;
+  }
+  :where(label:has([data-ui="radio"][data-disabled])),
+  :where([data-ui="field-label"]:has([data-ui="radio"][data-disabled])) {
+    cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="radio"],
+    [data-ui="radio-indicator"] {
+      transition: none;
+    }
+  }
+}

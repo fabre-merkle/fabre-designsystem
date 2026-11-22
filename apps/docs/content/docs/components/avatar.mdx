@@ -1,0 +1,83 @@
+---
+title: Avatar
+description: Identify people with an image or initials.
+primitive: https://base-ui.com/react/components/avatar
+---
+
+## Interactive example
+
+<DocsStory name="avatar" />
+
+## Installation
+
+`Avatar` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Avatar } from "@workspace/ui/components/avatar";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Avatar } from "@workspace/ui/components/avatar";
+
+<Avatar.Root>
+  <Avatar.Image src="/users/ada.jpg" alt="Ada Lovelace" />
+  <Avatar.Fallback>AL</Avatar.Fallback>
+</Avatar.Root>
+```
+
+`Avatar.Fallback` renders while the image is loading and stays in place if the image fails to load. Use `delay` on `Avatar.Fallback` to defer the fallback render when most users will load successfully.
+
+## API Reference
+
+`Avatar.Root` adds two props on top of [Base UI Avatar.Root](https://base-ui.com/react/components/avatar#api-reference); every other part forwards its primitive props untouched.
+
+### Avatar.Root
+
+<AutoTypeTable path="avatar/avatar.tsx" name="AvatarProps" />
+
+### Avatar.Image
+
+Native `<img>` props such as `src` and `alt` are forwarded. Always set `alt`, and describe the person, not "avatar".
+
+<AutoTypeTable path="avatar/avatar.tsx" name="DocsImageProps" type="React.ComponentProps<typeof AvatarPrimitive.Image>" />
+
+### Avatar.Fallback
+
+<AutoTypeTable path="avatar/avatar.tsx" name="DocsFallbackProps" type="React.ComponentProps<typeof AvatarPrimitive.Fallback>" />
+
+## Lazy and optimized images
+
+By default `Avatar.Image` preloads the image off-screen and mounts the `<img>` only once it has loaded, so `loading="lazy"` has no effect and a custom `render` such as `next/image` never gets to run its own loading. Set `keepMounted` to render the element immediately and let the browser or image component load it; `Avatar.Fallback` still shows until the image has loaded.
+
+```tsx
+<Avatar.Root>
+  <Avatar.Fallback>AL</Avatar.Fallback>
+  <Avatar.Image keepMounted loading="lazy" src="/team/ada.jpg" alt="Ada Lovelace" />
+</Avatar.Root>
+```
+
+## When to use
+
+Use `Avatar` to surface a person or account identity — in headers, lists, comments, and assignment rows. For a non-identity decorative graphic, use a plain image or icon instead. Pair with `Tooltip` if the avatar is the only affordance carrying the person's name.
+
+## Figma contract
+
+<ComponentContract slug="avatar" />

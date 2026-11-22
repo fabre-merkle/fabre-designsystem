@@ -1,0 +1,61 @@
+---
+title: Checkbox Group
+description: Manage a group of related checkboxes.
+primitive: https://base-ui.com/react/components/checkbox-group
+---
+
+## Interactive example
+
+<DocsStory name="checkbox-group" />
+
+## Installation
+
+`CheckboxGroup` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { CheckboxGroup } from "@workspace/ui/components/checkbox-group";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Checkbox } from "@workspace/ui/components/checkbox";
+import { CheckboxGroup } from "@workspace/ui/components/checkbox-group";
+
+<CheckboxGroup defaultValue={["email"]}>
+  <label>
+    <Checkbox name="email" /> Email
+  </label>
+  <label>
+    <Checkbox name="sms" /> SMS
+  </label>
+</CheckboxGroup>
+```
+
+Each child `Checkbox` is identified by its `name` prop; the group's `value` is the array of names that are currently checked.
+
+## API Reference
+
+`CheckboxGroup` adds no props. It forwards every prop to [Base UI CheckboxGroup](https://base-ui.com/react/components/checkbox-group#api-reference), preserving every prop, event, ARIA attribute and the `render` API, including `value`, `defaultValue`, `onValueChange`, `allValues` and `disabled`.
+
+Pass `allValues` together with a parent `Checkbox` to get tri-state parent behavior; Base UI handles the indeterminate logic.
+
+## Figma contract
+
+<ComponentContract slug="checkbox-group" />

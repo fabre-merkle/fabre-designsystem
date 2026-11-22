@@ -1,0 +1,93 @@
+---
+title: Drawer
+description: Reveal an edge panel with swipe-to-dismiss.
+primitive: https://base-ui.com/react/components/drawer
+---
+
+## Interactive example
+
+<DocsStory name="drawer" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+</Tab>
+
+<Tab value="Manual">
+
+<Steps>
+
+<Step>
+
+Create `components/ui/drawer.tsx`:
+
+<include cwd lang="tsx" meta='title="drawer.tsx"'>../../packages/ui/src/components/drawer/drawer.tsx</include>
+
+</Step>
+
+<Step>
+
+Create `components/ui/drawer.css`:
+
+<include cwd lang="css" meta='title="drawer.css"'>../../packages/ui/src/components/drawer/drawer.css</include>
+
+</Step>
+
+</Steps>
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Drawer } from "@workspace/ui/components/drawer";
+import { Button } from "@workspace/ui/components/button";
+
+<Drawer.Root>
+  <Drawer.Trigger render={<Button>Open drawer</Button>} />
+  <Drawer.Portal>
+    <Drawer.Backdrop />
+    <Drawer.Viewport>
+      <Drawer.Popup>
+        <Drawer.Title>Account settings</Drawer.Title>
+        <Drawer.Description>Update your profile and preferences.</Drawer.Description>
+        <Drawer.Close render={<Button>Save changes</Button>} />
+      </Drawer.Popup>
+    </Drawer.Viewport>
+  </Drawer.Portal>
+</Drawer.Root>
+```
+
+## API Reference
+
+Drawer adds no props beyond the primitive's. All parts forward to the matching [Base UI Drawer](https://base-ui.com/react/components/drawer#api-reference) primitives — `Root`, `Provider`, `Trigger`, `Portal`, `Backdrop`, `Popup`, `Viewport`, `Content`, `Title`, `Description`, `Close`, `SwipeArea`, `Indent`, `IndentBackground` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API. `Drawer.createHandle` is re-exported from the Base UI primitive for detached-trigger control.
+
+`Root` defaults `swipeDirection` to `"down"` (bottom-sheet). Set `swipeDirection="right" | "left" | "up"` to anchor the drawer to a different edge — The component CSS recognises `data-side` on the popup and applies the matching edge anchoring and enter/exit transform automatically.
+
+## When to use
+
+Use `Drawer` for a panel that should slide in from a viewport edge with optional swipe-to-dismiss and snap points — mobile sheets, side filter panels, multi-step task surfaces. The drawer is modal by default (`modal={true}`) and traps focus; pass `modal="trap-focus"` or `modal={false}` to relax those behaviors. For centred modal confirmations or focused tasks use `Dialog`; for irreversible confirmations use `AlertDialog`; for click-anchored contextual menus use `Popover`.
+
+## Composition
+
+Variants are styling-only and never alter Base UI behavior. Focus management, ARIA roles, scroll lock, the swipe gesture, and snap-point logic come from the Base UI primitive. Edge anchoring is selected via `Root`'s `swipeDirection` prop and applied to the popup through `data-side`. The default (`"down"`) gives a full-width bottom sheet; `"right"` / `"left"` produce a side panel capped at 420px; `"up"` produces a top sheet.
+
+For nested or detached triggers, use `Drawer.createHandle()` and pass the handle to `Root` (and to any standalone `Trigger`) — see Base UI's documentation for the imperative API.

@@ -1,0 +1,72 @@
+---
+title: Autocomplete
+description: Suggest matching options as you type.
+primitive: https://base-ui.com/react/components/autocomplete
+---
+
+## Interactive example
+
+<DocsStory name="autocomplete" />
+
+## Installation
+
+`Autocomplete` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Autocomplete } from "@workspace/ui/components/autocomplete";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Autocomplete } from "@workspace/ui/components/autocomplete";
+
+<Autocomplete.Root items={fruits}>
+  <Autocomplete.InputGroup>
+    <Autocomplete.Input placeholder="Search fruit..." />
+    <Autocomplete.Clear>Clear</Autocomplete.Clear>
+  </Autocomplete.InputGroup>
+  <Autocomplete.Portal>
+    <Autocomplete.Positioner sideOffset={8}>
+      <Autocomplete.Popup>
+        <Autocomplete.List>
+          {(item) => (
+            <Autocomplete.Item key={item} value={item}>
+              {item}
+            </Autocomplete.Item>
+          )}
+        </Autocomplete.List>
+        <Autocomplete.Empty>No matches.</Autocomplete.Empty>
+      </Autocomplete.Popup>
+    </Autocomplete.Positioner>
+  </Autocomplete.Portal>
+</Autocomplete.Root>
+```
+
+## API Reference
+
+All props from [Base UI Autocomplete](https://base-ui.com/react/components/autocomplete#api-reference) are supported on every part.
+
+## Labels and validation
+
+Use [Field](/docs/components/field) to provide a label, validation and disabled state, and [Form](/docs/components/form) for form-level validation.
+
+## Figma contract
+
+<ComponentContract slug="autocomplete" />

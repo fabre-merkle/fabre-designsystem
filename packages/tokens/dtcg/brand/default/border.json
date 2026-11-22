@@ -1,0 +1,98 @@
+{
+  "brand": {
+    "radius": {
+      "000": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$description": "The square corner for tables and technical UI."
+      },
+      "100": {
+        "$value": "{brand.scale.base.ui} * 0.5",
+        "$type": "dimension",
+        "$description": "The corner radius for chips and badges."
+      },
+      "200": {
+        "$value": "{brand.scale.base.ui}",
+        "$type": "dimension",
+        "$description": "Radius scale step between smallElements and default. No semantic token maps it directly."
+      },
+      "300": {
+        "$value": "{brand.scale.base.ui} * 2",
+        "$type": "dimension",
+        "$description": "The standard corner radius for controls and content containers."
+      },
+      "400": {
+        "$value": "{brand.scale.base.ui} * 3",
+        "$type": "dimension",
+        "$description": "Radius scale step between default and largeElements. No semantic token maps it directly."
+      },
+      "500": {
+        "$value": "{brand.scale.base.ui} * 4",
+        "$type": "dimension",
+        "$description": "The corner radius for modals and hero content containers."
+      },
+      "600": {
+        "$value": "{brand.scale.base.ui} * 6",
+        "$type": "dimension",
+        "$description": "Brand radius step 600, six times the UI base scale."
+      },
+      "700": {
+        "$value": "{brand.scale.base.ui} * 8",
+        "$type": "dimension",
+        "$description": "Brand radius step 700, eight times the UI base scale."
+      },
+      "800": {
+        "$value": "{brand.scale.base.ui} * 10",
+        "$type": "dimension",
+        "$description": "Brand radius step 800, ten times the UI base scale."
+      },
+      "default": {
+        "$value": "{brand.radius.300}",
+        "$type": "dimension",
+        "$description": "Brand-selected default corner radius; choose a numeric radius primitive or none."
+      },
+      "full": {
+        "$value": "999px",
+        "$type": "dimension",
+        "$description": "The fully rounded pill or circle for avatars and notifications."
+      },
+      "insetMinimum": {
+        "$value": "{brand.radius.default}",
+        "$type": "dimension",
+        "$description": "The minimum radius of corners inset inside a padded surface; set to the none radius for strictly concentric corners."
+      },
+      "largeElements": {
+        "$value": "{brand.radius.500}",
+        "$type": "dimension",
+        "$description": "Brand-selected corner radius for large elements; choose a numeric radius primitive or none."
+      },
+      "none": {
+        "$value": "{brand.radius.000}",
+        "$type": "dimension",
+        "$description": "No corner rounding. Keeps the zero-radius primitive available through an explicit brand selector."
+      },
+      "smallElements": {
+        "$value": "{brand.radius.100}",
+        "$type": "dimension",
+        "$description": "Brand-selected corner radius for small elements; choose a numeric radius primitive or none."
+      }
+    },
+    "stroke-width": {
+      "000": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$description": "The resting stroke width."
+      },
+      "100": {
+        "$value": "1px",
+        "$type": "dimension",
+        "$description": "The stroke width of selected elements."
+      },
+      "200": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "The stroke width of focus outlines."
+      }
+    }
+  }
+}

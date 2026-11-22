@@ -1,0 +1,132 @@
+---
+title: Toast
+description: Show brief notifications without interrupting work.
+primitive: https://base-ui.com/react/components/toast
+---
+
+## Interactive example
+
+<DocsStory name="toast" />
+
+## Installation
+
+`Toast` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Toast } from "@workspace/ui/components/toast";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+Wrap your app (or a subtree) in `Toast.Provider`, mount a `Toast.Viewport` once, and call `Toast.useToastManager().add()` from any descendant to enqueue a notification.
+
+```tsx
+import { Toast } from "@workspace/ui/components/toast";
+import { Button } from "@workspace/ui/components/button";
+
+function ToastList() {
+  const { toasts } = Toast.useToastManager();
+  return (
+    <>
+      {toasts.map((toast) => (
+        <Toast.Root key={toast.id} toast={toast}>
+          <Toast.Content>
+            {toast.title ? <Toast.Title /> : null}
+            {toast.description ? <Toast.Description /> : null}
+          </Toast.Content>
+          <Toast.Close aria-label="Close" />
+        </Toast.Root>
+      ))}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Toast.Provider>
+      <Trigger />
+      <Toast.Portal>
+        <Toast.Viewport>
+          <ToastList />
+        </Toast.Viewport>
+      </Toast.Portal>
+    </Toast.Provider>
+  );
+}
+
+function Trigger() {
+  const manager = Toast.useToastManager();
+  return (
+    <Button
+      onClick={() => manager.add({ title: "Saved", description: "Your changes are live." })}
+    >
+      Show toast
+    </Button>
+  );
+}
+```
+
+## API Reference
+
+Toast adds no props. All parts forward to the matching [Base UI Toast](https://base-ui.com/react/components/toast#api-reference) primitives — `Provider`, `Viewport`, `Portal`, `Positioner`, `Root`, `Content`, `Title`, `Description`, `Action`, `Close`, `Arrow` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API. The `useToastManager` hook and `createToastManager` factory are re-exported from the Base UI primitive for imperative toast control (`add`, `update`, `close`, `promise`).
+
+## Updating a toast
+
+`manager.update(id, options)` changes a toast in place. Pass a function instead to derive the next options from the current toast, which avoids tracking the previous title or data yourself:
+
+```tsx
+function Uploads() {
+  const manager = Toast.useToastManager();
+  const toastId = React.useRef<string>(null);
+
+  function start() {
+    toastId.current = manager.add({ title: "Uploading", data: { count: 1 } });
+  }
+
+  function fileDone() {
+    if (!toastId.current) return;
+    // Read the current toast and return only what changes.
+    manager.update(toastId.current, (prev) => ({
+      title: `Uploaded ${prev.data.count + 1} files`,
+      data: { count: prev.data.count + 1 },
+    }));
+  }
+
+  return (
+    <>
+      <Button onClick={start}>Start upload</Button>
+      <Button onClick={fileDone}>Finish a file</Button>
+    </>
+  );
+}
+```
+
+## When to use
+
+Use `Toast` for transient, non-blocking feedback that confirms an action, surfaces a background result, or reports a recoverable error — saved settings, queued exports, dismissed network blips. Toasts auto-dismiss after `timeout` (default 5000 ms) and stack in the viewport.
+
+For modal confirmations that block interaction until acknowledged, use `Dialog` or `AlertDialog`. Use `Progress` or `Meter` for inline status next to a control. For passive, persistent information (e.g. an unread-count), use `Badge`.
+
+## Composition
+
+The component applies aesthetic styling only — surface, radius, shadow, motion, and typography. Focus management, ARIA roles, the swipe-to-dismiss gesture, keyboard pausing, the auto-dismiss timer, and `aria-live` announcements all come from the Base UI primitive.
+
+## Figma contract
+
+<ComponentContract slug="toast" />

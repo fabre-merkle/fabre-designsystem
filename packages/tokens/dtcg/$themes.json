@@ -1,0 +1,129 @@
+[
+  {
+    "name": "default",
+    "group": "foundation",
+    "selectedTokenSets": {
+      "foundation/default": "enabled"
+    }
+  },
+  {
+    "name": "fabre-designsystem",
+    "group": "brand",
+    "selectedTokenSets": {
+      "brand/fabre-designsystem/elevation": "enabled",
+      "brand/fabre-designsystem/dimension": "enabled",
+      "brand/fabre-designsystem/border": "enabled",
+      "brand/fabre-designsystem/saturate": "enabled",
+      "brand/fabre-designsystem/opacity": "enabled",
+      "brand/fabre-designsystem/motion": "enabled",
+      "brand/fabre-designsystem/typography": "enabled",
+      "brand/fabre-designsystem/color": "enabled",
+      "brand/fabre-designsystem/blur": "enabled"
+    },
+    "$description": "Fabre"
+  },
+  {
+    "name": "brand2",
+    "group": "brand",
+    "selectedTokenSets": {
+      "brand/brand2/saturate": "enabled",
+      "brand/brand2/dimension": "enabled",
+      "brand/brand2/motion": "enabled",
+      "brand/brand2/opacity": "enabled",
+      "brand/brand2/blur": "enabled",
+      "brand/brand2/border": "enabled",
+      "brand/brand2/elevation": "enabled",
+      "brand/brand2/typography": "enabled",
+      "brand/brand2/color": "enabled"
+    },
+    "$description": "Fabre"
+  },
+  {
+    "name": "light",
+    "group": "theme",
+    "selectedTokenSets": {
+      "theme/light": "enabled"
+    }
+  },
+  {
+    "name": "dark",
+    "group": "theme",
+    "selectedTokenSets": {
+      "theme/dark": "enabled"
+    }
+  },
+  {
+    "name": "lg",
+    "group": "web",
+    "selectedTokenSets": {
+      "web/lg": "enabled"
+    }
+  },
+  {
+    "name": "md",
+    "group": "web",
+    "selectedTokenSets": {
+      "web/md": "enabled"
+    }
+  },
+  {
+    "name": "sm",
+    "group": "web",
+    "selectedTokenSets": {
+      "web/sm": "enabled"
+    }
+  },
+  {
+    "name": "default",
+    "group": "semantic-web",
+    "selectedTokenSets": {
+      "brand/brand2/saturate": "disabled",
+      "brand/fabre-designsystem/elevation": "disabled",
+      "semantic-web/typography": "enabled",
+      "brand/brand2/dimension": "disabled",
+      "web/md": "disabled",
+      "brand/fabre-designsystem/dimension": "disabled",
+      "brand/brand2/motion": "disabled",
+      "semantic-fumadocs/default": "disabled",
+      "brand/fabre-designsystem/border": "disabled",
+      "semantic-web/color": "enabled",
+      "brand/brand2/opacity": "disabled",
+      "web/sm": "disabled",
+      "semantic-web/elevation": "enabled",
+      "foundation/default": "disabled",
+      "component/fabre-designsystem": "disabled",
+      "brand/fabre-designsystem/saturate": "disabled",
+      "brand/fabre-designsystem/opacity": "disabled",
+      "semantic-web/spacing": "enabled",
+      "brand/brand2/blur": "disabled",
+      "brand/brand2/border": "disabled",
+      "brand/brand2/elevation": "disabled",
+      "theme/light": "disabled",
+      "theme/dark": "disabled",
+      "brand/fabre-designsystem/motion": "disabled",
+      "semantic-web/motion": "enabled",
+      "web/lg": "disabled",
+      "brand/brand2/typography": "disabled",
+      "semantic-web/border": "enabled",
+      "brand/fabre-designsystem/typography": "disabled",
+      "semantic-web/opacity": "enabled",
+      "brand/fabre-designsystem/color": "disabled",
+      "brand/brand2/color": "disabled",
+      "brand/fabre-designsystem/blur": "disabled"
+    }
+  },
+  {
+    "name": "default",
+    "group": "semantic-fumadocs",
+    "selectedTokenSets": {
+      "semantic-fumadocs/default": "enabled"
+    }
+  },
+  {
+    "name": "default",
+    "group": "component",
+    "selectedTokenSets": {
+      "component/fabre-designsystem": "enabled"
+    }
+  }
+]

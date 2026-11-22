@@ -1,0 +1,71 @@
+---
+title: Tooltip
+description: Show a brief hint on hover or focus.
+primitive: https://base-ui.com/react/components/tooltip
+---
+
+## Interactive example
+
+<DocsStory name="tooltip" />
+
+## Installation
+
+`Tooltip` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Tooltip } from "@workspace/ui/components/tooltip";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Tooltip } from "@workspace/ui/components/tooltip";
+import { Button } from "@workspace/ui/components/button";
+
+<Tooltip.Provider>
+  <Tooltip.Root>
+    <Tooltip.Trigger render={<Button>Save</Button>} />
+    <Tooltip.Portal>
+      <Tooltip.Positioner>
+        <Tooltip.Popup>Saves your changes immediately</Tooltip.Popup>
+      </Tooltip.Positioner>
+    </Tooltip.Portal>
+  </Tooltip.Root>
+</Tooltip.Provider>
+```
+
+Wrap the page (or a region) once with `Tooltip.Provider` so multiple tooltips share a single delay timer — opening one tooltip skips the open delay on the next.
+
+## API Reference
+
+Tooltip adds no props. All parts forward to the matching [Base UI Tooltip](https://base-ui.com/react/components/tooltip#api-reference) primitives — `Provider`, `Root`, `Trigger`, `Portal`, `Positioner`, `Popup`, `Arrow` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`Positioner` defaults `sideOffset` to `8` for visual separation from the trigger; pass any positioning prop to override.
+
+## When to use
+
+Use `Tooltip` for short, non-essential hints that clarify an icon-only button, a truncated label, or a disabled control. Content must be brief textual labels — for any interactive content, structured headings, or required information use `Popover` instead. Tooltip content is hidden from touch users, so never put critical information here.
+
+## Composition
+
+Wrap any element with `render={<YourComponent />}` on `Trigger` to attach a tooltip to the project's `Button`, icon button, or any other interactive control. Base UI merges props and ref into the rendered element automatically.
+
+## Figma contract
+
+<ComponentContract slug="tooltip" />

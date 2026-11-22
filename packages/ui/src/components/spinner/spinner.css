@@ -1,0 +1,88 @@
+@layer components {
+  [data-ui="spinner"] {
+    display: inline-flex;
+    flex: none;
+    vertical-align: middle;
+    color: currentColor;
+    line-height: 1;
+  }
+  /* on-surface-primary, not primary-brand: primary-brand doesn't flip with
+     the theme and falls to ~1.6:1 on dark surfaces. */
+  [data-ui="spinner"][data-tone="brand"] {
+    color: var(--color-primary-on-surface-subtle);
+  }
+
+  /* Sizes follow the control icon scale, so a Spinner can stand in for an icon. */
+  [data-ui="spinner"][data-size="xs"] {
+    inline-size: var(--control-icon-xs);
+    block-size: var(--control-icon-xs);
+  }
+  [data-ui="spinner"][data-size="sm"] {
+    inline-size: var(--control-icon-sm);
+    block-size: var(--control-icon-sm);
+  }
+  [data-ui="spinner"][data-size="md"] {
+    inline-size: var(--control-icon-md);
+    block-size: var(--control-icon-md);
+  }
+  [data-ui="spinner"][data-size="lg"] {
+    inline-size: var(--control-icon-lg);
+    block-size: var(--control-icon-lg);
+  }
+
+  [data-ui="spinner-svg"] {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+  }
+
+  [data-ui="spinner-track"],
+  [data-ui="spinner-arc"] {
+    fill: none;
+    stroke-width: var(--stroke-width-focused);
+    vector-effect: non-scaling-stroke;
+  }
+  [data-ui="spinner-track"] {
+    stroke: var(--color-surface-selected);
+  }
+  /* A quarter arc, starting at 12 o'clock. Static by default. */
+  [data-ui="spinner-arc"] {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-dasharray: 25 100;
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+
+  /* Motion only when the user hasn't asked to reduce it. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-ui="spinner-svg"] {
+      animation: spinner-rotate calc(var(--brand-duration-500) * 2) var(--brand-easing-linear)
+        infinite;
+    }
+  }
+
+  /* Reduced motion: no rotation, a slow opacity pulse so loading still reads. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="spinner-arc"] {
+      animation: spinner-pulse calc(var(--brand-duration-500) * 4) var(--brand-easing-standard)
+        infinite alternate;
+    }
+  }
+
+  @keyframes spinner-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinner-pulse {
+    from {
+      opacity: var(--opacity-full);
+    }
+    to {
+      opacity: var(--opacity-soft);
+    }
+  }
+}

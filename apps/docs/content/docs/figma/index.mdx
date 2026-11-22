@@ -1,0 +1,195 @@
+---
+title: "Figma"
+description: "Keep the design library aligned with code."
+---
+
+{/* topic:start figma-overview */}
+## How design and code connect
+
+Code is the source of truth for components. Contracts describe how each component maps to a Figma component set, and Code Connect links library components back to their implementation.
+Contracts belong to this Figma workflow: they describe design-library generation, not how application developers consume the React components.
+
+## Before you start
+
+Use a Figma file you have permission to edit and confirm the intended team, library and branch before generating. Make sure the project's fonts are available in Figma and its token variables and modes are ready.
+Figma variables need exactly one writer. Follow the selected setup runbook to choose the writer; do not let a token-sync plugin and a generation tool independently create competing collections.
+
+## What gets generated
+
+| Resource | Role |
+| --- | --- |
+| Token variables and text styles | Shared visual values and typography, prepared through the selected token workflow. |
+| Component sets | Contracted anatomy, variants, layout and variable bindings materialised from the compiled artifact. |
+| Code Connect mappings | Links between Figma library components and their code usage; publishing requires the correct Figma permissions. |
+
+Generation does not approve the library or guarantee visual fidelity. Review component geometry, typography, modes and bindings in Figma against the code examples.
+
+## Keep design and code aligned
+
+<Steps>
+<Step>
+### Prepare the source
+Make and review the change in component source, tokens or the co-located contract. Update token exports using the project's selected token workflow; keep secrets out of documentation and committed files.
+</Step>
+<Step>
+### Compile and check
+From the project root:
+
+```bash
+bun run figma:contract
+bun run figma:contract:check
+```
+
+Review the generated `.agents/figma-generation-contract.json` and commit the reviewed artifact with its source change. A successful compiler check is not visual acceptance.
+</Step>
+<Step>
+### Generate and inspect
+Follow the project's available Figma workflow to update the target library. Compiled contracts describe the intended result; they do not provide access to a generation tool.
+Check the target file's variable collections, light/dark modes, fonts, variants and layout. Avoid hand-editing generated output as a substitute for fixing its source.
+</Step>
+<Step>
+### Connect code and publish deliberately
+Follow the Code Connect guide after the library components exist. Review generated mappings and confirm the target library and permissions before publishing; generation alone does not publish a library.
+</Step>
+</Steps>
+
+## Troubleshooting
+
+Missing variables usually mean the target file or variable writer is wrong. Missing fonts require the correct family and weight to be available in Figma. Regenerate stale artifacts using the project's contract scripts; do not bypass schema validation.
+
+## Workflow guides
+
+<Cards>
+<RelatedCard title={"Code Connect"} href="/docs/figma/code-connect">Connect Figma components to code.</RelatedCard>
+<RelatedCard title="Contracts" href="/docs/figma/contracts/schema">Describe how each component becomes a Figma component set, and validate the result.</RelatedCard>
+</Cards>
+{/* topic:end figma-overview */}
+
+{/* topic:start integration-figma */}
+## Connect to Figma
+
+<ProjectDocument kind="runbook" name="figma" />
+{/* topic:end integration-figma */}
+
+{/* topic:start figma-mcp */}
+## MCP connection
+
+Use this tool's MCP connection alongside the design system's Docs MCP and Registry MCP. Expand for setup; a configured server still needs authentication and a successful read-only test.
+
+Keep installation project-local and preserve existing connections.
+
+<Accordions type="multiple">
+<Accordion title={"figma"}>
+
+`figma`: Design context, variables and Code Connect mappings. Authenticates with your Figma account.
+
+Already configured for VS Code. Skip setup there unless you are repairing the connection.
+
+<Tabs items={["Command","Manual","Ask your agent"]}>
+<Tab value="Command">
+
+Run from the project root. These commands use project scope, not global scope. Inspect existing entries first: re-running setup may replace custom authentication or other settings.
+
+<Tabs items={["Claude Code","VS Code","Cursor","Codex","GitHub Copilot CLI"]}>
+<Tab value={"Claude Code"}>
+
+For Claude Code, use the official Figma plugin instead:
+
+```bash
+claude plugin install figma@claude-plugins-official
+```
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```npm
+npx add-mcp@2.6.1 https://mcp.figma.com/mcp -n figma -a vscode -y
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```npm
+npx add-mcp@2.6.1 https://mcp.figma.com/mcp -n figma -a cursor -y
+```
+
+</Tab>
+<Tab value={"Codex"}>
+
+```npm
+npx add-mcp@2.6.1 https://mcp.figma.com/mcp -n figma -a codex -y
+```
+
+</Tab>
+<Tab value={"GitHub Copilot CLI"}>
+
+```npm
+npx add-mcp@2.6.1 https://mcp.figma.com/mcp -n figma -a github-copilot-cli -y
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Manual">
+
+Merge the entry into the named project file; do not replace other servers. These connection-only examples deliberately omit secret values. Preserve required headers, environment variables and client-specific authentication from your existing setup.
+
+<Tabs items={["Claude Code","VS Code","Cursor"]}>
+<Tab value="Claude Code">
+
+Use the official Figma plugin from the Command tab. Do not register a duplicate remote server alongside it.
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```json title=".vscode/mcp.json"
+{
+  "servers": {
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Ask your agent">
+
+Copy this into your coding assistant. It must ask which client to configure if that is not already clear.
+
+```text title="Prompt"
+Help me connect the figma MCP server for this project.
+Connection: https://mcp.figma.com/mcp.
+First inspect existing MCP configuration and ask which client I use.
+Keep this change project-local; preserve other servers and custom settings.
+For Claude Code, use the official Figma plugin rather than adding a duplicate remote server.
+Show me the proposed command or file diff before applying it.
+Never put secret values in a prompt or committed file.
+Then help me authenticate and verify a read-only request; do not install or publish resources without my approval.
+```
+
+</Tab>
+</Tabs>
+
+</Accordion>
+
+</Accordions>
+{/* topic:end figma-mcp */}

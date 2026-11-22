@@ -1,0 +1,181 @@
+@layer components {
+  /* =========================================================
+     Backdrop — full-viewport scrim behind the drawer
+     ========================================================= */
+  [data-ui="drawer-backdrop"] {
+    position: fixed;
+    inset: 0;
+    /* Backdrop must sit BELOW the popup. Token scale is modal=40 < overlay=50,
+       so backdrop=--z-index-modal, popup=--z-index-overlay; the reverse painted
+       the (opaque) backdrop OVER the popup and the drawer appeared blank. */
+    z-index: var(--z-index-modal);
+    background-color: color-mix(
+      in oklch,
+      var(--color-surface-level-1) calc(var(--opacity-strong) * 100%),
+      transparent
+    );
+    backdrop-filter: blur(var(--brand-blur-500)) saturate(var(--brand-saturate-180));
+    -webkit-backdrop-filter: blur(var(--brand-blur-500)) saturate(var(--brand-saturate-180));
+    transition: opacity var(--brand-duration-150) var(--brand-easing-enter);
+  }
+
+  [data-ui="drawer-backdrop"][data-starting-style],
+  [data-ui="drawer-backdrop"][data-ending-style] {
+    opacity: 0;
+  }
+
+  [data-ui="drawer-backdrop"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Popup — edge-anchored panel. Base UI sets data-side via the
+     swipeDirection ("up"|"down"|"left"|"right"). Default is "down",
+     which renders a bottom-sheet sliding up from the bottom edge.
+     ========================================================= */
+  [data-ui="drawer-popup"] {
+    /* Surface level substrate + 4 (5 on the page), shadow level 5.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-5);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-6),
+      var(--shadow-level-5);
+    position: fixed;
+    z-index: var(--z-index-overlay);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-400);
+    overflow-y: auto;
+    padding-inline: var(--spacing-600);
+    padding-block-end: var(--spacing-600);
+    color: var(--color-on-surface);
+    outline: none;
+    transition: transform var(--brand-duration-150) var(--brand-easing-enter);
+    will-change: transform;
+  }
+
+  [data-ui="drawer-popup"]:not([data-side]),
+  [data-ui="drawer-popup"][data-side="down"] {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: calc(100vh - var(--spacing-600));
+    border-top-left-radius: var(--radius-default);
+    border-top-right-radius: var(--radius-default);
+  }
+
+  [data-ui="drawer-popup"][data-side="up"] {
+    left: 0;
+    right: 0;
+    top: 0;
+    max-height: calc(100vh - var(--spacing-600));
+    border-bottom-left-radius: var(--radius-default);
+    border-bottom-right-radius: var(--radius-default);
+  }
+
+  [data-ui="drawer-popup"][data-side="right"] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(calc(100vw - var(--spacing-600)), 420px);
+    border-top-left-radius: var(--radius-default);
+    border-bottom-left-radius: var(--radius-default);
+  }
+
+  [data-ui="drawer-popup"][data-side="left"] {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(calc(100vw - var(--spacing-600)), 420px);
+    border-top-right-radius: var(--radius-default);
+    border-bottom-right-radius: var(--radius-default);
+  }
+
+  /* Enter/exit transforms keyed to side */
+  [data-ui="drawer-popup"][data-starting-style]:not([data-side]),
+  [data-ui="drawer-popup"][data-starting-style][data-side="down"],
+  [data-ui="drawer-popup"][data-ending-style]:not([data-side]),
+  [data-ui="drawer-popup"][data-ending-style][data-side="down"] {
+    transform: translateY(100%);
+  }
+
+  [data-ui="drawer-popup"][data-starting-style][data-side="up"],
+  [data-ui="drawer-popup"][data-ending-style][data-side="up"] {
+    transform: translateY(-100%);
+  }
+
+  [data-ui="drawer-popup"][data-starting-style][data-side="right"],
+  [data-ui="drawer-popup"][data-ending-style][data-side="right"] {
+    transform: translateX(100%);
+  }
+
+  [data-ui="drawer-popup"][data-starting-style][data-side="left"],
+  [data-ui="drawer-popup"][data-ending-style][data-side="left"] {
+    transform: translateX(-100%);
+  }
+
+  [data-ui="drawer-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* Drag handle — bottom and top sheet only */
+  [data-ui="drawer-popup"]:not([data-side="left"]):not([data-side="right"])::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-border-5);
+    margin-block-start: var(--spacing-300);
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
+     Title — heading style
+     ========================================================= */
+  [data-ui="drawer-title"] {
+    margin: 0;
+    font-family: var(--typography-headline-md-font-family);
+    font-size: var(--typography-headline-md-font-size);
+    font-weight: var(--typography-headline-md-font-weight);
+    line-height: var(--typography-headline-md-line-height);
+    color: var(--color-on-surface);
+  }
+
+  /* =========================================================
+     Description — body text under the title
+     ========================================================= */
+  [data-ui="drawer-description"] {
+    margin: 0;
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="drawer-backdrop"],
+    [data-ui="drawer-popup"] {
+      transition: none;
+    }
+
+    [data-ui="drawer-backdrop"][data-starting-style],
+    [data-ui="drawer-backdrop"][data-ending-style] {
+      opacity: 1;
+    }
+
+    [data-ui="drawer-popup"][data-starting-style],
+    [data-ui="drawer-popup"][data-ending-style] {
+      transform: none;
+    }
+  }
+}

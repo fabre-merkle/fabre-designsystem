@@ -1,0 +1,123 @@
+---
+title: Combobox
+description: Search and select one or more options.
+primitive: https://base-ui.com/react/components/combobox
+---
+
+## Interactive example
+
+<DocsStory name="combobox" />
+
+## Installation
+
+`Combobox` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Combobox } from "@workspace/ui/components/combobox";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Combobox } from "@workspace/ui/components/combobox";
+
+<Combobox.Root items={["Apple", "Banana", "Cherry"]}>
+  <Combobox.InputGroup>
+    <Combobox.Input placeholder="Search a fruit" />
+    <Combobox.Trigger>
+      <Combobox.Icon />
+    </Combobox.Trigger>
+  </Combobox.InputGroup>
+  <Combobox.Portal>
+    <Combobox.Positioner>
+      <Combobox.Popup>
+        <Combobox.Empty>No fruit found.</Combobox.Empty>
+        <Combobox.List>
+          {(item) => (
+            <Combobox.Item key={item} value={item}>
+              {item}
+              <Combobox.ItemIndicator />
+            </Combobox.Item>
+          )}
+        </Combobox.List>
+      </Combobox.Popup>
+    </Combobox.Positioner>
+  </Combobox.Portal>
+</Combobox.Root>
+```
+
+## API Reference
+
+All props from [Base UI Combobox](https://base-ui.com/react/components/combobox#api-reference) are supported on each part. No additional props are added beyond Base UI. `Combobox.createItems` is re-exported from the primitive unchanged.
+
+## Object items with `createItems`
+
+For records that are not plain strings, build the `items` collection with `Combobox.createItems`. It derives each item's selection value and input label from your data, so the root needs no `itemToStringValue`, `itemToStringLabel` or `isItemEqualToValue` props. The example below uses a flat array. For grouped data, `Combobox.List` receives the groups, so render each with `Combobox.Group` and a nested `Combobox.Collection` as in the Base UI Combobox docs.
+
+```tsx
+import { Combobox } from "@workspace/ui/components/combobox";
+
+const people = [
+  { id: "ada", name: "Ada Lovelace" },
+  { id: "grace", name: "Grace Hopper" },
+];
+
+// Static data: create the collection once at module scope.
+const collection = Combobox.createItems(people, {
+  getValue: (person) => person.id,
+  getLabel: (person) => person.name,
+});
+
+<Combobox.Root items={collection}>
+  <Combobox.InputGroup>
+    <Combobox.Input aria-label="Person" placeholder="Search a person" />
+  </Combobox.InputGroup>
+  <Combobox.Portal>
+    <Combobox.Positioner>
+      <Combobox.Popup>
+        <Combobox.Empty>No one found.</Combobox.Empty>
+        <Combobox.List>
+          {(person) => (
+            <Combobox.Item key={person.id} value={person.id}>
+              {person.name}
+              <Combobox.ItemIndicator />
+            </Combobox.Item>
+          )}
+        </Combobox.List>
+      </Combobox.Popup>
+    </Combobox.Positioner>
+  </Combobox.Portal>
+</Combobox.Root>;
+```
+
+The collection's value is whatever `getValue` returns (here the id), so `value`, `defaultValue` and `onValueChange` work with ids rather than whole records. Wrap a collection built from dynamic data in `React.useMemo` keyed by that data. Items cannot have an `items` array property, because Base UI reads it as a group.
+
+## Grouped suggestions
+
+Use `Combobox.Group` and `Combobox.GroupLabel` to cluster results. `Combobox.Separator` adds a hairline divider between groups.
+
+> **Note:** Rendering static `Combobox.Item` children disables Base UI's built-in filtering. For a filterable list, pass an `items` prop to `Combobox.Root` and use `Combobox.Collection` to render filtered results. See the [Base UI Combobox docs](https://base-ui.com/react/components/combobox) for the `items` API.
+
+## Labels and validation
+
+`Combobox.Label` renders a block label above the input group. To add a label, validation and disabled state around the whole control, use [Field](/docs/components/field), and [Form](/docs/components/form) for form-level validation.
+
+## Figma contract
+
+<ComponentContract slug="combobox" />

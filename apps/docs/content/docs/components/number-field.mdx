@@ -1,0 +1,59 @@
+---
+title: Number Field
+description: Enter or adjust a numeric value.
+primitive: https://base-ui.com/react/components/number-field
+---
+
+## Interactive example
+
+<DocsStory name="number-field" />
+
+## Installation
+
+`NumberField` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { NumberField } from "@workspace/ui/components/number-field";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { NumberField } from "@workspace/ui/components/number-field";
+
+<NumberField.Root defaultValue={4}>
+  <NumberField.Group>
+    <NumberField.Decrement aria-label="Decrease">−</NumberField.Decrement>
+    <NumberField.Input aria-label="Quantity" />
+    <NumberField.Increment aria-label="Increase">+</NumberField.Increment>
+  </NumberField.Group>
+</NumberField.Root>
+```
+
+Name the input and both steppers, as above. Wrap a label in `NumberField.ScrubArea` to let the pointer drag the value; `NumberField.ScrubAreaCursor` renders the floating cursor while it scrubs.
+
+## API Reference
+
+Props `NumberField.Root` adds. [Base UI NumberField](https://base-ui.com/react/components/number-field#api-reference) props are also supported.
+
+<AutoTypeTable path="number-field/number-field.tsx" name="NumberFieldProps" />
+
+## Figma contract
+
+<ComponentContract slug="number-field" />

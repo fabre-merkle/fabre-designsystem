@@ -1,0 +1,5 @@
+{
+  "title": "Working with AI",
+  "defaultOpen": true,
+  "pages": ["../../working-with-ai", "../../design-md", "../../mcp", "[llms.txt](/llms.txt)"]
+}

@@ -1,0 +1,78 @@
+---
+title: "CLI"
+description: "Discover, install and run project resources."
+---
+
+{/* topic:start cli-registry */}
+## Registry commands
+
+This system uses the shadcn CLI; there is no separate design-system CLI to install. Run commands from the consuming project's root, where its `components.json` declares the registry namespaces and target paths. Use a current Node.js/npm installation for the npm commands below, or the package-manager alternative shown in the tabs.
+
+<RelatedPage href="/docs/registry">Configure the namespace and required credentials before installing.</RelatedPage>
+
+### Find resources
+
+Search the published inventory before choosing an item:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+```
+
+### Inspect an item
+
+Use an exact name returned by search. Inspect files, dependencies and registry dependencies before modifying your project:
+
+```npm
+npx shadcn@latest view @fabre-designsystem/<item>
+```
+
+### Install into your project
+
+```npm
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<item>` with a published item name. The CLI copies source into your project and can change dependencies, styles and configuration. Commit or preserve local changes first, inspect the diff afterwards, and do not accept an overwrite without reviewing what would be lost.
+
+### Get help
+
+```npm
+npx shadcn@latest --help
+```
+
+Use a subcommand's `--help` for its supported flags. See the [upstream CLI reference](https://ui.shadcn.com/docs/cli); do not infer a command from a component's display name.
+{/* topic:end cli-registry */}
+
+{/* topic:start cli-project-scripts */}
+## Project scripts
+
+These commands operate on the design-system repository, not a consuming application. Install its dependencies with `bun install` first. The list below is read from the installed package.json scripts when this guide is generated; package.json and the project README remain authoritative after project changes.
+
+| Workspace | Command from the project root |
+| --- | --- |
+| `Project root` | `bun run dev` |
+| `Project root` | `bun run build` |
+| `Project root` | `bun run lint` |
+| `Project root` | `bun run check-types` |
+| `Project root` | `bun run figma:contract` |
+| `Project root` | `bun run figma:contract:check` |
+| `Project root` | `bun run figma:connect` |
+| `Project root` | `bun run design:lint` |
+| `Project root` | `bun run setup:first-run` |
+| `apps/docs` | `bun --cwd apps/docs run dev` |
+| `apps/docs` | `bun --cwd apps/docs run build` |
+| `apps/docs` | `bun --cwd apps/docs run lint` |
+| `apps/docs` | `bun --cwd apps/docs run check-types` |
+| `apps/docs` | `bun --cwd apps/docs run docs:check` |
+| `packages/ui` | `bun --cwd packages/ui run dev` |
+| `packages/ui` | `bun --cwd packages/ui run lint` |
+| `packages/ui` | `bun --cwd packages/ui run check-types` |
+| `packages/ui` | `bun --cwd packages/ui run storybook` |
+| `packages/ui` | `bun --cwd packages/ui run build-storybook` |
+| `packages/ui` | `bun --cwd packages/ui run test-storybook` |
+| `packages/tokens` | `bun --cwd packages/tokens run tokens:pull` |
+
+A running dev server prints its address. Use the README's Dev servers table for pinned ports. Token-management and Figma commands may need service access; read the installed runbooks before pulling, exporting or publishing.
+
+<RelatedPage href="/docs/working-with-ai">Use project resources to find skills and tool-specific guidance.</RelatedPage>
+{/* topic:end cli-project-scripts */}

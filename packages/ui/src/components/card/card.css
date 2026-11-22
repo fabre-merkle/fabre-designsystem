@@ -1,0 +1,124 @@
+@layer components {
+  /* =========================================================
+     Card — a raised surface (Elevated) with a header, content and footer.
+
+     The level actually painted comes from data-surface-level (elevated.css): the
+     substrate plus two, so level 3 on the page and level 5 inside another card.
+     The shadow level is its own knob (1 by default) and nesting never raises it.
+     The fill, border and shadow below are the on-page default; they are what the
+     Figma contract binds, and elevated.css wins over them at runtime.
+     ========================================================= */
+  [data-ui="card"] {
+    --card-radius: var(--radius-default);
+    background-color: var(--color-surface-level-3);
+    border: var(--stroke-width-default) solid var(--color-surface-border-4);
+    box-shadow: var(--shadow-level-1);
+    display: flex;
+    flex-direction: column;
+    padding: var(--card-padding);
+    border-radius: var(--card-radius);
+    color: var(--color-on-surface);
+    min-inline-size: 0;
+  }
+
+  [data-ui="card"][data-size="md"] {
+    --card-padding: var(--spacing-400);
+    gap: var(--spacing-400);
+  }
+
+  [data-ui="card"][data-size="lg"] {
+    --card-padding: var(--spacing-600);
+    gap: var(--spacing-600);
+  }
+
+  [data-ui="card"][data-size="sm"] {
+    --card-padding: var(--spacing-300);
+    gap: var(--spacing-300);
+  }
+
+  /* Nested corners: a card nested in another card follows the outer card's inner radius
+     (see below), so the two corners share a centre. */
+  :is([data-ui="card-header"], [data-ui="card-content"], [data-ui="card-footer"]) [data-ui="card"] {
+    --card-radius: var(--inner-radius, var(--radius-default));
+  }
+
+  /* Each section publishes the radius of anything inset in it (an image, a tile, a nested
+     card): the concentric value (the card's radius minus its border and padding), raised to
+     the inset corner minimum and capped at the card's own radius. The minimum follows the
+     brand's default radius unless the brand sets it to none, so small paddings never leave a
+     square corner inside a rounded one; with the minimum at none the corners are strictly
+     concentric and a square brand stays square. */
+  [data-ui="card-header"],
+  [data-ui="card-content"],
+  [data-ui="card-footer"] {
+    --inner-radius: min(
+      var(--card-radius),
+      max(
+        var(--radius-inset-minimum),
+        calc(var(--card-radius) - var(--stroke-width-default) - var(--card-padding))
+      )
+    );
+  }
+
+  /* =========================================================
+     Header — title and description in column one, action in column two
+     ========================================================= */
+  [data-ui="card-header"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    row-gap: var(--spacing-100);
+  }
+
+  [data-ui="card-title"] {
+    grid-column: 1;
+    margin: 0;
+    color: var(--color-on-surface);
+  }
+
+  /* The title does not change with the card's size: size is density only (padding and gap), and
+     type stays on the same scale as the rest of the dimension tokens. */
+  [data-ui="card-title"] {
+    font-family: var(--typography-headline-sm-font-family);
+    font-size: var(--typography-headline-sm-font-size);
+    font-weight: var(--typography-headline-sm-font-weight);
+    line-height: var(--typography-headline-sm-line-height);
+  }
+
+  [data-ui="card-description"] {
+    grid-column: 1;
+    margin: 0;
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    color: var(--color-on-surface-subtle);
+  }
+
+  [data-ui="card-action"] {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    justify-self: end;
+    margin-inline-start: var(--spacing-300);
+  }
+
+  /* =========================================================
+     Content and footer
+     ========================================================= */
+  [data-ui="card-content"] {
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    color: var(--color-on-surface);
+    min-inline-size: 0;
+  }
+
+  [data-ui="card-footer"] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-200);
+  }
+}

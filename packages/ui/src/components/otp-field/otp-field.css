@@ -1,0 +1,91 @@
+@layer components {
+  [data-ui="otp-field"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-200);
+  }
+
+  /* Each slot is a square Control at the lg step: control height and control
+     text (tabular figures so digits don't shift as they're typed). */
+  [data-ui="otp-field-input"] {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--control-height-lg);
+    block-size: var(--control-height-lg);
+    padding: 0;
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-small-elements);
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-lg-font-family);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+    letter-spacing: var(--typography-control-lg-letter-spacing);
+    line-height: var(--typography-control-lg-line-height);
+    text-align: center;
+    outline: none;
+    caret-color: transparent;
+    transition:
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  /* iOS zooms into any focused field set under 16px. */
+  @media (pointer: coarse) {
+    [data-ui="otp-field-input"] {
+      font-size: max(16px, var(--typography-control-lg-font-size));
+    }
+  }
+
+  @media (hover: hover) {
+    [data-ui="otp-field"]:not([data-invalid])
+      [data-ui="otp-field-input"]:hover:not([data-disabled]):not(:focus-visible) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  [data-ui="otp-field-input"][data-filled] {
+    border-color: var(--color-control-border-hover);
+  }
+
+  /* A focused field retains the recessed surface; the offset ring is a separate edge. */
+  [data-ui="otp-field-input"]:focus-visible {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+
+  [data-ui="otp-field"][data-complete] [data-ui="otp-field-input"] {
+    border-color: var(--color-primary-border);
+  }
+
+  [data-ui="otp-field"][data-invalid] [data-ui="otp-field-input"] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="otp-field"][data-invalid] [data-ui="otp-field-input"]:focus-visible {
+    border-color: var(--color-intent-error-border);
+    outline-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="otp-field"][data-disabled] [data-ui="otp-field-input"] {
+    opacity: var(--opacity-soft);
+    cursor: not-allowed;
+  }
+
+  [data-ui="otp-field-separator"] {
+    inline-size: var(--spacing-300);
+    block-size: var(--stroke-width-selected);
+    background-color: var(--color-surface-border-1);
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="otp-field-input"] {
+      transition: none;
+    }
+  }
+}

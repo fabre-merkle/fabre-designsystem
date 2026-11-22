@@ -1,0 +1,3694 @@
+{
+  "artifact": "component-catalogue",
+  "version": 1,
+  "components": [
+    {
+      "slug": "accordion",
+      "name": "Accordion",
+      "hash": "sha256:625e7c09d401aa2f02114e38067a6e5cec76f87629fe4166edda92c42278e68e",
+      "rootPart": "accordion-root",
+      "parts": [
+        "accordion-root",
+        "accordion-item",
+        "accordion-header",
+        "accordion-trigger",
+        "accordion-trigger-label",
+        "accordion-trigger-icon",
+        "accordion-panel",
+        "accordion-panel-text"
+      ],
+      "axes": [
+        {
+          "prop": "panel",
+          "values": ["closed", "open"],
+          "default": "closed"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger-label",
+          "part": "accordion-trigger-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "content",
+          "part": "accordion-panel",
+          "accepts": "children"
+        },
+        {
+          "name": "panel-content",
+          "part": "accordion-panel-text",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "caret",
+          "part": "accordion-trigger-icon",
+          "accepts": "icon"
+        }
+      ],
+      "anatomy": {
+        "part": "accordion-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "accordion-item",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "accordion-header",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "accordion-trigger",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "children": [
+                      {
+                        "part": "accordion-trigger-label",
+                        "kind": "text",
+                        "slots": ["trigger-label"]
+                      },
+                      {
+                        "part": "accordion-trigger-icon",
+                        "kind": "icon",
+                        "slots": ["caret"]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "part": "accordion-panel",
+                "kind": "frame",
+                "layout": "vertical",
+                "slots": ["content"],
+                "children": [
+                  {
+                    "part": "accordion-panel-text",
+                    "kind": "text",
+                    "slots": ["panel-content"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "alert",
+      "name": "Alert",
+      "hash": "sha256:f6cafb80d2fb3140b70346e1348617d4cadc3680ee2536e1869a1a53b8da9641",
+      "rootPart": "alert",
+      "parts": [
+        "alert",
+        "alert-icon",
+        "alert-icon-info",
+        "alert-icon-success",
+        "alert-icon-warning",
+        "alert-icon-error",
+        "alert-content",
+        "alert-title",
+        "alert-description",
+        "alert-actions",
+        "alert-action-primary",
+        "alert-action-secondary"
+      ],
+      "axes": [
+        {
+          "prop": "intent",
+          "values": ["info", "success", "warning", "error"],
+          "default": "info"
+        },
+        {
+          "prop": "actions",
+          "values": ["none", "buttons"],
+          "default": "none"
+        }
+      ],
+      "slots": [
+        {
+          "name": "info-icon",
+          "part": "alert-icon-info",
+          "accepts": "icon"
+        },
+        {
+          "name": "success-icon",
+          "part": "alert-icon-success",
+          "accepts": "icon"
+        },
+        {
+          "name": "warning-icon",
+          "part": "alert-icon-warning",
+          "accepts": "icon"
+        },
+        {
+          "name": "error-icon",
+          "part": "alert-icon-error",
+          "accepts": "icon"
+        },
+        {
+          "name": "title",
+          "part": "alert-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "alert-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "action-primary",
+          "part": "alert-action-primary",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "primary",
+              "mode": "filled",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        },
+        {
+          "name": "action-secondary",
+          "part": "alert-action-secondary",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "stroke",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "alert",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "alert-icon",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "alert-icon-info",
+                "kind": "icon",
+                "slots": ["info-icon"]
+              },
+              {
+                "part": "alert-icon-success",
+                "kind": "icon",
+                "slots": ["success-icon"]
+              },
+              {
+                "part": "alert-icon-warning",
+                "kind": "icon",
+                "slots": ["warning-icon"]
+              },
+              {
+                "part": "alert-icon-error",
+                "kind": "icon",
+                "slots": ["error-icon"]
+              }
+            ]
+          },
+          {
+            "part": "alert-content",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "alert-title",
+                "kind": "text",
+                "slots": ["title"]
+              },
+              {
+                "part": "alert-description",
+                "kind": "text",
+                "slots": ["description"]
+              },
+              {
+                "part": "alert-actions",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "alert-action-primary",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "slots": ["action-primary"]
+                  },
+                  {
+                    "part": "alert-action-secondary",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "slots": ["action-secondary"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "alert-dialog",
+      "name": "AlertDialog",
+      "hash": "sha256:55aa3335b355e1d033d18b7b81c021f091b9276c0dddf8037b2473f5a4c786c5",
+      "rootPart": "alert-dialog-popup",
+      "parts": [
+        "alert-dialog-popup",
+        "alert-dialog-backdrop",
+        "alert-dialog-title",
+        "alert-dialog-description",
+        "alert-dialog-header",
+        "alert-dialog-footer",
+        "alert-dialog-action-cancel",
+        "alert-dialog-action-confirm"
+      ],
+      "axes": [
+        {
+          "prop": "context",
+          "values": ["viewport", "component"],
+          "default": "viewport"
+        }
+      ],
+      "slots": [
+        {
+          "name": "title",
+          "part": "alert-dialog-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "alert-dialog-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "action-cancel",
+          "part": "alert-dialog-action-cancel",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "ghost",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        },
+        {
+          "name": "action-confirm",
+          "part": "alert-dialog-action-confirm",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "destructive",
+              "mode": "filled",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "alert-dialog-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "alert-dialog-header",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "alert-dialog-title",
+                "kind": "text",
+                "slots": ["title"]
+              },
+              {
+                "part": "alert-dialog-description",
+                "kind": "text",
+                "slots": ["description"]
+              }
+            ]
+          },
+          {
+            "part": "alert-dialog-footer",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "alert-dialog-action-cancel",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-cancel"]
+              },
+              {
+                "part": "alert-dialog-action-confirm",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-confirm"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "autocomplete",
+      "name": "Autocomplete",
+      "hash": "sha256:a0ae72350af97a692644aa2fcca296127d8609b50369b703f2dafc91042c7d9a",
+      "rootPart": "autocomplete-root",
+      "parts": [
+        "autocomplete-root",
+        "autocomplete-input-group",
+        "autocomplete-input",
+        "autocomplete-clear",
+        "autocomplete-popup",
+        "autocomplete-empty",
+        "autocomplete-list",
+        "autocomplete-group",
+        "autocomplete-group-label",
+        "autocomplete-item",
+        "autocomplete-item-label",
+        "autocomplete-separator"
+      ],
+      "axes": [
+        {
+          "prop": "popup",
+          "values": ["closed", "open", "open-empty"],
+          "default": "closed"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "input-value",
+          "part": "autocomplete-input",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "group-label",
+          "part": "autocomplete-group-label",
+          "accepts": "text"
+        },
+        {
+          "name": "item-text",
+          "part": "autocomplete-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "empty-text",
+          "part": "autocomplete-empty",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "buildingBlocks": [
+        {
+          "part": "autocomplete-item",
+          "name": ".Building Blocks/Autocomplete/Item",
+          "axes": ["highlighted", "disabled"]
+        }
+      ],
+      "anatomy": {
+        "part": "autocomplete-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "autocomplete-input-group",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "autocomplete-input",
+                "kind": "text",
+                "slots": ["input-value"]
+              },
+              {
+                "part": "autocomplete-clear",
+                "kind": "frame"
+              }
+            ]
+          },
+          {
+            "part": "autocomplete-popup",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "autocomplete-empty",
+                "kind": "text",
+                "slots": ["empty-text"]
+              },
+              {
+                "part": "autocomplete-list",
+                "kind": "frame",
+                "layout": "vertical",
+                "children": [
+                  {
+                    "part": "autocomplete-group",
+                    "kind": "frame",
+                    "layout": "vertical",
+                    "children": [
+                      {
+                        "part": "autocomplete-group-label",
+                        "kind": "text",
+                        "slots": ["group-label"]
+                      },
+                      {
+                        "part": "autocomplete-item",
+                        "kind": "frame",
+                        "layout": "horizontal",
+                        "children": [
+                          {
+                            "part": "autocomplete-item-label",
+                            "kind": "text",
+                            "slots": ["item-text"]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "part": "autocomplete-separator",
+                    "kind": "rectangle"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "avatar",
+      "name": "Avatar",
+      "hash": "sha256:05e8c9d64f311c83dfa8e11c5a6a2479f37e76e3829cddc4a3ef4d09efb7bcf2",
+      "rootPart": "avatar",
+      "parts": ["avatar", "avatar-image", "avatar-fallback"],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "shape",
+          "values": ["circle", "square"],
+          "default": "circle"
+        },
+        {
+          "prop": "content",
+          "values": ["image", "fallback"],
+          "default": "fallback"
+        }
+      ],
+      "slots": [
+        {
+          "name": "initials",
+          "part": "avatar-fallback",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "avatar",
+        "kind": "frame",
+        "children": [
+          {
+            "part": "avatar-image",
+            "kind": "image"
+          },
+          {
+            "part": "avatar-fallback",
+            "kind": "text",
+            "slots": ["initials"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "badge",
+      "name": "Badge",
+      "hash": "sha256:909f1fccb7bc0418197c6674abac20bb7599cbc73ebda078f912e19f1681250c",
+      "rootPart": "badge",
+      "parts": ["badge"],
+      "axes": [
+        {
+          "prop": "tone",
+          "values": ["neutral", "info", "success", "warning", "critical"],
+          "default": "neutral"
+        },
+        {
+          "prop": "mode",
+          "values": ["filled", "light", "stroke"],
+          "default": "filled"
+        },
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        }
+      ],
+      "slots": [],
+      "split": {
+        "axis": "mode"
+      }
+    },
+    {
+      "slug": "button",
+      "name": "Button",
+      "hash": "sha256:b655d94e7f9eec77135154b7ee933cb843f69ea16dd5a98860f7d8ad61ffc011",
+      "rootPart": "button",
+      "parts": ["button", "button-label", "button-icon", "button-focus-ring"],
+      "axes": [
+        {
+          "prop": "variant",
+          "values": ["primary", "secondary", "tertiary", "destructive", "inverse"],
+          "default": "primary"
+        },
+        {
+          "prop": "mode",
+          "values": ["filled", "stroke", "lighter", "ghost"],
+          "default": "filled"
+        },
+        {
+          "prop": "size",
+          "values": ["xs", "sm", "md", "lg", "icon-xs", "icon-sm", "icon", "icon-lg"],
+          "default": "md"
+        },
+        {
+          "prop": "content",
+          "values": ["label", "icon-label", "icon-only"],
+          "default": "label"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "active", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [],
+      "properties": [
+        {
+          "name": "Label",
+          "type": "text",
+          "part": "button-label",
+          "codeProp": "children"
+        },
+        {
+          "name": "Icon",
+          "type": "instanceSwap",
+          "part": "button-icon",
+          "codeProp": "children"
+        },
+        {
+          "name": "focus-visible",
+          "type": "boolean",
+          "part": "button-focus-ring"
+        }
+      ],
+      "split": {
+        "axis": ["variant", "mode"]
+      },
+      "capReason": "A text button's size, content and state are one grid a designer reads across. Splitting a third axis out would make 60 sets of 16, to save two variants over the 30-variant guideline.",
+      "anatomy": {
+        "part": "button",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "button-icon",
+            "kind": "icon"
+          },
+          {
+            "part": "button-label",
+            "kind": "text"
+          },
+          {
+            "part": "button-focus-ring",
+            "kind": "frame",
+            "layout": "overlay"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "card",
+      "name": "Card",
+      "hash": "sha256:0de57eb5f5616bfaa9713bd0bd7a36ccc9b0270939fd80a7b2e787140738d405",
+      "rootPart": "card",
+      "parts": [
+        "card",
+        "card-header",
+        "card-title",
+        "card-description",
+        "card-content",
+        "card-content-text",
+        "card-footer",
+        "card-footer-secondary",
+        "card-footer-primary"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "footer",
+          "values": ["none", "actions"],
+          "default": "none"
+        }
+      ],
+      "slots": [
+        {
+          "name": "title",
+          "part": "card-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "card-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "content",
+          "part": "card-content",
+          "accepts": "children"
+        },
+        {
+          "name": "body-text",
+          "part": "card-content-text",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "footer",
+          "part": "card-footer",
+          "accepts": "children"
+        },
+        {
+          "name": "footer-secondary",
+          "part": "card-footer-secondary",
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "ghost",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        },
+        {
+          "name": "footer-primary",
+          "part": "card-footer-primary",
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "primary",
+              "mode": "filled",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "card",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "card-header",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "card-title",
+                "kind": "text",
+                "slots": ["title"]
+              },
+              {
+                "part": "card-description",
+                "kind": "text",
+                "slots": ["description"]
+              }
+            ]
+          },
+          {
+            "part": "card-content",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["content"],
+            "children": [
+              {
+                "part": "card-content-text",
+                "kind": "text",
+                "slots": ["body-text"]
+              }
+            ]
+          },
+          {
+            "part": "card-footer",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["footer"],
+            "children": [
+              {
+                "part": "card-footer-secondary",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["footer-secondary"]
+              },
+              {
+                "part": "card-footer-primary",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["footer-primary"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "checkbox",
+      "name": "Checkbox",
+      "hash": "sha256:41bdc88d8b3e9281dd07d9b11e3990a7a2f20e9ab4e5675fd6708d0bd1ca82f5",
+      "rootPart": "checkbox",
+      "parts": ["checkbox", "checkbox-indicator", "checkbox-check", "checkbox-minus"],
+      "axes": [
+        {
+          "prop": "checked",
+          "values": ["unchecked", "checked", "indeterminate"],
+          "default": "unchecked"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "check-icon",
+          "part": "checkbox-check",
+          "accepts": "icon"
+        },
+        {
+          "name": "minus-icon",
+          "part": "checkbox-minus",
+          "accepts": "icon"
+        }
+      ],
+      "anatomy": {
+        "part": "checkbox",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "checkbox-indicator",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "checkbox-check",
+                "kind": "icon",
+                "slots": ["check-icon"]
+              },
+              {
+                "part": "checkbox-minus",
+                "kind": "icon",
+                "slots": ["minus-icon"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "checkbox-group",
+      "name": "CheckboxGroup",
+      "hash": "sha256:75e1fbd2d3b10e8ff85911e477e1da8e640f347cd7be0f7e75e49f19e3b3726d",
+      "rootPart": "checkbox-group",
+      "parts": [
+        "checkbox-group",
+        "checkbox-group-item",
+        "checkbox-group-control",
+        "checkbox-group-label"
+      ],
+      "axes": [],
+      "slots": [
+        {
+          "name": "item",
+          "part": "checkbox-group-control",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "checkbox"
+          }
+        },
+        {
+          "name": "label",
+          "part": "checkbox-group-label",
+          "accepts": "component",
+          "composedChild": {
+            "component": "field-label"
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "checkbox-group",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "checkbox-group-item",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "checkbox-group-control",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["item"]
+              },
+              {
+                "part": "checkbox-group-label",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["label"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "collapsible",
+      "name": "Collapsible",
+      "hash": "sha256:3ef6ed16f5a0aa70cd4a8204be68b198884b56b7a6c17c656b6c071a5844bc8e",
+      "rootPart": "collapsible-root",
+      "parts": [
+        "collapsible-root",
+        "collapsible-trigger",
+        "collapsible-panel",
+        "collapsible-panel-text"
+      ],
+      "axes": [
+        {
+          "prop": "panel",
+          "values": ["closed", "open"],
+          "default": "closed"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger",
+          "part": "collapsible-trigger",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "filled",
+              "size": "md",
+              "state": "default",
+              "content": "label"
+            }
+          }
+        },
+        {
+          "name": "content",
+          "part": "collapsible-panel",
+          "accepts": "children"
+        },
+        {
+          "name": "panel-content",
+          "part": "collapsible-panel-text",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "collapsible-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "collapsible-trigger",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["trigger"]
+          },
+          {
+            "part": "collapsible-panel",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["content"],
+            "children": [
+              {
+                "part": "collapsible-panel-text",
+                "kind": "text",
+                "slots": ["panel-content"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "combobox",
+      "name": "Combobox",
+      "hash": "sha256:c0b0156a4f50ced66928cfb6661dfb9d2c77a89f58e382b9aea82176fe288465",
+      "rootPart": "combobox-root",
+      "parts": [
+        "combobox-root",
+        "combobox-input-group",
+        "combobox-input",
+        "combobox-clear",
+        "combobox-trigger",
+        "combobox-icon",
+        "combobox-popup",
+        "combobox-empty",
+        "combobox-list",
+        "combobox-group",
+        "combobox-group-label",
+        "combobox-item",
+        "combobox-item-label",
+        "combobox-item-indicator",
+        "combobox-separator"
+      ],
+      "axes": [
+        {
+          "prop": "popup",
+          "values": ["closed", "open", "open-empty"],
+          "default": "closed"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "input-value",
+          "part": "combobox-input",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "group-label",
+          "part": "combobox-group-label",
+          "accepts": "text"
+        },
+        {
+          "name": "item-text",
+          "part": "combobox-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "empty-text",
+          "part": "combobox-empty",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "caret",
+          "part": "combobox-icon",
+          "accepts": "icon"
+        },
+        {
+          "name": "item-check",
+          "part": "combobox-item-indicator",
+          "accepts": "icon"
+        }
+      ],
+      "buildingBlocks": [
+        {
+          "part": "combobox-item",
+          "name": ".Building Blocks/Combobox/Item",
+          "axes": ["selected", "highlighted", "disabled"]
+        }
+      ],
+      "anatomy": {
+        "part": "combobox-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "combobox-input-group",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "combobox-input",
+                "kind": "text",
+                "slots": ["input-value"]
+              },
+              {
+                "part": "combobox-clear",
+                "kind": "frame"
+              },
+              {
+                "part": "combobox-trigger",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "combobox-icon",
+                    "kind": "icon",
+                    "slots": ["caret"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "combobox-popup",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "combobox-empty",
+                "kind": "text",
+                "slots": ["empty-text"]
+              },
+              {
+                "part": "combobox-list",
+                "kind": "frame",
+                "layout": "vertical",
+                "children": [
+                  {
+                    "part": "combobox-group",
+                    "kind": "frame",
+                    "layout": "vertical",
+                    "children": [
+                      {
+                        "part": "combobox-group-label",
+                        "kind": "text",
+                        "slots": ["group-label"]
+                      },
+                      {
+                        "part": "combobox-item",
+                        "kind": "frame",
+                        "layout": "horizontal",
+                        "children": [
+                          {
+                            "part": "combobox-item-label",
+                            "kind": "text",
+                            "slots": ["item-text"]
+                          },
+                          {
+                            "part": "combobox-item-indicator",
+                            "kind": "icon",
+                            "slots": ["item-check"]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "part": "combobox-separator",
+                    "kind": "rectangle"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "context-menu",
+      "name": "ContextMenu",
+      "hash": "sha256:1fc70f21cf5045ba73c95960dfb6eacfa07c6c82a4ebd7a281305745c23db350",
+      "rootPart": "context-menu-popup",
+      "parts": [
+        "context-menu-popup",
+        "context-menu-group",
+        "context-menu-group-label",
+        "context-menu-item",
+        "context-menu-item-label",
+        "context-menu-submenu-icon",
+        "context-menu-separator",
+        "context-menu-checkbox-item",
+        "context-menu-checkbox-item-indicator",
+        "context-menu-checkbox-item-label",
+        "context-menu-radio-group",
+        "context-menu-radio-item",
+        "context-menu-radio-item-indicator",
+        "context-menu-radio-item-indicator::before",
+        "context-menu-radio-item-label"
+      ],
+      "axes": [
+        {
+          "prop": "highlighted",
+          "values": ["idle", "highlighted"],
+          "default": "idle"
+        },
+        {
+          "prop": "checked",
+          "values": ["unchecked", "checked"],
+          "default": "unchecked"
+        },
+        {
+          "prop": "submenu",
+          "values": ["none", "trigger"],
+          "default": "none"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "group-label",
+          "part": "context-menu-group-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "item-text",
+          "part": "context-menu-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "submenu-icon",
+          "part": "context-menu-submenu-icon",
+          "accepts": "icon"
+        },
+        {
+          "name": "check-icon",
+          "part": "context-menu-checkbox-item-indicator",
+          "accepts": "icon"
+        },
+        {
+          "name": "checkbox-item-text",
+          "part": "context-menu-checkbox-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "radio-item-text",
+          "part": "context-menu-radio-item-label",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "context-menu-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "context-menu-group",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "context-menu-group-label",
+                "kind": "text",
+                "slots": ["group-label"]
+              },
+              {
+                "part": "context-menu-item",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "context-menu-item-label",
+                    "kind": "text",
+                    "slots": ["item-text"]
+                  },
+                  {
+                    "part": "context-menu-submenu-icon",
+                    "kind": "icon",
+                    "slots": ["submenu-icon"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "context-menu-separator",
+            "kind": "rectangle"
+          },
+          {
+            "part": "context-menu-checkbox-item",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "context-menu-checkbox-item-indicator",
+                "kind": "icon",
+                "slots": ["check-icon"]
+              },
+              {
+                "part": "context-menu-checkbox-item-label",
+                "kind": "text",
+                "slots": ["checkbox-item-text"]
+              }
+            ]
+          },
+          {
+            "part": "context-menu-radio-group",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "context-menu-radio-item",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "context-menu-radio-item-indicator",
+                    "kind": "frame",
+                    "children": [
+                      {
+                        "part": "context-menu-radio-item-indicator::before",
+                        "kind": "rectangle"
+                      }
+                    ]
+                  },
+                  {
+                    "part": "context-menu-radio-item-label",
+                    "kind": "text",
+                    "slots": ["radio-item-text"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "dialog",
+      "name": "Dialog",
+      "hash": "sha256:fca9380c608f7fbb2f5e022e6da101765fa1034228788861691de8c4f00c6056",
+      "rootPart": "dialog-popup",
+      "parts": [
+        "dialog-popup",
+        "dialog-backdrop",
+        "dialog-title",
+        "dialog-description",
+        "dialog-header",
+        "dialog-footer",
+        "dialog-action-cancel",
+        "dialog-action-confirm"
+      ],
+      "axes": [
+        {
+          "prop": "context",
+          "values": ["viewport", "component"],
+          "default": "viewport"
+        }
+      ],
+      "slots": [
+        {
+          "name": "title",
+          "part": "dialog-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "dialog-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "action-cancel",
+          "part": "dialog-action-cancel",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "ghost",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        },
+        {
+          "name": "action-confirm",
+          "part": "dialog-action-confirm",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "destructive",
+              "mode": "filled",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "dialog-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "dialog-header",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "dialog-title",
+                "kind": "text",
+                "slots": ["title"]
+              },
+              {
+                "part": "dialog-description",
+                "kind": "text",
+                "slots": ["description"]
+              }
+            ]
+          },
+          {
+            "part": "dialog-footer",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "dialog-action-cancel",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-cancel"]
+              },
+              {
+                "part": "dialog-action-confirm",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-confirm"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "drawer",
+      "name": "Drawer",
+      "hash": "sha256:153fab78138c886f94e6a99816bcddbd643f6e78c3822c0e963270146e954b0e",
+      "rootPart": "drawer-popup",
+      "parts": [
+        "drawer-popup",
+        "drawer-popup::before",
+        "drawer-backdrop",
+        "drawer-title",
+        "drawer-description",
+        "drawer-checklist",
+        "drawer-checklist-item",
+        "drawer-checklist-control",
+        "drawer-checklist-text",
+        "drawer-checklist-title",
+        "drawer-checklist-description",
+        "drawer-actions",
+        "drawer-action-cancel",
+        "drawer-action-confirm"
+      ],
+      "axes": [
+        {
+          "prop": "side",
+          "values": ["down", "up", "right", "left"],
+          "default": "down"
+        },
+        {
+          "prop": "context",
+          "values": ["viewport", "component"],
+          "default": "viewport"
+        }
+      ],
+      "slots": [
+        {
+          "name": "title",
+          "part": "drawer-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "drawer-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "content",
+          "part": "drawer-checklist",
+          "accepts": "children"
+        },
+        {
+          "name": "checklist-item",
+          "part": "drawer-checklist-control",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "checkbox"
+          }
+        },
+        {
+          "name": "checklist-title",
+          "part": "drawer-checklist-title",
+          "accepts": "component",
+          "composedChild": {
+            "component": "field-label"
+          }
+        },
+        {
+          "name": "checklist-description",
+          "part": "drawer-checklist-description",
+          "accepts": "component",
+          "composedChild": {
+            "component": "field-description"
+          }
+        },
+        {
+          "name": "action-cancel",
+          "part": "drawer-action-cancel",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button",
+            "variantKey": {
+              "variant": "secondary",
+              "mode": "ghost",
+              "size": "sm",
+              "content": "label",
+              "state": "default"
+            }
+          }
+        },
+        {
+          "name": "action-confirm",
+          "part": "drawer-action-confirm",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button"
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "drawer-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "drawer-popup::before",
+            "kind": "rectangle"
+          },
+          {
+            "part": "drawer-title",
+            "kind": "text",
+            "slots": ["title"]
+          },
+          {
+            "part": "drawer-description",
+            "kind": "text",
+            "slots": ["description"]
+          },
+          {
+            "part": "drawer-checklist",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["content"],
+            "children": [
+              {
+                "part": "drawer-checklist-item",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "drawer-checklist-control",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "slots": ["checklist-item"]
+                  },
+                  {
+                    "part": "drawer-checklist-text",
+                    "kind": "frame",
+                    "layout": "vertical",
+                    "children": [
+                      {
+                        "part": "drawer-checklist-title",
+                        "kind": "frame",
+                        "layout": "horizontal",
+                        "slots": ["checklist-title"]
+                      },
+                      {
+                        "part": "drawer-checklist-description",
+                        "kind": "frame",
+                        "layout": "horizontal",
+                        "slots": ["checklist-description"]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "drawer-actions",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "drawer-action-cancel",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-cancel"]
+              },
+              {
+                "part": "drawer-action-confirm",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["action-confirm"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "field",
+      "name": "Field",
+      "hash": "sha256:0ba9292ce236f43e3e95c125bead4b6f92ea5735a1656eab4365f816f7fe2536",
+      "rootPart": "field",
+      "parts": ["field", "field-label", "field-control", "field-description", "field-error"],
+      "axes": [
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "part": "field-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "control",
+          "part": "field-control",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "input"
+          }
+        },
+        {
+          "name": "description",
+          "part": "field-description",
+          "accepts": "text"
+        },
+        {
+          "name": "error",
+          "part": "field-error",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "field",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "field-label",
+            "kind": "text",
+            "slots": ["label"]
+          },
+          {
+            "part": "field-control",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["control"]
+          },
+          {
+            "part": "field-description",
+            "kind": "text",
+            "slots": ["description"]
+          },
+          {
+            "part": "field-error",
+            "kind": "text",
+            "slots": ["error"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "field-description",
+      "name": "FieldDescription",
+      "hash": "sha256:f706b62c6254dae73a49835fb8c48beecf23f77fe843ebd382d3e501b26ea7a5",
+      "partOf": "field",
+      "rootPart": "field-description",
+      "parts": ["field-description"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "description",
+          "part": "field-description",
+          "required": true,
+          "codeProp": "children",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "field-description",
+        "kind": "text",
+        "slots": ["description"]
+      }
+    },
+    {
+      "slug": "field-label",
+      "name": "FieldLabel",
+      "hash": "sha256:b8f86d4fb20446b122cd9d246b48158f1da0a9f8ce73892961be218f08b4009c",
+      "partOf": "field",
+      "rootPart": "field-label",
+      "parts": ["field-label"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "label",
+          "part": "field-label",
+          "required": true,
+          "codeProp": "children",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "field-label",
+        "kind": "text",
+        "slots": ["label"]
+      }
+    },
+    {
+      "slug": "fieldset",
+      "name": "Fieldset",
+      "hash": "sha256:7fd0e66b81a9065a388ebf9eb4cd63f1f01f24025724f6d5080cb69d555abedd",
+      "rootPart": "fieldset",
+      "parts": ["fieldset", "fieldset-legend", "fieldset-item"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "legend",
+          "part": "fieldset-legend",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "item",
+          "part": "fieldset-item",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "field"
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "fieldset",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "fieldset-legend",
+            "kind": "text",
+            "slots": ["legend"]
+          },
+          {
+            "part": "fieldset-item",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["item"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "form",
+      "name": "Form",
+      "hash": "sha256:ee6e4c829e7d7c31b29deb70e9fa4d665ff5c11712d220c7935930972ed859d9",
+      "rootPart": "form",
+      "parts": ["form", "form-field", "form-submit"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "field",
+          "part": "form-field",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "field"
+          }
+        },
+        {
+          "name": "submit",
+          "part": "form-submit",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button"
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "form",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "form-field",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["field"]
+          },
+          {
+            "part": "form-submit",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["submit"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "input",
+      "name": "Input",
+      "hash": "sha256:addcdc63b8f47f7720e0e7ca4a730cae28108f4b5bcc18339326e34fc81d2a8d",
+      "rootPart": "input",
+      "parts": ["input"],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "value",
+          "part": "input",
+          "accepts": "content"
+        },
+        {
+          "name": "placeholder",
+          "part": "input",
+          "accepts": "content"
+        }
+      ],
+      "anatomy": {
+        "part": "input",
+        "kind": "frame",
+        "layout": "horizontal",
+        "slots": ["value", "placeholder"]
+      }
+    },
+    {
+      "slug": "menu",
+      "name": "Menu",
+      "hash": "sha256:a6164b026a57f987f37e35644640a65902be16542189dcbafeb774a2d18d86e7",
+      "rootPart": "menu-trigger",
+      "parts": [
+        "menu-trigger",
+        "menu-popup",
+        "menu-group",
+        "menu-group-label",
+        "menu-item",
+        "menu-item-label",
+        "menu-submenu-icon",
+        "menu-separator",
+        "menu-checkbox-item",
+        "menu-checkbox-item-indicator",
+        "menu-checkbox-item-label",
+        "menu-radio-group",
+        "menu-radio-item",
+        "menu-radio-item-indicator",
+        "menu-radio-item-indicator::before",
+        "menu-radio-item-label"
+      ],
+      "axes": [
+        {
+          "prop": "popup",
+          "values": ["closed", "open"],
+          "default": "closed"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger",
+          "part": "menu-trigger",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "button"
+          }
+        },
+        {
+          "name": "group-label",
+          "part": "menu-group-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "item-text",
+          "part": "menu-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "submenu-icon",
+          "part": "menu-submenu-icon",
+          "accepts": "icon"
+        },
+        {
+          "name": "check-icon",
+          "part": "menu-checkbox-item-indicator",
+          "accepts": "icon"
+        },
+        {
+          "name": "checkbox-item-text",
+          "part": "menu-checkbox-item-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "radio-item-text",
+          "part": "menu-radio-item-label",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "buildingBlocks": [
+        {
+          "part": "menu-item",
+          "name": ".Building Blocks/Menu/Item",
+          "axes": ["highlighted", "disabled", "submenu"]
+        },
+        {
+          "part": "menu-checkbox-item",
+          "name": ".Building Blocks/Menu/Checkbox Item",
+          "axes": ["checked", "highlighted", "disabled"]
+        },
+        {
+          "part": "menu-radio-item",
+          "name": ".Building Blocks/Menu/Radio Item",
+          "axes": ["checked", "highlighted", "disabled"]
+        }
+      ],
+      "anatomy": {
+        "part": "menu-trigger",
+        "kind": "frame",
+        "layout": "vertical",
+        "slots": ["trigger"],
+        "children": [
+          {
+            "part": "menu-popup",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "menu-group",
+                "kind": "frame",
+                "layout": "vertical",
+                "children": [
+                  {
+                    "part": "menu-group-label",
+                    "kind": "text",
+                    "slots": ["group-label"]
+                  },
+                  {
+                    "part": "menu-item",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "children": [
+                      {
+                        "part": "menu-item-label",
+                        "kind": "text",
+                        "slots": ["item-text"]
+                      },
+                      {
+                        "part": "menu-submenu-icon",
+                        "kind": "icon",
+                        "slots": ["submenu-icon"]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "part": "menu-separator",
+                "kind": "rectangle"
+              },
+              {
+                "part": "menu-checkbox-item",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "menu-checkbox-item-indicator",
+                    "kind": "icon",
+                    "slots": ["check-icon"]
+                  },
+                  {
+                    "part": "menu-checkbox-item-label",
+                    "kind": "text",
+                    "slots": ["checkbox-item-text"]
+                  }
+                ]
+              },
+              {
+                "part": "menu-radio-group",
+                "kind": "frame",
+                "layout": "vertical",
+                "children": [
+                  {
+                    "part": "menu-radio-item",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "children": [
+                      {
+                        "part": "menu-radio-item-indicator",
+                        "kind": "frame",
+                        "children": [
+                          {
+                            "part": "menu-radio-item-indicator::before",
+                            "kind": "rectangle"
+                          }
+                        ]
+                      },
+                      {
+                        "part": "menu-radio-item-label",
+                        "kind": "text",
+                        "slots": ["radio-item-text"]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "menubar",
+      "name": "Menubar",
+      "hash": "sha256:c16b1309522fe35fbb978ea0d80fc6a7c1eac3dba612ea42370d55fc29871c06",
+      "rootPart": "menubar-root",
+      "parts": ["menubar-root", "menubar-trigger", "menubar-trigger-label"],
+      "axes": [
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        },
+        {
+          "prop": "popup",
+          "values": ["closed", "open"],
+          "default": "closed"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger-text",
+          "part": "menubar-trigger-label",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "menubar-root",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "menubar-trigger",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "menubar-trigger-label",
+                "kind": "text",
+                "slots": ["trigger-text"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "meter",
+      "name": "Meter",
+      "hash": "sha256:2f8f897e526e9e59ff80615a5b985e4f37595880b34ec0ae4336197b1b23c7e8",
+      "rootPart": "meter",
+      "parts": [
+        "meter",
+        "meter-header",
+        "meter-label",
+        "meter-value",
+        "meter-track",
+        "meter-indicator"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "tone",
+          "values": ["neutral", "success", "warning", "critical"],
+          "default": "neutral"
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "part": "meter-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "value",
+          "part": "meter-value",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "meter",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "meter-header",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "meter-label",
+                "kind": "text",
+                "slots": ["label"]
+              },
+              {
+                "part": "meter-value",
+                "kind": "text",
+                "slots": ["value"]
+              }
+            ]
+          },
+          {
+            "part": "meter-track",
+            "kind": "frame",
+            "layout": "overlay",
+            "children": [
+              {
+                "part": "meter-indicator",
+                "kind": "rectangle"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "navigation-menu",
+      "name": "NavigationMenu",
+      "hash": "sha256:3893b35bfe4c2fc600e455f164d124a1245b76dabacef1836232e4e46c9ee3c7",
+      "rootPart": "navigation-menu-root",
+      "parts": [
+        "navigation-menu-root",
+        "navigation-menu-list",
+        "navigation-menu-item",
+        "navigation-menu-trigger",
+        "navigation-menu-trigger-label",
+        "navigation-menu-icon",
+        "navigation-menu-popup",
+        "navigation-menu-viewport",
+        "navigation-menu-content",
+        "navigation-menu-link",
+        "navigation-menu-link-label"
+      ],
+      "axes": [
+        {
+          "prop": "display",
+          "values": ["closed", "open"],
+          "default": "closed"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger-label",
+          "part": "navigation-menu-trigger-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "link-label",
+          "part": "navigation-menu-link-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "caret",
+          "part": "navigation-menu-icon",
+          "accepts": "icon"
+        }
+      ],
+      "anatomy": {
+        "part": "navigation-menu-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "navigation-menu-list",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "navigation-menu-item",
+                "kind": "frame",
+                "children": [
+                  {
+                    "part": "navigation-menu-trigger",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "children": [
+                      {
+                        "part": "navigation-menu-trigger-label",
+                        "kind": "text",
+                        "slots": ["trigger-label"]
+                      },
+                      {
+                        "part": "navigation-menu-icon",
+                        "kind": "icon",
+                        "slots": ["caret"]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "navigation-menu-popup",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "navigation-menu-viewport",
+                "kind": "frame",
+                "children": [
+                  {
+                    "part": "navigation-menu-content",
+                    "kind": "frame",
+                    "layout": "vertical",
+                    "children": [
+                      {
+                        "part": "navigation-menu-link",
+                        "kind": "frame",
+                        "children": [
+                          {
+                            "part": "navigation-menu-link-label",
+                            "kind": "text",
+                            "slots": ["link-label"]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "number-field",
+      "name": "NumberField",
+      "hash": "sha256:4b4557d85a6c09764001424e869189a66d9098568964af73b1afb2f3d0d9284f",
+      "rootPart": "number-field",
+      "parts": [
+        "number-field",
+        "number-field-group",
+        "number-field-input",
+        "number-field-increment",
+        "number-field-decrement",
+        "number-field-scrub-area",
+        "number-field-scrub-area-cursor"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "active", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "value",
+          "part": "number-field-input",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "increment",
+          "part": "number-field-increment",
+          "accepts": "content"
+        },
+        {
+          "name": "decrement",
+          "part": "number-field-decrement",
+          "accepts": "content"
+        },
+        {
+          "name": "scrub-label",
+          "part": "number-field-scrub-area",
+          "accepts": "content"
+        },
+        {
+          "name": "scrub-cursor",
+          "part": "number-field-scrub-area-cursor",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "number-field",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "number-field-scrub-area",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["scrub-label"],
+            "children": [
+              {
+                "part": "number-field-scrub-area-cursor",
+                "kind": "text",
+                "slots": ["scrub-cursor"]
+              }
+            ]
+          },
+          {
+            "part": "number-field-group",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "number-field-decrement",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["decrement"]
+              },
+              {
+                "part": "number-field-input",
+                "kind": "text",
+                "slots": ["value"]
+              },
+              {
+                "part": "number-field-increment",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["increment"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "otp-field",
+      "name": "OTPField",
+      "hash": "sha256:342afea52d1f7b1d2e610e38d73e8033d3bbd0a2a8facb6db6a447a3eb73d6d5",
+      "rootPart": "otp-field",
+      "parts": ["otp-field", "otp-field-input", "otp-field-separator"],
+      "axes": [
+        {
+          "prop": "completion",
+          "values": ["incomplete", "complete"],
+          "default": "incomplete"
+        },
+        {
+          "prop": "entry",
+          "values": ["empty", "filled"],
+          "default": "empty"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "digit",
+          "part": "otp-field-input",
+          "required": true,
+          "accepts": "content"
+        }
+      ],
+      "split": {
+        "axis": "validity"
+      },
+      "anatomy": {
+        "part": "otp-field",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "otp-field-input",
+            "kind": "frame",
+            "slots": ["digit"]
+          },
+          {
+            "part": "otp-field-separator",
+            "kind": "rectangle"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "popover",
+      "name": "Popover",
+      "hash": "sha256:6510eda07bb15a4760d2834757334321a8532616455fa9450f9ad5f822dc4209",
+      "rootPart": "popover-popup",
+      "parts": ["popover-popup", "popover-title", "popover-description"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "title",
+          "part": "popover-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "popover-description",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "popover-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "popover-title",
+            "kind": "text",
+            "slots": ["title"]
+          },
+          {
+            "part": "popover-description",
+            "kind": "text",
+            "slots": ["description"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "preview-card",
+      "name": "PreviewCard",
+      "hash": "sha256:f5612e3e23ced066ebfc9657325d6194d0a099d6aca57d30d6770fbf27307ca5",
+      "rootPart": "preview-card-popup",
+      "parts": ["preview-card-popup"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "content",
+          "part": "preview-card-popup",
+          "required": true,
+          "accepts": "content"
+        }
+      ],
+      "anatomy": {
+        "part": "preview-card-popup",
+        "kind": "frame",
+        "layout": "vertical",
+        "slots": ["content"]
+      }
+    },
+    {
+      "slug": "progress",
+      "name": "Progress",
+      "hash": "sha256:4557ceb25f035f396e38013416323bd1dfa5edcc794c9f0be4f1798b7670b089",
+      "rootPart": "progress",
+      "parts": [
+        "progress",
+        "progress-header",
+        "progress-label",
+        "progress-value",
+        "progress-track",
+        "progress-indicator"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "status",
+          "values": ["progressing", "complete", "indeterminate"],
+          "default": "progressing"
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "part": "progress-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "value",
+          "part": "progress-value",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "progress",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "progress-header",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "progress-label",
+                "kind": "text",
+                "slots": ["label"]
+              },
+              {
+                "part": "progress-value",
+                "kind": "text",
+                "slots": ["value"]
+              }
+            ]
+          },
+          {
+            "part": "progress-track",
+            "kind": "frame",
+            "layout": "overlay",
+            "children": [
+              {
+                "part": "progress-indicator",
+                "kind": "rectangle"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "radio",
+      "name": "Radio",
+      "hash": "sha256:a9c81b2fd9d57a88b8cee8bc068c22af15e1e8289f46b5164d36e82a963ab090",
+      "rootPart": "radio",
+      "parts": ["radio", "radio-indicator"],
+      "axes": [
+        {
+          "prop": "checked",
+          "values": ["unchecked", "checked"],
+          "default": "unchecked"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [],
+      "anatomy": {
+        "part": "radio",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "radio-indicator",
+            "kind": "ellipse"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "radio-group",
+      "name": "RadioGroup",
+      "hash": "sha256:61c24c3dc1cce744c274be0d893a64fb8b9cf6d6e863ad474917bedc154f155b",
+      "rootPart": "radio-group",
+      "parts": ["radio-group", "radio-group-item", "radio-group-control", "radio-group-label"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "item",
+          "part": "radio-group-control",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "radio"
+          }
+        },
+        {
+          "name": "label",
+          "part": "radio-group-label",
+          "accepts": "component",
+          "composedChild": {
+            "component": "field-label"
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "radio-group",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "radio-group-item",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "radio-group-control",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["item"]
+              },
+              {
+                "part": "radio-group-label",
+                "kind": "frame",
+                "layout": "horizontal",
+                "slots": ["label"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "scroll-area",
+      "name": "ScrollArea",
+      "hash": "sha256:d0526678f0dbdc9d20d88ec1eff3a6fa9fee653138b9625da04c42b0492c5e56",
+      "rootPart": "scroll-area-root",
+      "parts": [
+        "scroll-area-root",
+        "scroll-area-viewport",
+        "scroll-area-content",
+        "scroll-area-scrollbar",
+        "scroll-area-thumb",
+        "scroll-area-corner"
+      ],
+      "axes": [
+        {
+          "prop": "orientation",
+          "values": ["vertical", "horizontal"],
+          "default": "vertical"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "part": "scroll-area-content",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "scroll-area-root",
+        "kind": "frame",
+        "layout": "overlay",
+        "children": [
+          {
+            "part": "scroll-area-viewport",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "scroll-area-content",
+                "kind": "text",
+                "slots": ["content"]
+              }
+            ]
+          },
+          {
+            "part": "scroll-area-scrollbar",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "scroll-area-thumb",
+                "kind": "rectangle"
+              }
+            ]
+          },
+          {
+            "part": "scroll-area-corner",
+            "kind": "rectangle"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "select",
+      "name": "Select",
+      "hash": "sha256:d6a5fc8b05049e0d10432df8124f5e94044135ed7aef28337a6c03c4ea77f9d2",
+      "rootPart": "select-root",
+      "parts": [
+        "select-root",
+        "select-trigger",
+        "select-value",
+        "select-icon",
+        "select-popup",
+        "select-item",
+        "select-item-text",
+        "select-item-indicator",
+        "select-separator",
+        "select-group",
+        "select-group-label"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "popup",
+          "values": ["closed", "open"],
+          "default": "closed"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "value",
+          "part": "select-value",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "item-text",
+          "part": "select-item-text",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "group-label",
+          "part": "select-group-label",
+          "accepts": "text"
+        },
+        {
+          "name": "caret",
+          "part": "select-icon",
+          "accepts": "icon"
+        },
+        {
+          "name": "item-check",
+          "part": "select-item-indicator",
+          "accepts": "icon"
+        }
+      ],
+      "buildingBlocks": [
+        {
+          "part": "select-item",
+          "name": ".Building Blocks/Select/Item",
+          "axes": ["selected", "highlighted", "disabled"]
+        }
+      ],
+      "anatomy": {
+        "part": "select-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "select-trigger",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "select-value",
+                "kind": "text",
+                "slots": ["value"]
+              },
+              {
+                "part": "select-icon",
+                "kind": "icon",
+                "slots": ["caret"]
+              }
+            ]
+          },
+          {
+            "part": "select-popup",
+            "kind": "frame",
+            "layout": "vertical",
+            "children": [
+              {
+                "part": "select-group",
+                "kind": "frame",
+                "layout": "vertical",
+                "children": [
+                  {
+                    "part": "select-group-label",
+                    "kind": "text",
+                    "slots": ["group-label"]
+                  },
+                  {
+                    "part": "select-item",
+                    "kind": "frame",
+                    "layout": "horizontal",
+                    "children": [
+                      {
+                        "part": "select-item-text",
+                        "kind": "text",
+                        "slots": ["item-text"]
+                      },
+                      {
+                        "part": "select-item-indicator",
+                        "kind": "icon",
+                        "slots": ["item-check"]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "part": "select-separator",
+                "kind": "rectangle"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "separator",
+      "name": "Separator",
+      "hash": "sha256:848d149817f9168da3b033cec22047853656d409602c26d00b728d3860185e5b",
+      "rootPart": "separator",
+      "parts": ["separator", "separator::before", "separator::after", "separator-label"],
+      "axes": [
+        {
+          "prop": "variant",
+          "values": ["line", "solid-text", "underline", "content"],
+          "default": "line"
+        },
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "part": "separator-label",
+          "accepts": "text"
+        }
+      ],
+      "anatomy": {
+        "part": "separator",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "separator::before",
+            "kind": "rectangle"
+          },
+          {
+            "part": "separator-label",
+            "kind": "text",
+            "slots": ["label"]
+          },
+          {
+            "part": "separator::after",
+            "kind": "rectangle"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "slider",
+      "name": "Slider",
+      "hash": "sha256:dc39ab41952a886cb2ac67e420ce0d44cbcd56aad34d3f88d4ad7b07914813d3",
+      "rootPart": "slider",
+      "parts": [
+        "slider",
+        "slider-value",
+        "slider-control",
+        "slider-track",
+        "slider-indicator",
+        "slider-thumb"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "active", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "value",
+          "part": "slider-value",
+          "accepts": "text"
+        }
+      ],
+      "split": {
+        "axis": "orientation"
+      },
+      "anatomy": {
+        "part": "slider",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "slider-value",
+            "kind": "text",
+            "slots": ["value"]
+          },
+          {
+            "part": "slider-control",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "slider-track",
+                "kind": "frame",
+                "layout": "overlay",
+                "children": [
+                  {
+                    "part": "slider-indicator",
+                    "kind": "rectangle"
+                  },
+                  {
+                    "part": "slider-thumb",
+                    "kind": "ellipse"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "spinner",
+      "name": "Spinner",
+      "hash": "sha256:b1499754f67888c18e1f31375e669f316b2082d199f22549bbce61ddac3e4289",
+      "rootPart": "spinner",
+      "parts": ["spinner", "spinner-track", "spinner-arc"],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["xs", "sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "tone",
+          "values": ["current", "brand"],
+          "default": "current"
+        }
+      ],
+      "slots": [],
+      "anatomy": {
+        "part": "spinner",
+        "kind": "frame",
+        "layout": "overlay",
+        "children": [
+          {
+            "part": "spinner-track",
+            "kind": "ellipse"
+          },
+          {
+            "part": "spinner-arc",
+            "kind": "ellipse"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "switch",
+      "name": "Switch",
+      "hash": "sha256:4acc2c771d037d83c5318bf31e9c0d46158cadb07ec26a371a7c76896b4c1aa6",
+      "rootPart": "switch",
+      "parts": ["switch", "switch-thumb"],
+      "axes": [
+        {
+          "prop": "checked",
+          "values": ["unchecked", "checked"],
+          "default": "unchecked"
+        },
+        {
+          "prop": "validity",
+          "values": ["valid", "invalid"],
+          "default": "valid"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [],
+      "anatomy": {
+        "part": "switch",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "switch-thumb",
+            "kind": "ellipse"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "tabs",
+      "name": "Tabs",
+      "hash": "sha256:9341f85134d3dd6ebaf7d4a125eaf10f825388393b76c2c464319177d71714ac",
+      "rootPart": "tabs-root",
+      "parts": [
+        "tabs-root",
+        "tabs-list",
+        "tabs-tab",
+        "tabs-tab-label",
+        "tabs-indicator",
+        "tabs-tab::after",
+        "tabs-panel",
+        "tabs-panel-text"
+      ],
+      "axes": [
+        {
+          "prop": "size",
+          "values": ["xs", "sm", "md", "lg"],
+          "default": "md"
+        },
+        {
+          "prop": "variant",
+          "values": ["line", "segment"],
+          "default": "line"
+        },
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        }
+      ],
+      "slots": [
+        {
+          "name": "tab-label",
+          "part": "tabs-tab-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "content",
+          "part": "tabs-panel",
+          "accepts": "children"
+        },
+        {
+          "name": "panel-content",
+          "part": "tabs-panel-text",
+          "required": true,
+          "accepts": "text"
+        }
+      ],
+      "buildingBlocks": [
+        {
+          "part": "tabs-tab",
+          "name": ".Building Blocks/Tabs/Tab",
+          "axes": ["variant", "orientation", "size", "active", "state"],
+          "split": {
+            "axis": ["variant", "orientation", "size"]
+          }
+        }
+      ],
+      "anatomy": {
+        "part": "tabs-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "tabs-list",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "tabs-tab",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "tabs-tab-label",
+                    "kind": "text",
+                    "slots": ["tab-label"]
+                  },
+                  {
+                    "part": "tabs-indicator",
+                    "kind": "rectangle"
+                  },
+                  {
+                    "part": "tabs-tab::after",
+                    "kind": "rectangle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "tabs-panel",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["content"],
+            "children": [
+              {
+                "part": "tabs-panel-text",
+                "kind": "text",
+                "slots": ["panel-content"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "toast",
+      "name": "Toast",
+      "hash": "sha256:af339e1132e8a3058fbce782fc5bc0b1126b9c19d90ae53e89b4c8535f894df0",
+      "rootPart": "toast-root",
+      "parts": ["toast-root", "toast-content", "toast-title", "toast-description"],
+      "axes": [
+        {
+          "prop": "context",
+          "values": ["viewport", "component"],
+          "default": "viewport"
+        }
+      ],
+      "slots": [
+        {
+          "name": "title",
+          "part": "toast-title",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "description",
+          "part": "toast-description",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "content",
+          "part": "toast-content",
+          "accepts": "children"
+        }
+      ],
+      "anatomy": {
+        "part": "toast-root",
+        "kind": "frame",
+        "layout": "vertical",
+        "children": [
+          {
+            "part": "toast-content",
+            "kind": "frame",
+            "layout": "vertical",
+            "slots": ["content"],
+            "children": [
+              {
+                "part": "toast-title",
+                "kind": "text",
+                "slots": ["title"]
+              },
+              {
+                "part": "toast-description",
+                "kind": "text",
+                "slots": ["description"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "toggle",
+      "name": "Toggle",
+      "hash": "sha256:a7ee03408ed71a45a6ef38c7fac5b95de0b8ff5f9967107258780e0a9949b23d",
+      "rootPart": "toggle",
+      "parts": ["toggle", "toggle-icon", "toggle-label", "toggle-focus-ring"],
+      "axes": [
+        {
+          "prop": "variant",
+          "values": ["primary", "ghost"],
+          "default": "primary"
+        },
+        {
+          "prop": "size",
+          "values": ["xs", "sm", "md", "lg", "icon-xs", "icon-sm", "icon", "icon-lg"],
+          "default": "md"
+        },
+        {
+          "prop": "pressed",
+          "values": ["off", "on"],
+          "default": "off"
+        },
+        {
+          "prop": "content",
+          "values": ["label", "icon-label", "icon-only"],
+          "default": "label"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "active", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "part": "toggle-label",
+          "required": true,
+          "codeProp": "children",
+          "accepts": "text"
+        },
+        {
+          "name": "icon",
+          "part": "toggle-icon",
+          "codeProp": "children",
+          "accepts": "icon"
+        }
+      ],
+      "properties": [
+        {
+          "name": "focus-visible",
+          "type": "boolean",
+          "part": "toggle-focus-ring"
+        }
+      ],
+      "split": {
+        "axis": ["variant", "size"]
+      },
+      "anatomy": {
+        "part": "toggle",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "toggle-icon",
+            "kind": "icon",
+            "slots": ["icon"]
+          },
+          {
+            "part": "toggle-label",
+            "kind": "text",
+            "slots": ["label"]
+          },
+          {
+            "part": "toggle-focus-ring",
+            "kind": "frame",
+            "layout": "overlay"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "toggle-group",
+      "name": "ToggleGroup",
+      "hash": "sha256:ce8a756ef4a5c50e4fcc8ecba8a518be1e7601fbc718a29183027363b82cbbcb",
+      "rootPart": "toggle-group",
+      "parts": ["toggle-group", "toggle-group-item"],
+      "axes": [
+        {
+          "prop": "variant",
+          "values": ["primary", "ghost"],
+          "default": "primary"
+        },
+        {
+          "prop": "size",
+          "values": ["xs", "sm", "md", "lg"],
+          "default": "md",
+          "foldedValues": {
+            "icon-xs": {
+              "size": "xs"
+            },
+            "icon-sm": {
+              "size": "sm"
+            },
+            "icon": {
+              "size": "md"
+            },
+            "icon-lg": {
+              "size": "lg"
+            }
+          }
+        },
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        },
+        {
+          "prop": "spacing",
+          "values": ["joined", "gapped"],
+          "default": "joined"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "item",
+          "part": "toggle-group-item",
+          "required": true,
+          "accepts": "component",
+          "composedChild": {
+            "component": "toggle",
+            "variantKeyFromAxes": {
+              "variant": "variant",
+              "size": "size"
+            }
+          }
+        }
+      ],
+      "split": {
+        "axis": ["variant", "spacing"]
+      },
+      "anatomy": {
+        "part": "toggle-group",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "toggle-group-item",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["item"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "toolbar",
+      "name": "Toolbar",
+      "hash": "sha256:44893c7983cb7e3ee8b28de8d4c5b2ca456e23af87bd406aef97592f9ca6f687",
+      "rootPart": "toolbar-root",
+      "parts": [
+        "toolbar-root",
+        "toolbar-group",
+        "toolbar-button",
+        "toolbar-button-label",
+        "toolbar-link",
+        "toolbar-link-label",
+        "toolbar-input",
+        "toolbar-separator"
+      ],
+      "axes": [
+        {
+          "prop": "orientation",
+          "values": ["horizontal", "vertical"],
+          "default": "horizontal"
+        },
+        {
+          "prop": "pressed",
+          "values": ["off", "on"],
+          "default": "off"
+        },
+        {
+          "prop": "state",
+          "values": ["default", "hover", "active", "focus-visible", "disabled"],
+          "default": "default"
+        }
+      ],
+      "slots": [
+        {
+          "name": "button-label",
+          "part": "toolbar-button-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "link-label",
+          "part": "toolbar-link-label",
+          "required": true,
+          "accepts": "text"
+        },
+        {
+          "name": "placeholder",
+          "part": "toolbar-input",
+          "required": true,
+          "accepts": "content"
+        }
+      ],
+      "anatomy": {
+        "part": "toolbar-root",
+        "kind": "frame",
+        "layout": "horizontal",
+        "children": [
+          {
+            "part": "toolbar-group",
+            "kind": "frame",
+            "layout": "horizontal",
+            "children": [
+              {
+                "part": "toolbar-button",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "toolbar-button-label",
+                    "kind": "text",
+                    "slots": ["button-label"]
+                  }
+                ]
+              },
+              {
+                "part": "toolbar-link",
+                "kind": "frame",
+                "layout": "horizontal",
+                "children": [
+                  {
+                    "part": "toolbar-link-label",
+                    "kind": "text",
+                    "slots": ["link-label"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "part": "toolbar-separator",
+            "kind": "rectangle"
+          },
+          {
+            "part": "toolbar-input",
+            "kind": "frame",
+            "layout": "horizontal",
+            "slots": ["placeholder"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "tooltip",
+      "name": "Tooltip",
+      "hash": "sha256:e9370ed2a0c230e429eb989513814e195e1808b984c043340e56ecaadf4eab85",
+      "rootPart": "tooltip-popup",
+      "parts": ["tooltip-popup"],
+      "axes": [],
+      "slots": [
+        {
+          "name": "content",
+          "part": "tooltip-popup",
+          "required": true,
+          "accepts": "content"
+        }
+      ],
+      "anatomy": {
+        "part": "tooltip-popup",
+        "kind": "frame",
+        "slots": ["content"]
+      }
+    }
+  ],
+  "composition": [
+    {
+      "parent": "alert",
+      "slot": "action-primary",
+      "child": "button"
+    },
+    {
+      "parent": "alert",
+      "slot": "action-secondary",
+      "child": "button"
+    },
+    {
+      "parent": "alert-dialog",
+      "slot": "action-cancel",
+      "child": "button"
+    },
+    {
+      "parent": "alert-dialog",
+      "slot": "action-confirm",
+      "child": "button"
+    },
+    {
+      "parent": "card",
+      "slot": "footer-primary",
+      "child": "button"
+    },
+    {
+      "parent": "card",
+      "slot": "footer-secondary",
+      "child": "button"
+    },
+    {
+      "parent": "checkbox-group",
+      "slot": "item",
+      "child": "checkbox"
+    },
+    {
+      "parent": "checkbox-group",
+      "slot": "label",
+      "child": "field-label"
+    },
+    {
+      "parent": "collapsible",
+      "slot": "trigger",
+      "child": "button"
+    },
+    {
+      "parent": "dialog",
+      "slot": "action-cancel",
+      "child": "button"
+    },
+    {
+      "parent": "dialog",
+      "slot": "action-confirm",
+      "child": "button"
+    },
+    {
+      "parent": "drawer",
+      "slot": "action-cancel",
+      "child": "button"
+    },
+    {
+      "parent": "drawer",
+      "slot": "action-confirm",
+      "child": "button"
+    },
+    {
+      "parent": "drawer",
+      "slot": "checklist-description",
+      "child": "field-description"
+    },
+    {
+      "parent": "drawer",
+      "slot": "checklist-item",
+      "child": "checkbox"
+    },
+    {
+      "parent": "drawer",
+      "slot": "checklist-title",
+      "child": "field-label"
+    },
+    {
+      "parent": "field",
+      "slot": "control",
+      "child": "input"
+    },
+    {
+      "parent": "fieldset",
+      "slot": "item",
+      "child": "field"
+    },
+    {
+      "parent": "form",
+      "slot": "field",
+      "child": "field"
+    },
+    {
+      "parent": "form",
+      "slot": "submit",
+      "child": "button"
+    },
+    {
+      "parent": "menu",
+      "slot": "trigger",
+      "child": "button"
+    },
+    {
+      "parent": "radio-group",
+      "slot": "item",
+      "child": "radio"
+    },
+    {
+      "parent": "radio-group",
+      "slot": "label",
+      "child": "field-label"
+    },
+    {
+      "parent": "toggle-group",
+      "slot": "item",
+      "child": "toggle"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+@layer components {
+  [data-ui="meter"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-150);
+    inline-size: 100%;
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="meter-label"] {
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="meter-value"] {
+    margin-inline-start: auto;
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* Stack label + value on the same row when both present */
+  [data-ui="meter"]:has([data-ui="meter-label"]):has([data-ui="meter-value"]) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: var(--spacing-100);
+    column-gap: var(--spacing-200);
+  }
+
+  [data-ui="meter-track"] {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    background-color: var(--color-surface-recessed);
+    border-radius: var(--radius-full);
+  }
+
+  [data-ui="meter-track"][data-size="sm"] {
+    block-size: 4px;
+  }
+  [data-ui="meter-track"][data-size="md"] {
+    block-size: 8px;
+  }
+  [data-ui="meter-track"][data-size="lg"] {
+    block-size: 12px;
+  }
+
+  /* Full-width track when label + value share the grid row. Declared after the
+     plain track + size rules (higher specificity last). */
+  [data-ui="meter"]:has([data-ui="meter-label"]):has([data-ui="meter-value"])
+    [data-ui="meter-track"] {
+    grid-column: 1 / -1;
+  }
+
+  [data-ui="meter-indicator"] {
+    display: block;
+    block-size: 100%;
+    background-color: var(--color-primary-brand);
+    border-radius: inherit;
+    transition: inline-size var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  /* Tone hooks driven by the `tone` prop on Root */
+  [data-ui="meter"][data-tone="success"] [data-ui="meter-indicator"] {
+    background-color: var(--color-intent-success);
+  }
+  [data-ui="meter"][data-tone="warning"] [data-ui="meter-indicator"] {
+    background-color: var(--color-intent-warning);
+  }
+  [data-ui="meter"][data-tone="critical"] [data-ui="meter-indicator"] {
+    background-color: var(--color-intent-error);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="meter-indicator"] {
+      transition: none;
+    }
+  }
+}

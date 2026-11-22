@@ -1,0 +1,61 @@
+---
+title: Tabs
+description: Switch between panels of related content.
+primitive: https://base-ui.com/react/components/tabs
+---
+
+## Interactive example
+
+<DocsStory name="tabs" />
+
+## Installation
+
+`Tabs` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Tabs } from "@workspace/ui/components/tabs";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Tabs } from "@workspace/ui/components/tabs";
+
+<Tabs.Root defaultValue="overview">
+  <Tabs.List>
+    <Tabs.Tab value="overview">Overview</Tabs.Tab>
+    <Tabs.Tab value="activity">Activity</Tabs.Tab>
+    <Tabs.Tab value="settings">Settings</Tabs.Tab>
+    <Tabs.Indicator />
+  </Tabs.List>
+  <Tabs.Panel value="overview">…</Tabs.Panel>
+  <Tabs.Panel value="activity">…</Tabs.Panel>
+  <Tabs.Panel value="settings">…</Tabs.Panel>
+</Tabs.Root>
+```
+
+## API Reference
+
+Props `Tabs.Root` adds. [Base UI Tabs](https://base-ui.com/react/components/tabs#api-reference) props are also supported.
+
+<AutoTypeTable path="tabs/tabs.tsx" name="DocsRootProps" type="RootProps" />
+
+## Figma contract
+
+<ComponentContract slug="tabs" />

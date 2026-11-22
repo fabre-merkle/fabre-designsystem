@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "blur": {
+      "100": {
+        "$value": "4px",
+        "$type": "dimension",
+        "$description": "Blur scale step for subtle softening. No semantic token maps it directly."
+      },
+      "200": {
+        "$value": "8px",
+        "$type": "dimension",
+        "$description": "Blur scale step for light softening. No semantic token maps it directly."
+      },
+      "300": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "The background blur for low-emphasis overlays."
+      },
+      "400": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "The background blur for mid-emphasis overlays."
+      },
+      "500": {
+        "$value": "40px",
+        "$type": "dimension",
+        "$description": "The background blur for high-emphasis overlays."
+      },
+      "000": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$description": "Blur scale step for no blur. No semantic token maps it directly."
+      }
+    }
+  }
+}

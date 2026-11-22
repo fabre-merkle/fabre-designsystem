@@ -1,0 +1,40 @@
+---
+title: Contribute Docs
+description: Write and maintain design-system documentation.
+---
+
+## Invoke this skill
+
+```text title="Skill command"
+/skill-contribute-docs
+```
+
+Select this command in your agent's skill menu, then describe your task and acceptance criteria. If your client does not expose slash commands, ask it to invoke the named skill instead:
+
+```text title="Ask your agent"
+Invoke the skill-contribute-docs skill for this task.
+```
+
+<Steps>
+<Step>
+### Give the agent a task
+Describe the outcome, constraints and acceptance criteria after invoking the skill. Let the skill guide the required workflow.
+</Step>
+<Step>
+### Review the proposed change
+Check the implementation and the skill's required evidence. A skill guides the work; it does not grant publishing permission or replace human review.
+</Step>
+</Steps>
+
+## When to use it
+
+This skill should be used when authoring or documenting a UI component, or making any change to the project docs site — documenting a component, writing guidelines/conceptual pages, or curating resource links. It defines universal requirements for every doc contribution plus per-kind specifics (the component section is filled out). Invoked by skill-contribute-component after any component create/change, and usable standalone. Component docs stay in sync with the component and its Figma generation contract. Brand-agnostic, so it travels into scaffolded projects unchanged.
+
+**Canonical source:** `.agents/skills/skill-contribute-docs/SKILL.md`. Claude Code uses `.claude/skills/skill-contribute-docs/`; other clients use their installed skill paths.
+
+## Full instructions
+
+<ProjectDocument kind="skill" slug="skill-contribute-docs" />
+
+<RelatedPage href="/docs/working-with-ai">How skills fit the project workflow.</RelatedPage>
+<RelatedPage href="/docs/skills">Browse the other installed skills.</RelatedPage>

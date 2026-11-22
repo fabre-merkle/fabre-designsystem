@@ -1,0 +1,56 @@
+{
+  "radius": {
+    "default": {
+      "$value": "{brand.radius.default}",
+      "$type": "dimension",
+      "$description": "Default corner radius for controls such as buttons and inputs, and common elements like product or content containers."
+    },
+    "full": {
+      "$value": "{brand.radius.full}",
+      "$type": "dimension",
+      "$description": "Avatars, notifications"
+    },
+    "insetMinimum": {
+      "$value": "{brand.radius.insetMinimum}",
+      "$type": "dimension",
+      "$description": "The minimum radius of corners inset inside a padded surface; set to the none radius for strictly concentric corners."
+    },
+    "largeElements": {
+      "$value": "{brand.radius.largeElements}",
+      "$type": "dimension",
+      "$description": "Modals, hero content containers"
+    },
+    "none": {
+      "$value": "{brand.radius.none}",
+      "$type": "dimension",
+      "$description": "Tables, technical UI"
+    },
+    "smallElements": {
+      "$value": "{brand.radius.smallElements}",
+      "$type": "dimension",
+      "$description": "Chips, badges"
+    }
+  },
+  "stroke-width": {
+    "default": {
+      "$value": "{brand.stroke-width.100}",
+      "$type": "dimension",
+      "$description": "Default hairline for edges, dividers and outlines. Use stroke-width.none for an intentionally absent stroke."
+    },
+    "focused": {
+      "$value": "{brand.stroke-width.200}",
+      "$type": "dimension",
+      "$description": "Width of the keyboard focus ring, drawn in color.control.focusRing."
+    },
+    "none": {
+      "$value": "{brand.stroke-width.000}",
+      "$type": "dimension",
+      "$description": "No stroke. For transparent placeholder borders and zero outline offsets that must not change a component's size."
+    },
+    "selected": {
+      "$value": "{brand.stroke-width.100}",
+      "$type": "dimension",
+      "$description": "Stroke width marking a selected state, such as a selected content container or tab."
+    }
+  }
+}

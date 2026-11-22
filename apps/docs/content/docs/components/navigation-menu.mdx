@@ -1,0 +1,77 @@
+---
+title: Navigation Menu
+description: Navigate grouped links through anchored panels.
+primitive: https://base-ui.com/react/components/navigation-menu
+---
+
+## Interactive example
+
+<DocsStory name="navigation-menu" />
+
+## Installation
+
+`NavigationMenu` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { NavigationMenu } from "@workspace/ui/components/navigation-menu";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { NavigationMenu } from "@workspace/ui/components/navigation-menu";
+
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+        Products
+        <NavigationMenu.Icon>▾</NavigationMenu.Icon>
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <NavigationMenu.Link href="/analytics">Analytics</NavigationMenu.Link>
+        <NavigationMenu.Link href="/engagement">Engagement</NavigationMenu.Link>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+  <NavigationMenu.Portal>
+    <NavigationMenu.Positioner>
+      <NavigationMenu.Popup>
+        <NavigationMenu.Viewport />
+      </NavigationMenu.Popup>
+    </NavigationMenu.Positioner>
+  </NavigationMenu.Portal>
+</NavigationMenu.Root>
+```
+
+## API Reference
+
+NavigationMenu adds no props. All parts forward to the matching [Base UI NavigationMenu](https://base-ui.com/react/components/navigation-menu#api-reference) primitives — `Root`, `List`, `Item`, `Trigger`, `Content`, `Portal`, `Backdrop`, `Positioner`, `Viewport`, `Popup`, `Arrow`, `Link`, `Icon` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+## When to use
+
+Use `NavigationMenu` for a site or app's primary navigation bar when items reveal grouped child links or rich content. For a single-trigger anchored menu use `Menu`; for in-app command surfaces (formatting, view toggles) use `Menubar` or `Toolbar`; for right-click affordances use `ContextMenu`.
+
+## Composition
+
+`Trigger` and `Link` accept `render={<YourComponent />}` to delegate to your own anchor or `Link` component (Next.js, Remix, TanStack Router, etc.). The shared `Viewport` inside `Popup` animates between sibling `Content` panels, so place exactly one `Portal`/`Positioner`/`Popup`/`Viewport` group alongside the `List`.
+
+## Figma contract
+
+<ComponentContract slug="navigation-menu" />

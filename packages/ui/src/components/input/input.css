@@ -1,0 +1,104 @@
+@layer components {
+  /* Input is a Control: control text, control height and control padding, so an
+     Input sits flush next to a Button of the same size. Each size declares its
+     control.<size> tier in full (no component-local aliases) so Figma binds one
+     text style per size (see resolver.ts deriveTextStyle). */
+  [data-ui="input"] {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    block-size: var(--control-height-md);
+    padding-inline: var(--control-padding-x-md);
+    padding-block: 0;
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-default);
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+    letter-spacing: var(--typography-control-md-letter-spacing);
+    line-height: var(--typography-control-md-line-height);
+    outline: none;
+    transition:
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="input"][data-size="sm"] {
+    block-size: var(--control-height-sm);
+    padding-inline: var(--control-padding-x-sm);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+  }
+  [data-ui="input"][data-size="lg"] {
+    block-size: var(--control-height-lg);
+    padding-inline: var(--control-padding-x-lg);
+    font-family: var(--typography-control-lg-font-family);
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+    letter-spacing: var(--typography-control-lg-letter-spacing);
+    line-height: var(--typography-control-lg-line-height);
+  }
+
+  /* iOS zooms into any focused field set under 16px. */
+  @media (pointer: coarse) {
+    [data-ui="input"] {
+      font-size: max(16px, var(--typography-control-md-font-size));
+    }
+    [data-ui="input"][data-size="sm"] {
+      font-size: max(16px, var(--typography-control-sm-font-size));
+    }
+    [data-ui="input"][data-size="lg"] {
+      font-size: max(16px, var(--typography-control-lg-font-size));
+    }
+  }
+
+  [data-ui="input"]::placeholder {
+    color: var(--color-on-surface-subtle);
+  }
+
+  @media (hover: hover) {
+    [data-ui="input"]:hover:not([data-disabled]):not([data-invalid]):not([aria-invalid="true"]):not(
+        :focus-visible
+      ) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  /* A focused input retains the recessed surface; the offset ring is a separate edge. */
+  [data-ui="input"]:focus-visible {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+
+  /* Invalid — Base UI's data-invalid inside a Field, or aria-invalid on a
+     standalone input. */
+  [data-ui="input"][data-invalid],
+  [data-ui="input"][aria-invalid="true"] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="input"][data-invalid]:focus-visible,
+  [data-ui="input"][aria-invalid="true"]:focus-visible {
+    border-color: var(--color-intent-error-border);
+    outline-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="input"][data-disabled] {
+    opacity: var(--opacity-soft);
+    cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="input"] {
+      transition: none;
+    }
+  }
+}

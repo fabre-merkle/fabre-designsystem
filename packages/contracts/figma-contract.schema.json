@@ -1,0 +1,1276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1,
+      "description": "Authored contract schema version. Embedded verbatim in the compiled artifact."
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The component directory name, e.g. `toggle-group`."
+    },
+    "componentName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name, e.g. `ToggleGroup`."
+    },
+    "rootPart": {
+      "type": "string",
+      "description": "The `data-ui` part at the root of the anatomy."
+    },
+    "source": {
+      "description": "Build this contract from another component's source: `rootPart` is one of that component's parts, which becomes its own Figma component. The registry item, description and category come from the source component.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The component whose folder holds the `.tsx` and `.css`, e.g. `field`."
+        }
+      },
+      "required": ["slug"],
+      "additionalProperties": false
+    },
+    "parts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Every `data-ui` part the contract declares."
+    },
+    "anatomy": {
+      "description": "Explicit parent/child node tree rooted at `rootPart`.",
+      "$ref": "#/$defs/FigmaContractAnatomyNode"
+    },
+    "slots": {
+      "description": "Consumer-fillable content.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Stable name documentation examples use to provide content."
+          },
+          "part": {
+            "type": "string",
+            "description": "The declared part that renders this content."
+          },
+          "required": {
+            "description": "Every documentation example must supply this slot.",
+            "type": "boolean"
+          },
+          "codeProp": {
+            "description": "The component prop that receives this slot's content in code, when its name differs from the slot's (a `label` slot is the component's `children`). Omit it when the prop has the slot's own name.",
+            "type": "string"
+          },
+          "composedChild": {
+            "description": "This slot's default content is an instance of another contracted component. Text an example or item supplies for this slot is set on that instance's text, which needs the child to have exactly one text slot; the instance stays linked to the child.",
+            "type": "object",
+            "properties": {
+              "component": {
+                "type": "string",
+                "description": "The other component's contract `slug`."
+              },
+              "variantKey": {
+                "description": "Which of the child's variants is the default instance. Omit to use the child's own axis defaults. May name only the axes that differ; each missing axis takes the child's default, unless `variantKeyFromAxes` maps it.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "variantKeyFromAxes": {
+                "description": "Axes of the child that follow the parent's variant, as `{ childAxis: parentAxis }`: in each variant of the parent, the instance takes the child's value for the axis that the parent's variant has. Every value of the parent axis must be a value of the child axis. A mapped axis takes the parent's value over both `variantKey` and the child's default. In a slot inside a Building Block, the parent axis must be one of the block's axes.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": ["component"],
+            "additionalProperties": false
+          },
+          "defaultContent": {
+            "description": "The region accepts arbitrary children and its default content is the anatomy subtree beneath the frame part that renders this slot. That frame is the slot (a native slot where available, otherwise a plain frame holding the same children). Not combinable with `composedChild`.",
+            "type": "string",
+            "enum": ["anatomy"]
+          },
+          "stretch": {
+            "description": "The slot's frame fills its parent's cross axis, as the CSS content region does.",
+            "type": "boolean"
+          }
+        },
+        "required": ["name", "part"],
+        "additionalProperties": false,
+        "description": "Consumer-fillable content rendered by a part."
+      }
+    },
+    "properties": {
+      "description": "Component properties (text, boolean, instance swap) for what is not a visual difference: editable text, a part that shows or hides, a swappable icon. A visual difference stays an axis; arbitrary children stay a slot.",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "text"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The Figma property name, e.g. `Label`. It shares one namespace with axis `prop`s and slot names, so none may repeat."
+              },
+              "part": {
+                "type": "string",
+                "description": "The declared text part whose characters it sets."
+              },
+              "default": {
+                "type": "string",
+                "description": "The text every variant shows until an instance overrides it."
+              },
+              "codeProp": {
+                "description": "The component prop that receives the text in code, e.g. `children`. Omit it when the text has no code prop.",
+                "type": "string"
+              }
+            },
+            "required": ["type", "name", "part", "default"],
+            "additionalProperties": false,
+            "description": "A text property: the characters of a text part."
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "boolean"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The Figma property name, e.g. `Label`. It shares one namespace with axis `prop`s and slot names, so none may repeat."
+              },
+              "part": {
+                "type": "string",
+                "description": "The declared part it shows or hides."
+              },
+              "default": {
+                "type": "boolean",
+                "description": "Whether the part is shown by default."
+              },
+              "unless": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                },
+                "description": "Variant cells (axis to value) where the part is always shown and the property does not apply; an array value matches any of its values."
+              },
+              "codeProp": {
+                "description": "The boolean component prop that carries the value in code. Not combinable with `contentPresence`.",
+                "type": "string"
+              },
+              "contentPresence": {
+                "description": "In code the part's content is present or absent, so Code Connect renders the part's text or instance-swap content only while the property is on. The part needs a text or instance-swap property. Not combinable with `codeProp`.",
+                "type": "boolean",
+                "const": true
+              }
+            },
+            "required": ["type", "name", "part", "default"],
+            "additionalProperties": false,
+            "description": "A boolean property: shows or hides a part."
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "instanceSwap"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The Figma property name, e.g. `Label`. It shares one namespace with axis `prop`s and slot names, so none may repeat."
+              },
+              "part": {
+                "type": "string",
+                "description": "The declared icon part. Its anatomy node's `iconName` is the default icon component."
+              },
+              "codeProp": {
+                "description": "The component prop that receives the icon in code, e.g. `children` or an icon prop. Omit it when the icon has no code prop.",
+                "type": "string"
+              }
+            },
+            "required": ["type", "name", "part"],
+            "additionalProperties": false,
+            "description": "An instance-swap property: a swappable icon."
+          }
+        ]
+      }
+    },
+    "runtimeValues": {
+      "description": "Runtime-measured values, declared per documentation example.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Stable name used by `examples[].runtimeValues` and `valueOf.runtimeValue`."
+          },
+          "part": {
+            "type": "string",
+            "description": "The declared part this value places or sizes."
+          },
+          "measures": {
+            "type": "string",
+            "enum": ["length", "travel"],
+            "description": "`length`: percent of the parent's length. `travel`: percent of the parent's free space along its main axis."
+          },
+          "replaces": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Runtime CSS custom properties this declaration stands in for (may be empty)."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why the value is measured at runtime and what the representative values show."
+          }
+        },
+        "required": ["name", "part", "measures", "replaces", "reason"],
+        "additionalProperties": false,
+        "description": "A value the browser measures at runtime, declared with a representative percent per documentation example."
+      }
+    },
+    "axes": {
+      "description": "Variant axes, in Figma property order. Omitted axes the component source declares are filled in by the compiler; declare design-only axes and curation only.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prop": {
+            "type": "string",
+            "description": "Prop name as it appears in the component API, e.g. `variant`, `size`."
+          },
+          "values": {
+            "description": "The axis values, in the order Figma lists them. Required for a design-only axis. For an axis the component source declares, omit it to use the source values, or curate them (a subset or reordering).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "default": {
+            "description": "The value used where an example or child omits this axis. Required for a design-only axis; for a source axis it defaults to the source default.",
+            "type": "string"
+          },
+          "attribute": {
+            "description": "The DOM/CSS attribute that expresses this axis, conventionally `data-<prop>`. Required for a design-only axis; a source axis takes its source attribute.",
+            "type": "string"
+          },
+          "valueSelectors": {
+            "description": "Per-value CSS selector for values not expressed as `[attribute=\"value\"]`. `null` adds no attribute constraint (the base case).",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": ["string", "null"]
+            }
+          },
+          "partValueSelectors": {
+            "description": "Per-part `valueSelectors`, keyed by `data-ui` part name, for a part whose own attribute value differs from the axis value it renders under.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "codeProps": {
+            "description": "Code props this axis stands for, keyed by axis value, for a design-only axis whose values group code props. For example `content: { \"icon-only\": { prop: \"iconOnly\", value: true } }`. A value with no entry sets nothing. Each key must be one of the axis values.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "prop": {
+                  "type": "string",
+                  "description": "The component prop to set."
+                },
+                "value": {
+                  "description": "The value to give it: a string the prop accepts, or a boolean.",
+                  "type": ["string", "boolean"]
+                }
+              },
+              "required": ["prop", "value"],
+              "additionalProperties": false
+            }
+          },
+          "foldedValues": {
+            "description": "Source values this axis omits from `values`, each mapped to the other axes (prop to value) it folds into, e.g. `size` value `icon-sm` folds into `content: icon-only` with `size: sm`. Recorded for consumers; the variant matrix is built from `values` only.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "attributeOmittedWhenNull": {
+            "description": "The runtime omits `attribute` entirely for the value whose `valueSelectors` entry is `null`, so valueless `[attribute]` selectors can be evaluated per cell.",
+            "type": "boolean"
+          }
+        },
+        "required": ["prop"],
+        "additionalProperties": false,
+        "description": "One variant axis: a Figma variant property and the selectors that realise each value in CSS. An axis the component source declares (a local `data-*` union type) may name only its `prop` and the fields it curates; an axis the source does not declare is design-only and complete. The standard `state` axis is design-only: values from `default`, `hover`, `active`, `focus-visible`, `disabled` in that order, each mapped to its CSS selector in `valueSelectors` (`default` to `null`), only `disabled` in `codeProps`, and declared last."
+      }
+    },
+    "split": {
+      "type": "object",
+      "properties": {
+        "axis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "minItems": 2,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "The axis whose values each become one component set, or a list of two or more axes whose value combinations each become one (the cartesian product, first axis outermost). A split axis is no longer a variant property inside the sets: each set is named for its values, and Code Connect maps each to the same component with those values as fixed props."
+        }
+      },
+      "required": ["axis"],
+      "additionalProperties": false,
+      "description": "Splits the output into one component set per value of a primary axis, or per combination of values of several axes, all generated from this one contract, so a set stays within the 30 variants Figma allows."
+    },
+    "shapes": {
+      "description": "Kinds of the component generated as sets of their own, such as an icon-only button. Together they say which combinations of axis values exist.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The shape's name, written into each set's name (`Primary Filled Icon Button`). At most one shape has none: the component's ordinary sets.",
+            "type": "string"
+          },
+          "values": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "The values the shape holds, per axis. An axis not named holds every value; one listed with a single value is fixed in the shape's sets."
+          },
+          "split": {
+            "type": "object",
+            "properties": {
+              "axis": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "minItems": 2,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "The axis whose values each become one component set, or a list of two or more axes whose value combinations each become one (the cartesian product, first axis outermost). A split axis is no longer a variant property inside the sets: each set is named for its values, and Code Connect maps each to the same component with those values as fixed props."
+              }
+            },
+            "required": ["axis"],
+            "additionalProperties": false,
+            "description": "Splits the output into one component set per value of a primary axis, or per combination of values of several axes, all generated from this one contract, so a set stays within the 30 variants Figma allows."
+          }
+        },
+        "required": ["values"],
+        "additionalProperties": false,
+        "description": "A kind of the component that is generated as sets of its own, such as an icon-only button. Together the shapes say which combinations of axis values exist."
+      }
+    },
+    "focusRing": {
+      "type": "object",
+      "properties": {
+        "property": {
+          "description": "The boolean property that shows the ring. Defaults to `focus-visible`.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Generates a ring layer from the root's `:focus-visible` outline: an overlay part outside the root, stroked with the outline's width and colour tokens, shown by a boolean property that is off by default."
+    },
+    "capReason": {
+      "description": "Why a set may hold more than the 30 variants Figma's library guidance allows. Without it, a set over the cap is reported as a warning. The reason shows in the compiler output and the docs.",
+      "type": "string"
+    },
+    "buildingBlocks": {
+      "description": "Sub-elements with their own states (a select item, a toggle-group segment), each generated as a hidden `.Building Blocks/<Component>/<Part>` set and nested as an instance in this component.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "part": {
+            "type": "string",
+            "description": "The declared part that becomes the block. Not the root part, and named `<component>-<name>`. Its slots and properties belong to the block."
+          },
+          "name": {
+            "description": "The label in the set's name (`.Building Blocks/<Component>/<name>`). Defaults to the part's name without the component's prefix.",
+            "type": "string"
+          },
+          "axes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "prop": {
+                  "type": "string",
+                  "description": "Prop name as it appears in the component API, e.g. `variant`, `size`."
+                },
+                "values": {
+                  "description": "The axis values, in the order Figma lists them. Required for a design-only axis. For an axis the component source declares, omit it to use the source values, or curate them (a subset or reordering).",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "default": {
+                  "description": "The value used where an example or child omits this axis. Required for a design-only axis; for a source axis it defaults to the source default.",
+                  "type": "string"
+                },
+                "attribute": {
+                  "description": "The DOM/CSS attribute that expresses this axis, conventionally `data-<prop>`. Required for a design-only axis; a source axis takes its source attribute.",
+                  "type": "string"
+                },
+                "valueSelectors": {
+                  "description": "Per-value CSS selector for values not expressed as `[attribute=\"value\"]`. `null` adds no attribute constraint (the base case).",
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": ["string", "null"]
+                  }
+                },
+                "partValueSelectors": {
+                  "description": "Per-part `valueSelectors`, keyed by `data-ui` part name, for a part whose own attribute value differs from the axis value it renders under.",
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": ["string", "null"]
+                    }
+                  }
+                },
+                "codeProps": {
+                  "description": "Code props this axis stands for, keyed by axis value, for a design-only axis whose values group code props. For example `content: { \"icon-only\": { prop: \"iconOnly\", value: true } }`. A value with no entry sets nothing. Each key must be one of the axis values.",
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "prop": {
+                        "type": "string",
+                        "description": "The component prop to set."
+                      },
+                      "value": {
+                        "description": "The value to give it: a string the prop accepts, or a boolean.",
+                        "type": ["string", "boolean"]
+                      }
+                    },
+                    "required": ["prop", "value"],
+                    "additionalProperties": false
+                  }
+                },
+                "foldedValues": {
+                  "description": "Source values this axis omits from `values`, each mapped to the other axes (prop to value) it folds into, e.g. `size` value `icon-sm` folds into `content: icon-only` with `size: sm`. Recorded for consumers; the variant matrix is built from `values` only.",
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "attributeOmittedWhenNull": {
+                  "description": "The runtime omits `attribute` entirely for the value whose `valueSelectors` entry is `null`, so valueless `[attribute]` selectors can be evaluated per cell.",
+                  "type": "boolean"
+                }
+              },
+              "required": ["prop"],
+              "additionalProperties": false,
+              "description": "One variant axis: a Figma variant property and the selectors that realise each value in CSS. An axis the component source declares (a local `data-*` union type) may name only its `prop` and the fields it curates; an axis the source does not declare is design-only and complete. The standard `state` axis is design-only: values from `default`, `hover`, `active`, `focus-visible`, `disabled` in that order, each mapped to its CSS selector in `valueSelectors` (`default` to `null`), only `disabled` in `codeProps`, and declared last."
+            },
+            "description": "The block's own variant axes (its states), each complete: `values`, `default` and `attribute`. An entry that names an axis of the parent by `prop` alone (optionally curating its values or default) is that axis. A parent axis of the same name shows the instance in the matching state; otherwise the instance shows the default."
+          },
+          "focusRing": {
+            "description": "Generates the block's ring layer from its part's `:focus-visible` outline, as `focusRing` does for a contract's root.",
+            "type": "object",
+            "properties": {
+              "property": {
+                "description": "The boolean property that shows the ring. Defaults to `focus-visible`.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "split": {
+            "description": "Splits the block into one hidden set per value, or combination of values, of its own axes (`.Building Blocks/<Component>/<Value> <Label>`), as `split` does for a contract. An instance shows the set that holds its variant.",
+            "type": "object",
+            "properties": {
+              "axis": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "minItems": 2,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "The axis whose values each become one component set, or a list of two or more axes whose value combinations each become one (the cartesian product, first axis outermost). A split axis is no longer a variant property inside the sets: each set is named for its values, and Code Connect maps each to the same component with those values as fixed props."
+              }
+            },
+            "required": ["axis"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["part", "axes"],
+        "additionalProperties": false,
+        "description": "A sub-element with its own states, generated as its own hidden component set and nested as an instance in the parent."
+      }
+    },
+    "documentation": {
+      "type": "object",
+      "properties": {
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Caption shown for this example."
+              },
+              "key": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "The variant cell this example shows, as axis to value. May name only the axes that differ; each missing axis takes the component's default."
+              },
+              "slots": {
+                "description": "Representative content keyed by declared slot name.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "runtimeValues": {
+                "description": "Representative percent (0 to 100) of each declared runtime value.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": ["label", "key"],
+            "additionalProperties": false,
+            "description": "One documented example: a variant cell plus its representative content."
+          },
+          "description": "Documented examples, in page order."
+        },
+        "coverage": {
+          "description": "Require the examples to cover every value of every axis.",
+          "type": "string",
+          "const": "all-axes"
+        }
+      },
+      "required": ["examples"],
+      "additionalProperties": false,
+      "description": "The documentation page's examples."
+    },
+    "reactToFigmaNotes": {
+      "description": "Reviewed differences between the React API and the design-only axes.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "literalGeometry": {
+      "description": "Dimensions CSS states as literals rather than bindable variables.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "part": {
+            "type": "string",
+            "description": "The declared part."
+          },
+          "when": {
+            "description": "Apply only in variant cells matching every axis.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "fontSize": {
+            "type": "number"
+          },
+          "lineHeight": {
+            "type": "number"
+          },
+          "lineHeightUnit": {
+            "type": "string",
+            "enum": ["pixels", "unitless"]
+          }
+        },
+        "required": ["part"],
+        "additionalProperties": false,
+        "description": "A dimension the CSS states as a literal rather than a bindable variable."
+      }
+    },
+    "omittedParts": {
+      "description": "Real, CSS-styled parts the contract deliberately does not declare, each with a reviewed reason.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": ["window-relative", "runtime-position", "unrepresentable-state"],
+                "description": "`window-relative`: fixed to the browser window. `runtime-position`: placed at runtime. `unrepresentable-state`: exists only under a state no axis expresses."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Reviewed justification."
+              },
+              "via": {
+                "description": "For `unrepresentable-state`: the omitted part this one is only reachable through.",
+                "type": "string"
+              }
+            },
+            "required": ["kind", "reason"],
+            "additionalProperties": false
+          }
+        ],
+        "description": "A reviewed reason, as prose or classified by kind."
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "properties": {
+        "placement": {
+          "type": "string",
+          "enum": ["center", "docked", "corner"],
+          "description": "Where the popup sits in the viewport stand-in frame: centred, docked to an edge, or in a corner."
+        },
+        "dock": {
+          "description": "Required with `placement: \"docked\"`.",
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "description": "The axis whose value picks the docking edge."
+            },
+            "edges": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "enum": ["top", "right", "bottom", "left"]
+              },
+              "description": "Axis value to frame edge."
+            }
+          },
+          "required": ["axis", "edges"],
+          "additionalProperties": false
+        },
+        "corner": {
+          "description": "Required with `placement: \"corner\"`.",
+          "type": "string",
+          "enum": ["top-left", "top-right", "bottom-left", "bottom-right"]
+        },
+        "placementPart": {
+          "description": "The part whose own CSS places the popup, when it is not `rootPart`.",
+          "type": "string"
+        },
+        "backdropPart": {
+          "description": "A painting backdrop part, stretched over the frame behind the popup. Declared in `parts`, not in the anatomy.",
+          "type": "string"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Why this component is window-placed and what the frame stands in for."
+        }
+      },
+      "required": ["placement", "reason"],
+      "additionalProperties": false,
+      "description": "This component generates inside a viewport stand-in frame."
+    },
+    "extensions": {
+      "description": "Project-owned data under a `namespace.name` key. Generation ignores it, it never reaches the compiled artifact, and using it does not make the schema deviate from its base.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*\\.[A-Za-z][A-Za-z0-9.-]*$"
+      },
+      "additionalProperties": {}
+    }
+  },
+  "required": ["schemaVersion", "slug", "componentName", "rootPart", "parts", "documentation"],
+  "additionalProperties": false,
+  "title": "Figma generation contract",
+  "description": "An authored Figma generation contract: how one component's parts, axes and documented examples become a Figma component set and documentation page.",
+  "$defs": {
+    "FigmaContractAnatomyNode": {
+      "type": "object",
+      "properties": {
+        "part": {
+          "type": "string",
+          "description": "The declared part (a `data-ui` name) this node renders."
+        },
+        "synthetic": {
+          "description": "A contract-only composition role with no `data-ui` source part.",
+          "type": "boolean"
+        },
+        "docsLayout": {
+          "type": "object",
+          "properties": {
+            "gap": {
+              "description": "A bare `var(--token-name)` reference, bound as the node's item spacing.",
+              "type": "string",
+              "pattern": "^var\\(--[a-zA-Z0-9-]+\\)$"
+            },
+            "justify": {
+              "description": "Main-axis alignment (Figma `primaryAxisAlignItems`).",
+              "type": "string",
+              "enum": ["start", "center", "end", "space-between"]
+            },
+            "align": {
+              "description": "Cross-axis alignment (Figma `counterAxisAlignItems`).",
+              "type": "string",
+              "enum": ["start", "center", "end", "stretch"]
+            },
+            "source": {
+              "type": "string",
+              "description": "`<docs file path>:<line>` where the documentation markup authors this layout."
+            }
+          },
+          "required": ["source"],
+          "additionalProperties": false,
+          "description": "Gap and alignment for a synthetic container, taken from the documentation markup that composes it."
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["frame", "text", "icon", "rectangle", "ellipse", "image"],
+          "description": "The Figma node this part materializes as."
+        },
+        "layout": {
+          "type": "string",
+          "enum": ["horizontal", "vertical", "overlay"],
+          "description": "Auto-layout direction of a frame, or `overlay` for children stacked over one another (not flowed)."
+        },
+        "layoutByAxis": {
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "description": "The declared axis whose value selects the entry."
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "enum": ["horizontal", "vertical", "overlay"],
+                "description": "Auto-layout direction of a frame, or `overlay` for children stacked over one another (not flowed)."
+              },
+              "description": "Axis value to resolved value. Unlisted values fall back to the plain field."
+            }
+          },
+          "required": ["axis", "values"],
+          "additionalProperties": false,
+          "description": "Layout chosen by a visual axis, when the anatomy differs by (for example) orientation."
+        },
+        "overlayCrossAlign": {
+          "description": "Placement within an `overlay` parent on the axis across the parent's long direction.",
+          "type": "string",
+          "enum": ["start", "center", "end", "stretch"]
+        },
+        "overlayCrossAlignByAxis": {
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "description": "The declared axis whose value selects the entry."
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "enum": ["start", "center", "end", "stretch"],
+                "description": "Anchor on one axis of the parent: an edge, the centre, or spanning the parent."
+              },
+              "description": "Axis value to resolved value. Unlisted values fall back to the plain field."
+            }
+          },
+          "required": ["axis", "values"],
+          "additionalProperties": false,
+          "description": "`overlayCrossAlign` chosen by a visual axis."
+        },
+        "removeFromFlow": {
+          "description": "Exempt this child from its auto-layout parent's flow (Figma absolute positioning). Requires `reason`.",
+          "type": "boolean"
+        },
+        "removeFromFlowByAxis": {
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "description": "The declared axis whose value selects the entry."
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "boolean"
+              },
+              "description": "Axis value to resolved value. Unlisted values fall back to the plain field."
+            }
+          },
+          "required": ["axis", "values"],
+          "additionalProperties": false,
+          "description": "`removeFromFlow` chosen by a visual axis. Requires `reason`."
+        },
+        "positionAlongMain": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": ["start", "center", "end", "stretch"],
+                  "description": "Anchor on one axis of the parent: an edge, the centre, or spanning the parent."
+                }
+              },
+              "required": ["kind"],
+              "additionalProperties": false
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "const": "valueOf"
+                    },
+                    "slot": {
+                      "type": "string",
+                      "description": "A declared slot whose example text is the value."
+                    }
+                  },
+                  "required": ["kind", "slot"],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "const": "valueOf"
+                    },
+                    "runtimeValue": {
+                      "type": "string",
+                      "description": "A declared runtime value."
+                    }
+                  },
+                  "required": ["kind", "runtimeValue"],
+                  "additionalProperties": false
+                }
+              ],
+              "description": "A value authored per documentation example, as a percent: read from a slot the part renders, or from a declared runtime value."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "refused"
+                },
+                "jsProperty": {
+                  "type": "string",
+                  "description": "The runtime (JavaScript) property that really positions the part."
+                }
+              },
+              "required": ["kind", "jsProperty"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "Offset along the parent's main axis: a literal anchor, a value-driven anchor, or an explicit, reported refusal."
+        },
+        "positionAlongMainByAxis": {
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "description": "The declared axis whose value selects the entry."
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": ["start", "center", "end", "stretch"],
+                        "description": "Anchor on one axis of the parent: an edge, the centre, or spanning the parent."
+                      }
+                    },
+                    "required": ["kind"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "const": "valueOf"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "description": "A declared slot whose example text is the value."
+                          }
+                        },
+                        "required": ["kind", "slot"],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "const": "valueOf"
+                          },
+                          "runtimeValue": {
+                            "type": "string",
+                            "description": "A declared runtime value."
+                          }
+                        },
+                        "required": ["kind", "runtimeValue"],
+                        "additionalProperties": false
+                      }
+                    ],
+                    "description": "A value authored per documentation example, as a percent: read from a slot the part renders, or from a declared runtime value."
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "const": "refused"
+                      },
+                      "jsProperty": {
+                        "type": "string",
+                        "description": "The runtime (JavaScript) property that really positions the part."
+                      }
+                    },
+                    "required": ["kind", "jsProperty"],
+                    "additionalProperties": false
+                  }
+                ],
+                "description": "Offset along the parent's main axis: a literal anchor, a value-driven anchor, or an explicit, reported refusal."
+              },
+              "description": "Axis value to resolved value. Unlisted values fall back to the plain field."
+            }
+          },
+          "required": ["axis", "values"],
+          "additionalProperties": false,
+          "description": "`positionAlongMain` chosen by a visual axis. Requires `reason`."
+        },
+        "sizeAlongMain": {
+          "description": "Length along the parent's main axis, value-driven and pinned at the parent's origin. Requires `reason`.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "valueOf"
+                },
+                "slot": {
+                  "type": "string",
+                  "description": "A declared slot whose example text is the value."
+                }
+              },
+              "required": ["kind", "slot"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "valueOf"
+                },
+                "runtimeValue": {
+                  "type": "string",
+                  "description": "A declared runtime value."
+                }
+              },
+              "required": ["kind", "runtimeValue"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "reason": {
+          "description": "Why placement is declared instead of derived. Required with `removeFromFlow`, `positionAlongMain` and `sizeAlongMain`.",
+          "type": "string"
+        },
+        "slots": {
+          "description": "Declared slots whose example content renders in this node.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "when": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Render only in variant cells matching every axis; an array value matches any of its values."
+        },
+        "unless": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Omit in variant cells matching every axis; an array value matches any of its values."
+        },
+        "repeat": {
+          "description": "Repeat this part this many times without declaring it again.",
+          "type": "number"
+        },
+        "items": {
+          "description": "Materialize the same compound subtree once per item, with per-item overrides.",
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "description": "Per-item axis values overriding the variant cell's.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "slots": {
+                "description": "Per-item slot content, keyed by slot name.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false,
+            "description": "One materialized copy of a repeated compound subtree."
+          }
+        },
+        "requiredBindings": {
+          "description": "CSS-derived bindings that must resolve in every materialized variant.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["fill", "text", "stroke", "textStyle", "effectStyle"]
+          }
+        },
+        "iconName": {
+          "description": "Icon to embed (by registry name) for a `kind: \"icon\"` node.",
+          "type": "string"
+        },
+        "imageAssetPath": {
+          "description": "For a `kind: \"image\"` node: an image file relative to the component's directory, embedded by the compiler.",
+          "type": "string"
+        },
+        "arc": {
+          "description": "For a `kind: \"ellipse\"` node: an open stroked arc of `sweep` degrees instead of a full ring (CSS `stroke-dasharray` on a circle).",
+          "type": "object",
+          "properties": {
+            "sweep": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 360,
+              "description": "Angular extent in degrees (greater than 0, less than 360)."
+            },
+            "start": {
+              "description": "Start angle in degrees, clockwise from 3 o'clock. Default -90 (12 o'clock).",
+              "type": "number"
+            }
+          },
+          "required": ["sweep"],
+          "additionalProperties": false
+        },
+        "children": {
+          "description": "Child nodes, in order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FigmaContractAnatomyNode"
+          }
+        }
+      },
+      "required": ["part", "kind"],
+      "additionalProperties": false,
+      "description": "One node of the component's Figma node tree."
+    }
+  }
+}

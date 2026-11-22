@@ -1,0 +1,68 @@
+{
+  "brand": {
+    "duration": {
+      "100": {
+        "$value": "100ms",
+        "$type": "duration",
+        "$description": "Micro-interactions default e.g button state changes."
+      },
+      "150": {
+        "$value": "150ms",
+        "$type": "duration",
+        "$description": "Moderately fast duration for small changes requiring user attention."
+      },
+      "200": {
+        "$value": "200ms",
+        "$type": "duration",
+        "$description": "Default or baseline transition speed for general use."
+      },
+      "300": {
+        "$value": "300ms",
+        "$type": "duration",
+        "$description": "Slower than the baseline duration for more expressive or larger animations."
+      },
+      "400": {
+        "$value": "400ms",
+        "$type": "duration",
+        "$description": "Slower than the baseline duration for larger UI animations."
+      },
+      "500": {
+        "$value": "500ms",
+        "$type": "duration",
+        "$description": "Slower speed for page transitions and significant transformations."
+      },
+      "000": {
+        "$value": "0ms",
+        "$type": "duration",
+        "$description": "Instant change. No user perceptible transition."
+      }
+    },
+    "easing": {
+      "emphasis": {
+        "$value": [0.2, 0, 0, 1],
+        "$type": "cubicBezier",
+        "$description": "For drawing attention"
+      },
+      "enter": {
+        "$value": [0, 0, 0.58, 1],
+        "$type": "cubicBezier",
+        "$description": "Adding or element entering"
+      },
+      "exit": {
+        "$value": [0.42, 0, 1, 1],
+        "$type": "cubicBezier",
+        "$description": "Removing or exiting elements"
+      },
+      "linear": {
+        "$value": [0, 0, 1, 1],
+        "$type": "cubicBezier",
+        "$description": "For continuous motion such as loading animations"
+      },
+      "standard": {
+        "$value": [0.42, 0, 0.58, 1],
+        "$type": "cubicBezier",
+        "$description": "Default for elements moving within the view or screen"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+/* Storybook preview styles for @workspace/ui.
+ *
+ * Loads the same token cascade the app loads, so components render with real token
+ * values inside the workshop. The cascade files scope their custom properties under
+ * [data-brand] / [data-foundation] / [data-theme] selectors — the preview decorator
+ * (preview.tsx) sets those attributes on the document root (as a scaffolded app sets them
+ * on <html>). Mirrors the import order used by the scaffolded apps; swap the token package
+ * or the data-* values to retheme.
+ *
+ * Cascade-layer order is declared first so token layers cascade predictably under the
+ * component layers. (@workspace/ui/styles re-declares the same order — harmless.) */
+@layer fabre-designsystem-base,
+  fabre-designsystem-brand,
+  fabre-designsystem-theme,
+  fabre-designsystem-web;
+
+/* Imports are RELATIVE, not package specifiers: this file lives inside the monorepo at
+ * packages/ui/.storybook, so relative paths resolve in the Storybook Vite build without a
+ * package alias — and survive `rename_namespace` (which rewrites @workspace/@focus refs).
+ * Bare package `@import`s (e.g. "@workspace/ui/styles") do NOT reliably resolve in the SB
+ * Vite/CSS pipeline, so we avoid them here. */
+
+/* ui package baseline — @layer order + base resets (no token values). */
+@import "../src/styles/globals.css";
+
+/* Default-theme token cascade — the token package's reference CSS (sibling package). */
+@import "../../tokens/css/foundation/default.css";
+@import "../../tokens/css/brand/fabre-designsystem.css";
+/* Additional brands (multi-brand scaffold) are baked here; the single-brand
+   filler otherwise. Imported so a `data-brand` toolbar switch resolves them. */
+@import "../../tokens/css/brand/brand2.css";
+@import "../../tokens/css/theme/light.css";
+@import "../../tokens/css/theme/dark.css";
+@import "../../tokens/css/semantic-web/default.css";
+@import "../../tokens/css/component/default.css";
+@import "../../tokens/css/web/sm.css";
+@import "../../tokens/css/web/md.css";
+@import "../../tokens/css/web/lg.css";
+
+/* The story canvas paints the themed body surface so light/dark are visible. */
+.sb-token-root {
+  background: var(--color-surface-body, #fff);
+  color: var(--color-on-surface, #111111);
+  min-height: 100%;
+}

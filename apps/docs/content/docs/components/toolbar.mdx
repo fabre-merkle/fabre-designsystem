@@ -1,0 +1,67 @@
+---
+title: Toolbar
+description: Group related controls with keyboard navigation.
+primitive: https://base-ui.com/react/components/toolbar
+---
+
+## Interactive example
+
+<DocsStory name="toolbar" />
+
+## Installation
+
+`Toolbar` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Toolbar } from "@workspace/ui/components/toolbar";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Toolbar } from "@workspace/ui/components/toolbar";
+
+<Toolbar.Root aria-label="Formatting">
+  <Toolbar.Group>
+    <Toolbar.Button aria-pressed="true">Bold</Toolbar.Button>
+    <Toolbar.Button>Italic</Toolbar.Button>
+  </Toolbar.Group>
+  <Toolbar.Separator />
+  <Toolbar.Input placeholder="Search" />
+  <Toolbar.Link href="/help">Help</Toolbar.Link>
+</Toolbar.Root>
+```
+
+## API Reference
+
+Toolbar adds no props. All parts forward to the matching [Base UI Toolbar](https://base-ui.com/react/components/toolbar#api-reference) primitives — `Root`, `Group`, `Button`, `Link`, `Input`, `Separator` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`Root` accepts `orientation="vertical"` to stack controls; arrow-key navigation follows the orientation automatically.
+
+## When to use
+
+Use `Toolbar` for a cluster of contextually-related controls that share a single keyboard tab stop — formatting bars, view-switchers, inline action rails. For app-wide menu structures use `Menubar`; for site navigation use `NavigationMenu`; for a single grouped control use `ToggleGroup`.
+
+## Composition
+
+Wrap any element with `render={<YourComponent />}` on `Button` and `Link` to use the project's primitives or your own components as toolbar controls. Base UI merges props and ref into the rendered element and preserves the toolbar's keyboard model (Arrow / Home / End navigation, single tab stop).
+
+## Figma contract
+
+<ComponentContract slug="toolbar" />

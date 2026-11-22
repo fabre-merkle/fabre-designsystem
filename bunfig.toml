@@ -1,0 +1,3 @@
+# Hoist workspace devDependencies so apps + packages can share root tools
+# (turbo, biome, typescript, etc.) without re-declaring them per-workspace.
+linker = "hoisted"

@@ -1,0 +1,31 @@
+@layer components {
+  [data-ui="field"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+  }
+
+  [data-ui="field-label"] {
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+  }
+
+  [data-ui="field-description"] {
+    color: var(--color-on-surface-subtle);
+    font-family: var(--typography-paragraph-xs-font-family);
+    font-size: var(--typography-paragraph-xs-font-size);
+    font-weight: var(--typography-paragraph-xs-font-weight);
+    line-height: var(--typography-paragraph-xs-line-height);
+  }
+
+  [data-ui="field-error"] {
+    color: var(--color-intent-error-on-surface-subtle);
+    font-family: var(--typography-paragraph-xs-font-family);
+    font-size: var(--typography-paragraph-xs-font-size);
+    font-weight: var(--typography-paragraph-xs-font-weight);
+    line-height: var(--typography-paragraph-xs-line-height);
+  }
+}

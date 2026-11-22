@@ -1,0 +1,91 @@
+---
+title: Button
+description: Trigger an action or navigate.
+primitive: https://base-ui.com/react/components/button
+---
+
+## Interactive example
+
+<DocsStory name="button" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+</Tab>
+
+<Tab value="Manual">
+
+<Steps>
+
+<Step>
+
+Create `components/ui/button.tsx`:
+
+<include cwd lang="tsx" meta='title="button.tsx"'>../../packages/ui/src/components/button/button.tsx</include>
+
+</Step>
+
+<Step>
+
+Create `components/ui/button.css`:
+
+<include cwd lang="css" meta='title="button.css"'>../../packages/ui/src/components/button/button.css</include>
+
+</Step>
+
+</Steps>
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+
+<Button variant="primary" mode="filled">Label</Button>
+```
+
+## Icons
+
+Icons are children. Put `data-icon="inline-start"` or `data-icon="inline-end"` on the icon beside a label: the icon takes the size from the button (`--ctl-icon`), the gap comes from the button, and the side that carries an icon gives back a little padding. `data-icon` is optional: with none, an icon placed first is a start icon and an icon placed last, after the text, is an end icon, so a bare icon component works. Add `data-icon` to state the side explicitly; it wins where present.
+
+```tsx
+<Button><Plus />New project</Button>
+<Button>Continue<ArrowRight /></Button>
+<Button><Plus data-icon="inline-start" />New project</Button>
+<Button size="icon" aria-label="Settings"><Gear /></Button>
+```
+
+Any `svg` child, and any child with `data-icon`, is sized by the button. A size class on the icon itself still wins.
+
+### Icon sizes
+
+The `icon-*` sizes make a square icon-only control at the height of the matching size: `icon-xs` is `xs`, `icon-sm` is `sm`, `icon` is `md` and `icon-lg` is `lg`. `size` keeps `xs | sm | md | lg` with `md` as the default, so the icon sizes sit beside them rather than replacing `md` with `default`. An icon-only control has no visible text, so it needs an accessible name from `aria-label`, `aria-labelledby` or visually hidden text. In development it throws without one.
+
+## API Reference
+
+Props `Button` adds. [Base UI Button](https://base-ui.com/react/components/button#api-reference) props are also supported.
+
+<AutoTypeTable path="button/button.tsx" name="ButtonProps" />
+
+## Figma contract
+
+<ComponentContract slug="button" />

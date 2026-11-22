@@ -1,0 +1,75 @@
+---
+title: Human Readable Name   # spaces, not PascalCase
+description: One line. It renders under the H1, so do not repeat it in the body.
+---
+
+{/* Registry item only: the import below and the Usage example use it. For a page with no registry
+    item (nothing to install), delete this import and the example, or the page will not build. */}
+import { Name } from "@workspace/ui/components/name";
+
+## Overview
+
+{/* One paragraph: what it is and what it isn't. */}
+
+<Callout type="info" title="Not a component">
+  {/* Keep only if it could be mistaken for a component. */}
+</Callout>
+
+{/* ## When to use
+    Optional. Only when there is a decision rule (a short table). */}
+
+## Installation
+
+{/* With a registry item: lead with the project's own copy, then the registry subsection. */}
+
+`Name` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Name } from "@workspace/ui/components/name";
+```
+
+### Add or update from a registry
+
+The registry is private. Create a registry token at [create.merkle.design/account/tokens](https://create.merkle.design/account/tokens) and export it as `REGISTRY_TOKEN` before you run the command. The registry entry in `components.json` sends it as a Bearer header.
+
+```bash
+export REGISTRY_TOKEN="YOUR_REGISTRY_TOKEN"
+```
+
+```npm
+npx shadcn@latest add @<registry>/<item>
+```
+
+Adding over an existing local component can overwrite local edits, so review the diff first.
+
+{/* With no registry item, replace this section's body with one line:
+    "Nothing to install. <Where it already comes from.>" */}
+
+## Usage
+
+{/* The smallest example, then the easy-to-miss rule in one sentence. A live demo only if it shows the rule.
+    Registry item only: the `Name` example below. With no registry item, replace it with the rule's own
+    snippet (or prose) and remove the `Name` import above. */}
+
+```tsx
+<Name />
+```
+
+## API Reference
+
+{/* AutoTypeTable for the props type, then a prose table for extra exports. Omit if there is no API. */}
+
+<AutoTypeTable path="name/name.tsx" name="NameProps" />
+
+| Export | Purpose |
+| --- | --- |
+| `useName()` | One line. |
+
+{/* Concept sections: only rules a table or snippet can't carry. Several rules go under
+    "## Rules" with ### children. */}
+
+## Related
+
+- [Guide page](/docs/...): the page that owns the concept.
+- [Sibling utility](/docs/components/...): one line.

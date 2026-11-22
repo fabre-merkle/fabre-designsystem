@@ -1,0 +1,83 @@
+@layer components {
+  /* Positioner — stack with the overlay tier. Portals append in open order,
+     so a popup opened inside a dialog (same tier) paints above it. */
+  [data-slot="preview-card-positioner"] {
+    z-index: var(--z-index-overlay);
+  }
+
+  /* =========================================================
+     Popup — richer hover preview surface
+     ========================================================= */
+  [data-ui="preview-card-popup"] {
+    /* Surface level substrate + 2 (3 on the page), shadow level 3.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-3);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-4),
+      var(--shadow-level-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-300);
+    width: 280px;
+    max-width: calc(100vw - var(--spacing-400));
+    padding: var(--spacing-400);
+    color: var(--color-on-surface);
+    border-radius: var(--radius-default);
+    outline: none;
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter);
+    transform-origin: var(--transform-origin, top);
+  }
+
+  [data-ui="preview-card-popup"][data-starting-style],
+  [data-ui="preview-card-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  [data-ui="preview-card-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Arrow — directional pointer toward the trigger
+     ========================================================= */
+  [data-ui="preview-card-arrow"] {
+    display: flex;
+    width: var(--spacing-300);
+    height: var(--spacing-200);
+    /* On-page default; elevated.css matches the popup's actual level. */
+    color: var(--color-surface-level-3);
+  }
+
+  [data-ui="preview-card-arrow"][data-side="bottom"] {
+    rotate: 180deg;
+  }
+
+  [data-ui="preview-card-arrow"][data-side="left"] {
+    rotate: -90deg;
+  }
+
+  [data-ui="preview-card-arrow"][data-side="right"] {
+    rotate: 90deg;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="preview-card-popup"] {
+      transition: none;
+    }
+
+    [data-ui="preview-card-popup"][data-starting-style],
+    [data-ui="preview-card-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@workspace/contracts",
+  "version": "0.0.0",
+  "description": "The contract compiler: validates the co-located *.figma.contract.ts files against the contract schema and compiles them into .agents/figma-generation-contract.json. TypeScript source run directly by Bun; edit it freely.",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./authored-schema": "./src/generation-contract/authored-schema.ts",
+    "./schema.json": "./figma-contract.schema.json",
+    "./manifest.json": "./contracts.manifest.json"
+  },
+  "scripts": {
+    "figma:contract": "node ./bin/contracts.mjs compile",
+    "figma:contract:check": "node ./bin/contracts.mjs check",
+    "contracts": "node ./bin/contracts.mjs",
+    "contracts:validate": "node ./bin/contracts.mjs validate",
+    "contracts:list": "node ./bin/contracts.mjs list",
+    "contracts:explain": "node ./bin/contracts.mjs explain",
+    "contracts:new": "node ./bin/contracts.mjs new",
+    "figma:connect": "cd ../.. && bun packages/contracts/scripts/code-connect.ts",
+    "figma:connect:check": "cd ../.. && bun packages/contracts/scripts/code-connect.ts --check",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "8.7.5",
+    "commander": "15.0.0",
+    "postcss": "8.5.32",
+    "postcss-selector-parser": "7.1.6",
+    "typescript": "5.9.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19"
+  }
+}

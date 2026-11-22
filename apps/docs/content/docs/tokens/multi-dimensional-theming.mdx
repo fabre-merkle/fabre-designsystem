@@ -1,0 +1,76 @@
+---
+title: Multi-dimensional theming
+description: Combine brand, mode and context through tokens.
+---
+
+## Independent dimensions
+
+A theme combines independent choices rather than requiring a separate system for every
+combination. Brand, colour mode and responsive context can change while semantic roles keep
+their names and meaning.
+
+| Dimension | What changes |
+| --- | --- |
+| Brand | Identity decisions such as colours, typefaces, dimensions, shape and motion. |
+| Mode | Mode-aware colours, surfaces and shadows. |
+| Responsive context | Type, grid and layout values for the available space. |
+| Semantic context | Roles for a selected experience, such as an interface or storefront. |
+| Foundation | Shared scales and calculation inputs, rather than a user-facing choice. |
+
+Token sets group related decisions. A theme selects the sets needed for a context, and
+independent selections compose. Component tokens are an optional tier, not another theme
+dimension.
+
+Density, contrast, locale and motion preference can also become independent dimensions when
+the project defines and supports their values. These are extension possibilities, not
+features supplied automatically.
+
+## What this project activates
+
+The following configuration is read from the project's token data. Optional semantic sets
+appear only when the project includes them. An example brand or component-token set does not
+make it an adopted production choice.
+
+<TokenConfiguration />
+
+## Compose choices, keep roles stable
+
+For example, a configured brand, dark mode, small responsive context and selected semantic
+context can combine. A component asks for a semantic role; the combination determines its
+value. Changing mode should not require a separate component style or change a role's
+meaning.
+
+Apply context consistently to a whole experience or a deliberately scoped region. Select
+only combinations whose values exist. After changing an underlying brand decision, update
+its dependent token values rather than assuming a context switch recalculates them.
+The colour and elevation references show light and dark values together for the selected
+brand.
+
+## Extend one dimension at a time
+
+Add a brand by defining another brand set and its dependent values. Add a semantic context
+by defining the roles that experience needs from shared decisions. Add another dimension
+only when it expresses a distinct, supported choice; avoid duplicating unrelated dimensions.
+Keep unrelated semantic contexts independent instead of coupling their roles unnecessarily.
+
+## Surface context is not a theme dimension
+
+Surface levels describe the relationship between a region and what lies beneath it. The same
+level can look different after a mode change without changing its place in the hierarchy.
+Surface fill and edge move together; shadow is chosen separately and does not rise
+automatically with nesting.
+
+Check every supported mode and foreground/background pairing. A role missing in one
+supported mode is a defect, and a pairing that works in one mode may not work in another.
+
+## Specification
+
+The [Design Tokens Community Group](https://www.designtokens.org/) defines a vendor-neutral
+design-token specification and format for exchanging typed values, descriptions and
+references. The dimensions above describe this project's organisation; the format does not
+automatically supply every possible theme choice.
+
+<RelatedPage href="/docs/foundations/colour">Explore colour concepts.</RelatedPage>
+<RelatedPage href="/docs/foundations/typography">Explore typography concepts.</RelatedPage>
+<RelatedPage href="/docs/foundations/layout-spacing">Explore layout and spacing concepts.</RelatedPage>
+<RelatedPage href="/docs/foundations/elevation">Explore elevation concepts.</RelatedPage>

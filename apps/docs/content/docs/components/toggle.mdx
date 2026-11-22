@@ -1,0 +1,62 @@
+---
+title: Toggle
+description: Turn an option on or off.
+primitive: https://base-ui.com/react/components/toggle
+---
+
+## Interactive example
+
+<DocsStory name="toggle" />
+
+## Installation
+
+`Toggle` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Toggle } from "@workspace/ui/components/toggle";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Toggle } from "@workspace/ui/components/toggle";
+
+<Toggle defaultPressed>Bold</Toggle>
+```
+
+When nested inside a [`ToggleGroup`](/docs/components/toggle-group), `variant` and `size` are inherited from the group and Base UI manages the `value` / `pressed` state via the group's `value` array.
+
+Icons are children. An icon placed first is a start icon and one placed last, after the text, is an end icon, so a bare icon component works; add `data-icon="inline-start"` or `data-icon="inline-end"` to state the side explicitly. An icon-only toggle uses an `icon*` size and needs an accessible name, so always pass `aria-label`:
+
+```tsx
+<Toggle><TextB />Bold</Toggle>
+<Toggle>Bold<TextB /></Toggle>
+<Toggle><TextB data-icon="inline-start" />Bold</Toggle>
+<Toggle size="icon" aria-label="Bold"><TextB /></Toggle>
+```
+
+## API Reference
+
+Props `Toggle` adds. [Base UI Toggle](https://base-ui.com/react/components/toggle#api-reference) props are also supported.
+
+<AutoTypeTable path="toggle/toggle.tsx" name="ToggleProps" />
+
+## Figma contract
+
+<ComponentContract slug="toggle" />

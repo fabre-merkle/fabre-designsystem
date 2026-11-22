@@ -1,0 +1,51 @@
+{
+  "name": "@fabre-designsystem/docs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "bun scripts/generate-contract-reference.ts && fumadocs-mdx && next dev --webpack --port 3001",
+    "build": "bun scripts/generate-contract-reference.ts && bun run generate:prop-tables && fumadocs-mdx && next build --webpack",
+    "start": "next start",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check --write .",
+    "check-types": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "docs:check": "bun scripts/check-docs-completeness.ts",
+    "generate:prop-tables": "node --experimental-strip-types --no-warnings scripts/generate-prop-tables.mts",
+    "docs:contracts": "bun scripts/generate-contract-reference.ts",
+    "docs:contracts:check": "bun scripts/generate-contract-reference.ts --check"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.9.0",
+    "@fabre-designsystem/tokens": "workspace:*",
+    "@fumadocs/story": "1.5.3",
+    "@fumari/stf": "1.1.2",
+    "@modelcontextprotocol/server": "2.4.0",
+    "@phosphor-icons/react": "2.1.10",
+    "@workspace/ui": "workspace:*",
+    "fumadocs-core": "16.18.0",
+    "fumadocs-mdx": "15.5.0",
+    "fumadocs-typescript": "5.6.0",
+    "fumadocs-ui": "npm:@fumadocs/base-ui@16.18.0",
+    "next": "16.4.6",
+    "npm-to-yarn": "3.2.0",
+    "postcss": "8.5.29",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "tailwind-merge": "3.6.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@fumadocs/cli": "1.8.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/mdx": "2.0.13",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

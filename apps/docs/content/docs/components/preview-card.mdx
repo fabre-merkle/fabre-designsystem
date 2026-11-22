@@ -1,0 +1,69 @@
+---
+title: PreviewCard
+description: Preview related content on hover.
+primitive: https://base-ui.com/react/components/preview-card
+---
+
+## Interactive example
+
+<DocsStory name="preview-card" />
+
+## Installation
+
+`PreviewCard` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { PreviewCard } from "@workspace/ui/components/preview-card";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { PreviewCard } from "@workspace/ui/components/preview-card";
+
+<PreviewCard.Root>
+  <PreviewCard.Trigger render={<a href="/users/member">@member</a>} />
+  <PreviewCard.Portal>
+    <PreviewCard.Positioner>
+      <PreviewCard.Popup>
+        <strong>Acme</strong>
+        <span>A leading data-driven, technology-enabled customer experience company.</span>
+      </PreviewCard.Popup>
+    </PreviewCard.Positioner>
+  </PreviewCard.Portal>
+</PreviewCard.Root>
+```
+
+## API Reference
+
+PreviewCard adds no props. All parts forward to the matching [Base UI PreviewCard](https://base-ui.com/react/components/preview-card#api-reference) primitives — `Root`, `Trigger`, `Portal`, `Backdrop`, `Positioner`, `Popup`, `Arrow` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`Positioner` defaults `sideOffset` to `8` for visual separation from the trigger; pass any positioning prop to override.
+
+## When to use
+
+Use `PreviewCard` for a rich hover-only preview of a referenced entity — a user mention expanding into a profile card, a link revealing article metadata, a tag showing its definition. Content can include media, structured text, and inline links, but no required interactive controls. For required confirmations use `AlertDialog`; for focused tasks that should block the UI use `Dialog`; for click-to-open contextual panels use `Popover`; for short textual labels use `Tooltip`.
+
+## Composition
+
+The popup is a 280px-wide surface intended for short structured content — a heading, descriptive paragraph, and optional metadata row. Wrap the trigger with `render={<YourElement />}` to attach a preview to any anchor, button, or inline element. Base UI merges props and ref into the rendered element.
+
+## Figma contract
+
+<ComponentContract slug="preview-card" />

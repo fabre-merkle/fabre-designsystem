@@ -1,0 +1,136 @@
+{
+  "color": {
+    "fd": {
+      "accent": {
+        "$value": "{theme.color.secondary.9}",
+        "$type": "color",
+        "$description": "Fumadocs accent (hover/active surface) — maps to primary brand hover"
+      },
+      "accent-foreground": {
+        "$value": "best_contrast({theme.color.secondary.9}, [{theme.color.secondary.1}, {theme.color.secondary.12}])",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs accent surfaces"
+      },
+      "background": {
+        "$value": "{color.surface.level.1}",
+        "$type": "color",
+        "$description": "Fumadocs page background"
+      },
+      "border": {
+        "$value": "{theme.color.primary.3}",
+        "$type": "color",
+        "$description": "Fumadocs default border color"
+      },
+      "card": {
+        "$value": "{color.surface.level.3}",
+        "$type": "color",
+        "$description": "Fumadocs card background"
+      },
+      "card-foreground": {
+        "$value": "{theme.color.neutral.12}",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs card surfaces"
+      },
+      "diff-add": {
+        "$value": "{theme.color.utility.success.3}",
+        "$type": "color",
+        "$description": "Diff added line background"
+      },
+      "diff-add-symbol": {
+        "$value": "{theme.color.utility.success.12}",
+        "$type": "color",
+        "$description": "Diff added line symbol/text color"
+      },
+      "diff-remove": {
+        "$value": "{theme.color.utility.error.3}",
+        "$type": "color",
+        "$description": "Diff removed line background"
+      },
+      "diff-remove-symbol": {
+        "$value": "{theme.color.utility.error.12}",
+        "$type": "color",
+        "$description": "Diff removed line symbol/text color"
+      },
+      "error": {
+        "$value": "{theme.color.utility.error.9}",
+        "$type": "color",
+        "$description": "Fumadocs error callout color"
+      },
+      "foreground": {
+        "$value": "{theme.color.neutral.12}",
+        "$type": "color",
+        "$description": "Fumadocs default text/icon color"
+      },
+      "idea": {
+        "$value": "{theme.color.tertiary.9}",
+        "$type": "color",
+        "$description": "Fumadocs idea/tip callout color"
+      },
+      "info": {
+        "$value": "{theme.color.utility.info.9}",
+        "$type": "color",
+        "$description": "Fumadocs info callout color"
+      },
+      "muted": {
+        "$value": "{color.surface.recessed}",
+        "$type": "color",
+        "$description": "Fumadocs muted/de-emphasised surface"
+      },
+      "muted-foreground": {
+        "$value": "{theme.color.neutral.11}",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs muted surfaces"
+      },
+      "overlay": {
+        "$value": "{theme.color.neutral.5}",
+        "$type": "color",
+        "$description": "Fumadocs overlay (e.g. dialog scrim) background"
+      },
+      "popover": {
+        "$value": "{color.surface.level.3}",
+        "$type": "color",
+        "$description": "Fumadocs popover background"
+      },
+      "popover-foreground": {
+        "$value": "{theme.color.neutral.12}",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs popover surfaces"
+      },
+      "primary": {
+        "$value": "{theme.color.primary.11}",
+        "$type": "color",
+        "$description": "Fumadocs primary brand color"
+      },
+      "primary-foreground": {
+        "$value": "{theme.color.neutral.1}",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs primary surfaces"
+      },
+      "ring": {
+        "$value": "{theme.color.neutral.5}",
+        "$type": "color",
+        "$description": "Fumadocs focus ring color"
+      },
+      "secondary": {
+        "$value": "{color.surface.level.2}",
+        "$type": "color",
+        "$description": "Fumadocs secondary surface background"
+      },
+      "secondary-foreground": {
+        "$value": "{theme.color.neutral.12}",
+        "$type": "color",
+        "$description": "Text/icon color on Fumadocs secondary surfaces"
+      },
+      "success": {
+        "$value": "{theme.color.utility.success.9}",
+        "$type": "color",
+        "$description": "Fumadocs success callout color"
+      },
+      "warning": {
+        "$value": "{theme.color.utility.warning.9}",
+        "$type": "color",
+        "$description": "Fumadocs warning callout color"
+      }
+    }
+  }
+}

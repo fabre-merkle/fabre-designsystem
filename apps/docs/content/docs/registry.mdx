@@ -1,0 +1,94 @@
+---
+title: "Registry"
+description: "Install components and design-system resources."
+---
+
+{/* topic:start registry-configuration */}
+## How the registry works
+
+A registry publishes components, tokens and documentation as installable items. The shadcn CLI reads the namespaces in `components.json`, fetches each item and writes its files into your project, so you own and can review the installed code.
+
+<Callout title="Registry not published">This design system's namespace is `@fabre-designsystem`, but no published URL is configured for it. Obtain the deployed registry URL from the design-system owner before running the examples below. A scaffolded library alone is not a published registry.</Callout>
+
+The examples on this page refer only to this design system. Other entries in a repository's configuration are implementation dependencies, not alternative sources for its documented components.
+
+## Discover before installing
+
+Use the registry as a machine-readable inventory, not as a second component reference. Search for an item, inspect its files and dependencies, then read the owning documentation for usage and accessibility guidance.
+
+### Command line
+
+After registering the namespace below, list its published items:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+```
+
+Inspect an exact published item name before installing it:
+
+```npm
+npx shadcn@latest view @fabre-designsystem/<item>
+```
+
+Replace `<item>` with a name returned by search. Names, file targets and dependencies come from the published item, not from assumptions about a component's display name.
+
+### Ask your agent
+
+```text title="Prompt"
+Inspect components.json and search the @fabre-designsystem registry for my task.
+If that namespace is not configured or published, tell me what is missing; do not substitute another registry.
+Show the matching item's files, dependencies and usage documentation.
+Prefer an existing component or resource over creating a duplicate.
+Propose the exact shadcn install command and explain what will change.
+Wait for my approval before installing or overwriting anything.
+```
+{/* topic:end registry-configuration */}
+
+{/* topic:start registry-installation */}
+## Install from the registry
+
+<Steps>
+<Step>
+### Initialise shadcn
+Skip this step if your project already has a `components.json`.
+
+```npm
+npx shadcn@latest init
+```
+</Step>
+<Step>
+### Add the registry
+Merge the namespace into the `registries` object in `components.json`:
+
+```json
+{
+  "registries": {
+    "@fabre-designsystem": "REPLACE_WITH_PUBLISHED_REGISTRY_URL/{name}.json"
+  }
+}
+```
+</Step>
+<Step>
+### Provide credentials
+Ask the design-system owner whether the published registry requires credentials. Do not assume it is public or reuse credentials from another registry.
+</Step>
+<Step>
+### Install an item
+
+```npm
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+</Step>
+<Step>
+### Review the result
+Inspect the diff, then run the project's checks. An installed item can change dependencies, styles and configuration as well as components.
+Installations create project-owned files; they are not a live subscription to a remote component. For an update, compare with the current published item and preserve reviewed local changes rather than blindly overwriting them.
+</Step>
+</Steps>
+
+<RelatedPage href="/docs/mcp">Use Docs MCP for guidance and Registry MCP to discover items and prepare installation commands.</RelatedPage>
+
+### Troubleshooting
+
+If discovery fails, check the namespace and deployed URL in `components.json`. If a protected item cannot be fetched, check its required environment variables without printing their values. If an item is missing, use the names returned by registry search rather than guessing a URL.
+{/* topic:end registry-installation */}

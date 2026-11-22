@@ -1,0 +1,24 @@
+"use client";
+import { Autocomplete } from "@workspace/ui/components/autocomplete";
+
+export const AutocompleteRoot = Autocomplete.Root;
+export const AutocompleteValue = Autocomplete.Value;
+export const AutocompleteTrigger = Autocomplete.Trigger;
+export const AutocompleteInput = Autocomplete.Input;
+export const AutocompleteInputGroup = Autocomplete.InputGroup;
+export const AutocompleteIcon = Autocomplete.Icon;
+export const AutocompleteClear = Autocomplete.Clear;
+export const AutocompleteList = Autocomplete.List;
+export const AutocompleteStatus = Autocomplete.Status;
+export const AutocompletePortal = Autocomplete.Portal;
+export const AutocompleteBackdrop = Autocomplete.Backdrop;
+export const AutocompletePositioner = Autocomplete.Positioner;
+export const AutocompletePopup = Autocomplete.Popup;
+export const AutocompleteArrow = Autocomplete.Arrow;
+export const AutocompleteGroup = Autocomplete.Group;
+export const AutocompleteGroupLabel = Autocomplete.GroupLabel;
+export const AutocompleteItem = Autocomplete.Item;
+export const AutocompleteRow = Autocomplete.Row;
+export const AutocompleteCollection = Autocomplete.Collection;
+export const AutocompleteEmpty = Autocomplete.Empty;
+export const AutocompleteSeparator = Autocomplete.Separator;

@@ -1,0 +1,17 @@
+{
+  "title": "Skills",
+  "pages": [
+    "index",
+    "first-run",
+    "skill-base-ui-handbook",
+    "skill-contribute-component",
+    "skill-contribute-docs",
+    "skill-figma-fidelity-check",
+    "skill-figma-generate",
+    "skill-figma-library",
+    "skill-storybook-author",
+    "skill-tokens-studio",
+    "update-guidelines",
+    "use-design-system"
+  ]
+}

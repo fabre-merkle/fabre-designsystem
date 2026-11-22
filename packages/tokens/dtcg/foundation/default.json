@@ -1,0 +1,579 @@
+{
+  "foundation": {
+    "color": {
+      "black": {
+        "$value": "oklch(0, 0, 0)",
+        "$type": "color"
+      },
+      "white": {
+        "$value": "oklch(1, 0, 0)",
+        "$type": "color"
+      },
+      "whiteAlpha": {
+        "10": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.10})",
+          "$type": "color"
+        },
+        "20": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.20})",
+          "$type": "color"
+        },
+        "30": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.30})",
+          "$type": "color"
+        },
+        "40": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.40})",
+          "$type": "color"
+        },
+        "50": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.50})",
+          "$type": "color"
+        },
+        "60": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.60})",
+          "$type": "color"
+        },
+        "70": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.70})",
+          "$type": "color"
+        },
+        "80": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.80})",
+          "$type": "color"
+        },
+        "90": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.90})",
+          "$type": "color",
+          "$description": "Default onBrand text/icon color"
+        },
+        "100": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.100})",
+          "$type": "color",
+          "$description": "Fully opaque white"
+        },
+        "00": {
+          "$value": "set_alpha({foundation.color.white}, {brand.opacity.00})",
+          "$type": "color",
+          "$description": "White at 0% opacity — fully transparent"
+        }
+      },
+      "blackAlpha": {
+        "10": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.10})",
+          "$type": "color"
+        },
+        "20": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.20})",
+          "$type": "color"
+        },
+        "30": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.30})",
+          "$type": "color"
+        },
+        "40": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.40})",
+          "$type": "color"
+        },
+        "50": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.50})",
+          "$type": "color",
+          "$description": "Common scrim / overlay"
+        },
+        "60": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.60})",
+          "$type": "color"
+        },
+        "70": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.70})",
+          "$type": "color"
+        },
+        "80": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.80})",
+          "$type": "color"
+        },
+        "90": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.90})",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.100})",
+          "$type": "color",
+          "$description": "Fully opaque black"
+        },
+        "00": {
+          "$value": "set_alpha({foundation.color.black}, {brand.opacity.00})",
+          "$type": "color",
+          "$description": "Black at 0% opacity — fully transparent"
+        }
+      },
+      "dark": {
+        "chroma": {
+          "1": {
+            "$value": 0.3,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "2": {
+            "$value": 0.45,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "3": {
+            "$value": 0.65,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "4": {
+            "$value": 0.8,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "5": {
+            "$value": 0.92,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "6": {
+            "$value": 1,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "7": {
+            "$value": 1,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "8": {
+            "$value": 1,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "10": {
+            "$value": 0.85,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "11": {
+            "$value": 0.18,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "12": {
+            "$value": 0.25,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          }
+        },
+        "lightness": {
+          "1": {
+            "$value": 0.1,
+            "$type": "number",
+            "$description": "App background — nearly black",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "2": {
+            "$value": 0.145,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "3": {
+            "$value": 0.19,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "4": {
+            "$value": 0.24,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "5": {
+            "$value": 0.295,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "6": {
+            "$value": 0.35,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "7": {
+            "$value": 0.4,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "8": {
+            "$value": 0.45,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "10": {
+            "$value": 0.86,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "11": {
+            "$value": 0.94,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "12": {
+            "$value": 0.97,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          }
+        }
+      },
+      "light": {
+        "chroma": {
+          "1": {
+            "$value": 0.07,
+            "$type": "number",
+            "$description": "Very subtle hint of hue",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "2": {
+            "$value": 0.13,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "3": {
+            "$value": 0.22,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "4": {
+            "$value": 0.32,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "5": {
+            "$value": 0.45,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "6": {
+            "$value": 0.6,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "7": {
+            "$value": 0.78,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "8": {
+            "$value": 0.95,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "10": {
+            "$value": 1,
+            "$type": "number",
+            "$description": "Full chroma at the hover step",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "11": {
+            "$value": 0.78,
+            "$type": "number",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "12": {
+            "$value": 0.45,
+            "$type": "number",
+            "$description": "Pulled back so dark text isn't muddy",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          }
+        },
+        "lightness": {
+          "1": {
+            "$value": 0.995,
+            "$type": "number",
+            "$description": "App background — nearly white",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "2": {
+            "$value": 0.9775,
+            "$type": "number",
+            "$description": "Subtle background",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "3": {
+            "$value": 0.95,
+            "$type": "number",
+            "$description": "UI element background",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "4": {
+            "$value": 0.915,
+            "$type": "number",
+            "$description": "Hovered UI element background",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "5": {
+            "$value": 0.87,
+            "$type": "number",
+            "$description": "Active / selected UI element background",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "6": {
+            "$value": 0.83,
+            "$type": "number",
+            "$description": "Subtle borders and separators",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "7": {
+            "$value": 0.76,
+            "$type": "number",
+            "$description": "UI element border and focus rings",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "8": {
+            "$value": 0.65,
+            "$type": "number",
+            "$description": "Hovered UI element border",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "10": {
+            "$value": 0.52,
+            "$type": "number",
+            "$description": "Hovered solid backgrounds",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "11": {
+            "$value": 0.43,
+            "$type": "number",
+            "$description": "Low-contrast text",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          },
+          "12": {
+            "$value": 0.24,
+            "$type": "number",
+            "$description": "High-contrast text",
+            "$extensions": {
+              "com.figma": {
+                "scopes": [],
+                "hiddenFromPublishing": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

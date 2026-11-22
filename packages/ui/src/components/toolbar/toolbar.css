@@ -1,0 +1,227 @@
+/* Toolbar — buttons and links are Controls (see ../control/control.css): sm
+ * control height, padding-x, gap, icon and control.sm text. Hover is the
+ * surface-hover overlay and pressed is surface-selected with the label on
+ * on-surface-primary (Tonal tertiary). Icon-only items are square.
+ */
+@layer components {
+  /* =========================================================
+     Root — horizontal/vertical bar surface
+     ========================================================= */
+  [data-ui="toolbar-root"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    padding: var(--spacing-100);
+    /* A raised level-2 bar: edge ring + highlight composed from colour
+       tokens over the level-2 drop shadow */
+    background-color: var(--color-surface-level-2);
+    box-shadow:
+      inset 0 1px 0 var(--color-surface-highlight),
+      0 0 0 var(--stroke-width-default) var(--color-surface-border-3),
+      var(--shadow-level-1);
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="toolbar-root"][data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* =========================================================
+     Group — clustered set of related controls
+     ========================================================= */
+  [data-ui="toolbar-group"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-050);
+  }
+
+  [data-ui="toolbar-root"][data-orientation="vertical"] [data-ui="toolbar-group"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* =========================================================
+     Button + Link — sm Controls
+     ========================================================= */
+  [data-ui="toolbar-button"],
+  [data-ui="toolbar-link"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--control-gap-sm);
+    min-width: var(--control-height-sm);
+    height: var(--control-height-sm);
+    padding-block: 0;
+    padding-inline: var(--control-padding-x-sm);
+    border: 0;
+    border-radius: var(--radius-small-elements);
+    background-color: transparent;
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    line-height: var(--typography-control-sm-line-height);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    touch-action: manipulation;
+    transition-property: background-color, color, scale;
+    transition-duration: var(--transition-default-duration);
+    transition-timing-function: var(--transition-default-easing);
+  }
+
+  :is([data-ui="toolbar-button"], [data-ui="toolbar-link"]) > svg {
+    width: var(--control-icon-sm);
+    height: var(--control-icon-sm);
+    flex-shrink: 0;
+  }
+
+  /* Icon-only items are square — checks direct children only, so an svg's
+     own <path> never counts as a label */
+  :is([data-ui="toolbar-button"], [data-ui="toolbar-link"]):has(> svg):not(:has(> :not(svg))) {
+    padding-inline: 0;
+  }
+
+  @media (hover: hover) {
+    [data-ui="toolbar-button"]:hover:not([data-disabled]),
+    [data-ui="toolbar-link"]:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  :is([data-ui="toolbar-button"], [data-ui="toolbar-link"]):active,
+  [data-ui="toolbar-button"][data-pressed],
+  [data-ui="toolbar-button"][aria-pressed="true"] {
+    background-color: var(--color-surface-selected);
+  }
+  [data-ui="toolbar-button"][data-pressed],
+  [data-ui="toolbar-button"][aria-pressed="true"] {
+    color: var(--color-primary-on-surface-subtle);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-ui="toolbar-button"]:not([data-disabled]):active,
+    [data-ui="toolbar-link"]:active {
+      scale: 0.96;
+    }
+  }
+
+  [data-ui="toolbar-button"]:focus-visible,
+  [data-ui="toolbar-link"]:focus-visible {
+    outline: var(--stroke-width-selected) solid var(--color-control-focus-ring);
+    outline-offset: var(--stroke-width-none);
+  }
+
+  [data-ui="toolbar-button"][data-disabled] {
+    opacity: var(--opacity-muted);
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+=======
+     Input — text field embedded in the toolbar
+     ========================================================= */
+  [data-ui="toolbar-input"] {
+    box-sizing: border-box;
+    /* A native <input> centres its text on its own; stating it lets the Figma resolver centre
+       the text frame too (same as input.css). */
+    display: inline-flex;
+    align-items: center;
+    block-size: var(--control-height-sm);
+    padding-block: 0;
+    padding-inline: var(--control-padding-x-sm);
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-small-elements);
+    /* Same field treatment as Input: no fill, so the border contrast is
+       measured against the toolbar surface it sits on. */
+    background-color: transparent;
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+    outline: none;
+    transition: border-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="toolbar-input"]::placeholder {
+    color: var(--color-on-surface-subtle);
+  }
+
+  @media (hover: hover) {
+    [data-ui="toolbar-input"]:hover:not([data-disabled]):not([data-invalid]):not(
+        [aria-invalid="true"]
+      ):not(:focus-visible) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  /* Focused — focus-colour border plus a 2px ring, as Input. */
+  [data-ui="toolbar-input"]:focus-visible {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid
+      color-mix(
+        in oklch,
+        var(--color-control-focus-ring),
+        transparent calc(var(--opacity-strong) * 100%)
+      );
+    outline-offset: 0;
+  }
+
+  [data-ui="toolbar-input"][data-invalid],
+  [data-ui="toolbar-input"][aria-invalid="true"] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="toolbar-input"][data-invalid]:focus-visible,
+  [data-ui="toolbar-input"][aria-invalid="true"]:focus-visible {
+    outline-color: color-mix(
+      in oklch,
+      var(--color-intent-error-border),
+      transparent calc(var(--opacity-strong) * 100%)
+    );
+  }
+
+  [data-ui="toolbar-input"][data-disabled] {
+    opacity: var(--opacity-muted);
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Separator — divider between groups
+     ========================================================= */
+  [data-ui="toolbar-separator"] {
+    flex-shrink: 0;
+    background-color: var(--color-surface-border-2);
+    border: 0;
+  }
+
+  [data-ui="toolbar-separator"][data-orientation="vertical"] {
+    width: var(--stroke-width-default);
+    height: var(--spacing-400);
+    margin-inline: var(--spacing-050);
+  }
+
+  [data-ui="toolbar-separator"][data-orientation="horizontal"] {
+    width: 100%;
+    height: var(--stroke-width-default);
+    margin-block: var(--spacing-050);
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="toolbar-button"],
+    [data-ui="toolbar-link"],
+    [data-ui="toolbar-input"] {
+      transition: none;
+    }
+  }
+}

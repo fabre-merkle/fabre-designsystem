@@ -1,0 +1,64 @@
+{
+  "transition": {
+    "default": {
+      "duration": {
+        "$value": "{brand.duration.100}",
+        "$type": "duration",
+        "$description": "Pairs with transition.default.easing for the default UI transition"
+      },
+      "easing": {
+        "$value": "{brand.easing.standard}",
+        "$type": "cubicBezier",
+        "$description": "Pairs with transition.default.duration for the default UI transition"
+      }
+    },
+    "enter": {
+      "duration": {
+        "$value": "{brand.duration.200}",
+        "$type": "duration",
+        "$description": "Pairs with transition.enter.easing for enter transitions"
+      },
+      "easing": {
+        "$value": "{brand.easing.enter}",
+        "$type": "cubicBezier",
+        "$description": "Pairs with transition.enter.duration for enter transitions"
+      }
+    },
+    "exit": {
+      "duration": {
+        "$value": "{brand.duration.200}",
+        "$type": "duration",
+        "$description": "Pairs with transition.exit.easing for exit transitions"
+      },
+      "easing": {
+        "$value": "{brand.easing.exit}",
+        "$type": "cubicBezier",
+        "$description": "Element removing or exiting. Default baseline speed, accelerating curve communicates decisiveness."
+      }
+    },
+    "expand": {
+      "duration": {
+        "$value": "{brand.duration.200}",
+        "$type": "duration",
+        "$description": "Pairs with transition.expand.easing for expand transitions"
+      },
+      "easing": {
+        "$value": "{brand.easing.enter}",
+        "$type": "cubicBezier",
+        "$description": "Pairs with transition.expand.duration for expand transitions"
+      }
+    },
+    "move": {
+      "duration": {
+        "$value": "{brand.duration.200}",
+        "$type": "duration",
+        "$description": "Pairs with transition.move.easing for move transitions"
+      },
+      "easing": {
+        "$value": "{brand.easing.standard}",
+        "$type": "cubicBezier",
+        "$description": "Pairs with transition.move.duration for move transitions"
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# Tokens Studio CLI export staging dirs (never commit; reference/ is the tracked output)
+/.default-export/
+/.tmp-pull/

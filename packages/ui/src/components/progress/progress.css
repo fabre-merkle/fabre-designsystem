@@ -1,0 +1,100 @@
+@layer components {
+  [data-ui="progress"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-150);
+    inline-size: 100%;
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="progress-label"] {
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="progress-value"] {
+    margin-inline-start: auto;
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* Stack label + value on the same row when both present */
+  [data-ui="progress"]:has([data-ui="progress-label"]):has([data-ui="progress-value"]) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: var(--spacing-100);
+    column-gap: var(--spacing-200);
+  }
+
+  [data-ui="progress-track"] {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    background-color: var(--color-surface-recessed);
+    border-radius: var(--radius-full);
+  }
+
+  [data-ui="progress-track"][data-size="sm"] {
+    block-size: 4px;
+  }
+  [data-ui="progress-track"][data-size="md"] {
+    block-size: 8px;
+  }
+  [data-ui="progress-track"][data-size="lg"] {
+    block-size: 12px;
+  }
+
+  /* Full-width track when label + value share the grid row. Declared after the
+     plain track + size rules (higher specificity last). */
+  [data-ui="progress"]:has([data-ui="progress-label"]):has([data-ui="progress-value"])
+    [data-ui="progress-track"] {
+    grid-column: 1 / -1;
+  }
+
+  [data-ui="progress-indicator"] {
+    display: block;
+    block-size: 100%;
+    background-color: var(--color-primary-brand);
+    border-radius: inherit;
+    transition: inline-size var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  /* Status hooks from Base UI on Root */
+  [data-ui="progress"][data-status="complete"] [data-ui="progress-indicator"] {
+    background-color: var(--color-intent-success);
+  }
+
+  /* Indeterminate: animated stripe traveling across the track */
+  [data-ui="progress"][data-status="indeterminate"] [data-ui="progress-indicator"] {
+    inline-size: 40%;
+    animation: progress-indeterminate 1.4s var(--brand-easing-standard) infinite;
+  }
+
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(350%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="progress-indicator"] {
+      transition: none;
+    }
+    [data-ui="progress"][data-status="indeterminate"] [data-ui="progress-indicator"] {
+      animation: none;
+      inline-size: 100%;
+      opacity: var(--opacity-soft);
+    }
+  }
+}

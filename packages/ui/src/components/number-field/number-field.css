@@ -1,0 +1,256 @@
+@layer components {
+  /* =========================================================
+     Root — wrapper, lets size cascade via context + data-size
+     ========================================================= */
+  [data-ui="number-field"] {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+  }
+
+  /* =========================================================
+     Group — input + stepper container. NumberField is a Control: the group
+     takes the control height so it lines up with a Button of the same size;
+     the input inside takes control text and control padding-x. Every part
+     carries data-size, so each size declares its control.<size> values in full.
+     ========================================================= */
+  [data-ui="number-field-group"] {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: stretch;
+    block-size: var(--control-height-md);
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-default);
+    background-color: var(--color-surface-recessed);
+    overflow: hidden;
+    transition:
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="number-field-group"][data-size="sm"] {
+    block-size: var(--control-height-sm);
+  }
+  [data-ui="number-field-group"][data-size="lg"] {
+    block-size: var(--control-height-lg);
+  }
+
+  @media (hover: hover) {
+    [data-ui="number-field"]:not([data-invalid]):not([data-disabled])
+      [data-ui="number-field-group"]:hover:not(:focus-within) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  /* The group owns the fill and focus edge, not its transparent children. */
+  [data-ui="number-field-group"]:focus-within {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+
+  [data-ui="number-field"][data-invalid] [data-ui="number-field-group"] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="number-field"][data-invalid] [data-ui="number-field-group"]:focus-within {
+    border-color: var(--color-intent-error-border);
+    outline-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="number-field"][data-disabled] [data-ui="number-field-group"] {
+    opacity: var(--opacity-soft);
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Input — numeric text field
+     ========================================================= */
+  [data-ui="number-field-input"] {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    inline-size: 8ch;
+    padding-inline: var(--control-padding-x-md);
+    padding-block: 0;
+    background-color: transparent;
+    color: var(--color-on-surface);
+    border: none;
+    outline: none;
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* family/size/weight/tracking all come from the SAME control.<size> tier so
+     Figma binds one text style per size (see resolver.ts deriveTextStyle). */
+  [data-ui="number-field-input"][data-size="sm"] {
+    padding-inline: var(--control-padding-x-sm);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+  }
+  [data-ui="number-field-input"][data-size="md"] {
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+    letter-spacing: var(--typography-control-md-letter-spacing);
+    line-height: var(--typography-control-md-line-height);
+  }
+  [data-ui="number-field-input"][data-size="lg"] {
+    padding-inline: var(--control-padding-x-lg);
+    font-family: var(--typography-control-lg-font-family);
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+    letter-spacing: var(--typography-control-lg-letter-spacing);
+    line-height: var(--typography-control-lg-line-height);
+  }
+
+  /* iOS zooms into any focused field set under 16px. */
+  @media (pointer: coarse) {
+    [data-ui="number-field-input"][data-size="sm"] {
+      font-size: max(16px, var(--typography-control-sm-font-size));
+    }
+    [data-ui="number-field-input"][data-size="md"] {
+      font-size: max(16px, var(--typography-control-md-font-size));
+    }
+    [data-ui="number-field-input"][data-size="lg"] {
+      font-size: max(16px, var(--typography-control-lg-font-size));
+    }
+  }
+
+  [data-ui="number-field-input"]::placeholder {
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* hide native spin buttons — we render Increment/Decrement */
+  [data-ui="number-field-input"]::-webkit-outer-spin-button,
+  [data-ui="number-field-input"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  [data-ui="number-field-input"][type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  /* =========================================================
+     Increment / Decrement — stepper buttons
+     ========================================================= */
+  [data-ui="number-field-increment"],
+  [data-ui="number-field-decrement"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: var(--color-on-surface-subtle);
+    cursor: pointer;
+    transition:
+      background-color var(--transition-default-duration) var(--transition-default-easing),
+      color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="number-field-decrement"] {
+    border-inline-end: var(--stroke-width-selected) solid var(--color-control-border);
+  }
+  [data-ui="number-field-increment"] {
+    border-inline-start: var(--stroke-width-selected) solid var(--color-control-border);
+  }
+
+  /* Square steppers — as wide as the group is tall inside its border. The
+     buttons can hold a plain "+"/"-" glyph as well as an icon, so they carry
+     the same control.<size> text tier as the input beside them. */
+  [data-ui="number-field-increment"][data-size="sm"],
+  [data-ui="number-field-decrement"][data-size="sm"] {
+    inline-size: calc(var(--control-height-sm) - 2 * var(--stroke-width-selected));
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+  }
+  [data-ui="number-field-increment"][data-size="sm"] svg,
+  [data-ui="number-field-decrement"][data-size="sm"] svg {
+    inline-size: var(--control-icon-sm);
+    block-size: var(--control-icon-sm);
+  }
+  [data-ui="number-field-increment"][data-size="md"],
+  [data-ui="number-field-decrement"][data-size="md"] {
+    inline-size: calc(var(--control-height-md) - 2 * var(--stroke-width-selected));
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+  }
+  [data-ui="number-field-increment"][data-size="md"] svg,
+  [data-ui="number-field-decrement"][data-size="md"] svg {
+    inline-size: var(--control-icon-md);
+    block-size: var(--control-icon-md);
+  }
+  [data-ui="number-field-increment"][data-size="lg"],
+  [data-ui="number-field-decrement"][data-size="lg"] {
+    inline-size: calc(var(--control-height-lg) - 2 * var(--stroke-width-selected));
+    font-family: var(--typography-control-lg-font-family);
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+  }
+  [data-ui="number-field-increment"][data-size="lg"] svg,
+  [data-ui="number-field-decrement"][data-size="lg"] svg {
+    inline-size: var(--control-icon-lg);
+    block-size: var(--control-icon-lg);
+  }
+
+  @media (hover: hover) {
+    [data-ui="number-field-increment"]:hover:not([data-disabled]),
+    [data-ui="number-field-decrement"]:hover:not([data-disabled]) {
+      background-color: var(--color-surface-hover);
+      color: var(--color-on-surface);
+    }
+  }
+
+  [data-ui="number-field-increment"]:active:not([data-disabled]),
+  [data-ui="number-field-decrement"]:active:not([data-disabled]) {
+    background-color: var(--color-surface-recessed);
+  }
+
+  [data-ui="number-field-increment"]:focus-visible,
+  [data-ui="number-field-decrement"]:focus-visible {
+    outline: var(--stroke-width-focused) solid var(--color-primary-on-surface);
+    outline-offset: -2px;
+  }
+
+  [data-ui="number-field-increment"][data-disabled],
+  [data-ui="number-field-decrement"][data-disabled] {
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     ScrubArea — optional drag-to-adjust handle (typically wraps a label)
+     ========================================================= */
+  [data-ui="number-field-scrub-area"] {
+    display: inline-flex;
+    align-items: center;
+    cursor: ew-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    color: var(--color-on-surface-subtle);
+  }
+
+  [data-ui="number-field-scrub-area"][data-scrubbing] {
+    cursor: none;
+  }
+
+  [data-ui="number-field-scrub-area-cursor"] {
+    pointer-events: none;
+    z-index: 1;
+    color: var(--color-on-surface);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="number-field-group"],
+    [data-ui="number-field-increment"],
+    [data-ui="number-field-decrement"] {
+      transition: none;
+    }
+  }
+}

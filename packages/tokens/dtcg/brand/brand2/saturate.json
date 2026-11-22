@@ -1,0 +1,26 @@
+{
+  "brand": {
+    "saturate": {
+      "100": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "Saturation scale step with no change. No semantic token maps it directly."
+      },
+      "120": {
+        "$value": 1.2,
+        "$type": "number",
+        "$description": "The backdrop saturation for low-emphasis overlays."
+      },
+      "140": {
+        "$value": 1.4,
+        "$type": "number",
+        "$description": "The backdrop saturation for mid-emphasis overlays."
+      },
+      "180": {
+        "$value": 1.8,
+        "$type": "number",
+        "$description": "The backdrop saturation for high-emphasis overlays."
+      }
+    }
+  }
+}

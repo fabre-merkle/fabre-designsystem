@@ -1,0 +1,75 @@
+@layer fabre-designsystem-base {
+  :root,
+  [data-brand],
+  [data-theme],
+  [data-web] {
+    --foundation-color-black: oklch(0 0 0);
+    --foundation-color-black-alpha-00: oklch(0 0 0 / 0);
+    --foundation-color-black-alpha-10: oklch(0 0 0 / 0.1);
+    --foundation-color-black-alpha-20: oklch(0 0 0 / 0.2);
+    --foundation-color-black-alpha-30: oklch(0 0 0 / 0.3);
+    --foundation-color-black-alpha-40: oklch(0 0 0 / 0.4);
+    --foundation-color-black-alpha-50: oklch(0 0 0 / 0.5);
+    --foundation-color-black-alpha-60: oklch(0 0 0 / 0.6);
+    --foundation-color-black-alpha-70: oklch(0 0 0 / 0.7);
+    --foundation-color-black-alpha-80: oklch(0 0 0 / 0.8);
+    --foundation-color-black-alpha-90: oklch(0 0 0 / 0.9);
+    --foundation-color-black-alpha-100: oklch(0 0 0);
+    --foundation-color-dark-chroma-1: 0.3;
+    --foundation-color-dark-chroma-2: 0.45;
+    --foundation-color-dark-chroma-3: 0.65;
+    --foundation-color-dark-chroma-4: 0.8;
+    --foundation-color-dark-chroma-5: 0.92;
+    --foundation-color-dark-chroma-6: 1;
+    --foundation-color-dark-chroma-7: 1;
+    --foundation-color-dark-chroma-8: 1;
+    --foundation-color-dark-chroma-10: 0.85;
+    --foundation-color-dark-chroma-11: 0.18;
+    --foundation-color-dark-chroma-12: 0.25;
+    --foundation-color-dark-lightness-1: 0.1;
+    --foundation-color-dark-lightness-2: 0.145;
+    --foundation-color-dark-lightness-3: 0.19;
+    --foundation-color-dark-lightness-4: 0.24;
+    --foundation-color-dark-lightness-5: 0.295;
+    --foundation-color-dark-lightness-6: 0.35;
+    --foundation-color-dark-lightness-7: 0.4;
+    --foundation-color-dark-lightness-8: 0.45;
+    --foundation-color-dark-lightness-10: 0.86;
+    --foundation-color-dark-lightness-11: 0.94;
+    --foundation-color-dark-lightness-12: 0.97;
+    --foundation-color-light-chroma-1: 0.07;
+    --foundation-color-light-chroma-2: 0.13;
+    --foundation-color-light-chroma-3: 0.22;
+    --foundation-color-light-chroma-4: 0.32;
+    --foundation-color-light-chroma-5: 0.45;
+    --foundation-color-light-chroma-6: 0.6;
+    --foundation-color-light-chroma-7: 0.78;
+    --foundation-color-light-chroma-8: 0.95;
+    --foundation-color-light-chroma-10: 1;
+    --foundation-color-light-chroma-11: 0.78;
+    --foundation-color-light-chroma-12: 0.45;
+    --foundation-color-light-lightness-1: 0.995;
+    --foundation-color-light-lightness-2: 0.9775;
+    --foundation-color-light-lightness-3: 0.95;
+    --foundation-color-light-lightness-4: 0.915;
+    --foundation-color-light-lightness-5: 0.87;
+    --foundation-color-light-lightness-6: 0.83;
+    --foundation-color-light-lightness-7: 0.76;
+    --foundation-color-light-lightness-8: 0.65;
+    --foundation-color-light-lightness-10: 0.52;
+    --foundation-color-light-lightness-11: 0.43;
+    --foundation-color-light-lightness-12: 0.24;
+    --foundation-color-white: oklch(1 0 0);
+    --foundation-color-white-alpha-00: oklch(1 0 0 / 0);
+    --foundation-color-white-alpha-10: oklch(1 0 0 / 0.1);
+    --foundation-color-white-alpha-20: oklch(1 0 0 / 0.2);
+    --foundation-color-white-alpha-30: oklch(1 0 0 / 0.3);
+    --foundation-color-white-alpha-40: oklch(1 0 0 / 0.4);
+    --foundation-color-white-alpha-50: oklch(1 0 0 / 0.5);
+    --foundation-color-white-alpha-60: oklch(1 0 0 / 0.6);
+    --foundation-color-white-alpha-70: oklch(1 0 0 / 0.7);
+    --foundation-color-white-alpha-80: oklch(1 0 0 / 0.8);
+    --foundation-color-white-alpha-90: oklch(1 0 0 / 0.9);
+    --foundation-color-white-alpha-100: oklch(1 0 0);
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "groups": [
+    {
+      "id": "about-framework",
+      "title": "Framework and monorepo",
+      "entries": [
+        {
+          "id": "about-nextjs",
+          "name": "Next.js",
+          "role": "Runs the React applications and documentation site.",
+          "href": "https://nextjs.org/docs",
+          "version": {
+            "kind": "package",
+            "name": "next",
+            "directories": ["apps/web", "apps/docs"]
+          }
+        },
+        {
+          "id": "about-react",
+          "name": "React",
+          "role": "Composes interactive interfaces from reusable components.",
+          "href": "https://react.dev/",
+          "version": {
+            "kind": "package",
+            "name": "react",
+            "directories": ["apps/web", "apps/docs"]
+          }
+        },
+        {
+          "id": "about-typescript",
+          "name": "TypeScript",
+          "role": "Checks typed application and component source.",
+          "href": "https://www.typescriptlang.org/docs/",
+          "version": {
+            "kind": "package",
+            "name": "typescript",
+            "directories": [".", "apps/docs", "packages/ui"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-design-tokens",
+      "title": "Design tokens",
+      "entries": [
+        {
+          "id": "about-dtcg",
+          "name": "Design Tokens Community Group",
+          "role": "Defines the interoperable format used by the project's design-token files.",
+          "href": "https://www.designtokens.org/",
+          "version": {
+            "kind": "standard"
+          }
+        },
+        {
+          "id": "about-tokens-studio",
+          "name": "Tokens Studio",
+          "role": "Manages the project's token sets and export configuration.",
+          "href": "https://tokens.studio/",
+          "version": {
+            "kind": "service"
+          }
+        },
+        {
+          "id": "about-tokens-studio-cli",
+          "name": "Tokens Studio CLI",
+          "role": "Pulls token data and exports styles into the project.",
+          "href": "https://docs.tokens.studio/",
+          "version": {
+            "kind": "package",
+            "name": "@tokens-studio/studio-cli",
+            "directories": ["packages/tokens"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-components",
+      "title": "Components",
+      "entries": [
+        {
+          "id": "about-base-ui",
+          "name": "Base UI",
+          "role": "Provides accessible React primitives for the project's components.",
+          "href": "https://base-ui.com/react/overview/quick-start",
+          "version": {
+            "kind": "package",
+            "name": "@base-ui/react",
+            "directories": ["packages/ui"]
+          }
+        },
+        {
+          "id": "about-phosphor",
+          "name": "Phosphor Icons",
+          "role": "Supplies the component library's icon set.",
+          "href": "https://phosphoricons.com/",
+          "version": {
+            "kind": "package",
+            "name": "@phosphor-icons/react",
+            "directories": ["packages/ui"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-design",
+      "title": "Design and collaboration",
+      "entries": [
+        {
+          "id": "about-figma",
+          "name": "Figma",
+          "role": "Hosts collaborative designs and the shared design library.",
+          "href": "https://www.figma.com/",
+          "version": {
+            "kind": "service"
+          }
+        },
+        {
+          "id": "about-code-connect",
+          "name": "Code Connect",
+          "role": "Links published Figma components to their code implementations.",
+          "href": "https://developers.figma.com/docs/code-connect/",
+          "version": {
+            "kind": "package",
+            "name": "@figma/code-connect",
+            "directories": ["packages/ui", "."]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-documentation",
+      "title": "Documentation",
+      "entries": [
+        {
+          "id": "about-fumadocs",
+          "name": "Fumadocs",
+          "role": "Builds the documentation navigation, search and page framework.",
+          "href": "https://fumadocs.dev/",
+          "version": {
+            "kind": "package",
+            "name": "fumadocs-core",
+            "directories": ["apps/docs"]
+          }
+        },
+        {
+          "id": "about-fumadocs-mdx",
+          "name": "Fumadocs MDX",
+          "role": "Compiles editable MDX pages for the documentation site.",
+          "href": "https://fumadocs.dev/docs/mdx",
+          "version": {
+            "kind": "package",
+            "name": "fumadocs-mdx",
+            "directories": ["apps/docs"]
+          }
+        },
+        {
+          "id": "about-storybook",
+          "name": "Storybook",
+          "role": "Documents and exercises components in an isolated workshop.",
+          "href": "https://storybook.js.org/docs",
+          "version": {
+            "kind": "package",
+            "name": "storybook",
+            "directories": ["packages/ui"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-quality",
+      "title": "Testing and quality",
+      "entries": [
+        {
+          "id": "about-vitest",
+          "name": "Vitest",
+          "role": "Runs component interaction tests in the browser.",
+          "href": "https://vitest.dev/",
+          "version": {
+            "kind": "package",
+            "name": "vitest",
+            "directories": ["packages/ui"]
+          }
+        },
+        {
+          "id": "about-playwright",
+          "name": "Playwright",
+          "role": "Provides browser automation for component tests.",
+          "href": "https://playwright.dev/",
+          "version": {
+            "kind": "package",
+            "name": "playwright",
+            "directories": ["packages/ui"]
+          }
+        },
+        {
+          "id": "about-storybook-a11y",
+          "name": "Storybook accessibility",
+          "role": "Checks component stories for accessibility issues.",
+          "href": "https://storybook.js.org/docs/writing-tests/accessibility-testing",
+          "version": {
+            "kind": "package",
+            "name": "@storybook/addon-a11y",
+            "directories": ["packages/ui"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-delivery",
+      "title": "CI and delivery",
+      "entries": [
+        {
+          "id": "about-github-actions",
+          "name": "GitHub Actions",
+          "role": "Runs the selected project checks and delivery workflows.",
+          "href": "https://docs.github.com/actions",
+          "version": {
+            "kind": "service"
+          }
+        }
+      ]
+    }
+  ]
+}

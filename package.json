@@ -1,0 +1,48 @@
+{
+  "name": "fabre-designsystem",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "bun@1.4.3",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "check-dev": "node scripts/check-dev-deps.mjs",
+    "dev": "bun run check-dev && turbo run dev",
+    "build": "bun run check-dev && turbo run build",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "check": "turbo run check",
+    "check-types": "turbo run check-types",
+    "setup:first-run": "bun scripts/setup-first-run.mjs",
+    "prepare": "husky",
+    "figma:contract": "bun packages/contracts/bin/contracts.mjs compile",
+    "figma:contract:check": "bun packages/contracts/bin/contracts.mjs check",
+    "figma:docs:check": "bun scripts/check-figma-docs-contract.ts",
+    "figma:connect": "bun run --filter=@workspace/contracts figma:connect",
+    "figma:connect:check": "bun run --filter=@workspace/contracts figma:connect:check",
+    "figma:connect:publish": "figma connect publish -c figma.config.json --exit-on-unreadable-files",
+    "design:lint": "designmd lint DESIGN.md && designmd lint design/fabre-designsystem/dark.md"
+  },
+  "engines": {
+    "node": ">=24",
+    "bun": ">=1.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "husky": "9.1.7",
+    "lint-staged": "15.5.2",
+    "turbo": "2.9.15",
+    "typescript": "5.9.3",
+    "@figma/code-connect": "2.1.0",
+    "@google/design.md": "0.4.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,jsonc,md,mdx,css}": "biome check --write --no-errors-on-unmatched"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@phosphor-icons/react": "2.1.10"
+  }
+}

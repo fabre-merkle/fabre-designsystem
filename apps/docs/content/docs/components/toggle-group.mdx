@@ -1,0 +1,91 @@
+---
+title: Toggle Group
+description: Coordinate selection across related toggles.
+primitive: https://base-ui.com/react/components/toggle-group
+---
+
+## Interactive example
+
+<DocsStory name="toggle-group" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+</Tab>
+
+<Tab value="Manual">
+
+<Steps>
+
+<Step>
+
+Install the [Toggle](/docs/components/toggle) component first — ToggleGroup coordinates Toggle children.
+
+</Step>
+
+<Step>
+
+Create `components/ui/toggle-group.tsx`:
+
+<include cwd lang="tsx" meta='title="toggle-group.tsx"'>../../packages/ui/src/components/toggle-group/toggle-group.tsx</include>
+
+</Step>
+
+<Step>
+
+Create `components/ui/toggle-group.css`:
+
+<include cwd lang="css" meta='title="toggle-group.css"'>../../packages/ui/src/components/toggle-group/toggle-group.css</include>
+
+</Step>
+
+</Steps>
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Toggle } from "@workspace/ui/components/toggle";
+import { ToggleGroup } from "@workspace/ui/components/toggle-group";
+
+<ToggleGroup defaultValue={["left"]}>
+  <Toggle value="left">Left</Toggle>
+  <Toggle value="center">Center</Toggle>
+  <Toggle value="right">Right</Toggle>
+</ToggleGroup>
+```
+
+Each child `Toggle` is identified by its `value` prop; the group's `value` is the array of pressed values. Pass `multiple` to allow more than one item to be pressed at a time. `variant` and `size` set on the group cascade to every child Toggle via React context — override on an individual `Toggle` when needed.
+
+## API Reference
+
+Component-specific props on `ToggleGroup`. All other props from [Base UI ToggleGroup](https://base-ui.com/react/components/toggle-group#api-reference) are supported, including `value`, `defaultValue`, `onValueChange`, `multiple`, `disabled`, `orientation`, and `loopFocus`.
+
+<AutoTypeTable path="toggle-group/toggle-group.tsx" name="ToggleGroupProps" />
+
+## Grouped vs. spaced
+
+A joined group follows the segmented rule: the track is one control tall, padded by `control-inset` (2px), and each item rounds concentrically inside it. `spacing` decides the track. `joined` always draws the segmented track, and `gapped` never does, whatever `grouped` says. `grouped={false}` only changes the default spacing to `gapped`. A focused item lifts above its neighbours, so its focus ring is never clipped.
+
+## Figma contract
+
+<ComponentContract slug="toggle-group" />

@@ -1,0 +1,65 @@
+---
+title: Collapsible
+description: Expand or collapse a content panel.
+primitive: https://base-ui.com/react/components/collapsible
+---
+
+## Interactive example
+
+<DocsStory name="collapsible" />
+
+## Installation
+
+`Collapsible` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Collapsible } from "@workspace/ui/components/collapsible";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Collapsible } from "@workspace/ui/components/collapsible";
+import { Button } from "@workspace/ui/components/button";
+
+<Collapsible.Root>
+  <Collapsible.Trigger render={<Button>Toggle details</Button>} />
+  <Collapsible.Panel>
+    Hidden content revealed on open.
+  </Collapsible.Panel>
+</Collapsible.Root>
+```
+
+## API Reference
+
+Collapsible adds no props beyond the primitive's. All parts forward to the matching [Base UI Collapsible](https://base-ui.com/react/components/collapsible#api-reference) primitives — `Root`, `Trigger`, `Panel` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`Panel` exposes `--collapsible-panel-height` from Base UI; The component animates `height` from that measured value to `0` and back, paired with a `prefers-reduced-motion` reset.
+
+## When to use
+
+Use `Collapsible` for inline, single-section progressive disclosure — show more / show less, optional form fields, secondary metadata. For stacked, accordion-style sections where only one panel is open at a time use `Accordion`. For a click-anchored floating panel use `Popover`. For a focused modal task use `Dialog`.
+
+## Composition
+
+`Trigger` is a render-prop target — pass the project's `Button` (or any other actionable surface) via `render` to inherit its variants. The component only owns the panel height transition and root layout; everything else (controlled/uncontrolled state, ARIA wiring, keyboard, page-find expansion via `hiddenUntilFound`) comes from the Base UI primitive.
+
+## Figma contract
+
+<ComponentContract slug="collapsible" />

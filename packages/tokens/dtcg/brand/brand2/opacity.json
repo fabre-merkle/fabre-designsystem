@@ -1,0 +1,71 @@
+{
+  "brand": {
+    "opacity": {
+      "10": {
+        "$value": 0.1,
+        "$type": "opacity",
+        "$description": "The barely visible level."
+      },
+      "15": {
+        "$value": 0.15,
+        "$type": "opacity",
+        "$description": "Opacity scale step for light tints. No semantic token maps it directly."
+      },
+      "20": {
+        "$value": 0.2,
+        "$type": "opacity",
+        "$description": "Opacity scale step for soft tints. No semantic token maps it directly."
+      },
+      "30": {
+        "$value": 0.3,
+        "$type": "opacity",
+        "$description": "The light transparency level."
+      },
+      "40": {
+        "$value": 0.4,
+        "$type": "opacity",
+        "$description": "Opacity scale step below half. No semantic token maps it directly."
+      },
+      "50": {
+        "$value": 0.5,
+        "$type": "opacity",
+        "$description": "The half-transparent level."
+      },
+      "60": {
+        "$value": 0.6,
+        "$type": "opacity",
+        "$description": "Opacity scale step above half. No semantic token maps it directly."
+      },
+      "70": {
+        "$value": 0.7,
+        "$type": "opacity",
+        "$description": "The mostly opaque level."
+      },
+      "80": {
+        "$value": 0.8,
+        "$type": "opacity",
+        "$description": "Opacity scale step for near-opaque content. No semantic token maps it directly."
+      },
+      "90": {
+        "$value": 0.9,
+        "$type": "opacity",
+        "$description": "Opacity scale step just below opaque. No semantic token maps it directly."
+      },
+      "100": {
+        "$value": 1,
+        "$type": "opacity",
+        "$description": "Completely opaque"
+      },
+      "00": {
+        "$value": 0,
+        "$type": "opacity",
+        "$description": "Completely transparent i.e. see-through"
+      },
+      "05": {
+        "$value": 0.05,
+        "$type": "opacity",
+        "$description": "Opacity scale step for hairline tints. No semantic token maps it directly."
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+---
+title: Overview
+description: Install, organise and use design tokens.
+---
+
+Design tokens make repeatable design decisions available as data. They separate the values
+that express identity from the roles that say how those values are used.
+
+{/* topic:start token-registry-installation */}
+## Install tokens
+
+The design-system repository already includes its tokens. To use the published package in a
+product project, configure this design system's namespace using the registry guide, then discover
+the published token item:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+```
+
+Inspect the discovered item before installing it:
+
+```npm
+npx shadcn@latest view @fabre-designsystem/<token-item>
+npx shadcn@latest add @fabre-designsystem/<token-item>
+```
+
+Replace `<token-item>` with the exact published name, not a guessed package name. If the registry
+is not published, ask its maintainer for access or the canonical token files.
+
+For manual installation, copy the published token package and its required workspace configuration.
+Preserve the DTCG-to-CSS pipeline and review existing brand and theme data before replacing it.
+Import its CSS using the consuming project's established cascade. Installing tokens does not
+connect to or authorize writes in Tokens Studio.
+
+<RelatedPage href="/docs/registry">Configure the registry and review installation changes.</RelatedPage>
+{/* topic:end token-registry-installation */}
+
+## Architecture
+
+| Tier | Purpose |
+| --- | --- |
+| Foundation and brand | Shared scales and brand decisions, such as colour families and typefaces. |
+| Theme | Values that change with a mode, including colour ramps and shadows. |
+| Semantic | Roles named for their intended use in an experience. |
+| Component | An optional extension for a component-specific need; the supplied names are examples only. |
+
+This project does not use component tokens as an active production catalogue. Components
+can consume shared semantic roles, whose values adapt across the selected dimensions.
+
+## Naming and use
+
+Prefer a semantic role that expresses the intended use over a raw ramp step. The reference
+pages show the resolved value in the active context and the source alias for semantic
+tokens. Brand and theme primitives do not show aliases.
+
+Resolved values reflect the installed CSS. After changing raw token data, regenerate the
+CSS export too so the documented values match what the project renders.
+
+Use a foundation or theme value directly when defining a new semantic role. Renaming or
+removing a role affects its consumers, so deprecate it before removal. Accessibility depends
+on the role and its pairing, not on a ramp step in isolation.
+
+<RelatedPage href="/docs/tokens/multi-dimensional-theming">Explore how token dimensions compose.</RelatedPage>
+
+<RelatedPage href="/docs/tokens/component">Read when a component-specific alias may be justified.</RelatedPage>
+
+<RelatedPage href="/docs/foundations/principles">Read the principles behind the system.</RelatedPage>

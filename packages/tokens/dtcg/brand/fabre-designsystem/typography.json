@@ -1,0 +1,763 @@
+{
+  "brand": {
+    "typography": {
+      "code": {
+        "fontFamily": {
+          "$value": "\"Geist Mono\", \"monospace\"",
+          "$type": "fontFamily",
+          "$description": "Monospace family for code blocks and tabular numerics."
+        },
+        "fontWeight": {
+          "100": {
+            "$value": 100,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 100 (thin)."
+          },
+          "200": {
+            "$value": 200,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 200."
+          },
+          "300": {
+            "$value": 300,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 300 (light)."
+          },
+          "400": {
+            "$value": 400,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 400 (regular)."
+          },
+          "500": {
+            "$value": 500,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 500 (medium)."
+          },
+          "600": {
+            "$value": 600,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 600 (semibold)."
+          },
+          "700": {
+            "$value": 700,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 700 (bold)."
+          },
+          "800": {
+            "$value": 800,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 800."
+          },
+          "900": {
+            "$value": 900,
+            "$type": "fontWeight",
+            "$description": "Code weight scale step 900 (black)."
+          }
+        },
+        "lg": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.code.lg.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the lg code style, derived from the lg code size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.code.lg.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the lg code style, derived from the lg code size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 1.125)",
+            "$type": "dimension",
+            "$description": "Font size for the lg code style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.code.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the lg code style."
+          }
+        },
+        "md": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.code.md.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the md code style, derived from the md code size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.code.md.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the md code style, derived from the md code size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale}",
+            "$type": "dimension",
+            "$description": "Font size for the md code style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.code.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the md code style."
+          }
+        },
+        "sm": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.code.sm.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the sm code style, derived from the sm code size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.code.sm.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the sm code style, derived from the sm code size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 0.875)",
+            "$type": "dimension",
+            "$description": "Font size for the sm code style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.code.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the sm code style."
+          }
+        },
+        "xs": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.code.xs.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the xs code style, derived from the xs code size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.code.xs.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the xs code style, derived from the xs code size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 0.75)",
+            "$type": "dimension",
+            "$description": "Font size for the xs code style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.code.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the xs code style."
+          }
+        }
+      },
+      "control": {
+        "lg": {
+          "lineHeight": {
+            "$value": "round({brand.typography.control.lg.size} * 1.35)",
+            "$type": "lineHeight",
+            "$description": "Single-line label height for large controls. Pairs with brand.typography.control.lg.size."
+          },
+          "size": {
+            "$value": "max(12px, {brand.typography.paragraph.md.size})",
+            "$type": "dimension",
+            "$description": "Text size for large controls, never below 12px. Pairs with brand.typography.control.lg.lineHeight."
+          }
+        },
+        "md": {
+          "lineHeight": {
+            "$value": "round({brand.typography.control.md.size} * 1.35)",
+            "$type": "lineHeight",
+            "$description": "Single-line label height for default controls. Pairs with brand.typography.control.md.size."
+          },
+          "size": {
+            "$value": "max(12px, {brand.typography.paragraph.sm.size})",
+            "$type": "dimension",
+            "$description": "Text size for default controls, never below 12px. Pairs with brand.typography.control.md.lineHeight."
+          }
+        },
+        "sm": {
+          "lineHeight": {
+            "$value": "round({brand.typography.control.sm.size} * 1.35)",
+            "$type": "lineHeight",
+            "$description": "Single-line label height for small controls. Pairs with brand.typography.control.sm.size."
+          },
+          "size": {
+            "$value": "max(12px, {brand.typography.paragraph.xs.size})",
+            "$type": "dimension",
+            "$description": "Text size for small controls, never below 12px. Pairs with brand.typography.control.sm.lineHeight."
+          }
+        },
+        "weight": {
+          "$value": "{brand.typography.paragraph.fontWeight.500}",
+          "$type": "fontWeight",
+          "$description": "Medium weight for control labels so they read as operable. Pairs with brand.typography.control sizes."
+        }
+      },
+      "display": {
+        "fontFamily": {
+          "$value": "\"Work Sans\", \"sans-serif\"",
+          "$type": "fontFamily",
+          "$description": "Display typeface for hero text."
+        },
+        "fontWeight": {
+          "100": {
+            "$value": 100,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 100 (thin)."
+          },
+          "200": {
+            "$value": 200,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 200."
+          },
+          "300": {
+            "$value": 300,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 300 (light)."
+          },
+          "400": {
+            "$value": 400,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 400 (regular)."
+          },
+          "500": {
+            "$value": 500,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 500 (medium)."
+          },
+          "600": {
+            "$value": 600,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 600 (semibold)."
+          },
+          "700": {
+            "$value": 700,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 700 (bold)."
+          },
+          "800": {
+            "$value": 800,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 800."
+          },
+          "900": {
+            "$value": 900,
+            "$type": "fontWeight",
+            "$description": "Display weight scale step 900 (black)."
+          }
+        },
+        "lg": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.display.lg.size} * -0.02, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the lg display style, derived from the lg display size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.display.lg.size} * 1.1)",
+            "$type": "lineHeight",
+            "$description": "Line height for the lg display style, derived from the lg display size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale} * 4",
+            "$type": "dimension",
+            "$description": "Font size for the lg display style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.display.fontWeight.600}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the lg display style."
+          }
+        },
+        "md": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.display.md.size} * -0.02, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the md display style, derived from the md display size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.display.md.size} * 1.15)",
+            "$type": "lineHeight",
+            "$description": "Line height for the md display style, derived from the md display size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale} * 3",
+            "$type": "dimension",
+            "$description": "Font size for the md display style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.display.fontWeight.600}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the md display style."
+          }
+        },
+        "sm": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.display.sm.size} * -0.02, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the sm display style, derived from the sm display size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.display.sm.size} * 1.15)",
+            "$type": "lineHeight",
+            "$description": "Line height for the sm display style, derived from the sm display size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 2.5)",
+            "$type": "dimension",
+            "$description": "Font size for the sm display style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.display.fontWeight.600}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the sm display style."
+          }
+        },
+        "xs": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.display.xs.size} * -0.02, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the xs display style, derived from the xs display size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.display.xs.size} * 1.15)",
+            "$type": "lineHeight",
+            "$description": "Line height for the xs display style, derived from the xs display size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale} * 2",
+            "$type": "dimension",
+            "$description": "Font size for the xs display style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.display.fontWeight.600}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the xs display style."
+          }
+        }
+      },
+      "eyebrow": {
+        "fontFamily": {
+          "$value": "\"Work Sans\", \"sans-serif\"",
+          "$type": "fontFamily",
+          "$description": "Font family for eyebrow text"
+        },
+        "fontWeight": {
+          "100": {
+            "$value": 100,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 100 (thin)."
+          },
+          "200": {
+            "$value": 200,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 200."
+          },
+          "300": {
+            "$value": 300,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 300 (light)."
+          },
+          "400": {
+            "$value": 400,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 400 (regular)."
+          },
+          "500": {
+            "$value": 500,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 500 (medium)."
+          },
+          "600": {
+            "$value": 600,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 600 (semibold)."
+          },
+          "700": {
+            "$value": 700,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 700 (bold)."
+          },
+          "800": {
+            "$value": 800,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 800."
+          },
+          "900": {
+            "$value": 900,
+            "$type": "fontWeight",
+            "$description": "Eyebrow weight scale step 900 (black)."
+          }
+        },
+        "lg": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.eyebrow.lg.size} * 0.1, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the lg eyebrow style, derived from the lg eyebrow size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.eyebrow.lg.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the lg eyebrow style, derived from the lg eyebrow size."
+          },
+          "size": {
+            "$value": "round({brand.typography.headline.lg.size} * {brand.typography.eyebrow.sizeMultiplier})",
+            "$type": "dimension",
+            "$description": "Font size for the lg eyebrow style, scaled from the lg headline size."
+          },
+          "weight": {
+            "$value": "{brand.typography.eyebrow.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the lg eyebrow style."
+          }
+        },
+        "md": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.eyebrow.md.size} * 0.1, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the md eyebrow style, derived from the md eyebrow size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.eyebrow.md.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the md eyebrow style, derived from the md eyebrow size."
+          },
+          "size": {
+            "$value": "round({brand.typography.headline.md.size} * {brand.typography.eyebrow.sizeMultiplier})",
+            "$type": "dimension",
+            "$description": "Font size for the md eyebrow style, scaled from the md headline size."
+          },
+          "weight": {
+            "$value": "{brand.typography.eyebrow.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the md eyebrow style."
+          }
+        },
+        "sizeMultiplier": {
+          "$value": 0.8,
+          "$type": "number",
+          "$description": "Multiplier applied to matching headline sizes for eyebrow text"
+        },
+        "sm": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.eyebrow.sm.size} * 0.1, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the sm eyebrow style, derived from the sm eyebrow size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.eyebrow.sm.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the sm eyebrow style, derived from the sm eyebrow size."
+          },
+          "size": {
+            "$value": "round({brand.typography.headline.sm.size} * {brand.typography.eyebrow.sizeMultiplier})",
+            "$type": "dimension",
+            "$description": "Font size for the sm eyebrow style, scaled from the sm headline size."
+          },
+          "weight": {
+            "$value": "{brand.typography.eyebrow.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the sm eyebrow style."
+          }
+        }
+      },
+      "headline": {
+        "fontFamily": {
+          "$value": "\"Work Sans\", \"sans-serif\"",
+          "$type": "fontFamily",
+          "$description": "Headline typeface for page and section headings."
+        },
+        "fontWeight": {
+          "100": {
+            "$value": 100,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 100 (thin)."
+          },
+          "200": {
+            "$value": 200,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 200."
+          },
+          "300": {
+            "$value": 300,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 300 (light)."
+          },
+          "400": {
+            "$value": 400,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 400 (regular)."
+          },
+          "500": {
+            "$value": 500,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 500 (medium)."
+          },
+          "600": {
+            "$value": 600,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 600 (semibold)."
+          },
+          "700": {
+            "$value": 700,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 700 (bold)."
+          },
+          "800": {
+            "$value": 800,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 800."
+          },
+          "900": {
+            "$value": 900,
+            "$type": "fontWeight",
+            "$description": "Headline weight scale step 900 (black)."
+          }
+        },
+        "lg": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.headline.lg.size} * -0.02, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the lg headline style, derived from the lg headline size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.headline.lg.size} * 1.2)",
+            "$type": "lineHeight",
+            "$description": "Line height for the lg headline style, derived from the lg headline size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale} * 2",
+            "$type": "dimension",
+            "$description": "Font size for the lg headline style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.headline.fontWeight.700}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the lg headline style."
+          }
+        },
+        "md": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.headline.md.size} * -0.01, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the md headline style, derived from the md headline size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.headline.md.size} * 1.25)",
+            "$type": "lineHeight",
+            "$description": "Line height for the md headline style, derived from the md headline size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 1.5)",
+            "$type": "dimension",
+            "$description": "Font size for the md headline style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.headline.fontWeight.700}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the md headline style."
+          }
+        },
+        "sm": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.headline.sm.size} * -0.01, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the sm headline style, derived from the sm headline size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.headline.sm.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the sm headline style, derived from the sm headline size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 1.25)",
+            "$type": "dimension",
+            "$description": "Font size for the sm headline style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.headline.fontWeight.700}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the sm headline style."
+          }
+        },
+        "xs": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.headline.xs.size} * -0.01, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the xs headline style, derived from the xs headline size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.headline.xs.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the xs headline style, derived from the xs headline size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale}",
+            "$type": "dimension",
+            "$description": "Font size for the xs headline style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.headline.fontWeight.700}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the xs headline style."
+          }
+        }
+      },
+      "paragraph": {
+        "fontFamily": {
+          "$value": "\"Inter\", \"sans-serif\"",
+          "$type": "fontFamily",
+          "$description": "Body and UI typeface."
+        },
+        "fontWeight": {
+          "100": {
+            "$value": 100,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 100 (thin)."
+          },
+          "200": {
+            "$value": 200,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 200."
+          },
+          "300": {
+            "$value": 300,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 300 (light)."
+          },
+          "400": {
+            "$value": 400,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 400 (regular)."
+          },
+          "500": {
+            "$value": 500,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 500 (medium)."
+          },
+          "600": {
+            "$value": 600,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 600 (semibold)."
+          },
+          "700": {
+            "$value": 700,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 700 (bold)."
+          },
+          "800": {
+            "$value": 800,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 800."
+          },
+          "900": {
+            "$value": 900,
+            "$type": "fontWeight",
+            "$description": "Paragraph weight scale step 900 (black)."
+          }
+        },
+        "lg": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.paragraph.lg.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the lg paragraph style, derived from the lg paragraph size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.paragraph.lg.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the lg paragraph style, derived from the lg paragraph size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 1.125)",
+            "$type": "dimension",
+            "$description": "Font size for the lg paragraph style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.paragraph.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the lg paragraph style."
+          }
+        },
+        "md": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.paragraph.md.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the md paragraph style, derived from the md paragraph size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.paragraph.md.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the md paragraph style, derived from the md paragraph size."
+          },
+          "size": {
+            "$value": "{web.fontSize.scale}",
+            "$type": "dimension",
+            "$description": "Font size for the md paragraph style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.paragraph.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the md paragraph style."
+          }
+        },
+        "sm": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.paragraph.sm.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the sm paragraph style, derived from the sm paragraph size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.paragraph.sm.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the sm paragraph style, derived from the sm paragraph size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 0.875)",
+            "$type": "dimension",
+            "$description": "Font size for the sm paragraph style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.paragraph.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the sm paragraph style."
+          }
+        },
+        "xs": {
+          "letterspacing": {
+            "$value": "round_to({brand.typography.paragraph.xs.size} * 0, 2)",
+            "$type": "letterSpacing",
+            "$description": "Letter spacing for the xs paragraph style, derived from the xs paragraph size."
+          },
+          "lineHeight": {
+            "$value": "round({brand.typography.paragraph.xs.size} * 1.3)",
+            "$type": "lineHeight",
+            "$description": "Line height for the xs paragraph style, derived from the xs paragraph size."
+          },
+          "size": {
+            "$value": "round({web.fontSize.scale} * 0.75)",
+            "$type": "dimension",
+            "$description": "Font size for the xs paragraph style at the active breakpoint."
+          },
+          "weight": {
+            "$value": "{brand.typography.paragraph.fontWeight.400}",
+            "$type": "fontWeight",
+            "$description": "Font weight for the xs paragraph style."
+          }
+        }
+      },
+      "scale": {
+        "base": {
+          "fontSize": {
+            "lg": {
+              "$value": "18px",
+              "$type": "dimension",
+              "$description": "Per-breakpoint base body size in px. All variant sizes are computed as multipliers of this. md is the canonical reference; sm shrinks for mobile, lg grows for wide layouts."
+            },
+            "md": {
+              "$value": "16px",
+              "$type": "dimension",
+              "$description": "Base body font size at the md breakpoint."
+            },
+            "sm": {
+              "$value": "14px",
+              "$type": "dimension",
+              "$description": "Base body font size at the sm breakpoint."
+            }
+          }
+        }
+      }
+    }
+  }
+}

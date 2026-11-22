@@ -1,0 +1,73 @@
+---
+title: ContextMenu
+description: Open contextual actions at the pointer.
+primitive: https://base-ui.com/react/components/context-menu
+---
+
+## Interactive example
+
+<DocsStory name="context-menu" />
+
+## Installation
+
+`ContextMenu` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { ContextMenu } from "@workspace/ui/components/context-menu";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { ContextMenu } from "@workspace/ui/components/context-menu";
+
+<ContextMenu.Root>
+  <ContextMenu.Trigger>
+    <div>Right-click me</div>
+  </ContextMenu.Trigger>
+  <ContextMenu.Portal>
+    <ContextMenu.Positioner>
+      <ContextMenu.Popup>
+        <ContextMenu.Item>Copy</ContextMenu.Item>
+        <ContextMenu.Item>Paste</ContextMenu.Item>
+        <ContextMenu.Separator />
+        <ContextMenu.Item>Delete</ContextMenu.Item>
+      </ContextMenu.Popup>
+    </ContextMenu.Positioner>
+  </ContextMenu.Portal>
+</ContextMenu.Root>
+```
+
+## API Reference
+
+ContextMenu adds no props beyond the primitive's. All parts forward to the matching [Base UI ContextMenu](https://base-ui.com/react/components/context-menu#api-reference) primitives — `Root`, `Trigger`, `Portal`, `Backdrop`, `Positioner`, `Popup`, `Arrow`, `Item`, `LinkItem`, `Group`, `GroupLabel`, `RadioGroup`, `RadioItem`, `RadioItemIndicator`, `CheckboxItem`, `CheckboxItemIndicator`, `Separator`, `SubmenuRoot`, `SubmenuTrigger` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`CheckboxItemIndicator` falls back to a Phosphor `Check` glyph when no children are provided. Pass children to override.
+
+## When to use
+
+Use `ContextMenu` for right-click affordances on a region or item — file managers, table rows, canvas surfaces — where the menu is anchored to the pointer rather than a visible trigger. For a click-triggered, button-anchored menu use `Menu`. For a persistent horizontal application menu use `Menubar`.
+
+## Composition
+
+`Trigger` wraps any element and intercepts the native context-menu event. Style the trigger surface yourself; ContextMenu styling owns the popup and item visuals only.
+
+## Figma contract
+
+<ComponentContract slug="context-menu" />

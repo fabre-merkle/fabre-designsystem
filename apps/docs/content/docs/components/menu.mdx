@@ -1,0 +1,72 @@
+---
+title: Menu
+description: Choose actions from a keyboard-accessible menu.
+primitive: https://base-ui.com/react/components/menu
+---
+
+## Interactive example
+
+<DocsStory name="menu" />
+
+## Installation
+
+`Menu` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Menu } from "@workspace/ui/components/menu";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Menu } from "@workspace/ui/components/menu";
+import { Button } from "@workspace/ui/components/button";
+
+<Menu.Root>
+  <Menu.Trigger render={<Button>Actions</Button>} />
+  <Menu.Portal>
+    <Menu.Positioner sideOffset={8}>
+      <Menu.Popup>
+        <Menu.Item onClick={() => {}}>Edit</Menu.Item>
+        <Menu.Item onClick={() => {}}>Duplicate</Menu.Item>
+        <Menu.Separator />
+        <Menu.Item onClick={() => {}}>Delete</Menu.Item>
+      </Menu.Popup>
+    </Menu.Positioner>
+  </Menu.Portal>
+</Menu.Root>
+```
+
+## API Reference
+
+Menu adds no props beyond the primitive's. All parts forward to the matching [Base UI Menu](https://base-ui.com/react/components/menu#api-reference) primitives — `Root`, `Trigger`, `Portal`, `Backdrop`, `Positioner`, `Popup`, `Arrow`, `Item`, `LinkItem`, `Group`, `GroupLabel`, `RadioGroup`, `RadioItem`, `RadioItemIndicator`, `CheckboxItem`, `CheckboxItemIndicator`, `Separator`, `SubmenuRoot`, `SubmenuTrigger` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`CheckboxItemIndicator` falls back to a Phosphor `Check` glyph when no children are provided. Pass children to override.
+
+## When to use
+
+Use `Menu` for trigger-anchored action lists and option pickers — overflow menus, "more actions" affordances, single- or multi-select pickers with a known set of choices. For an option list that filters as you type use `Combobox` or `Select`. For right-click triggered menus use `ContextMenu`. For a horizontal application menu bar use `Menubar`.
+
+## Composition
+
+`Trigger` is a render-prop target — pass the project's `Button` (or any other actionable surface) via `render` to inherit its variants. Compose `SubmenuRoot` + `SubmenuTrigger` to build nested menus; the submenu trigger inherits item styling and adds a trailing caret affordance via `[data-submenu-trigger]`.
+
+## Figma contract
+
+<ComponentContract slug="menu" />

@@ -1,0 +1,84 @@
+---
+title: Human Readable Name   # spaces, not PascalCase; same as the registry item title
+description: One line. It renders under the H1, so do not repeat it in the body.
+primitive: https://base-ui.com/react/components/name   # optional: the Base UI primitive
+---
+
+{/* HERO. With a story: the live panel with Variant menu, controls and Preview/TypeScript/CSS tabs.
+    Without one, replace this line with a static showcase of ONE default instance:
+      import { Name } from "@workspace/ui/components/name";
+      <ComponentShowcase name="name">
+        <Name />
+      </ComponentShowcase>
+    Never show every variant here. */}
+<DocsStory name="name" />
+
+## Installation
+
+{/* Lead with the project's own copy. One subsection covers adding or updating from any registry. */}
+
+`Name` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Name } from "@workspace/ui/components/name";
+```
+
+### Add or update from a registry
+
+The registry is private. Create a registry token at [create.merkle.design/account/tokens](https://create.merkle.design/account/tokens) and export it as `REGISTRY_TOKEN` before you run the command. The registry entry in `components.json` sends it as a Bearer header.
+
+```bash
+export REGISTRY_TOKEN="YOUR_REGISTRY_TOKEN"
+```
+
+```npm
+npx shadcn@latest add @<registry>/<item>
+```
+
+`<registry>` is any namespace configured under `registries` in `components.json`. `@focus` is the upstream library and is always configured; this project's own registry is another namespace, once it publishes one. Item names follow each registry's naming: `@focus` prefixes components with `ui-`, but another registry may name the same item `name`, so use the name that registry lists. For example:
+
+```npm
+npx shadcn@latest add @focus/ui-name
+```
+
+Adding over an existing local component can overwrite local edits, so review the diff first.
+
+## Usage
+
+{/* One import and the smallest representative example. */}
+
+```tsx
+import { Name } from "@workspace/ui/components/name";
+
+<Name>Label</Name>
+```
+
+{/* If there is a rule that is easy to get wrong, state it in one sentence and show a snippet:
+
+An icon-only button needs an accessible name, so always pass `aria-label`:
+
+```tsx
+<Button size="icon" aria-label="Close"><CloseIcon /></Button>
+```
+*/}
+
+## API Reference
+
+{/* One line, then the table. The renderer shows the component's own props and the Base UI props that
+    set behaviour, and collapses className/render/style/nativeButton/focusableWhenDisabled into a
+    closed "Base UI props" group. For a pass-through wrapper with no custom props, drop the table and
+    say that every part forwards to the matching Base UI parts. */}
+
+Props `Name` adds. [Base UI Name](https://base-ui.com/react/components/name#api-reference) props are also supported.
+
+<AutoTypeTable path="name/name.tsx" name="NameProps" />
+
+{/* OPTIONAL prose sections go here, only for a rule the playground and source tabs cannot show.
+    No Variants, Emphasis, Sizes, Icons or States sections that repeat the playground, and no token
+    tables the CSS tab already shows. On a page with no story, static variants go under
+    "## Variants" (a ### per axis, each a <ComponentPreview variant>); use "Examples" only when the
+    component has no variants. */}
+
+{/* LAST. Closed "Figma contract" group; no heading of your own. */}
+<ComponentContract slug="name" heading />

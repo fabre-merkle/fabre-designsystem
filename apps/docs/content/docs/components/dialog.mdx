@@ -1,0 +1,100 @@
+---
+title: Dialog
+description: Present a task in a modal overlay.
+primitive: https://base-ui.com/react/components/dialog
+---
+
+## Interactive example
+
+<DocsStory name="dialog" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+</Tab>
+
+<Tab value="Manual">
+
+<Steps>
+
+<Step>
+
+Create `components/ui/dialog.tsx`:
+
+<include cwd lang="tsx" meta='title="dialog.tsx"'>../../packages/ui/src/components/dialog/dialog.tsx</include>
+
+</Step>
+
+<Step>
+
+Create `components/ui/dialog.css`:
+
+<include cwd lang="css" meta='title="dialog.css"'>../../packages/ui/src/components/dialog/dialog.css</include>
+
+</Step>
+
+</Steps>
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Dialog } from "@workspace/ui/components/dialog";
+import { Button } from "@workspace/ui/components/button";
+
+<Dialog.Root>
+  <Dialog.Trigger render={<Button>Open</Button>} />
+  <Dialog.Portal>
+    <Dialog.Backdrop />
+    <Dialog.Popup>
+      <Dialog.Header>
+        <Dialog.Title>Title</Dialog.Title>
+        <Dialog.Description>Description</Dialog.Description>
+      </Dialog.Header>
+      <Dialog.Footer>
+        <Dialog.Close render={<Button variant="secondary" mode="ghost">Close</Button>} />
+      </Dialog.Footer>
+    </Dialog.Popup>
+  </Dialog.Portal>
+</Dialog.Root>
+```
+
+## API Reference
+
+`Root`, `Trigger`, `Portal`, `Backdrop`, `Popup`, `Title`, `Description` and `Close` forward to the matching [Base UI Dialog](https://base-ui.com/react/components/dialog#api-reference) primitives, preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+`Header` and `Footer` are layout parts with no Base UI counterpart. Each renders a `div`, accepts any `div` prop and the `render` prop, and is optional.
+
+| Part | Renders | Layout |
+| --- | --- | --- |
+| `Dialog.Header` | `div` | Stacks `Title` over `Description`. |
+| `Dialog.Footer` | `div` | A row of actions aligned to the end. Below the small breakpoint the actions stack, in reverse order, so the last action in the markup sits on top. Put the primary action last. |
+
+Nothing adds a corner close button, and the popup scrolls as before.
+
+## Composition
+
+Wrap any element with `render={<YourComponent />}` on `Trigger` and `Close` to use the project's `Button` (or any other element) as the interactive control. Base UI merges props and ref into the rendered element automatically.
+
+## Figma contract
+
+<ComponentContract slug="dialog" />

@@ -1,0 +1,338 @@
+---
+title: "fabre-DesignSystem MCPs"
+description: "Connect your agent to docs and registry resources."
+---
+
+{/* topic:start mcp-servers */}
+## Connect to this design system
+
+Use Docs MCP to understand the system, and Registry MCP to discover its published resources and prepare installation commands. Reading guidance and changing project files are separate actions.
+For full coverage, use both servers: Docs MCP explains how and why to use the system; Registry MCP shows what is published and how to install it. Neither replaces the other.
+
+| Connection | Use it for |
+| --- | --- |
+| Docs MCP | Find the owning guidance, token reference and component examples. It does not install registry items. |
+| Registry MCP | Search the registries in `components.json`, inspect items and prepare installation commands. Your agent runs an approved command to install. |
+
+<RelatedPage href="/docs/working-with-ai">Use project resources to find tool-specific setup and the shared AI workflow.</RelatedPage>
+
+## Docs MCP
+
+The documentation connection exposes this site's published pages through the native Fumadocs tools. It provides design intent and usage guidance, not a component installer.
+
+### Docs MCP tools
+
+The native Fumadocs server supports the following tools when deployed. Check your connected server's tool list; the table is not proof that an endpoint is available.
+
+| Tool | What it provides | Example task |
+| --- | --- | --- |
+| `list_pages` | The page index, with owning page URLs. | Find the available token and component references. |
+| `get_page` | One page's Markdown, requested by URL. | Read a component's usage and accessibility guidance. |
+| `search` | Documentation results for a query, optionally scoped by locale. | Find the guideline that explains an interaction. |
+
+### Connect Docs MCP
+
+#### Configured connection: docs
+
+Use this project's configured documentation connection to search and read pages. Verify the available tools in your client; do not assume it also installs components.
+
+Already configured for Claude Code, VS Code. Skip setup there unless you are repairing the connection.
+
+<Tabs items={["Command","Manual","Ask your agent"]}>
+<Tab value="Command">
+
+Run from the project root. These commands use project scope, not global scope. Inspect existing entries first: re-running setup may replace custom authentication or other settings.
+
+<Tabs items={["Claude Code","VS Code","Cursor","Codex","GitHub Copilot CLI"]}>
+<Tab value={"Claude Code"}>
+
+```npm
+npx add-mcp@2.6.1 http://localhost:3001/api/mcp -n docs -a claude-code -y
+```
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```npm
+npx add-mcp@2.6.1 http://localhost:3001/api/mcp -n docs -a vscode -y
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```npm
+npx add-mcp@2.6.1 http://localhost:3001/api/mcp -n docs -a cursor -y
+```
+
+</Tab>
+<Tab value={"Codex"}>
+
+```npm
+npx add-mcp@2.6.1 http://localhost:3001/api/mcp -n docs -a codex -y
+```
+
+</Tab>
+<Tab value={"GitHub Copilot CLI"}>
+
+```npm
+npx add-mcp@2.6.1 http://localhost:3001/api/mcp -n docs -a github-copilot-cli -y
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Manual">
+
+Merge the entry into the named project file; do not replace other servers. These connection-only examples deliberately omit secret values. Preserve required headers, environment variables and client-specific authentication from your existing setup.
+
+<Tabs items={["Claude Code","VS Code","Cursor"]}>
+<Tab value={"Claude Code"}>
+
+```json title=".mcp.json"
+{
+  "mcpServers": {
+    "docs": {
+      "type": "http",
+      "url": "http://localhost:3001/api/mcp"
+    }
+  }
+}
+```
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```json title=".vscode/mcp.json"
+{
+  "servers": {
+    "docs": {
+      "type": "http",
+      "url": "http://localhost:3001/api/mcp"
+    }
+  }
+}
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "docs": {
+      "url": "http://localhost:3001/api/mcp"
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Ask your agent">
+
+Copy this into your coding assistant. It must ask which client to configure if that is not already clear.
+
+```text title="Prompt"
+Help me connect the Docs MCP for this project.
+Connection: http://localhost:3001/api/mcp.
+First inspect existing MCP configuration and ask which client I use.
+Keep this change project-local; preserve other servers and custom settings.
+Show me the proposed command or file diff before applying it.
+Never put secret values in a prompt or committed file.
+Then help me authenticate and verify a read-only request; do not install or publish resources without my approval.
+```
+
+</Tab>
+</Tabs>
+
+
+Read `/llms.txt` to find pages, `/llms-full.txt` for the whole corpus, or append `.md` to an individual docs URL.
+
+```text title="Prompt"
+Read this documentation site's /llms.txt and find the page that owns my task.
+Read that page as Markdown, retain its URL and use the documented components and token roles.
+Do not invent an MCP endpoint or install anything merely to read the guidance.
+```
+
+[Read the documentation index as plain text.](/llms.txt)
+{/* topic:end mcp-servers */}
+
+{/* topic:start mcp-add */}
+## Registry MCP
+
+Registry MCP uses the shadcn registry protocol. Its configuration key and executable are `shadcn`; its job here is to discover this design system's installable resources, not to replace Docs MCP.
+It reads the registry namespaces in `components.json`. Configure the design system's published namespace first; starting the server alone does not select a registry or provide private-registry credentials.
+
+### Registry MCP tools
+
+| Tool | What it provides | Example task |
+| --- | --- | --- |
+| `get_project_registries` | The registries configured for the current project. | Confirm the design-system namespace before searching. |
+| `list_items_in_registries` | Published item names from specified registries. | Browse the available resources without guessing names. |
+| `search_items_in_registries` | Items matching a search query. | Find an existing component for the task. |
+| `view_items_in_registries` | Item details, source files and dependencies. | Inspect what an installation would introduce. |
+| `get_item_examples_from_registries` | Published usage examples, when the registry supplies them. | Inspect supported composition rather than inventing variants. |
+| `get_add_command_for_items` | The CLI command for the chosen items. | Propose an installation for review; this tool does not run it. |
+| `get_audit_checklist` | A checklist for reviewing generated changes. | Check the result after an approved installation. |
+
+<RelatedPage href="/docs/registry">Register the namespace and learn how installation works.</RelatedPage>
+
+### Connect Registry MCP
+
+Already configured for Claude Code, VS Code. Skip setup there unless you are repairing the connection.
+
+<Tabs items={["Command","Manual","Ask your agent"]}>
+<Tab value="Command">
+
+Run from the project root. These commands use project scope, not global scope. Inspect existing entries first: re-running setup may replace custom authentication or other settings.
+
+<Tabs items={["Claude Code","VS Code","Cursor","Codex","GitHub Copilot CLI"]}>
+<Tab value={"Claude Code"}>
+
+```npm
+npx shadcn@latest mcp init --client claude
+```
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```npm
+npx shadcn@latest mcp init --client vscode
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```npm
+npx shadcn@latest mcp init --client cursor
+```
+
+</Tab>
+<Tab value={"Codex"}>
+
+```npm
+npx add-mcp@2.6.1 "npx shadcn@latest mcp" -n shadcn -a codex -y
+```
+
+</Tab>
+<Tab value={"GitHub Copilot CLI"}>
+
+```npm
+npx add-mcp@2.6.1 "npx shadcn@latest mcp" -n shadcn -a github-copilot-cli -y
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Manual">
+
+Merge the entry into the named project file; do not replace other servers. These connection-only examples deliberately omit secret values. Preserve required headers, environment variables and client-specific authentication from your existing setup.
+
+Install the CLI as a development dependency if your project does not already have it:
+
+```npm
+npm install -D shadcn@latest
+```
+
+<Tabs items={["Claude Code","VS Code","Cursor"]}>
+<Tab value={"Claude Code"}>
+
+```json title=".mcp.json"
+{
+  "mcpServers": {
+    "shadcn": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    }
+  }
+}
+```
+
+</Tab>
+<Tab value={"VS Code"}>
+
+```json title=".vscode/mcp.json"
+{
+  "servers": {
+    "shadcn": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    }
+  }
+}
+```
+
+</Tab>
+<Tab value={"Cursor"}>
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab value="Ask your agent">
+
+Copy this into your coding assistant. It must ask which client to configure if that is not already clear.
+
+```text title="Prompt"
+Help me connect the Registry MCP for this project.
+Connection: npx shadcn@latest mcp.
+First inspect existing MCP configuration and ask which client I use.
+Keep this change project-local; preserve other servers and custom settings.
+Show me the proposed command or file diff before applying it.
+Never put secret values in a prompt or committed file.
+Then help me authenticate and verify a read-only request; do not install or publish resources without my approval.
+```
+
+</Tab>
+</Tabs>
+
+### Try it
+
+```text title="Prompt"
+Read components.json and find this design system's @fabre-designsystem registry.
+If it is not configured or published, explain the missing prerequisite rather than searching an unrelated registry.
+Find an existing component suitable for my task and inspect its documentation and dependencies.
+Show the proposed install command and affected files. Wait for my approval before installing.
+```
+
+See the [upstream server reference](https://ui.shadcn.com/docs/mcp) for supported clients and configuration.
+{/* topic:end mcp-add */}
+
+{/* topic:start mcp-access */}
+## Authenticate and limit access
+
+A configuration entry is not an authenticated connection. Open your client's MCP settings, review the requested access and authenticate only the servers your task needs.
+Keep tokens in your environment or the supported secret store, never in configuration files, documentation or prompts. Do not grant write or publishing permission merely because a server is available.
+
+### Check the connection
+
+Restart or reload your client's MCP connections after setup. Confirm that documentation search returns a page from this site and registry discovery returns the expected namespace before asking for changes.
+
+If tools are missing, check the project file and server logs. If a private registry is unavailable, check its URL and required credential variables. An HTTP connection, authenticated session and permission to install are three different checks.
+{/* topic:end mcp-access */}

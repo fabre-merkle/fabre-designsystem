@@ -1,0 +1,34 @@
+{
+  "opacity": {
+    "faint": {
+      "$value": "{brand.opacity.10}",
+      "$type": "opacity",
+      "$description": "Barely visible, for hairline tints and ghost fills. Pairs with opacity.soft."
+    },
+    "full": {
+      "$value": "{brand.opacity.100}",
+      "$type": "opacity",
+      "$description": "Default UI state. Completely opaque."
+    },
+    "muted": {
+      "$value": "{brand.opacity.50}",
+      "$type": "opacity",
+      "$description": "Half-transparent, for secondary or de-emphasised content. Pairs with opacity.strong."
+    },
+    "none": {
+      "$value": "{brand.opacity.00}",
+      "$type": "opacity",
+      "$description": "Completely transparent i.e. see-through"
+    },
+    "soft": {
+      "$value": "{brand.opacity.30}",
+      "$type": "opacity",
+      "$description": "Light transparency for disabled states and soft overlays. Pairs with opacity.faint."
+    },
+    "strong": {
+      "$value": "{brand.opacity.70}",
+      "$type": "opacity",
+      "$description": "Mostly opaque, for scrims and dimmed content that stays legible. Pairs with opacity.muted."
+    }
+  }
+}

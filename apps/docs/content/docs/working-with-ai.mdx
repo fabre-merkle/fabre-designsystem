@@ -1,0 +1,85 @@
+---
+title: "Working with AI"
+description: "Build with agents using project guidance and tools."
+---
+
+<div data-docs-ai-guide="">
+
+
+
+{/* topic:start ai-entry-points */}
+## Start with context
+
+Ask your agent to read `AGENTS.md`, the relevant guidance and a matching skill before editing. Describe the interface you want, its constraints and what a successful result looks like.
+`AGENTS.md` explains how the project is built.
+Read the matching `DESIGN.md` context before design or styling work.
+Use current project sources rather than pasted excerpts. Configuration alone does not mean a tool is authenticated or ready.
+{/* topic:end ai-entry-points */}
+
+{/* topic:start ai-workflow */}
+## Work on a change
+
+<Steps>
+<Step>
+### Establish the task
+Agree on the outcome, the files in scope and how the result will be checked.
+</Step>
+<Step>
+### Reuse and implement
+Reuse installed components and their supported variants before creating new ones.
+Use semantic tokens and follow the owning documentation.
+</Step>
+<Step>
+### Review the evidence
+Run the affected checks and inspect the interface, including keyboard use, narrow layouts and reduced motion. Review the diff before accepting changes; passing checks are not approval.
+</Step>
+</Steps>
+{/* topic:end ai-workflow */}
+
+{/* topic:start ai-selected-capabilities */}
+## Project resources
+
+Choose the resource that matches your task.
+
+<div data-docs-ai-resources="">
+
+<Cards>
+<Card title={"fabre-DesignSystem MCPs"} href="/docs/mcp">
+Find the configured servers, their purposes and connection instructions.
+</Card>
+
+<Card title="Agent skills" href="/docs/skills">
+Task-specific instructions for building interfaces, maintaining components and updating guidance.
+</Card>
+
+<Card title="DESIGN.md" href="/docs/design-md">
+A portable, token-backed reference for the intended brand and theme. Ask your agent to read the matching context before styling.
+</Card>
+
+<Card title="Registry" href="/docs/registry">
+Discover and install this design system’s published components and resources into a product project.
+</Card>
+
+<Card title="Figma" href="/docs/figma">
+Use the shared design library and connect its components to code. Access and publishing permissions must be confirmed separately.
+</Card>
+
+</Cards>
+</div>
+
+Run `bun run storybook` in `packages/ui` to explore stories. Its component manifest supports agent discovery; start Storybook before connecting its MCP server.
+{/* topic:end ai-selected-capabilities */}
+
+{/* topic:start ai-guidance-updates */}
+## Keep guidance current
+
+The topic map in `.agents/documentation-topics.json` identifies each selected topic's owning page. Link to that owner rather than maintaining competing copies.
+Fillable sections retain `topic:start` and `topic:end` markers. Preserve both markers and leave unsupported topics at their existing baseline.
+When an approved change affects documented behaviour, use the guideline-update skill to update the owning page. Preserve topic markers and link to that page instead of duplicating guidance.
+After token changes, regenerate DESIGN.md from current token data rather than hand-editing its generated references.
+
+{/* topic:end ai-guidance-updates */}
+
+
+
+</div>

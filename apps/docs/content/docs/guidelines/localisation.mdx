@@ -1,0 +1,38 @@
+---
+title: Internationalization and localization
+description: Adapt interfaces and content for multiple locales.
+---
+
+{/* topic:start supported-locales */}
+## Supported locales
+
+Document the locales the product actually supports, the default locale and fallback behaviour.
+Do not infer a list of supported languages from the design system alone.
+{/* topic:end supported-locales */}
+
+{/* topic:start internationalization-engineering */}
+## Internationalization engineering
+
+Externalize user-facing strings, use an internationalization library for plurals and
+interpolation, and format dates, numbers and currencies for the active locale.
+
+Set the document language and direction with `lang` and `dir` on the root element. Use
+logical CSS properties so layouts can adapt to right-to-left text. Ensure components and
+portaled content receive the active direction as well; HTML direction and component keyboard
+behaviour are distinct concerns.
+{/* topic:end internationalization-engineering */}
+
+{/* topic:start localization-policy */}
+## Localization policy
+
+Give translators context, maintain a review and update workflow, and adapt content where a
+literal translation would not serve the audience. Define how missing or outdated translations
+are handled.
+{/* topic:end localization-policy */}
+
+{/* topic:start text-expansion */}
+## Text expansion
+
+Allow labels and content to grow or wrap. Test translated and pseudo-localized text at narrow
+widths so expansion does not hide an action or obscure meaning.
+{/* topic:end text-expansion */}

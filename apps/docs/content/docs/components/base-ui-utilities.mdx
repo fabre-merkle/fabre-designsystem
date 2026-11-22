@@ -1,0 +1,63 @@
+---
+title: Base UI Utilities
+description: Compose components with built-in Base UI utilities.
+---
+
+## Overview
+
+Every UI component installs `@base-ui/react` as a dependency. That package also exports the
+four Base UI author/runtime utilities, so they're **already in your project** — there's nothing extra
+to add via the registry, and the registry deliberately doesn't re-vendor or re-export them (that would
+duplicate upstream code and drift from the version your components actually use). Import them
+directly:
+
+```tsx
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { DirectionProvider } from "@base-ui/react/direction-provider";
+import { CSPProvider } from "@base-ui/react/csp-provider";
+```
+
+## Usage
+
+| Utility | Use it when | Where it goes |
+|---|---|---|
+| **`mergeProps`** | You assemble your own props (`className`, `style`, `data-*`, handlers) alongside a consumer's and need handlers to chain, `className`/`style` to compose, and refs to merge. | Inside a component you're authoring. |
+| **`useRender`** | You build a part that has no Base UI primitive of its own but still wants the polymorphic `render` prop + ref threading (no `forwardRef`). | Inside a component you're authoring. |
+| **`DirectionProvider`** | Your app (or a subtree) is right-to-left. It sets the reading direction Base UI components honour. | Once near your app root, wrapping the RTL subtree. |
+| **`CSPProvider`** | You run a strict Content-Security-Policy and need a `nonce` applied to the styles Base UI injects. | Once near your app root, with your nonce. |
+
+`mergeProps` and `useRender` are **component-authoring** tools — see the
+[Base UI handbook](https://base-ui.com/react/handbook/composition) for how to use them.
+`DirectionProvider` and `CSPProvider` are **opt-in app-root providers** — add them only if you need
+RTL or a CSP nonce.
+
+### RTL
+
+`DirectionProvider` flips Base UI's own behaviour (positioning, keyboard navigation). Your component
+CSS follows suit only if it's authored with **logical properties** — `margin-inline`,
+`padding-inline`, `inset-inline-start`, `text-align: start | end`, `inline-size` — rather than
+physical `left`/`right`. These components are authored this way, so they mirror automatically; do
+the same in your own components and there's no separate "RTL mode" to maintain.
+
+```tsx
+// app/layout.tsx — opt-in, only if you need RTL and/or a CSP nonce
+import { DirectionProvider } from "@base-ui/react/direction-provider";
+import { CSPProvider } from "@base-ui/react/csp-provider";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <CSPProvider nonce={myNonce}>
+      <DirectionProvider direction="rtl">{children}</DirectionProvider>
+    </CSPProvider>
+  );
+}
+```
+
+See the Base UI docs for the full API of each utility.
+
+## Related
+
+- The Base UI handbook agent skill (`skill-base-ui-handbook`): composition, styling, forms and RTL rules for authoring components.
+- [Base UI handbook](https://base-ui.com/react/handbook/composition): composition with `mergeProps` and `useRender`.
+- [Base UI docs](https://base-ui.com/react/overview/quick-start): the full API of each utility.

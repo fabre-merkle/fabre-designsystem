@@ -1,0 +1,54 @@
+{
+  "name": "@workspace/ui",
+  "version": "0.0.0",
+  "description": "Shared design-system package for this monorepo. Components are installed from the @focus registry via `shadcn add @focus/<name>` and consumed by apps through Next.js transpilePackages. Rename @workspace to your own scope at scaffold time.",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./components/*": {
+      "import": "./src/components/*/index.ts",
+      "types": "./src/components/*/index.ts"
+    },
+    "./styles": "./src/styles/globals.css"
+  },
+  "scripts": {
+    "lint": "biome check ./src",
+    "check-types": "tsc --noEmit",
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "vitest --project=storybook run"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@phosphor-icons/react": "2.1.10"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "storybook": "10.6.5",
+    "@storybook/react-vite": "10.6.5",
+    "@storybook/addon-a11y": "10.6.5",
+    "@storybook/addon-docs": "10.6.5",
+    "@storybook/addon-vitest": "10.6.5",
+    "@storybook/addon-mcp": "0.6.0",
+    "vitest": "4.1.12",
+    "@vitest/browser": "4.1.12",
+    "@vitest/browser-playwright": "4.1.12",
+    "playwright": "1.64.1",
+    "vite": "8.3.5",
+    "@vitejs/plugin-react": "6.1.2"
+  }
+}

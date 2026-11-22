@@ -1,0 +1,146 @@
+---
+title: Controls
+description: Shared sizing and emphasis for controls.
+---
+
+## Interactive example
+
+<DocsStory name="controls" />
+
+## Overview
+
+A **Control** is an interactive element with a single-line label and a fixed height, used inline with other Controls. Controls of one size share one height and one text style, so a button, a toggle group and a tab row line up when you put them side by side. The text follows the breakpoint, and on a touch screen the heights grow to a 44px target.
+
+## When to use
+
+Ask: does it have a **single-line label** and a **fixed height**, and does it sit **inline with other Controls**? If yes, it's a Control and it uses the full `control.*` recipe.
+
+| | Elements | What it uses |
+|---|---|---|
+| **In** | Button, Toggle, ToggleGroup item, segment Tab, Toolbar item, Input, Select trigger, Combobox, Autocomplete, NumberField, sidebar navigation row | Control text **and** height |
+| **Text only** | Textarea, underline (line) Tab (Control text and padding, no fixed height), and the labels of Checkbox, Radio and Switch | Control text (`control.sm` for labels), no fixed height |
+| **Out** | Accordion trigger, menu item, option and checkbox cards, Badge | Their own type and spacing |
+
+Every Control is also an *interactive element*: its boundary needs 3:1 contrast against its surface, which `control.border` provides. Not every interactive element is a Control. Option cards, checkboxes, sliders and chips are operable, but they don't share the control height.
+
+## Installation
+
+Nothing to install. This page is a set of rules, and the tokens it names ship with your token package. Each Control's own page lists its install.
+
+## Rules
+
+### Token recipe
+
+Each size reads five token families. `xs` and `sm` share the `control.sm` text style.
+
+| Size | Height | Padding-x | Gap | Icon | Text |
+|---|---|---|---|---|---|
+| `xs` | `--control-height-xs` (24px) | `--control-padding-x-xs` (6px) | `--control-gap-xs` (4px) | `--control-icon-xs` (14px) | `--typography-control-sm-*` |
+| `sm` | `--control-height-sm` (32px) | `--control-padding-x-sm` (8px) | `--control-gap-sm` (6px) | `--control-icon-sm` (16px) | `--typography-control-sm-*` |
+| `md` | `--control-height-md` (40px) | `--control-padding-x-md` (12px) | `--control-gap-md` (8px) | `--control-icon-md` (18px) | `--typography-control-md-*` |
+| `lg` | `--control-height-lg` (48px) | `--control-padding-x-lg` (20px) | `--control-gap-lg` (8px) | `--control-icon-lg` (20px) | `--typography-control-lg-*` |
+
+- **Heights** are multiples of the brand's base UI scale (`--brand-scale-base-ui`, 4px by default: 6, 8, 10 and 12 steps), so they scale with the brand, not the breakpoint.
+- **Text** is `max(12px, paragraph size)` at each breakpoint, weight 500, with a px line-height. The values come from the typography tokens.
+- **Icon-only** Controls are square: `min-width` equals the height, with no inline padding.
+- Each `--typography-control-{size}-*` style has five parts: `font-family`, `font-size`, `font-weight`, `letter-spacing` and `line-height`.
+
+```css
+.my-control {
+  height: var(--control-height-md);
+  padding-inline: var(--control-padding-x-md);
+  gap: var(--control-gap-md);
+  font-family: var(--typography-control-md-font-family);
+  font-size: var(--typography-control-md-font-size);
+  font-weight: var(--typography-control-md-font-weight);
+  letter-spacing: var(--typography-control-md-letter-spacing);
+  line-height: var(--typography-control-md-line-height);
+}
+.my-control > svg {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+```
+
+### Tonal emphasis
+
+Controls use **Tonal** emphasis. Give each action one emphasis, by priority. On Button, `mode` sets it and `variant` picks the colour family.
+
+| Emphasis | `mode` | Rest | Hover | Pressed | Label |
+|---|---|---|---|---|---|
+| **Primary** | `filled` | `{brand}-brand` | `{brand}-brand-hover` | `{brand}-brand-hover` | `{brand}-on-brand` |
+| **Secondary** | `lighter` | `{brand}-container` | `{brand}-container-hover` | `{brand}-container-selected` | `{brand}-on-container` |
+| **Tertiary** | `ghost` | transparent | `surface-hover` | `surface-selected` | `on-surface` or `on-surface-{brand}` |
+
+`{brand}` is `primary`, `secondary` or `tertiary`.
+
+### Segmented rule
+
+A segmented Control (ToggleGroup, segment Tabs) is one Control tall, with its items set inside it:
+
+- The **track** height is `--control-height-*`, padded by `--control-inset` (2px), on the `--color-surface-selected` overlay (10%), so the raised chip reads on every surface level.
+- Each **item** is `height − 2 × inset` tall.
+- The **inner radius** is `radius − inset`, so the corners stay concentric.
+- The **selected item** is a raised chip: `--color-surface-level-2` with `--shadow-level-1`, plus an edge ring and highlight from colour tokens.
+- A `joined` ToggleGroup always draws the track; `gapped` never does.
+- When items touch (`joined`), a focused item lifts with `z-index` so its focus ring isn't clipped.
+- Line (underline) tabs aren't segmented. They use Control text and padding with no fixed height.
+
+```css
+.segmented {
+  height: var(--control-height-md);
+  padding: var(--control-inset);
+  border-radius: var(--radius-default);
+  background-color: var(--color-surface-selected);
+}
+.segmented > .item {
+  height: calc(var(--control-height-md) - 2 * var(--control-inset));
+  border-radius: calc(var(--radius-default) - var(--control-inset));
+}
+.segmented > .item[data-pressed],
+.segmented > .item[aria-selected="true"] {
+  background-color: var(--color-surface-level-2);
+  box-shadow:
+    inset 0 1px 0 var(--color-surface-highlight),
+    0 0 0 1px var(--color-surface-border-2),
+    var(--shadow-level-1);
+}
+```
+
+### Touch and press
+
+- **Touch target:** under `@media (pointer: coarse)`, `--control-height-sm` and `--control-height-md` become `--control-target-min` (44px). The library sets this once, in the shared `control.css` that every Control imports. `xs` stays compact for dense chrome and `lg` is already taller than the target. Segmented items shrink inside the taller track by the same rule.
+- **No double-tap delay:** Controls set `touch-action: manipulation`.
+- **Press:** an enabled Control scales to `0.96` while pressed, only under `prefers-reduced-motion: no-preference`.
+- **Hover:** hover styles apply only under `@media (hover: hover)`, so touch screens don't keep a sticky hover after a tap.
+- **Transitions** name their properties (`background-color`, `color`, `border-color`, `box-shadow`, `scale`). Never use `transition: all`.
+
+```css
+@media (pointer: coarse) {
+  :root {
+    --control-height-sm: var(--control-target-min);
+    --control-height-md: var(--control-target-min);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .my-control:not(:disabled):active {
+    scale: 0.96;
+  }
+}
+```
+
+## Related
+
+Each Control's page lists its size table:
+
+<Cards>
+  <Card title="Button" href="/docs/components/button">Actions, with Tonal emphasis through mode.</Card>
+  <Card title="Toggle" href="/docs/components/toggle">A two-state Control.</Card>
+  <Card title="Toggle Group" href="/docs/components/toggle-group">A segmented Control.</Card>
+  <Card title="Tabs" href="/docs/components/tabs">Line or segment tabs.</Card>
+  <Card title="Toolbar" href="/docs/components/toolbar">A bar of Controls.</Card>
+  <Card title="Input" href="/docs/components/input">A text field at control height.</Card>
+  <Card title="Select" href="/docs/components/select">A trigger at control height.</Card>
+  <Card title="Number Field" href="/docs/components/number-field">A stepper at control height.</Card>
+</Cards>

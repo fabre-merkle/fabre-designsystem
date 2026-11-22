@@ -1,0 +1,107 @@
+@layer components {
+  /* Positioner — stack with the overlay tier. Portals append in open order,
+     so a popup opened inside a dialog (same tier) paints above it. */
+  [data-slot="popover-positioner"] {
+    z-index: var(--z-index-overlay);
+  }
+
+  /* =========================================================
+     Popup — anchored panel attached to the trigger
+     ========================================================= */
+  [data-ui="popover-popup"] {
+    /* Surface level substrate + 2 (3 on the page), shadow level 3.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-3);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-4),
+      var(--shadow-level-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-300);
+    min-width: 12rem;
+    max-width: min(calc(100vw - var(--spacing-400)), 320px);
+    padding: var(--spacing-400);
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+    outline: none;
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter);
+    transform-origin: var(--transform-origin, top);
+  }
+
+  [data-ui="popover-popup"][data-starting-style],
+  [data-ui="popover-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  [data-ui="popover-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Arrow — directional pointer toward the trigger
+     ========================================================= */
+  [data-ui="popover-arrow"] {
+    display: flex;
+    width: var(--spacing-300);
+    height: var(--spacing-200);
+    /* On-page default; elevated.css matches the popup's actual level. */
+    color: var(--color-surface-level-3);
+  }
+
+  [data-ui="popover-arrow"][data-side="bottom"] {
+    rotate: 180deg;
+  }
+
+  [data-ui="popover-arrow"][data-side="left"] {
+    rotate: -90deg;
+  }
+
+  [data-ui="popover-arrow"][data-side="right"] {
+    rotate: 90deg;
+  }
+
+  /* =========================================================
+     Title — heading style
+     ========================================================= */
+  [data-ui="popover-title"] {
+    margin: 0;
+    font-family: var(--typography-headline-xs-font-family);
+    font-size: var(--typography-headline-xs-font-size);
+    font-weight: var(--typography-headline-xs-font-weight);
+    line-height: var(--typography-headline-xs-line-height);
+    color: var(--color-on-surface);
+  }
+
+  /* =========================================================
+     Description — body text under the title
+     ========================================================= */
+  [data-ui="popover-description"] {
+    margin: 0;
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="popover-popup"] {
+      transition: none;
+    }
+
+    [data-ui="popover-popup"][data-starting-style],
+    [data-ui="popover-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

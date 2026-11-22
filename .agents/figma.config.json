@@ -1,0 +1,11 @@
+{
+  "uiPackage": "@workspace/ui",
+  "figma": {
+    "projectId": "613902390",
+    "planKey": "organization::905153297993977402"
+  },
+  "documentation": {
+    "useDefault": true
+  },
+  "_note": "figma.projectId/planKey default to a shared Landing Zone project (internal access, zero setup) — reduce friction so generation + Code Connect work immediately. Move the generated file to your own Figma project when you're ready to own it, then update projectId/planKey here to point at it. See .agents/connect-to-figma.md."
+}

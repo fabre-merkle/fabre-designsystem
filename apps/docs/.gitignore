@@ -1,0 +1,22 @@
+# Next.js build output
+.next/
+out/
+
+# Fumadocs MDX cache
+.source/
+
+# Next.js generated route-type reference (rewritten by next dev/build/typegen)
+next-env.d.ts
+
+# Build-time snapshots read by the Markdown routes (for example generated prop tables)
+.generated/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Local env files
+.env.local
+.env*.local
+
+# OS
+.DS_Store

@@ -1,0 +1,21 @@
+---
+title: "DESIGN.md"
+description: "Portable design guidance backed by project tokens."
+---
+
+{/* topic:start design-document-usage */}
+## Use the design document
+
+`DESIGN.md` is a portable entry point for tools that understand the design.md format. Its structured values are derived from project DTCG; it is not a second token authoring store.
+Read the owning Foundations pages for conceptual intent. DESIGN.md links to them through short concept summaries.
+The default document and the labelled files under `design/` cover the project's adopted brands and themes. Select the matching context rather than mixing values from different contexts.
+The rendered quick reference uses live project-token tables, including copy controls, brand selection and light/dark colour values. The portable raw file keeps a labelled large-web snapshot, with canonical definitions for computed foregrounds and elevation; it does not change when a browser theme changes.
+The generated reference regions cover semantic colours, complete typography roles, layout, shape and elevation. They are a curated orientation, not an exhaustive token reference.
+Follow the owning Tokens pages for concrete references to the full system.
+
+The document combines source ownership and practical references, informed by [Shopify's DESIGN.md guidance](https://shopify.dev/docs/storefronts/themes/agentic-workflows/design-md), [Atlassian](https://atlassian.design/DESIGN.md) and [Clerk](https://clerk.com/design.md). Their product-specific palettes and policies are not adopted here.
+
+Run `bun run design:lint` after regeneration. A valid document is still subject to design and accessibility review.
+
+<ProjectDocument kind="design" />
+{/* topic:end design-document-usage */}

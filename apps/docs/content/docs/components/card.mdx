@@ -1,0 +1,292 @@
+---
+title: Card
+description: Group related content on a raised surface.
+---
+
+import { CardInteractiveExample, CardNotificationsExample, CardSignInExample, CardStatsExample } from "@/components/docs/demos/card-examples";
+
+## Interactive example
+
+<DocsStory name="card" />
+
+## Installation
+
+`Card` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Card } from "@workspace/ui/components/card";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+Base UI has no Card, so it is composed on [Elevated](/docs/components/elevated) and two Base UI utilities, [`useRender`](https://base-ui.com/react/utils/use-render) and [`mergeProps`](https://base-ui.com/react/utils/merge-props). Every part renders a `div`, forwards every `div` prop and takes `render` to change the element.
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+import { Card } from "@workspace/ui/components/card";
+
+<Card.Root>
+  <Card.Header>
+    <Card.Title>Project settings</Card.Title>
+    <Card.Description>Name, visibility and members.</Card.Description>
+    <Card.Action>
+      <Button size="sm" variant="secondary" mode="ghost">Edit</Button>
+    </Card.Action>
+  </Card.Header>
+  <Card.Content>Changes apply to everyone who can open this project.</Card.Content>
+  <Card.Footer>
+    <Button size="sm" variant="secondary" mode="ghost">Cancel</Button>
+    <Button size="sm">Save</Button>
+  </Card.Footer>
+</Card.Root>;
+```
+
+Every part is optional. A card with only `Card.Content` is valid, and `Card.Action` belongs inside `Card.Header`.
+
+## Examples
+
+### Sign-in form
+
+A header, a content area with [Field](/docs/components/field) and [Input](/docs/components/input), and a footer with buttons. Pass `render={<h3 />}` to `Card.Title` for a real heading.
+
+<ComponentPreview>
+  <CardSignInExample />
+</ComponentPreview>
+
+```tsx
+<Card.Root style={{ width: "100%", maxWidth: "22rem" }}>
+  <Card.Header>
+    <Card.Title render={<h3 />}>Sign in</Card.Title>
+    <Card.Description>Enter your work email and password.</Card.Description>
+    <Card.Action>
+      <Button size="sm" variant="secondary" mode="ghost">Sign up</Button>
+    </Card.Action>
+  </Card.Header>
+  <Card.Content>
+    <form style={{ display: "grid", gap: "var(--spacing-300)" }}>
+      <Field.Root name="email">
+        <Field.Label>Email</Field.Label>
+        <Field.Control render={<Input type="email" placeholder="you@example.com" />} />
+      </Field.Root>
+      <Field.Root name="password">
+        <Field.Label>Password</Field.Label>
+        <Field.Control render={<Input type="password" />} />
+      </Field.Root>
+    </form>
+  </Card.Content>
+  <Card.Footer>
+    <Button>Sign in</Button>
+    <Button variant="secondary" mode="ghost">Forgot password</Button>
+  </Card.Footer>
+</Card.Root>
+```
+
+### Stat cards
+
+Card has three sizes: `sm`, `md` (the default) and `lg`. Size is density only: it changes the padding and the gap, and the title and the content keep the same type at every size, so type stays consistent with the rest of the dimension tokens. `sm` suits dense grids and `lg` gives a standalone or hero card more room. The stat cards sit in a [Web Grid](/docs/components/web-grid), and the other snippets show the plain inline styles and tokens the previews use.
+
+<ComponentPreview>
+  <CardStatsExample />
+</ComponentPreview>
+
+```tsx
+const stats = [
+  { label: "Visitors", value: "12,480" },
+  { label: "Sign-ups", value: "1,204" },
+  { label: "Conversion", value: "9.6%" },
+  { label: "Revenue", value: "$48.2k" },
+];
+
+<Grid.Root variant="4up" gap="sm" style={{ width: "100%" }}>
+  {stats.map((stat) => (
+    <Card.Root key={stat.label} size="sm">
+      <Card.Header>
+        <Card.Description>{stat.label}</Card.Description>
+        <Card.Title>{stat.value}</Card.Title>
+      </Card.Header>
+    </Card.Root>
+  ))}
+</Grid.Root>
+```
+
+### Notifications
+
+`Card.Action` sits beside the title and description, inside `Card.Header`. Rows in the content are plain markup: use a nested card only when the inner content is a thing in its own right.
+
+<ComponentPreview>
+  <CardNotificationsExample />
+</ComponentPreview>
+
+```tsx
+const notifications = [
+  { title: "Your export is ready", time: "2 minutes ago" },
+  { title: "Dana commented on Launch plan", time: "1 hour ago" },
+  { title: "Billing details updated", time: "Yesterday" },
+];
+
+<Card.Root style={{ width: "100%", maxWidth: "24rem" }}>
+  <Card.Header>
+    <Card.Title render={<h3 />}>Notifications</Card.Title>
+    <Card.Description>You have 3 unread messages.</Card.Description>
+    <Card.Action>
+      <Button size="sm" variant="secondary" mode="ghost">
+        <Check weight="bold" />
+        Mark all read
+      </Button>
+    </Card.Action>
+  </Card.Header>
+  <Card.Content>
+    <ul style={{ display: "grid", gap: "var(--spacing-300)", listStyle: "none", margin: 0, padding: 0 }}>
+      {notifications.map((item) => (
+        <li
+          key={item.title}
+          style={{ display: "flex", gap: "var(--spacing-300)", alignItems: "start" }}
+        >
+          <BellSimple aria-hidden="true" weight="bold" />
+          <span>
+            <span style={{ display: "block" }}>{item.title}</span>
+            <span style={{ color: "var(--color-on-surface-subtle)" }}>{item.time}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </Card.Content>
+</Card.Root>
+```
+
+### Interactive card
+
+A card rendered as a link takes the link's focus ring and name. On pointer hover it paints the `surface.hover` overlay over its fill; its edge stays the same. Set `hoverable` for a card that reacts to hover without being a link, for example one that a parent handles the click for.
+
+<ComponentPreview>
+  <CardInteractiveExample />
+</ComponentPreview>
+
+```tsx
+<Card.Root
+  render={<a href="/team/invite" />}
+  style={{ width: "100%", maxWidth: "22rem", textDecoration: "none" }}
+>
+  <Card.Header>
+    <Card.Title>
+      <EnvelopeSimple aria-hidden="true" weight="bold" /> Invite your team
+    </Card.Title>
+    <Card.Description>Hover to see the overlay.</Card.Description>
+    <Card.Action>
+      <ArrowUpRight aria-hidden="true" weight="bold" />
+    </Card.Action>
+  </Card.Header>
+</Card.Root>
+```
+
+## Surfaces and elevation
+
+A Card is the canonical use of [Elevated](/docs/components/elevated): `Card.Root` renders an `Elevated` and adds layout, so its fill, edge, highlight and drop shadow all come from the surface levels. Two independent settings control depth. Choose a level for each, never a ramp step.
+
+| Setting | What it sets | Card default | How it changes |
+| --- | --- | --- | --- |
+| Surface level, 1 to 8 | The fill and the edge | The level it sits on, plus 2 | Automatic: wherever the card is rendered, one level above that surface by two. For example a card on a level 1 page is level 3, and a card inside that card is level 5. Pass `offset` or `level` to override |
+| Shadow level, 1 to 8 | The drop shadow only | 1 | Never automatic. Pass `shadowLevel` |
+
+The hero example above pins both: pick any surface `level` and `shadowLevel` from 1 to 8 and the card, and a card nested in it, are painted exactly as Elevated paints them. The demo pins `level` only so that every level can be shown. Levels are contextual, not roles: a card can land anywhere from level 2 to level 8 depending on what it is rendered in, and the numbers in the examples below are scenarios, not rules.
+
+Components pair a surface offset with a shadow level by role: a card, a popover, a toast and a dialog each have their own. See [Elevated](/docs/components/elevated#pairing-is-by-role) for the pairings.
+
+### Tokens a card resolves
+
+The card below is annotated with the tokens Elevated applied to each part. The values are read from the rendered cards.
+
+<CardAnnotated />
+
+### Nesting raises the surface, not the shadow
+
+A card reads the level it is rendered on and lands two levels above it. Put a card in the content of another card and it is raised without any prop. On a level 1 page the page, the outer card and the inner card read as three steps, 1, 3 and 5. On any other surface the steps start from that surface's level.
+
+```tsx
+<Card.Root>
+  <Card.Content>
+    <Card.Root size="sm">One level up by two, shadow level 1</Card.Root>
+  </Card.Content>
+</Card.Root>
+```
+
+The shadow level is a per-component default that nesting never raises. For example, a card inside a level 5 dialog is level 7 with shadow level 1, not the dialog's shadow level 5. Use `shadowLevel` only when a card needs a heavier or lighter drop shadow than the default, for example `shadowLevel={4}` for a card that floats above a busy page.
+
+Read the level the card sits on with `useSurfaceLevel()`, from the same package as `Elevated`. Do not set a level by hand to match a neighbour: the substrate is the only input.
+
+### Do and don't
+
+- Do leave the level to the substrate. A card in a dialog or another card needs no prop, whatever level that surface is at.
+- Don't pass `level` to fake depth. It pins the card and stops it following what it sits on; use `offset` or move the card.
+- Do use `Card.Root` for a raised container. Use a plain container with the `surface.recessed` fill for something that dips into the page, such as a code block or a well.
+- Don't nest cards for decoration. Nest one when the inner content is a thing in its own right, and use a heading or a separator for plain grouping.
+- Don't pick a `neutral` ramp step for the fill or the border. The levels carry both.
+
+## Corners
+
+Anything inset in a card can round concentrically. Each of `Card.Header`, `Card.Content` and `Card.Footer` publishes `--inner-radius`: the card's radius minus its border and padding, raised to the inset corner minimum and capped at the card's own radius. A card nested in a card uses it for its own corners, so the two share a centre when there is room for one. The minimum follows the brand's default radius unless the brand sets it to none, so small paddings never leave a square corner inside a rounded one, and a square brand stays square:
+
+```css
+.thumbnail {
+  border-radius: var(--inner-radius);
+}
+```
+
+The annotated card in [Surfaces and elevation](#surfaces-and-elevation) prints the concentric value, the inset minimum and the radius used for the nested card. Nested corners never go below the inset corner minimum; set it to None for strictly concentric corners.
+
+In Figma, nested corners bind the default radius, so a nested card keeps the brand's rounding rather than the computed concentric value.
+
+## API Reference
+
+`Card.Root` is an `Elevated` that adds `size`. Its other props are Elevated's own and are forwarded as they are.
+
+<AutoTypeTable path="card/card.tsx" name="CardProps" />
+
+The other parts take the props of a `div`, and `render`.
+
+| Part | Renders | Layout |
+| --- | --- | --- |
+| `Card.Root` | `div` | The raised surface. A column with padding and a gap. |
+| `Card.Header` | `div` | A grid: title over description in the first column, `Card.Action` in the second. |
+| `Card.Title` | `div` | The heading. Pass `render={<h3 />}` for a real heading. |
+| `Card.Description` | `div` | Supporting text, one step quieter than the title. |
+| `Card.Action` | `div` | A control beside the title and description. |
+| `Card.Content` | `div` | The body. Accepts any children. |
+| `Card.Footer` | `div` | A row of actions aligned to the start. |
+
+<AutoTypeTable path="card/card.tsx" name="CardPartProps" />
+
+## Differences from shadcn/ui
+
+The parts and the `size` setting match shadcn/ui's Card: `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent` and `CardFooter`. Three things differ.
+
+- The parts are one namespace, `Card.Root` and `Card.Header`, like the rest of the library, so one import brings every part.
+- `size` is `sm`, `md` (the default) or `lg` (shadcn/ui: `default` or `sm`), the same vocabulary as Button and Input. It changes spacing only, as in shadcn/ui: the title and the content keep the same type at every size.
+- The surface is an `Elevated`, so `Card.Root` also takes `offset`, `level`, `shadowLevel` and `hoverable`. shadcn/ui paints a card with a fixed background, ring and shadow, which do not follow what the card sits on.
+
+## Accessibility
+
+- A card is a grouping, not a landmark, and has no role. Use `render={<section aria-labelledby="…" />}` or `render={<article />}` when the content deserves one, and give it a name.
+- `Card.Title` is a `div`. Render it as a heading (`render={<h3 />}`) at the level that fits the page outline.
+- A card is a plain container. An interactive card uses a real link or button (`render={<a href="…" />}`), never a `div` with a click handler, and it takes that element's focus ring and name. Keep interactive controls out of a card that is itself a link.
+- Do not rely on the shadow alone to separate a card from its surroundings: the edge and the fill step carry the separation in both light and dark.
+
+## Figma contract
+
+<ComponentContract slug="card" />

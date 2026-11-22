@@ -1,0 +1,109 @@
+{
+  "button": {
+    "height": {
+      "regular": {
+        "$value": "{control.height.md}",
+        "$type": "dimension",
+        "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Regular button height. Pairs with button.size.regular.padding-horizontal."
+      },
+      "small": {
+        "$value": "{control.height.sm}",
+        "$type": "dimension",
+        "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Small button height. Pairs with button.size.small.padding-horizontal."
+      }
+    },
+    "size": {
+      "regular": {
+        "corner-radius": {
+          "$value": "{radius.default}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Regular button corner radius."
+        },
+        "padding-horizontal": {
+          "$value": "{control.padding-x.md}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Regular button horizontal padding. Pairs with button.height.regular."
+        },
+        "padding-vertical": {
+          "$value": "{spacing.200}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Regular button vertical padding."
+        }
+      },
+      "small": {
+        "corner-radius": {
+          "$value": "{radius.default}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Small button corner radius."
+        },
+        "padding-horizontal": {
+          "$value": "{control.padding-x.sm}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Small button horizontal padding. Pairs with button.height.small."
+        },
+        "padding-vertical": {
+          "$value": "{spacing.100}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Small button vertical padding."
+        }
+      }
+    },
+    "type": {
+      "primary": {
+        "background-color": {
+          "$value": "{color.primary.brand}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Primary button background colour."
+        },
+        "stroke-color": {
+          "$value": "{color.surface.border.3}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Primary button border colour."
+        },
+        "stroke-width": {
+          "$value": "{stroke-width.default}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Primary button border width."
+        },
+        "text-color": {
+          "$value": "{color.primary.onBrand}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Primary button foreground colour."
+        }
+      },
+      "secondary": {
+        "background-color": {
+          "$value": "{color.secondary.brand}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Secondary button background colour."
+        },
+        "stroke-color": {
+          "$value": "{color.surface.border.3}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Secondary button border colour."
+        },
+        "stroke-width": {
+          "$value": "{stroke-width.selected}",
+          "$type": "dimension",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Secondary button border width."
+        },
+        "text-color": {
+          "$value": "{color.secondary.onBrand}",
+          "$type": "color",
+          "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Secondary button foreground colour."
+        }
+      }
+    },
+    "typography": {
+      "$value": {
+        "fontSize": "{typography.control.md.fontSize}",
+        "fontFamily": "{typography.control.md.fontFamily}",
+        "fontWeight": "{typography.control.md.fontWeight}",
+        "lineHeight": "{typography.control.md.lineHeight}",
+        "letterSpacing": "{typography.control.md.letterSpacing}"
+      },
+      "$type": "typography",
+      "$description": "Example component token demonstrating component-tier naming and semantic-token aliasing. Not approved for production use; use only with explicit production approval. Button typography composite. Pairs with button.height.regular."
+    }
+  }
+}

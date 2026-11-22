@@ -1,0 +1,59 @@
+---
+title: Radio
+description: Select one option within a RadioGroup.
+primitive: https://base-ui.com/react/components/radio
+---
+
+## Interactive example
+
+<DocsStory name="radio" />
+
+## Installation
+
+`Radio` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Radio } from "@workspace/ui/components/radio";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Radio } from "@workspace/ui/components/radio";
+import { RadioGroup } from "@workspace/ui/components/radio-group";
+
+<RadioGroup defaultValue="email">
+  <label>
+    <Radio value="email" /> Email
+  </label>
+  <label>
+    <Radio value="sms" /> SMS
+  </label>
+</RadioGroup>
+```
+
+`Radio` requires a `value` prop and only functions when wrapped in a [`RadioGroup`](/docs/components/radio-group): selection state, focus management and roving tabindex are all owned by the group. Wrap the group in `Field.Root` (with `invalid` or `disabled`) when you need form-level validation.
+
+## API Reference
+
+`Radio` adds no props. It forwards every prop to [Base UI Radio.Root](https://base-ui.com/react/components/radio#api-reference), preserving every prop, event, ARIA attribute and the `render` API, including `value` (required), `disabled`, `readOnly` and `required`. The inner `Radio.Indicator` is rendered automatically; there is no slot for custom indicator content.
+
+## Figma contract
+
+<ComponentContract slug="radio" />

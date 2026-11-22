@@ -1,0 +1,271 @@
+@layer components {
+  /* Positioner — stack with the overlay tier. Portals append in open order,
+     so a popup opened inside a dialog (same tier) paints above it. */
+  [data-slot="select-positioner"] {
+    z-index: var(--z-index-overlay);
+  }
+
+  /* =========================================================
+     Trigger
+     ========================================================= */
+  /* Select trigger is a Control: control height, padding-x, text and icon,
+     so it lines up with a Button of the same size. Each size declares its
+     control.<size> tier in full so Figma binds one text style per size. */
+  [data-ui="select-trigger"] {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-200);
+    min-width: 160px;
+    block-size: var(--control-height-md);
+    padding-inline: var(--control-padding-x-md);
+    padding-block: 0;
+    border: var(--stroke-width-selected) solid var(--color-control-border);
+    border-radius: var(--radius-default);
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+    letter-spacing: var(--typography-control-md-letter-spacing);
+    line-height: var(--typography-control-md-line-height);
+    outline: none;
+    cursor: pointer;
+    transition:
+      border-color var(--transition-default-duration) var(--transition-default-easing),
+      background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  /* Size variants — propagated via React context */
+  [data-ui="select-trigger"][data-size="sm"] {
+    block-size: var(--control-height-sm);
+    padding-inline: var(--control-padding-x-sm);
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+  }
+
+  [data-ui="select-trigger"][data-size="lg"] {
+    block-size: var(--control-height-lg);
+    padding-inline: var(--control-padding-x-lg);
+    font-family: var(--typography-control-lg-font-family);
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+    letter-spacing: var(--typography-control-lg-letter-spacing);
+    line-height: var(--typography-control-lg-line-height);
+  }
+
+  /* iOS zooms into any focused field set under 16px. */
+  @media (pointer: coarse) {
+    [data-ui="select-trigger"] {
+      font-size: max(16px, var(--typography-control-md-font-size));
+    }
+    [data-ui="select-trigger"][data-size="sm"] {
+      font-size: max(16px, var(--typography-control-sm-font-size));
+    }
+    [data-ui="select-trigger"][data-size="lg"] {
+      font-size: max(16px, var(--typography-control-lg-font-size));
+    }
+  }
+
+  @media (hover: hover) {
+    [data-ui="select-trigger"]:hover:not([data-invalid]):not([data-popup-open]) {
+      border-color: var(--color-control-border-hover);
+    }
+  }
+
+  /* Focused and open states retain the recessed surface and expose an offset ring. */
+  [data-ui="select-trigger"]:focus-visible,
+  [data-ui="select-trigger"][data-popup-open] {
+    border-color: var(--color-control-focus-ring);
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+
+  [data-ui="select-trigger"][data-invalid] {
+    border-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="select-trigger"][data-invalid]:focus-visible,
+  [data-ui="select-trigger"][data-invalid][data-popup-open] {
+    border-color: var(--color-intent-error-border);
+    outline-color: var(--color-intent-error-border);
+  }
+
+  [data-ui="select-trigger"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+  }
+
+  /* Chevron icon */
+  [data-ui="select-icon"] {
+    flex-shrink: 0;
+    width: var(--control-icon-md);
+    height: var(--control-icon-md);
+    color: var(--color-on-surface-subtle);
+    transition: rotate var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="select-trigger"][data-size="sm"] [data-ui="select-icon"] {
+    width: var(--control-icon-sm);
+    height: var(--control-icon-sm);
+  }
+
+  [data-ui="select-trigger"][data-size="lg"] [data-ui="select-icon"] {
+    width: var(--control-icon-lg);
+    height: var(--control-icon-lg);
+  }
+
+  [data-ui="select-trigger"][data-popup-open] [data-ui="select-icon"] {
+    rotate: 180deg;
+  }
+
+  /* =========================================================
+     Popup overlay
+     Concentric radius matches trigger radius.
+     Depth comes from the surface level (ring + level shadow), not a border.
+     ========================================================= */
+  [data-ui="select-popup"] {
+    /* Surface level substrate + 2 (3 on the page), shadow level 3.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-3);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-4),
+      var(--shadow-level-3);
+    border-radius: var(--radius-default);
+    padding-block: var(--spacing-100);
+    min-width: 160px;
+    max-height: 320px;
+    overflow-y: auto;
+    outline: none;
+    transform-origin: var(--transform-origin, top);
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter);
+  }
+
+  /* Base UI: state when popup first mounts (enter start) */
+  [data-ui="select-popup"][data-starting-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  /* Base UI: state when popup is dismissing (exit — ~33% faster than enter) */
+  [data-ui="select-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Items
+     ========================================================= */
+  [data-ui="select-item"] {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-200);
+    min-height: 40px;
+    font-family: var(--typography-paragraph-lg-font-family);
+    font-size: var(--typography-paragraph-lg-font-size);
+    font-weight: var(--typography-paragraph-lg-font-weight);
+    line-height: var(--typography-paragraph-lg-line-height);
+    color: var(--color-on-surface);
+    cursor: pointer;
+    border-radius: var(--radius-small-elements);
+    /* Concentric: popup radius (8px) - item radius (2px) = 6px gap */
+    margin-inline: calc(var(--radius-default) - var(--radius-small-elements));
+    transition:
+      background-color var(--transition-default-duration) var(--transition-default-easing),
+      color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  /* data-highlighted = keyboard/mouse focus within the list */
+  [data-ui="select-item"][data-highlighted] {
+    background-color: var(--color-surface-hover);
+    color: var(--color-on-surface);
+  }
+
+  /* data-selected = the currently chosen value.
+     font-weight was previously pinned to the `button` tier's weight while
+     family/size stayed on `paragraph-lg` — a cross-tier mix that could never
+     bind a Figma text style (see resolver.ts deriveTextStyle). Both tiers'
+     weight is 400 today, so this is a no-op visually; keep it explicitly on
+     the paragraph-lg tier so it can't drift out of sync with family/size. */
+  [data-ui="select-item"][data-selected] {
+    background-color: var(--color-surface-selected);
+    color: var(--color-primary-on-surface);
+    font-weight: var(--typography-paragraph-lg-font-weight);
+  }
+
+  /* Highlighted + selected: stack the hover overlay on the selected fill. */
+  [data-ui="select-item"][data-selected][data-highlighted] {
+    background-image: linear-gradient(var(--color-surface-hover), var(--color-surface-hover));
+  }
+
+  [data-ui="select-item"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+  }
+
+  /* Item indicator (checkmark or custom) */
+  [data-ui="select-item-indicator"] {
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--color-primary-on-surface);
+    margin-inline-start: auto;
+  }
+
+  /* =========================================================
+     Separator
+     ========================================================= */
+  [data-ui="select-separator"] {
+    height: var(--stroke-width-selected);
+    background-color: var(--color-surface-border-3);
+    margin-block: var(--spacing-100);
+    margin-inline: var(--spacing-300);
+  }
+
+  /* =========================================================
+     Group label — eyebrow style
+     ========================================================= */
+  [data-ui="select-group-label"] {
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-100);
+    font-family: var(--typography-eyebrow-sm-font-family);
+    font-size: var(--typography-eyebrow-sm-font-size);
+    font-weight: var(--typography-eyebrow-sm-font-weight);
+    line-height: var(--typography-eyebrow-sm-line-height);
+    letter-spacing: var(--typography-eyebrow-sm-letter-spacing);
+    color: var(--color-on-surface-subtle);
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     Reduced motion resets
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="select-trigger"],
+    [data-ui="select-popup"],
+    [data-ui="select-item"],
+    [data-ui="select-icon"] {
+      transition: none;
+    }
+
+    [data-ui="select-popup"][data-starting-style],
+    [data-ui="select-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

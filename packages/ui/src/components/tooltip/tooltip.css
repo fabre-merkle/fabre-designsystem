@@ -1,0 +1,79 @@
+@layer components {
+  /* Positioner — stack with the overlay tier. Portals append in open order,
+     so a popup opened inside a dialog (same tier) paints above it. */
+  [data-slot="tooltip-positioner"] {
+    z-index: var(--z-index-overlay);
+  }
+
+  /* =========================================================
+     Popup — small, non-interactive hover hint
+     ========================================================= */
+  [data-ui="tooltip-popup"] {
+    /* Exception to the surface-level ladder: a tooltip is an inverted,
+       transient label, so it takes the on-surface colour as its fill and
+       never reads the level context. */
+    max-width: min(calc(100vw - var(--spacing-400)), 320px);
+    padding: var(--spacing-200) var(--spacing-300);
+    background-color: var(--color-on-surface);
+    color: var(--color-on-surface-inverted);
+    border-radius: var(--radius-default);
+    box-shadow: var(--shadow-level-2);
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    outline: none;
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter);
+    transform-origin: var(--transform-origin, top);
+  }
+
+  [data-ui="tooltip-popup"][data-starting-style],
+  [data-ui="tooltip-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  [data-ui="tooltip-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Arrow — directional pointer toward the trigger
+     ========================================================= */
+  [data-ui="tooltip-arrow"] {
+    display: flex;
+    width: var(--spacing-300);
+    height: var(--spacing-200);
+    color: var(--color-on-surface);
+  }
+
+  [data-ui="tooltip-arrow"][data-side="bottom"] {
+    rotate: 180deg;
+  }
+
+  [data-ui="tooltip-arrow"][data-side="left"] {
+    rotate: -90deg;
+  }
+
+  [data-ui="tooltip-arrow"][data-side="right"] {
+    rotate: 90deg;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="tooltip-popup"] {
+      transition: none;
+    }
+
+    [data-ui="tooltip-popup"][data-starting-style],
+    [data-ui="tooltip-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

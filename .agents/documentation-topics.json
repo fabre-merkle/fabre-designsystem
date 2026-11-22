@@ -1,0 +1,815 @@
+[
+  {
+    "id": "introduction",
+    "title": "Introduction",
+    "route": "/docs",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "introduction-links",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "getting-started",
+    "title": "Get started",
+    "route": "/docs/get-started",
+    "selection": "docs-get-started",
+    "topics": [
+      {
+        "id": "system-overview",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "install-and-run",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "agent-quick-start",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "working-with-ai",
+    "title": "Working with AI",
+    "route": "/docs/working-with-ai",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "ai-entry-points",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "ai-workflow",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "ai-selected-capabilities",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "ai-guidance-updates",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "design-md",
+    "title": "DESIGN.md",
+    "route": "/docs/design-md",
+    "selection": "docs-core",
+    "notes": "Installed only when the independent DESIGN.md output is selected.",
+    "topics": [
+      {
+        "id": "design-document-usage",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "about",
+    "title": "About",
+    "route": "/docs/about",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "about-purpose",
+        "source": "fixed"
+      },
+      {
+        "id": "about-framework",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-design-tokens",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-components",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-design",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-documentation",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-quality",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "about-delivery",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "foundations/principles",
+    "title": "Principles",
+    "route": "/docs/foundations/principles",
+    "selection": "docs-foundations",
+    "topics": [
+      {
+        "id": "principles-building",
+        "source": "fixed"
+      },
+      {
+        "id": "principles-definitions",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "foundations/brand-and-style",
+    "title": "Brand",
+    "route": "/docs/foundations/brand-and-style",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/colour", "tokens/typography"],
+    "topics": [
+      {
+        "id": "brand-essence",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-personality",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-attribute-clear",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-attribute-considerate",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-attribute-dependable",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-attribute-empowering",
+        "source": "fillable"
+      },
+      {
+        "id": "brand-visual-style",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/colour",
+    "title": "Colour",
+    "route": "/docs/foundations/colour",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/colour"],
+    "topics": [
+      {
+        "id": "colour-palette",
+        "source": "token-data"
+      },
+      {
+        "id": "colour-strategy",
+        "source": "fillable"
+      },
+      {
+        "id": "colour-roles",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/typography",
+    "title": "Typography",
+    "route": "/docs/foundations/typography",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/typography"],
+    "topics": [
+      {
+        "id": "typography-families",
+        "source": "token-data"
+      },
+      {
+        "id": "typeface-rationale",
+        "source": "fillable"
+      },
+      {
+        "id": "typography-scale",
+        "source": "token-data"
+      },
+      {
+        "id": "type-hierarchy",
+        "source": "fillable"
+      },
+      {
+        "id": "typography-usage",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/layout-spacing",
+    "title": "Layout & spacing",
+    "route": "/docs/foundations/layout-spacing",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/spacing-sizing"],
+    "topics": [
+      {
+        "id": "spacing-scale",
+        "source": "token-data"
+      },
+      {
+        "id": "layout-grid",
+        "source": "fillable"
+      },
+      {
+        "id": "layout-responsive",
+        "source": "fillable"
+      },
+      {
+        "id": "spacing-rhythm",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/elevation",
+    "title": "Elevation",
+    "route": "/docs/foundations/elevation",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/elevation"],
+    "topics": [
+      {
+        "id": "depth-model",
+        "source": "fillable"
+      },
+      {
+        "id": "elevation-depth-example",
+        "source": "token-data"
+      },
+      {
+        "id": "elevation-usage",
+        "source": "fillable"
+      },
+      {
+        "id": "elevation-attribution",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "foundations/shape",
+    "title": "Shape",
+    "route": "/docs/foundations/shape",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/radius"],
+    "topics": [
+      {
+        "id": "shape-language",
+        "source": "fillable"
+      },
+      {
+        "id": "radius-intent",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/motion",
+    "title": "Motion",
+    "route": "/docs/foundations/motion",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/motion"],
+    "topics": [
+      {
+        "id": "motion-principles",
+        "source": "fillable"
+      },
+      {
+        "id": "motion-in-action",
+        "source": "token-data"
+      },
+      {
+        "id": "motion-usage",
+        "source": "fillable"
+      },
+      {
+        "id": "motion-accessibility-link",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "foundations/iconography-imagery",
+    "title": "Iconography & imagery",
+    "route": "/docs/foundations/iconography-imagery",
+    "selection": "docs-foundations",
+    "tokenPages": ["tokens/colour", "tokens/spacing-sizing"],
+    "topics": [
+      {
+        "id": "icon-style",
+        "source": "fillable"
+      },
+      {
+        "id": "icon-usage",
+        "source": "fillable"
+      },
+      {
+        "id": "imagery",
+        "source": "fillable"
+      },
+      {
+        "id": "logo-usage",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "guidelines/experience-principles",
+    "title": "Experience Principles",
+    "route": "/docs/guidelines/experience-principles",
+    "selection": "docs-experience",
+    "notes": "The baseline lists Whitney Hess's 20 principle names with protected attribution. Develop a focused project-specific set only when requested, using decision, trade-off, rule/value and set-size checks.",
+    "topics": [
+      {
+        "id": "experience-principles",
+        "source": "fillable"
+      },
+      {
+        "id": "experience-principles-attribution",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "guidelines/accessibility",
+    "title": "Accessibility",
+    "route": "/docs/guidelines/accessibility",
+    "selection": "docs-accessibility",
+    "notes": "Use WCAG 2.2 AA as the baseline and APCA Silver as an additional text-legibility target.",
+    "topics": [
+      {
+        "id": "accessibility-target",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-contrast",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-keyboard-focus",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-assistive-technology",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-reduced-motion",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-testing",
+        "source": "fillable"
+      },
+      {
+        "id": "accessibility-international-standards",
+        "source": "fixed"
+      },
+      {
+        "id": "accessibility-attribution",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "guidelines/tone-voice",
+    "title": "Tone & voice",
+    "route": "/docs/guidelines/content-copywriting",
+    "selection": "docs-copywriting",
+    "topics": [
+      {
+        "id": "voice",
+        "source": "fillable"
+      },
+      {
+        "id": "tone",
+        "source": "fillable"
+      },
+      {
+        "id": "grammar-mechanics",
+        "source": "fillable"
+      },
+      {
+        "id": "inclusive-language",
+        "source": "fillable"
+      },
+      {
+        "id": "terminology",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "guidelines/internationalization-localization",
+    "title": "Internationalization and localization",
+    "route": "/docs/guidelines/localisation",
+    "selection": "docs-localisation",
+    "topics": [
+      {
+        "id": "supported-locales",
+        "source": "fillable"
+      },
+      {
+        "id": "internationalization-engineering",
+        "source": "fillable"
+      },
+      {
+        "id": "localization-policy",
+        "source": "fillable"
+      },
+      {
+        "id": "text-expansion",
+        "source": "fillable"
+      }
+    ]
+  },
+  {
+    "id": "guidelines/contributing",
+    "title": "Contributing",
+    "route": "/docs/guidelines/contributing",
+    "selection": "docs-contributing",
+    "topics": [
+      {
+        "id": "contribution-process",
+        "source": "fixed"
+      },
+      {
+        "id": "contribution-checks",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/overview",
+    "title": "Overview",
+    "route": "/docs/tokens/token-architecture",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/principles"],
+    "topics": [
+      {
+        "id": "token-tiers",
+        "source": "token-data"
+      },
+      {
+        "id": "token-naming-usage",
+        "source": "token-data"
+      },
+      {
+        "id": "token-registry-installation",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "architecture-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/theming",
+    "title": "Multi-dimensional theming",
+    "route": "/docs/tokens/multi-dimensional-theming",
+    "selection": "docs-tokens",
+    "notes": "Explain design-token and DTCG concepts without prescribing tools. Project configuration reflects Fumadocs and storefront semantic sets only when the corresponding option is selected; component-token examples are not active project tokens.",
+    "foundationPages": [
+      "foundations/colour",
+      "foundations/typography",
+      "foundations/layout-spacing",
+      "foundations/elevation"
+    ],
+    "topics": [
+      {
+        "id": "theme-dimensions",
+        "source": "token-data"
+      },
+      {
+        "id": "theme-project-configuration",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "theme-composition",
+        "source": "token-data"
+      },
+      {
+        "id": "theme-extending",
+        "source": "token-data"
+      },
+      {
+        "id": "theme-levels",
+        "source": "token-data"
+      },
+      {
+        "id": "theming-best-practices",
+        "source": "fixed"
+      },
+      {
+        "id": "theming-prior-art",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/colour",
+    "title": "Colour",
+    "route": "/docs/tokens/colour",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/colour"],
+    "topics": [
+      {
+        "id": "colour-ramps",
+        "source": "token-data"
+      },
+      {
+        "id": "colour-semantic",
+        "source": "token-data"
+      },
+      {
+        "id": "colour-pairings",
+        "source": "token-data"
+      },
+      {
+        "id": "colour-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/typography",
+    "title": "Typography",
+    "route": "/docs/tokens/typography",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/typography"],
+    "topics": [
+      {
+        "id": "typography-families-scale",
+        "source": "token-data"
+      },
+      {
+        "id": "typography-composites",
+        "source": "token-data"
+      },
+      {
+        "id": "typography-style-usage",
+        "source": "token-data"
+      },
+      {
+        "id": "typography-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/spacing-sizing",
+    "title": "Spacing & sizing",
+    "route": "/docs/tokens/spacing-sizing",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/layout-spacing"],
+    "topics": [
+      {
+        "id": "spacing-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "sizing-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "spacing-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/radius",
+    "title": "Radius",
+    "route": "/docs/tokens/radius",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/shape"],
+    "topics": [
+      {
+        "id": "radius-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "radius-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/elevation",
+    "title": "Elevation",
+    "route": "/docs/tokens/elevation",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/elevation"],
+    "topics": [
+      {
+        "id": "surface-level-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "shadow-level-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "elevation-application",
+        "source": "token-data"
+      },
+      {
+        "id": "elevation-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/motion",
+    "title": "Motion",
+    "route": "/docs/tokens/motion",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/motion"],
+    "topics": [
+      {
+        "id": "motion-duration-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "motion-easing-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "motion-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "motion-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/opacity",
+    "title": "Opacity",
+    "route": "/docs/tokens/opacity",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/colour", "foundations/elevation"],
+    "topics": [
+      {
+        "id": "opacity-in-context",
+        "source": "token-data"
+      },
+      {
+        "id": "opacity-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "opacity-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/backdrop",
+    "title": "Backdrop",
+    "route": "/docs/tokens/backdrop",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/elevation"],
+    "topics": [
+      {
+        "id": "backdrop-preview",
+        "source": "token-data"
+      },
+      {
+        "id": "backdrop-token-reference",
+        "source": "token-data"
+      },
+      {
+        "id": "backdrop-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "tokens/component",
+    "title": "Component tokens",
+    "route": "/docs/tokens/component",
+    "selection": "docs-tokens",
+    "foundationPages": ["foundations/principles"],
+    "notes": "Show naming examples only, not an active token catalogue; prefer shared semantic roles and multi-dimensional theming.",
+    "topics": [
+      {
+        "id": "component-token-reference",
+        "source": "fixed"
+      },
+      {
+        "id": "component-token-strategy",
+        "source": "fixed"
+      },
+      {
+        "id": "component-token-naming",
+        "source": "fixed"
+      },
+      {
+        "id": "component-other-best-practices",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "cli",
+    "title": "CLI",
+    "route": "/docs/cli",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "cli-registry",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "cli-project-scripts",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "registry",
+    "title": "Registry",
+    "route": "/docs/registry",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "registry-configuration",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "registry-installation",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "mcp",
+    "title": "fabre-DesignSystem MCPs",
+    "route": "/docs/mcp",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "mcp-servers",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "mcp-add",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "mcp-access",
+        "source": "fixed"
+      }
+    ]
+  },
+  {
+    "id": "figma",
+    "title": "Figma",
+    "route": "/docs/figma",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "figma-overview",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "integration-figma",
+        "source": "scaffold-configuration"
+      },
+      {
+        "id": "figma-mcp",
+        "source": "scaffold-configuration"
+      }
+    ]
+  },
+  {
+    "id": "figma/code-connect",
+    "title": "Code Connect",
+    "route": "/docs/figma/code-connect",
+    "selection": "docs-core",
+    "topics": [
+      {
+        "id": "integration-code-connect",
+        "source": "scaffold-configuration"
+      }
+    ]
+  }
+]

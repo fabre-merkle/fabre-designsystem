@@ -1,0 +1,188 @@
+@layer fabre-designsystem-theme {
+  [data-theme="light"] {
+    --computed-account-action-destructive-foreground: var(
+      --computed-light-account-action-destructive-foreground
+    );
+    --computed-account-action-primary-foreground: var(
+      --computed-light-account-action-primary-foreground
+    );
+    --computed-brand-primary-hover: var(--computed-light-brand-primary-hover);
+    --computed-brand-white: var(--computed-light-brand-white);
+    --computed-color-fd-accent-foreground: var(--computed-light-color-fd-accent-foreground);
+    --computed-color-intent-error-on-error: var(--computed-light-color-intent-error-on-error);
+    --computed-color-intent-error-on-error-hover: var(
+      --computed-light-color-intent-error-on-error-hover
+    );
+    --computed-color-intent-info-on-info: var(--computed-light-color-intent-info-on-info);
+    --computed-color-intent-info-on-info-hover: var(
+      --computed-light-color-intent-info-on-info-hover
+    );
+    --computed-color-intent-success-on-success: var(
+      --computed-light-color-intent-success-on-success
+    );
+    --computed-color-intent-success-on-success-hover: var(
+      --computed-light-color-intent-success-on-success-hover
+    );
+    --computed-color-intent-warning-on-warning: var(
+      --computed-light-color-intent-warning-on-warning
+    );
+    --computed-color-intent-warning-on-warning-hover: var(
+      --computed-light-color-intent-warning-on-warning-hover
+    );
+    --computed-color-primary-on-brand: var(--computed-light-color-primary-on-brand);
+    --computed-color-primary-on-brand-hover: var(--computed-light-color-primary-on-brand-hover);
+    --computed-color-secondary-on-brand: var(--computed-light-color-secondary-on-brand);
+    --computed-color-secondary-on-brand-hover: var(--computed-light-color-secondary-on-brand-hover);
+    --computed-color-tertiary-on-brand: var(--computed-light-color-tertiary-on-brand);
+    --computed-color-tertiary-on-brand-hover: var(--computed-light-color-tertiary-on-brand-hover);
+    --computed-destructive-foreground: var(--computed-light-destructive-foreground);
+    --computed-info-foreground: var(--computed-light-info-foreground);
+    --computed-primary-foreground: var(--computed-light-primary-foreground);
+    --computed-rating-foreground: var(--computed-light-rating-foreground);
+    --computed-secondary-foreground: var(--computed-light-secondary-foreground);
+    --computed-sidebar-primary-foreground: var(--computed-light-sidebar-primary-foreground);
+    --computed-success-foreground: var(--computed-light-success-foreground);
+    --computed-swatch-text-selected: var(--computed-light-swatch-text-selected);
+    --computed-tertiary-foreground: var(--computed-light-tertiary-foreground);
+    --computed-warning-foreground: var(--computed-light-warning-foreground);
+    --theme-color-neutral-1: var(--computed-light-theme-color-neutral-1);
+    --theme-color-neutral-2: var(--computed-light-theme-color-neutral-2);
+    --theme-color-neutral-3: var(--computed-light-theme-color-neutral-3);
+    --theme-color-neutral-4: var(--computed-light-theme-color-neutral-4);
+    --theme-color-neutral-5: var(--computed-light-theme-color-neutral-5);
+    --theme-color-neutral-6: var(--computed-light-theme-color-neutral-6);
+    --theme-color-neutral-7: var(--computed-light-theme-color-neutral-7);
+    --theme-color-neutral-8: var(--computed-light-theme-color-neutral-8);
+    --theme-color-neutral-9: var(--brand-color-base-neutral-light);
+    --theme-color-neutral-10: var(--computed-light-theme-color-neutral-10);
+    --theme-color-neutral-11: var(--computed-light-theme-color-neutral-11);
+    --theme-color-neutral-12: var(--computed-light-theme-color-neutral-12);
+    --theme-color-primary-1: var(--computed-light-theme-color-primary-1);
+    --theme-color-primary-2: var(--computed-light-theme-color-primary-2);
+    --theme-color-primary-3: var(--computed-light-theme-color-primary-3);
+    --theme-color-primary-4: var(--computed-light-theme-color-primary-4);
+    --theme-color-primary-5: var(--computed-light-theme-color-primary-5);
+    --theme-color-primary-6: var(--computed-light-theme-color-primary-6);
+    --theme-color-primary-7: var(--computed-light-theme-color-primary-7);
+    --theme-color-primary-8: var(--computed-light-theme-color-primary-8);
+    --theme-color-primary-9: var(--brand-color-base-primary);
+    --theme-color-primary-10: var(--computed-light-theme-color-primary-10);
+    --theme-color-primary-11: var(--computed-light-theme-color-primary-11);
+    --theme-color-primary-12: var(--computed-light-theme-color-primary-12);
+    --theme-color-secondary-1: var(--computed-light-theme-color-secondary-1);
+    --theme-color-secondary-2: var(--computed-light-theme-color-secondary-2);
+    --theme-color-secondary-3: var(--computed-light-theme-color-secondary-3);
+    --theme-color-secondary-4: var(--computed-light-theme-color-secondary-4);
+    --theme-color-secondary-5: var(--computed-light-theme-color-secondary-5);
+    --theme-color-secondary-6: var(--computed-light-theme-color-secondary-6);
+    --theme-color-secondary-7: var(--computed-light-theme-color-secondary-7);
+    --theme-color-secondary-8: var(--computed-light-theme-color-secondary-8);
+    --theme-color-secondary-9: var(--brand-color-base-secondary);
+    --theme-color-secondary-10: var(--computed-light-theme-color-secondary-10);
+    --theme-color-secondary-11: var(--computed-light-theme-color-secondary-11);
+    --theme-color-secondary-12: var(--computed-light-theme-color-secondary-12);
+    --theme-color-tertiary-1: var(--computed-light-theme-color-tertiary-1);
+    --theme-color-tertiary-2: var(--computed-light-theme-color-tertiary-2);
+    --theme-color-tertiary-3: var(--computed-light-theme-color-tertiary-3);
+    --theme-color-tertiary-4: var(--computed-light-theme-color-tertiary-4);
+    --theme-color-tertiary-5: var(--computed-light-theme-color-tertiary-5);
+    --theme-color-tertiary-6: var(--computed-light-theme-color-tertiary-6);
+    --theme-color-tertiary-7: var(--computed-light-theme-color-tertiary-7);
+    --theme-color-tertiary-8: var(--computed-light-theme-color-tertiary-8);
+    --theme-color-tertiary-9: var(--brand-color-base-tertiary);
+    --theme-color-tertiary-10: var(--computed-light-theme-color-tertiary-10);
+    --theme-color-tertiary-11: var(--computed-light-theme-color-tertiary-11);
+    --theme-color-tertiary-12: var(--computed-light-theme-color-tertiary-12);
+    --theme-color-utility-error-1: var(--computed-light-theme-color-utility-error-1);
+    --theme-color-utility-error-2: var(--computed-light-theme-color-utility-error-2);
+    --theme-color-utility-error-3: var(--computed-light-theme-color-utility-error-3);
+    --theme-color-utility-error-4: var(--computed-light-theme-color-utility-error-4);
+    --theme-color-utility-error-5: var(--computed-light-theme-color-utility-error-5);
+    --theme-color-utility-error-6: var(--computed-light-theme-color-utility-error-6);
+    --theme-color-utility-error-7: var(--computed-light-theme-color-utility-error-7);
+    --theme-color-utility-error-8: var(--computed-light-theme-color-utility-error-8);
+    --theme-color-utility-error-9: var(--brand-color-base-utility-error);
+    --theme-color-utility-error-10: var(--computed-light-theme-color-utility-error-10);
+    --theme-color-utility-error-11: var(--computed-light-theme-color-utility-error-11);
+    --theme-color-utility-error-12: var(--computed-light-theme-color-utility-error-12);
+    --theme-color-utility-info-1: var(--computed-light-theme-color-utility-info-1);
+    --theme-color-utility-info-2: var(--computed-light-theme-color-utility-info-2);
+    --theme-color-utility-info-3: var(--computed-light-theme-color-utility-info-3);
+    --theme-color-utility-info-4: var(--computed-light-theme-color-utility-info-4);
+    --theme-color-utility-info-5: var(--computed-light-theme-color-utility-info-5);
+    --theme-color-utility-info-6: var(--computed-light-theme-color-utility-info-6);
+    --theme-color-utility-info-7: var(--computed-light-theme-color-utility-info-7);
+    --theme-color-utility-info-8: var(--computed-light-theme-color-utility-info-8);
+    --theme-color-utility-info-9: var(--brand-color-base-utility-info);
+    --theme-color-utility-info-10: var(--computed-light-theme-color-utility-info-10);
+    --theme-color-utility-info-11: var(--computed-light-theme-color-utility-info-11);
+    --theme-color-utility-info-12: var(--computed-light-theme-color-utility-info-12);
+    --theme-color-utility-success-1: var(--computed-light-theme-color-utility-success-1);
+    --theme-color-utility-success-2: var(--computed-light-theme-color-utility-success-2);
+    --theme-color-utility-success-3: var(--computed-light-theme-color-utility-success-3);
+    --theme-color-utility-success-4: var(--computed-light-theme-color-utility-success-4);
+    --theme-color-utility-success-5: var(--computed-light-theme-color-utility-success-5);
+    --theme-color-utility-success-6: var(--computed-light-theme-color-utility-success-6);
+    --theme-color-utility-success-7: var(--computed-light-theme-color-utility-success-7);
+    --theme-color-utility-success-8: var(--computed-light-theme-color-utility-success-8);
+    --theme-color-utility-success-9: var(--brand-color-base-utility-success);
+    --theme-color-utility-success-10: var(--computed-light-theme-color-utility-success-10);
+    --theme-color-utility-success-11: var(--computed-light-theme-color-utility-success-11);
+    --theme-color-utility-success-12: var(--computed-light-theme-color-utility-success-12);
+    --theme-color-utility-warning-1: var(--computed-light-theme-color-utility-warning-1);
+    --theme-color-utility-warning-2: var(--computed-light-theme-color-utility-warning-2);
+    --theme-color-utility-warning-3: var(--computed-light-theme-color-utility-warning-3);
+    --theme-color-utility-warning-4: var(--computed-light-theme-color-utility-warning-4);
+    --theme-color-utility-warning-5: var(--computed-light-theme-color-utility-warning-5);
+    --theme-color-utility-warning-6: var(--computed-light-theme-color-utility-warning-6);
+    --theme-color-utility-warning-7: var(--computed-light-theme-color-utility-warning-7);
+    --theme-color-utility-warning-8: var(--computed-light-theme-color-utility-warning-8);
+    --theme-color-utility-warning-9: var(--brand-color-base-utility-warning);
+    --theme-color-utility-warning-10: var(--computed-light-theme-color-utility-warning-10);
+    --theme-color-utility-warning-11: var(--computed-light-theme-color-utility-warning-11);
+    --theme-color-utility-warning-12: var(--computed-light-theme-color-utility-warning-12);
+    --theme-control-border: var(--computed-light-theme-control-border);
+    --theme-control-border-hover: var(--computed-light-theme-control-border-hover);
+    --theme-control-focus-ring: var(--theme-color-neutral-10);
+    --theme-shadow-level-1: var(--brand-shadow-1-light);
+    --theme-shadow-level-2: var(--brand-shadow-2-light);
+    --theme-shadow-level-3: var(--brand-shadow-3-light);
+    --theme-shadow-level-4: var(--brand-shadow-4-light);
+    --theme-shadow-level-5: var(--brand-shadow-5-light);
+    --theme-shadow-level-6: var(--brand-shadow-6-light);
+    --theme-shadow-level-7: var(--brand-shadow-7-light);
+    --theme-shadow-level-8: var(--brand-shadow-8-light);
+    --theme-shadow-tint-chroma: var(--brand-color-tint-light-chroma-shadow);
+    --theme-shadow-tint-color: var(--brand-shadow-color-light);
+    --theme-surface-border-1: var(--computed-light-theme-surface-border-1);
+    --theme-surface-border-2: var(--computed-light-theme-surface-border-2);
+    --theme-surface-border-3: var(--computed-light-theme-surface-border-3);
+    --theme-surface-border-4: var(--computed-light-theme-surface-border-4);
+    --theme-surface-border-5: var(--computed-light-theme-surface-border-5);
+    --theme-surface-border-6: var(--computed-light-theme-surface-border-6);
+    --theme-surface-border-7: var(--computed-light-theme-surface-border-7);
+    --theme-surface-border-8: var(--computed-light-theme-surface-border-8);
+    --theme-surface-highlight: var(--computed-light-theme-surface-highlight);
+    --theme-surface-hover: var(--computed-light-theme-surface-hover);
+    --theme-surface-level-1: var(--theme-color-neutral-3);
+    --theme-surface-level-2: var(--theme-color-neutral-2);
+    --theme-surface-level-3: var(--theme-color-neutral-1);
+    --theme-surface-level-4: var(--theme-color-neutral-1);
+    --theme-surface-level-5: var(--theme-color-neutral-1);
+    --theme-surface-level-6: var(--theme-color-neutral-1);
+    --theme-surface-level-7: var(--theme-color-neutral-1);
+    --theme-surface-level-8: var(--theme-color-neutral-1);
+    --theme-surface-recessed: var(--computed-light-theme-surface-recessed);
+    --theme-surface-selected: var(--computed-light-theme-surface-selected);
+    --theme-surface-tint-chroma: var(--brand-color-tint-light-chroma-surface);
+    --theme-surface-tint-level-1: var(--computed-light-theme-surface-tint-level-1);
+    --theme-surface-tint-level-2: var(--computed-light-theme-surface-tint-level-2);
+    --theme-surface-tint-level-3: var(--computed-light-theme-surface-tint-level-3);
+    --theme-surface-tint-level-4: var(--computed-light-theme-surface-tint-level-4);
+    --theme-surface-tint-level-5: var(--computed-light-theme-surface-tint-level-5);
+    --theme-surface-tint-level-6: var(--computed-light-theme-surface-tint-level-6);
+    --theme-surface-tint-level-7: var(--computed-light-theme-surface-tint-level-7);
+    --theme-surface-tint-level-8: var(--computed-light-theme-surface-tint-level-8);
+    --theme-tint-source: var(--brand-color-tint-light-source);
+  }
+}

@@ -1,0 +1,61 @@
+---
+title: Field
+description: Connect a form control, label and validation.
+primitive: https://base-ui.com/react/components/field
+---
+
+## Interactive example
+
+<DocsStory name="field" />
+
+## Installation
+
+`Field` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Field } from "@workspace/ui/components/field";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Field } from "@workspace/ui/components/field";
+import { Input } from "@workspace/ui/components/input";
+
+<Field.Root name="email">
+  <Field.Label>Work email</Field.Label>
+  <Field.Control render={<Input type="email" />} />
+  <Field.Description>We only use this to send the invite.</Field.Description>
+  <Field.Error match="valueMissing">An email is required.</Field.Error>
+</Field.Root>
+```
+
+Pass `name` to `Field.Root` to include the control's value in form submission. `Field.Control` renders the control (compose your styled `Input` via its `render` prop); `Field.Error` shows a message keyed off a validity `match`.
+
+## API Reference
+
+Field adds no props beyond the primitive's. All parts forward to the matching [Base UI Field](https://base-ui.com/react/components/field#api-reference) primitives — `Field.Root`, `Field.Label`, `Field.Control`, `Field.Description`, `Field.Error`, `Field.Validity` — preserving every prop, event, ARIA attribute, and the polymorphic `render` API.
+
+## Validation
+
+A `Field.Error` renders only when its `match` validity fails. Native constraints (`required`, `type`, `pattern`, …) run first; add a `validate` function for custom rules. Try it in the story's Validate on blur preset, or see a whole form in the [Form](/docs/components/form) story.
+
+## Figma contract
+
+<ComponentContract slug="field" />

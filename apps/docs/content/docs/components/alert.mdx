@@ -1,0 +1,75 @@
+---
+title: Alert
+description: Show an inline status message and actions.
+---
+
+## Interactive example
+
+<DocsStory name="alert" />
+
+## Installation
+
+`Alert` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Alert } from "@workspace/ui/components/alert";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+Base UI has no Alert, so it's composed with two Base UI utilities, [`useRender`](https://base-ui.com/react/utils/use-render) and [`mergeProps`](https://base-ui.com/react/utils/merge-props), and no Base UI component parts. The `render` prop re-tags the root, and every `div` attribute passes through.
+
+The description is the children.
+
+```tsx
+import { Alert } from "@workspace/ui/components/alert";
+
+<Alert intent="success" title="Changes saved">
+  Your workspace settings are up to date.
+</Alert>;
+```
+
+## API Reference
+
+<AutoTypeTable path="alert/alert.tsx" name="AlertProps" />
+
+## Icons
+
+Pass the icon as the first child, as an icon component or an `svg`. CSS lays the first `svg` child (or an element with `data-icon`) out in the icon column beside the title and description, with no extra attribute needed, and the rest of the children stay the description. A child icon replaces the intent's default icon, so there is never a second one.
+
+```tsx
+<Alert intent="info" title="Tip">
+  <Lightbulb weight="fill" />
+  Press ⌘K to search the docs.
+</Alert>
+```
+
+Only a first child counts, so put the icon before any text. The icon is decorative; the text carries the meaning.
+
+## Accessibility
+
+- `error` renders `role="alert"`, which interrupts the screen reader. Use it only for problems the user must act on.
+- `info`, `success` and `warning` render `role="status"`, announced politely.
+- A live region announces content that changes after it mounts. To announce a new message, render the Alert when the event happens rather than on page load.
+- The icon is decorative (`aria-hidden`). Intent is never carried by colour alone: the title states it.
+- The icon uses `on-surface-{x}` rather than the intent solid. In light mode the solid success, warning and error fills fall below 3:1 against their containers.
+
+## Figma contract
+
+<ComponentContract slug="alert" />

@@ -1,0 +1,138 @@
+@layer components {
+  /* =========================================================
+     Surface levels — the shared paint for every raised surface
+     (Elevated, the overlay popups, the Menubar bar). A surface opts in
+     with `data-surface-level="1…8"`, resolved in JS as substrate + offset.
+
+     Fill: --color-surface-level-N (neutral 3, 2, then 1 from level 3 in light;
+     neutral 1→8 in dark — token values, never hard-coded here).
+     Depth: a top highlight + a hairline edge (--stroke-width-default) + the drop-only --shadow-level-N,
+     composed here because Studio can't keep composite shadow aliases. The
+     edge is the border itself, with the fill clipped to the padding box, so
+     the inset highlight starts at the border's inner edge and the two read as
+     one rim (an outside ring plus a transparent border left a gap of fill
+     between them). The border also keeps the edge in forced-colors mode,
+     where box-shadow is dropped.
+
+     Edge/highlight idea credited to Cubby UI
+     (https://github.com/joncoronel/cubby-ui, MIT) and Fluid Functionalism
+     (https://github.com/mickadesign/fluid-functionalism, MIT). Shadow recipe
+     after Josh W. Comeau's Shadow Palette Generator
+     (https://www.joshwcomeau.com/shadow-palette/).
+
+     Difference from MDS: overlay components keep a static on-page
+     paint on their own `[data-ui]` rule (the Figma generation contract binds
+     fill/stroke/effect from it). The selectors below repeat the attribute,
+     (0,2,0), so the level resolved at runtime always wins over that static
+     paint, whatever order the stylesheets load in.
+     ========================================================= */
+  [data-surface-level][data-surface-level] {
+    --surface-level-highlight: inset 0 1px 0 var(--color-surface-highlight);
+    --surface-level-drop: 0 0 0 0 transparent;
+    --surface-level-overlay: transparent;
+    background-color: var(--surface-level-bg);
+    background-clip: padding-box;
+    border: var(--stroke-width-default) solid var(--surface-level-edge);
+    box-shadow: var(--surface-level-highlight), var(--surface-level-drop);
+  }
+
+  /* Surface level N sets the fill and the edge (border N+1, clamped at 8). Hover
+     does not move the edge: it paints the surface.hover overlay over the fill
+     (see the hover rule below). Level 1 is the page itself: no edge, no highlight, no drop (rule after the
+     shadow rules so it wins). */
+  [data-surface-level][data-surface-level="2"] {
+    --surface-level-bg: var(--color-surface-level-2);
+    --surface-level-edge: var(--color-surface-border-3);
+  }
+  [data-surface-level][data-surface-level="3"] {
+    --surface-level-bg: var(--color-surface-level-3);
+    --surface-level-edge: var(--color-surface-border-4);
+  }
+  [data-surface-level][data-surface-level="4"] {
+    --surface-level-bg: var(--color-surface-level-4);
+    --surface-level-edge: var(--color-surface-border-5);
+  }
+  [data-surface-level][data-surface-level="5"] {
+    --surface-level-bg: var(--color-surface-level-5);
+    --surface-level-edge: var(--color-surface-border-6);
+  }
+  [data-surface-level][data-surface-level="6"] {
+    --surface-level-bg: var(--color-surface-level-6);
+    --surface-level-edge: var(--color-surface-border-7);
+  }
+  [data-surface-level][data-surface-level="7"] {
+    --surface-level-bg: var(--color-surface-level-7);
+    --surface-level-edge: var(--color-surface-border-8);
+  }
+  [data-surface-level][data-surface-level="8"] {
+    --surface-level-bg: var(--color-surface-level-8);
+    --surface-level-edge: var(--color-surface-border-8);
+  }
+
+  /* Drop shadow is its own knob (data-shadow-level 1–8), never derived from the
+     surface level. */
+  [data-surface-level][data-shadow-level="1"] {
+    --surface-level-drop: var(--shadow-level-1);
+  }
+  [data-surface-level][data-shadow-level="2"] {
+    --surface-level-drop: var(--shadow-level-2);
+  }
+  [data-surface-level][data-shadow-level="3"] {
+    --surface-level-drop: var(--shadow-level-3);
+  }
+  [data-surface-level][data-shadow-level="4"] {
+    --surface-level-drop: var(--shadow-level-4);
+  }
+  [data-surface-level][data-shadow-level="5"] {
+    --surface-level-drop: var(--shadow-level-5);
+  }
+  [data-surface-level][data-shadow-level="6"] {
+    --surface-level-drop: var(--shadow-level-6);
+  }
+  [data-surface-level][data-shadow-level="7"] {
+    --surface-level-drop: var(--shadow-level-7);
+  }
+  [data-surface-level][data-shadow-level="8"] {
+    --surface-level-drop: var(--shadow-level-8);
+  }
+
+  [data-surface-level][data-surface-level="1"] {
+    --surface-level-bg: var(--color-surface-level-1);
+    --surface-level-highlight: 0 0 0 0 transparent;
+    --surface-level-drop: 0 0 0 0 transparent;
+    border-color: transparent;
+  }
+
+  /* Popup arrows take the fill of the level they point from. The tooltip is
+     outside the ladder and keeps its own inverted arrow. */
+  [data-surface-level][data-surface-level] [data-ui$="-arrow"]:not([data-ui="tooltip-arrow"]) {
+    color: var(--surface-level-bg);
+  }
+
+  /* Hoverable surfaces paint the translucent surface.hover overlay (neutral.12 at
+     5%) over their fill, never swap the edge. The overlay is a background-image
+     layer, so the fill token (--surface-level-bg) is untouched and the same
+     5% reads on every level in light and dark. The layer follows the element's
+     own border-radius and the padding-box clip, so it needs no extra element.
+     The overlay colour is a custom property reset on every surface, so a surface
+     nested in a hovered one stays clear. A gradient cannot transition, so the
+     overlay appears at once, like the menu and select items. Both Cubby UI and Fluid
+     Functionalism show hover as an overlay, not an edge swap. */
+  [data-surface-level][data-surface-level]:is(a[href], button, [data-hoverable]) {
+    background-image: linear-gradient(var(--surface-level-overlay), var(--surface-level-overlay));
+  }
+
+  @media (hover: hover) {
+    [data-surface-level][data-surface-level]:is(a[href], button, [data-hoverable]):hover {
+      --surface-level-overlay: var(--color-surface-hover);
+    }
+  }
+
+  /* =========================================================
+     Elevated — the bare raised surface
+     ========================================================= */
+  [data-ui="elevated"] {
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+  }
+}

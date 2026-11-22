@@ -1,0 +1,51 @@
+---
+title: Switch
+description: Turn a setting on or off.
+primitive: https://base-ui.com/react/components/switch
+---
+
+## Interactive example
+
+<DocsStory name="switch" />
+
+## Installation
+
+`Switch` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Switch } from "@workspace/ui/components/switch";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Switch } from "@workspace/ui/components/switch";
+
+<Switch name="notifications" defaultChecked />
+```
+
+A switch needs an accessible name. Wrap it in a `<label>` (or a `Field.Label`) so the label is visible and clickable. Wrap it in `Field.Root` (with `invalid` or `disabled`) when you need form-level validation.
+
+## API Reference
+
+`Switch` adds no props. It forwards every prop to [Base UI Switch.Root](https://base-ui.com/react/components/switch#api-reference), preserving every prop, event, ARIA attribute and the `render` API, including `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `required`, `readOnly`, `name`, `value` and `uncheckedValue`. The inner `Switch.Thumb` is rendered automatically.
+
+## Figma contract
+
+<ComponentContract slug="switch" />

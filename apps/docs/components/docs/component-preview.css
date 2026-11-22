@@ -1,0 +1,23 @@
+@layer components {
+  [data-component-preview] {
+    /* Card tier (surface-level-3, = fd-card) so the preview lifts off
+       the page in both themes instead of matching it (surface-body). */
+    background-color: var(--color-surface-level-3);
+    border: 1px solid var(--color-surface-border-1);
+    border-radius: var(--radius-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-300);
+    flex-wrap: wrap;
+    padding: var(--spacing-800);
+    min-height: 160px;
+    margin-block: var(--spacing-400);
+  }
+
+  /* Variant section previews — less vertical padding than the hero */
+  [data-component-preview][data-variant-preview] {
+    padding-block: var(--spacing-500);
+    min-height: 80px;
+  }
+}

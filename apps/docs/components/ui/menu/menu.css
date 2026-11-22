@@ -1,0 +1,191 @@
+@layer components {
+  /* Positioner — stack with the overlay tier. Portals append in open order,
+     so a popup opened inside a dialog (same tier) paints above it. */
+  [data-slot="menu-positioner"] {
+    z-index: var(--z-index-overlay);
+  }
+
+  /* =========================================================
+     Popup overlay
+     ========================================================= */
+  [data-ui="menu-popup"] {
+    /* Surface level substrate + 2 (3 on the page), shadow level 3.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-3);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-4),
+      var(--shadow-level-3);
+    border-radius: var(--radius-default);
+    padding-block: var(--spacing-100);
+    min-width: 200px;
+    max-height: 360px;
+    overflow-y: auto;
+    outline: none;
+    transform-origin: var(--transform-origin, top);
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter),
+      translate var(--brand-duration-150) var(--brand-easing-enter);
+  }
+
+  [data-ui="menu-popup"][data-starting-style] {
+    opacity: 0;
+    scale: 0.96;
+    translate: 0 8px;
+  }
+
+  [data-ui="menu-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+    translate: 0 8px;
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Backdrop — invisible, just catches outside clicks
+     ========================================================= */
+  [data-ui="menu-backdrop"] {
+    position: fixed;
+    inset: 0;
+  }
+
+  /* =========================================================
+     Arrow
+     ========================================================= */
+  [data-ui="menu-arrow"] {
+    /* On-page default; elevated.css matches the popup's actual level. */
+    color: var(--color-surface-level-3);
+  }
+
+  /* =========================================================
+     Items
+     ========================================================= */
+  [data-ui="menu-item"],
+  [data-ui="menu-radio-item"],
+  [data-ui="menu-checkbox-item"] {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-200);
+    min-height: 36px;
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    color: var(--color-on-surface);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    border-radius: var(--radius-small-elements);
+    margin-inline: calc(var(--radius-default) - var(--radius-small-elements));
+    transition:
+      background-color var(--transition-default-duration) var(--transition-default-easing),
+      color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  [data-ui="menu-item"][data-highlighted],
+  [data-ui="menu-radio-item"][data-highlighted],
+  [data-ui="menu-checkbox-item"][data-highlighted] {
+    background-color: var(--color-surface-hover);
+  }
+
+  [data-ui="menu-item"][data-disabled],
+  [data-ui="menu-radio-item"][data-disabled],
+  [data-ui="menu-checkbox-item"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+  }
+
+  /* Submenu trigger's trailing caret: a Phosphor CaretRight icon part (focus#586), not a CSS
+     pseudo-element, so Figma can express it. Flipped under RTL so it points toward the submenu. */
+  [data-ui="menu-submenu-icon"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline-start: auto;
+    width: var(--spacing-300);
+    height: var(--spacing-300);
+    flex-shrink: 0;
+    color: var(--color-on-surface);
+    opacity: var(--opacity-soft);
+  }
+
+  [data-ui="menu-submenu-icon"] > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  [data-ui="menu-submenu-icon"]:dir(rtl) {
+    scale: -1 1;
+  }
+
+  /* =========================================================
+     Indicators
+     ========================================================= */
+  [data-ui="menu-checkbox-item-indicator"],
+  [data-ui="menu-radio-item-indicator"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--color-primary-on-surface);
+  }
+
+  [data-ui="menu-radio-item-indicator"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentcolor;
+  }
+
+  /* =========================================================
+     Separator
+     ========================================================= */
+  [data-ui="menu-separator"] {
+    height: var(--stroke-width-selected);
+    background-color: var(--color-surface-border-3);
+    margin-block: var(--spacing-100);
+    margin-inline: var(--spacing-300);
+  }
+
+  /* =========================================================
+     Group label — eyebrow style
+     ========================================================= */
+  [data-ui="menu-group-label"] {
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-100);
+    font-family: var(--typography-eyebrow-sm-font-family);
+    font-size: var(--typography-eyebrow-sm-font-size);
+    font-weight: var(--typography-eyebrow-sm-font-weight);
+    line-height: var(--typography-eyebrow-sm-line-height);
+    letter-spacing: var(--typography-eyebrow-sm-letter-spacing);
+    color: var(--color-on-surface-subtle);
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="menu-popup"],
+    [data-ui="menu-item"],
+    [data-ui="menu-radio-item"],
+    [data-ui="menu-checkbox-item"] {
+      transition: none;
+    }
+
+    [data-ui="menu-popup"][data-starting-style],
+    [data-ui="menu-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+      translate: 0 0;
+    }
+  }
+}

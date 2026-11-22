@@ -1,0 +1,161 @@
+@layer components {
+  [data-ui="alert"] {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-200);
+    padding-inline: var(--spacing-300);
+    padding-block: var(--spacing-300);
+    border-width: var(--stroke-width-selected);
+    border-style: solid;
+    border-radius: var(--radius-default);
+  }
+
+  /* Icon box is one title line tall so the glyph centres on the first line. */
+  [data-ui="alert-icon"] {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    block-size: var(--typography-headline-xs-line-height);
+  }
+  /* Any glyph in the icon box is the small control icon size, whether it is an svg,
+     an element with `data-icon` or an svg inside one; the default glyphs are also
+     named so the size resolves per part. */
+  [data-ui="alert-icon"] > :is(svg, [data-icon]),
+  [data-ui="alert-icon"] [data-icon] > svg,
+  [data-ui="alert-icon-info"],
+  [data-ui="alert-icon-success"],
+  [data-ui="alert-icon-warning"],
+  [data-ui="alert-icon-error"] {
+    inline-size: var(--control-icon-sm);
+    block-size: var(--control-icon-sm);
+    flex: none;
+  }
+
+  /* Icon as the first child of the description (any svg, so an icon component works, or an
+     element with data-icon). It is lifted out of the text flow into the icon column: placed at
+     the alert's padding edge, centred on the first title line like the default icon box, with
+     the content column padded to make room. The default icon is hidden. */
+  [data-ui="alert"] {
+    position: relative;
+  }
+  [data-ui="alert-description"] > :is(svg, [data-icon]):first-child {
+    position: absolute;
+    inset-inline-start: var(--spacing-300);
+    inset-block-start: calc(
+      var(--spacing-300) +
+      (var(--typography-headline-xs-line-height) - var(--control-icon-sm)) /
+      2
+    );
+    flex: none;
+  }
+  [data-ui="alert-description"] > svg:first-child,
+  [data-ui="alert-description"] > [data-icon]:first-child > svg {
+    inline-size: var(--control-icon-sm);
+    block-size: var(--control-icon-sm);
+  }
+  [data-ui="alert"]:has(
+      > [data-ui="alert-content"]
+        > [data-ui="alert-description"]
+        > :is(svg, [data-icon]):first-child
+    )
+    > [data-ui="alert-icon"][data-source="default"] {
+    display: none;
+  }
+  [data-ui="alert"]:has(
+      > [data-ui="alert-content"]
+        > [data-ui="alert-description"]
+        > :is(svg, [data-icon]):first-child
+    )
+    > [data-ui="alert-content"] {
+    padding-inline-start: calc(var(--control-icon-sm) + var(--spacing-200));
+  }
+
+  [data-ui="alert-content"] {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--spacing-100);
+    min-inline-size: 0;
+  }
+
+  [data-ui="alert-title"] {
+    font-family: var(--typography-headline-xs-font-family);
+    font-size: var(--typography-headline-xs-font-size);
+    font-weight: var(--typography-headline-xs-font-weight);
+    line-height: var(--typography-headline-xs-line-height);
+    letter-spacing: var(--typography-headline-xs-letter-spacing);
+  }
+
+  [data-ui="alert-description"] {
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-size: var(--typography-paragraph-sm-font-size);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    line-height: var(--typography-paragraph-sm-line-height);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+  }
+
+  [data-ui="alert-actions"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-200);
+    margin-block-start: var(--spacing-100);
+  }
+
+  /* =========================================================
+     Intents — container, border and body/icon ink per intent.
+     The icon takes on-surface-{x}, not the intent solid: in light
+     the solids fall below 3:1 on their own container (warning ≈ 1.2:1).
+     Written per intent (not through local custom properties) so the
+     Figma resolver binds each value to its real token.
+     ========================================================= */
+  [data-ui="alert"][data-intent="info"] {
+    border-color: var(--color-intent-info-border);
+    background-color: var(--color-intent-info-surface);
+    color: var(--color-intent-info-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="success"] {
+    border-color: var(--color-intent-success-border);
+    background-color: var(--color-intent-success-surface);
+    color: var(--color-intent-success-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="warning"] {
+    border-color: var(--color-intent-warning-border);
+    background-color: var(--color-intent-warning-surface);
+    color: var(--color-intent-warning-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="error"] {
+    border-color: var(--color-intent-error-border);
+    background-color: var(--color-intent-error-surface);
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+
+  [data-ui="alert"][data-intent="info"] [data-ui="alert-icon"],
+  [data-ui="alert"][data-intent="info"] [data-ui="alert-description"] {
+    color: var(--color-intent-info-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="success"] [data-ui="alert-icon"],
+  [data-ui="alert"][data-intent="success"] [data-ui="alert-description"] {
+    color: var(--color-intent-success-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="warning"] [data-ui="alert-icon"],
+  [data-ui="alert"][data-intent="warning"] [data-ui="alert-description"] {
+    color: var(--color-intent-warning-on-surface-subtle);
+  }
+  [data-ui="alert"][data-intent="error"] [data-ui="alert-icon"],
+  [data-ui="alert"][data-intent="error"] [data-ui="alert-description"] {
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+
+  [data-ui="alert"][data-intent="info"] [data-ui="alert-title"] {
+    color: var(--color-intent-info-on-surface);
+  }
+  [data-ui="alert"][data-intent="success"] [data-ui="alert-title"] {
+    color: var(--color-intent-success-on-surface);
+  }
+  [data-ui="alert"][data-intent="warning"] [data-ui="alert-title"] {
+    color: var(--color-intent-warning-on-surface);
+  }
+  [data-ui="alert"][data-intent="error"] [data-ui="alert-title"] {
+    color: var(--color-intent-error-on-surface);
+  }
+}

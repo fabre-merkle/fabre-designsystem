@@ -1,0 +1,77 @@
+@layer components {
+  [data-ui="avatar"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    user-select: none;
+    background-color: var(--color-surface-recessed);
+    color: var(--color-on-surface);
+    vertical-align: middle;
+  }
+
+  /* Sizes */
+  [data-ui="avatar"][data-size="sm"] {
+    inline-size: 24px;
+    block-size: 24px;
+  }
+  [data-ui="avatar"][data-size="md"] {
+    inline-size: 32px;
+    block-size: 32px;
+  }
+  [data-ui="avatar"][data-size="lg"] {
+    inline-size: 40px;
+    block-size: 40px;
+  }
+
+  /* Shapes */
+  [data-ui="avatar"][data-shape="circle"] {
+    border-radius: var(--radius-full);
+  }
+  [data-ui="avatar"][data-shape="square"] {
+    border-radius: var(--radius-default);
+  }
+
+  [data-ui="avatar-image"] {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  /* With keepMounted the image stays in the DOM while it loads or after it
+     fails. Hide it without removing it (display: none would stop
+     loading="lazy" from loading) so the fallback shows through. */
+  [data-ui="avatar-image"][data-loading],
+  [data-ui="avatar-image"][data-error] {
+    opacity: 0;
+  }
+
+  [data-ui="avatar-fallback"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 100%;
+    block-size: 100%;
+    font-family: var(--typography-paragraph-sm-font-family);
+    font-weight: var(--typography-paragraph-sm-font-weight);
+    letter-spacing: var(--typography-paragraph-sm-letter-spacing);
+    line-height: 1;
+    color: var(--color-on-surface-subtle);
+    text-transform: uppercase;
+  }
+
+  [data-ui="avatar-fallback"][data-size="sm"] {
+    font-size: var(--typography-paragraph-xs-font-size);
+  }
+  [data-ui="avatar-fallback"][data-size="md"] {
+    font-size: var(--typography-paragraph-sm-font-size);
+  }
+  [data-ui="avatar-fallback"][data-size="lg"] {
+    font-size: var(--typography-paragraph-lg-font-size);
+  }
+}

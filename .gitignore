@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Builds
+.next/
+dist/
+out/
+*.tsbuildinfo
+
+# Bun / Turbo caches
+.turbo/
+bun.lock.bak
+
+# Test coverage
+coverage/
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Next.js generated route-type reference (rewritten by next dev/build/typegen)
+next-env.d.ts
+# Added by Laser scaffolder (publish_github)
+node_modules
+.next
+.turbo
+.source
+dist
+.vercel

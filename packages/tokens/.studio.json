@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "host": "https://api-production.tokens.studio",
+  "source": {
+    "project": "PROJECT_UUID",
+    "ref": {
+      "type": "branch",
+      "name": "main"
+    }
+  },
+  "outputs": {
+    "raw": {
+      "format": "raw",
+      "dir": "dtcg"
+    },
+    "css": {
+      "format": "css",
+      "dir": "css",
+      "options": {
+        "colorSpace": "as-authored",
+        "defaultStrategy": "data-attribute",
+        "naming": {
+          "casing": "kebab"
+        },
+        "layers": {
+          "enabled": true,
+          "prefix": "fabre-designsystem-"
+        },
+        "rootSelector": ":root, [data-brand], [data-theme], [data-web]",
+        "fileLayout": "split",
+        "baseFileName": "base"
+      }
+    }
+  }
+}

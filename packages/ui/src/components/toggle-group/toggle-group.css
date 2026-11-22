@@ -1,0 +1,114 @@
+/* ToggleGroup — a row (or column) of Toggle Controls.
+ *
+ * Joined (default) is a segmented control, built on the segmented rule:
+ *   - the track is one control tall, padded by --control-inset, on the
+ *     surface-selected overlay;
+ *   - items are (height − 2 × inset) tall with an inner radius of
+ *     (radius − inset): the track publishes --inner-radius and each item
+ *     rounds to max(0px, var(--inner-radius, …)), so the corners stay
+ *     concentric and square brands stay square;
+ *   - the pressed item is a raised chip: surface-level-2 + shadow-level-2,
+ *     with the edge ring and highlight composed from colour tokens.
+ *
+ * `spacing` sets how items sit next to each other: `joined` (no gap) always
+ * draws the track; `gapped` never does. Every rule keys off `data-spacing`, the one
+ * attribute that carries the choice (`data-grouped` is still set for consumers).
+ * A focused item lifts above its neighbours so the ring is never clipped.
+ */
+@layer components {
+  [data-ui="toggle-group"] {
+    --ctl-height: var(--control-height-md);
+    --ctl-gap: var(--control-gap-md);
+    display: inline-flex;
+    align-items: stretch;
+    gap: var(--ctl-gap);
+    color: var(--color-on-surface);
+  }
+  [data-ui="toggle-group"][data-size="xs"],
+  [data-ui="toggle-group"][data-size="icon-xs"] {
+    --ctl-height: var(--control-height-xs);
+    --ctl-gap: var(--control-gap-xs);
+  }
+  [data-ui="toggle-group"][data-size="sm"],
+  [data-ui="toggle-group"][data-size="icon-sm"] {
+    --ctl-height: var(--control-height-sm);
+    --ctl-gap: var(--control-gap-sm);
+  }
+  [data-ui="toggle-group"][data-size="lg"],
+  [data-ui="toggle-group"][data-size="icon-lg"] {
+    --ctl-height: var(--control-height-lg);
+    --ctl-gap: var(--control-gap-lg);
+  }
+
+  [data-ui="toggle-group"][data-orientation="vertical"] {
+    flex-direction: column;
+  }
+
+  [data-ui="toggle-group"][data-spacing="joined"] {
+    gap: 0;
+  }
+
+  /* Lift on focus — keeps the ring above joined or adjacent neighbours. Items are
+     flex items, so z-index applies without position: relative. */
+  [data-ui="toggle-group"] [data-ui="toggle"] {
+    background-color: transparent;
+  }
+  [data-ui="toggle-group"] [data-ui="toggle"]:focus-visible {
+    z-index: 1;
+  }
+
+  /* =========================================================
+     Joined — segmented track
+     ========================================================= */
+  [data-ui="toggle-group"][data-spacing="joined"] {
+    box-sizing: border-box;
+    padding: var(--control-inset);
+    border-radius: var(--radius-default);
+    background-color: var(--color-surface-selected);
+    /* Nested corners follow the parent: radius − border (none) − real gap */
+    --inner-radius: calc(var(--radius-default) - var(--control-inset));
+  }
+  [data-ui="toggle-group"][data-spacing="joined"]:not([data-orientation="vertical"]) {
+    height: var(--ctl-height);
+  }
+
+  [data-ui="toggle-group"][data-spacing="joined"] [data-ui="toggle"] {
+    height: calc(var(--ctl-height) - 2 * var(--control-inset));
+    border-radius: max(0px, var(--inner-radius, var(--radius-small-elements)));
+  }
+  [data-ui="toggle-group"][data-spacing="joined"] [data-ui="toggle"][data-icon-only] {
+    min-width: calc(var(--ctl-height) - 2 * var(--control-inset));
+  }
+
+  /* Selected segment — raised chip */
+  [data-ui="toggle-group"][data-spacing="joined"] [data-ui="toggle"][data-pressed] {
+    background-color: var(--color-surface-level-2);
+    color: var(--color-on-surface);
+    box-shadow:
+      inset 0 1px 0 var(--color-surface-highlight),
+      0 0 0 var(--stroke-width-default) var(--color-surface-border-3),
+      var(--shadow-level-1);
+  }
+  [data-ui="toggle-group"][data-spacing="joined"]
+    [data-ui="toggle"][data-variant="primary"][data-pressed] {
+    color: var(--color-primary-on-surface-subtle);
+  }
+  @media (hover: hover) {
+    [data-ui="toggle-group"][data-spacing="joined"] [data-ui="toggle"][data-pressed]:hover {
+      background-color: var(--color-surface-level-2);
+      box-shadow:
+        inset 0 1px 0 var(--color-surface-highlight),
+        0 0 0 var(--stroke-width-default) var(--color-surface-border-4),
+        var(--shadow-level-1);
+    }
+  }
+
+  /* =========================================================
+     Disabled
+     ========================================================= */
+  [data-ui="toggle-group"][data-disabled] {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

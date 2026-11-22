@@ -1,0 +1,62 @@
+---
+title: ScrollArea
+description: Scroll content with themed scrollbars.
+primitive: https://base-ui.com/react/components/scroll-area
+---
+
+## Interactive example
+
+<DocsStory name="scroll-area" />
+
+## Installation
+
+`ScrollArea` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { ScrollArea } from "@workspace/ui/components/scroll-area";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { ScrollArea } from "@workspace/ui/components/scroll-area";
+
+<ScrollArea.Root style={{ height: 240 }}>
+  <ScrollArea.Viewport>
+    <ScrollArea.Content>{/* content */}</ScrollArea.Content>
+  </ScrollArea.Viewport>
+  <ScrollArea.Scrollbar>
+    <ScrollArea.Thumb />
+  </ScrollArea.Scrollbar>
+</ScrollArea.Root>
+```
+
+The native scrollbar is hidden on the viewport; the themed scrollbar appears on hover or while scrolling. Constrain `ScrollArea.Root` with an explicit height (and width, for horizontal scrolling) — without it, the viewport will grow to fit its content and never scroll. Wrap the viewport's children in `ScrollArea.Content` so the scrollbars follow the content as its size changes; without it, the thumb can go stale when the content width or height changes. For horizontal scrolling, add a second `ScrollArea.Scrollbar` with `orientation="horizontal"`, and a `ScrollArea.Corner` where both scrollbars meet.
+
+## API Reference
+
+`ScrollArea` adds no props. Every part forwards to the matching [Base UI ScrollArea](https://base-ui.com/react/components/scroll-area#api-reference) part, preserving every prop, event, ARIA attribute and the `render` API. `ScrollArea.Scrollbar` defaults `orientation` to `"vertical"`; `ScrollArea.Root` takes `overflowEdgeThreshold`, and `ScrollArea.Scrollbar` takes `keepMounted`.
+
+## When to use
+
+Reach for `ScrollArea` when you need a contained, scrollable region with consistent scrollbar styling across platforms — for example a sidebar list, a chat transcript, a code panel, or a virtualized table viewport. For full-page scrolling, prefer the browser's native scrollbar.
+
+## Figma contract
+
+<ComponentContract slug="scroll-area" />

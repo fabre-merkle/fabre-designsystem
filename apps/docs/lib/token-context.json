@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "brands": [
+    {
+      "label": "fabre-DesignSystem",
+      "tokenSet": "fabre-designsystem",
+      "cssBrand": "fabre-designsystem"
+    }
+  ]
+}

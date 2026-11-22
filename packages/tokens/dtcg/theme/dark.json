@@ -1,0 +1,735 @@
+{
+  "theme": {
+    "color": {
+      "neutral": {
+        "1": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.1})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 1. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "2": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.2})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 2. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "3": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.3})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 3. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "4": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.4})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 4. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "5": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.5})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 5. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "6": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.6})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 6. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "7": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.7})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 7. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "8": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.8})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 8. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "9": {
+          "$value": "{brand.color.base.neutral.dark}",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 9. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "10": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.10})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 10. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "11": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.11})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 11. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        },
+        "12": {
+          "$value": "set_chroma(set_lightness({brand.color.base.neutral.dark}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.neutral.dark}) * {foundation.color.dark.chroma.12})",
+          "$type": "color",
+          "$description": "Untinted dark-mode neutral ramp step 12. Preserves the authored neutral seed and Foundation curve. Tint applies separately to structural fills and shadows, never to this ramp."
+        }
+      },
+      "primary": {
+        "1": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.1})",
+          "$type": "color",
+          "$description": "App background"
+        },
+        "2": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.2})",
+          "$type": "color",
+          "$description": "Subtle background"
+        },
+        "3": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.3})",
+          "$type": "color",
+          "$description": "UI element background"
+        },
+        "4": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.4})",
+          "$type": "color",
+          "$description": "Hovered UI element background"
+        },
+        "5": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.5})",
+          "$type": "color",
+          "$description": "Active / selected UI element background"
+        },
+        "6": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.6})",
+          "$type": "color",
+          "$description": "Subtle borders and separators"
+        },
+        "7": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.7})",
+          "$type": "color",
+          "$description": "UI element border and focus rings"
+        },
+        "8": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.8})",
+          "$type": "color",
+          "$description": "Hovered UI element border"
+        },
+        "9": {
+          "$value": "{brand.color.base.primary}",
+          "$type": "color",
+          "$description": "BASE — solid backgrounds (the brand color)"
+        },
+        "10": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.10})",
+          "$type": "color",
+          "$description": "Hovered solid backgrounds"
+        },
+        "11": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.11})",
+          "$type": "color",
+          "$description": "Low-contrast text"
+        },
+        "12": {
+          "$value": "set_chroma(set_lightness({brand.color.base.primary}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.primary}) * {foundation.color.dark.chroma.12})",
+          "$type": "color",
+          "$description": "High-contrast text"
+        }
+      },
+      "secondary": {
+        "1": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.1})",
+          "$type": "color",
+          "$description": "App background"
+        },
+        "2": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.2})",
+          "$type": "color",
+          "$description": "Subtle background"
+        },
+        "3": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.3})",
+          "$type": "color",
+          "$description": "UI element background"
+        },
+        "4": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.4})",
+          "$type": "color",
+          "$description": "Hovered UI element background"
+        },
+        "5": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.5})",
+          "$type": "color",
+          "$description": "Active / selected UI element background"
+        },
+        "6": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.6})",
+          "$type": "color",
+          "$description": "Subtle borders and separators"
+        },
+        "7": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.7})",
+          "$type": "color",
+          "$description": "UI element border and focus rings"
+        },
+        "8": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.8})",
+          "$type": "color",
+          "$description": "Hovered UI element border"
+        },
+        "9": {
+          "$value": "{brand.color.base.secondary}",
+          "$type": "color",
+          "$description": "BASE — solid backgrounds (the brand color)"
+        },
+        "10": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.10})",
+          "$type": "color",
+          "$description": "Hovered solid backgrounds"
+        },
+        "11": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.11})",
+          "$type": "color",
+          "$description": "Low-contrast text"
+        },
+        "12": {
+          "$value": "set_chroma(set_lightness({brand.color.base.secondary}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.secondary}) * {foundation.color.dark.chroma.12})",
+          "$type": "color",
+          "$description": "High-contrast text"
+        }
+      },
+      "tertiary": {
+        "1": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.1})",
+          "$type": "color",
+          "$description": "App background"
+        },
+        "2": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.2})",
+          "$type": "color",
+          "$description": "Subtle background"
+        },
+        "3": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.3})",
+          "$type": "color",
+          "$description": "UI element background"
+        },
+        "4": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.4})",
+          "$type": "color",
+          "$description": "Hovered UI element background"
+        },
+        "5": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.5})",
+          "$type": "color",
+          "$description": "Active / selected UI element background"
+        },
+        "6": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.6})",
+          "$type": "color",
+          "$description": "Subtle borders and separators"
+        },
+        "7": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.7})",
+          "$type": "color",
+          "$description": "UI element border and focus rings"
+        },
+        "8": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.8})",
+          "$type": "color",
+          "$description": "Hovered UI element border"
+        },
+        "9": {
+          "$value": "{brand.color.base.tertiary}",
+          "$type": "color",
+          "$description": "BASE — solid backgrounds (the brand color)"
+        },
+        "10": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.10})",
+          "$type": "color",
+          "$description": "Hovered solid backgrounds"
+        },
+        "11": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.11})",
+          "$type": "color",
+          "$description": "Low-contrast text"
+        },
+        "12": {
+          "$value": "set_chroma(set_lightness({brand.color.base.tertiary}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.tertiary}) * {foundation.color.dark.chroma.12})",
+          "$type": "color",
+          "$description": "High-contrast text"
+        }
+      },
+      "utility": {
+        "error": {
+          "1": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.1})",
+            "$type": "color",
+            "$description": "App background"
+          },
+          "2": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.2})",
+            "$type": "color",
+            "$description": "Subtle background"
+          },
+          "3": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.3})",
+            "$type": "color",
+            "$description": "UI element background"
+          },
+          "4": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.4})",
+            "$type": "color",
+            "$description": "Hovered UI element background"
+          },
+          "5": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.5})",
+            "$type": "color",
+            "$description": "Active / selected UI element background"
+          },
+          "6": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.6})",
+            "$type": "color",
+            "$description": "Subtle borders and separators"
+          },
+          "7": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.7})",
+            "$type": "color",
+            "$description": "UI element border and focus rings"
+          },
+          "8": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.8})",
+            "$type": "color",
+            "$description": "Hovered UI element border"
+          },
+          "9": {
+            "$value": "{brand.color.base.utility.error}",
+            "$type": "color",
+            "$description": "BASE — solid backgrounds (the brand color)"
+          },
+          "10": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.10})",
+            "$type": "color",
+            "$description": "Hovered solid backgrounds"
+          },
+          "11": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.11})",
+            "$type": "color",
+            "$description": "Low-contrast text"
+          },
+          "12": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.error}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.utility.error}) * {foundation.color.dark.chroma.12})",
+            "$type": "color",
+            "$description": "High-contrast text"
+          }
+        },
+        "info": {
+          "1": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.1})",
+            "$type": "color",
+            "$description": "App background"
+          },
+          "2": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.2})",
+            "$type": "color",
+            "$description": "Subtle background"
+          },
+          "3": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.3})",
+            "$type": "color",
+            "$description": "UI element background"
+          },
+          "4": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.4})",
+            "$type": "color",
+            "$description": "Hovered UI element background"
+          },
+          "5": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.5})",
+            "$type": "color",
+            "$description": "Active / selected UI element background"
+          },
+          "6": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.6})",
+            "$type": "color",
+            "$description": "Subtle borders and separators"
+          },
+          "7": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.7})",
+            "$type": "color",
+            "$description": "UI element border and focus rings"
+          },
+          "8": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.8})",
+            "$type": "color",
+            "$description": "Hovered UI element border"
+          },
+          "9": {
+            "$value": "{brand.color.base.utility.info}",
+            "$type": "color",
+            "$description": "BASE — solid backgrounds (the brand color)"
+          },
+          "10": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.10})",
+            "$type": "color",
+            "$description": "Hovered solid backgrounds"
+          },
+          "11": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.11})",
+            "$type": "color",
+            "$description": "Low-contrast text"
+          },
+          "12": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.info}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.utility.info}) * {foundation.color.dark.chroma.12})",
+            "$type": "color",
+            "$description": "High-contrast text"
+          }
+        },
+        "success": {
+          "1": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.1})",
+            "$type": "color",
+            "$description": "App background"
+          },
+          "2": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.2})",
+            "$type": "color",
+            "$description": "Subtle background"
+          },
+          "3": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.3})",
+            "$type": "color",
+            "$description": "UI element background"
+          },
+          "4": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.4})",
+            "$type": "color",
+            "$description": "Hovered UI element background"
+          },
+          "5": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.5})",
+            "$type": "color",
+            "$description": "Active / selected UI element background"
+          },
+          "6": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.6})",
+            "$type": "color",
+            "$description": "Subtle borders and separators"
+          },
+          "7": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.7})",
+            "$type": "color",
+            "$description": "UI element border and focus rings"
+          },
+          "8": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.8})",
+            "$type": "color",
+            "$description": "Hovered UI element border"
+          },
+          "9": {
+            "$value": "{brand.color.base.utility.success}",
+            "$type": "color",
+            "$description": "BASE — solid backgrounds (the brand color)"
+          },
+          "10": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.10})",
+            "$type": "color",
+            "$description": "Hovered solid backgrounds"
+          },
+          "11": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.11})",
+            "$type": "color",
+            "$description": "Low-contrast text"
+          },
+          "12": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.success}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.utility.success}) * {foundation.color.dark.chroma.12})",
+            "$type": "color",
+            "$description": "High-contrast text"
+          }
+        },
+        "warning": {
+          "1": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.1}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.1})",
+            "$type": "color",
+            "$description": "App background"
+          },
+          "2": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.2}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.2})",
+            "$type": "color",
+            "$description": "Subtle background"
+          },
+          "3": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.3}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.3})",
+            "$type": "color",
+            "$description": "UI element background"
+          },
+          "4": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.4}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.4})",
+            "$type": "color",
+            "$description": "Hovered UI element background"
+          },
+          "5": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.5}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.5})",
+            "$type": "color",
+            "$description": "Active / selected UI element background"
+          },
+          "6": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.6}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.6})",
+            "$type": "color",
+            "$description": "Subtle borders and separators"
+          },
+          "7": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.7}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.7})",
+            "$type": "color",
+            "$description": "UI element border and focus rings"
+          },
+          "8": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.8}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.8})",
+            "$type": "color",
+            "$description": "Hovered UI element border"
+          },
+          "9": {
+            "$value": "{brand.color.base.utility.warning}",
+            "$type": "color",
+            "$description": "BASE — solid backgrounds (the brand color)"
+          },
+          "10": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.10}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.10})",
+            "$type": "color",
+            "$description": "Hovered solid backgrounds"
+          },
+          "11": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.11}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.11})",
+            "$type": "color",
+            "$description": "Low-contrast text"
+          },
+          "12": {
+            "$value": "set_chroma(set_lightness({brand.color.base.utility.warning}, {foundation.color.dark.lightness.12}), chroma({brand.color.base.utility.warning}) * {foundation.color.dark.chroma.12})",
+            "$type": "color",
+            "$description": "High-contrast text"
+          }
+        }
+      }
+    },
+    "control": {
+      "border": {
+        "$value": "set_alpha({theme.color.neutral.12}, 0.505)",
+        "$type": "color",
+        "$description": "Resting border of inputs and controls. Lowest neutral.12 tint meeting WCAG 1.4.11 (3:1) on every surface level; dark 50.5% (measured on the autumn neutral ramp). Pair with control.border-hover. Not for content container or divider outlines (use surface.border.N)."
+      },
+      "borderHover": {
+        "$value": "set_alpha({theme.color.neutral.12}, 0.733)",
+        "$type": "color",
+        "$description": "Hovered border of inputs and controls. Lowest neutral.12 tint meeting 4.5:1 on every surface level; dark 73.3%."
+      },
+      "focusRing": {
+        "$value": "{theme.color.neutral.10}",
+        "$type": "color",
+        "$description": "Focus ring for anything focusable. Solid neutral.10; 3.72-10.28:1 on dark levels 1-8 (measured at the old curve; higher with neutral.10 now at 0.86)."
+      }
+    },
+    "shadow": {
+      "level": {
+        "1": {
+          "$value": "{brand.shadow.1.dark}",
+          "$type": "shadow"
+        },
+        "2": {
+          "$value": "{brand.shadow.2.dark}",
+          "$type": "shadow",
+          "$description": "Shadow for surface level 2 (content container, tooltip) in dark mode → brand.shadow.2.dark: near-black (L 0.1) at brand.opacity.20|10, so it barely reads on dark surfaces; the lighter surface step plus the edge ring do the lifting."
+        },
+        "3": {
+          "$value": "{brand.shadow.3.dark}",
+          "$type": "shadow",
+          "$description": "Shadow for surface level 3 (popover, menu) in dark mode → brand.shadow.3.dark (near-black). Dark surfaces also step lighter per level."
+        },
+        "4": {
+          "$value": "{brand.shadow.4.dark}",
+          "$type": "shadow",
+          "$description": "Shadow for surface level 4 (toast, nested popover) in dark mode → brand.shadow.4.dark (near-black)."
+        },
+        "5": {
+          "$value": "{brand.shadow.5.dark}",
+          "$type": "shadow",
+          "$description": "Shadow for surface level 5 (dialog, sheet) in dark mode → brand.shadow.5.dark (level 4 geometry × 1.5)."
+        },
+        "6": {
+          "$value": "{brand.shadow.6.dark}",
+          "$type": "shadow"
+        },
+        "7": {
+          "$value": "{brand.shadow.7.dark}",
+          "$type": "shadow"
+        },
+        "8": {
+          "$value": "{brand.shadow.8.dark}",
+          "$type": "shadow"
+        }
+      },
+      "tint": {
+        "chroma": {
+          "$value": "{brand.color.tint.dark.chroma.shadow}",
+          "$type": "number",
+          "$description": "Absolute chroma added only to shadow colours, independently of structural surface tint."
+        },
+        "color": {
+          "$value": "{brand.shadow.color.dark}",
+          "$type": "color",
+          "$description": "Alias to the brand-owned live dark-mode shadow colour. Edit brand.color.tint.dark inputs."
+        }
+      }
+    },
+    "surface": {
+      "border": {
+        "1": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.089)",
+          "$type": "color",
+          "$description": "Dividers drawn on the page (level 1); the page draws no outline. Alpha fitted per level to one 7.7 dL* step."
+        },
+        "2": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.078)",
+          "$type": "color",
+          "$description": "Outline of surface level 2 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "3": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.07)",
+          "$type": "color",
+          "$description": "Outline of surface level 3 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "4": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.075)",
+          "$type": "color",
+          "$description": "Outline of surface level 4 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "5": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.084)",
+          "$type": "color",
+          "$description": "Outline of surface level 5 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "6": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.094)",
+          "$type": "color",
+          "$description": "Outline of surface level 6 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "7": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.104)",
+          "$type": "color",
+          "$description": "Outline of surface level 7 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        },
+        "8": {
+          "$value": "set_alpha({theme.color.neutral.12}, 0.116)",
+          "$type": "color",
+          "$description": "Outline of surface level 8 and dividers on it. Alpha fitted to one 7.7 dL* step."
+        }
+      },
+      "highlight": {
+        "$value": "set_alpha({theme.color.neutral.12}, {brand.opacity.05})",
+        "$type": "color",
+        "$description": "Top inner highlight lifting raised dark surfaces. Pairs with theme.shadow.level 3 to 5."
+      },
+      "hover": {
+        "$value": "set_alpha({theme.color.neutral.12}, {brand.opacity.05})",
+        "$type": "color",
+        "$description": "Hover overlay for rows and ghost controls on any level. Pairs with theme.surface.selected."
+      },
+      "level": {
+        "1": {
+          "$value": "{theme.color.neutral.1}",
+          "$type": "color",
+          "$description": "Page background in dark mode. Pairs with theme.surface.level.2 for content containers."
+        },
+        "2": {
+          "$value": "{theme.color.neutral.2}",
+          "$type": "color",
+          "$description": "Content container surface in dark mode. Pairs with theme.shadow.level.2."
+        },
+        "3": {
+          "$value": "{theme.color.neutral.3}",
+          "$type": "color",
+          "$description": "Popover and menu surface in dark mode. Pairs with theme.shadow.level.3."
+        },
+        "4": {
+          "$value": "{theme.color.neutral.4}",
+          "$type": "color",
+          "$description": "Dialog surface in dark mode. Pairs with theme.shadow.level.4."
+        },
+        "5": {
+          "$value": "{theme.color.neutral.5}",
+          "$type": "color",
+          "$description": "Popover-in-dialog surface in dark mode. Pairs with theme.shadow.level.5."
+        },
+        "6": {
+          "$value": "{theme.color.neutral.6}",
+          "$type": "color",
+          "$description": "Surface level 6 (large dialog). Dark: level N = neutral.N."
+        },
+        "7": {
+          "$value": "{theme.color.neutral.7}",
+          "$type": "color",
+          "$description": "Surface level 7 (full-screen sheet, popover inside a dialog). Dark: neutral.7."
+        },
+        "8": {
+          "$value": "{theme.color.neutral.8}",
+          "$type": "color",
+          "$description": "Surface level 8 (maximum; nesting clamps here). Dark: neutral.8, lightness retuned by foundation.color.dark.lightness.8 (0.45) to continue the even climb."
+        }
+      },
+      "recessed": {
+        "$value": "set_alpha({theme.color.neutral.12}, 0.044)",
+        "$type": "color",
+        "$description": "Recessed fill: code blocks, wells, table regions, tracks. Translucent neutral.12. Dark 4.4%, fitted so the mean step over levels 3-8 (3.85 dL*) matches light's 5%."
+      },
+      "selected": {
+        "$value": "set_alpha({theme.color.neutral.12}, {brand.opacity.10})",
+        "$type": "color",
+        "$description": "Selected overlay for rows and segments on any level. Pairs with theme.surface.hover."
+      },
+      "tint": {
+        "chroma": {
+          "$value": "{brand.color.tint.dark.chroma.surface}",
+          "$type": "number",
+          "$description": "Absolute chroma added only to structural surface fills, independently of shadow tint."
+        },
+        "level": {
+          "1": {
+            "$value": "variable result: Color = {theme.surface.level.1}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.1}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.1}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 1. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "2": {
+            "$value": "variable result: Color = {theme.surface.level.2}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.2}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.2}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 2. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "3": {
+            "$value": "variable result: Color = {theme.surface.level.3}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.3}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.3}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 3. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "4": {
+            "$value": "variable result: Color = {theme.surface.level.4}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.4}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.4}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 4. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "5": {
+            "$value": "variable result: Color = {theme.surface.level.5}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.5}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.5}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 5. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "6": {
+            "$value": "variable result: Color = {theme.surface.level.6}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.6}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.6}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 6. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "7": {
+            "$value": "variable result: Color = {theme.surface.level.7}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.7}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.7}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 7. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          },
+          "8": {
+            "$value": "variable result: Color = {theme.surface.level.8}; if ({theme.surface.tint.chroma} > 0) [ result = set_chroma(adjust_chroma(set_hue({theme.surface.level.8}, hue({theme.tint.source})), {theme.surface.tint.chroma}), chroma(to_gamut(adjust_chroma(set_hue({theme.surface.level.8}, hue({theme.tint.source})), {theme.surface.tint.chroma})))); ]; result;",
+            "$type": "color",
+            "$description": "Structural surface 8. Zero strength returns the untinted surface unchanged; positive strength adds the shared hue/chroma with an sRGB chroma cap. Foregrounds and borders are not tinted."
+          }
+        }
+      }
+    },
+    "tint": {
+      "source": {
+        "$value": "{brand.color.tint.dark.source}",
+        "$type": "color",
+        "$description": "Shared hue source for this mode's structural surfaces and shadows. Neutral borders and foregrounds are not tinted."
+      }
+    }
+  }
+}

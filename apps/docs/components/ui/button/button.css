@@ -1,0 +1,490 @@
+/* Button — a Control (see ../control/control.css).
+ *
+ * Sizes xs/sm/md/lg read the control.* tokens: height, padding-x, gap and icon
+ * per size; text is typography.control (xs and sm share control.sm). Icon-only
+ * buttons are square (min-width = height, no padding).
+ *
+ * Emphasis is Tonal, expressed through `mode`:
+ *   filled  — primary emphasis: brand fill → brand-hover.
+ *   lighter — secondary emphasis: {brand}.container → container-hover →
+ *             container-selected (pressed), label on {brand}.on-container.
+ *   ghost   — tertiary emphasis: transparent, then the family's container wash.
+ *   stroke  — family container fill with the existing family border ramp.
+ */
+@layer components {
+  [data-ui="button"] {
+    --ctl-height: var(--control-height-md);
+    --ctl-padding-x: var(--control-padding-x-md);
+    --ctl-padding-x-icon: var(--control-padding-x-icon-md);
+    --ctl-gap: var(--control-gap-md);
+    --ctl-icon: var(--control-icon-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ctl-gap);
+    height: var(--ctl-height);
+    padding-block: 0;
+    padding-inline: var(--ctl-padding-x);
+    border-radius: var(--radius-default);
+    border: var(--stroke-width-none) solid transparent;
+    background-color: transparent;
+    color: var(--color-on-surface);
+    font-family: var(--typography-control-md-font-family);
+    font-size: var(--typography-control-md-font-size);
+    font-weight: var(--typography-control-md-font-weight);
+    letter-spacing: var(--typography-control-md-letter-spacing);
+    line-height: var(--typography-control-md-line-height);
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition-property: background-color, color, border-color, scale;
+    transition-duration: var(--transition-default-duration);
+    transition-timing-function: var(--transition-default-easing);
+  }
+
+  /* Sizes. The icon-* sizes (shadcn's names) reuse the matching height and
+     icon tokens: icon-xs = xs, icon-sm = sm, icon = md (the default), icon-lg = lg.
+     They are square, see "Icon-only" below. */
+  [data-ui="button"][data-size="xs"],
+  [data-ui="button"][data-size="icon-xs"],
+  [data-ui="button"][data-size="sm"],
+  [data-ui="button"][data-size="icon-sm"] {
+    font-family: var(--typography-control-sm-font-family);
+    font-size: var(--typography-control-sm-font-size);
+    font-weight: var(--typography-control-sm-font-weight);
+    letter-spacing: var(--typography-control-sm-letter-spacing);
+    line-height: var(--typography-control-sm-line-height);
+  }
+  [data-ui="button"][data-size="xs"],
+  [data-ui="button"][data-size="icon-xs"] {
+    --ctl-height: var(--control-height-xs);
+    --ctl-padding-x: var(--control-padding-x-xs);
+    --ctl-padding-x-icon: var(--control-padding-x-icon-xs);
+    --ctl-gap: var(--control-gap-xs);
+    --ctl-icon: var(--control-icon-xs);
+  }
+  [data-ui="button"][data-size="sm"],
+  [data-ui="button"][data-size="icon-sm"] {
+    --ctl-height: var(--control-height-sm);
+    --ctl-padding-x: var(--control-padding-x-sm);
+    --ctl-padding-x-icon: var(--control-padding-x-icon-sm);
+    --ctl-gap: var(--control-gap-sm);
+    --ctl-icon: var(--control-icon-sm);
+  }
+  [data-ui="button"][data-size="lg"],
+  [data-ui="button"][data-size="icon-lg"] {
+    --ctl-height: var(--control-height-lg);
+    --ctl-padding-x: var(--control-padding-x-lg);
+    --ctl-padding-x-icon: var(--control-padding-x-icon-lg);
+    --ctl-gap: var(--control-gap-lg);
+    --ctl-icon: var(--control-icon-lg);
+    font-family: var(--typography-control-lg-font-family);
+    font-size: var(--typography-control-lg-font-size);
+    font-weight: var(--typography-control-lg-font-weight);
+    letter-spacing: var(--typography-control-lg-letter-spacing);
+    line-height: var(--typography-control-lg-line-height);
+  }
+
+  /* Icon-only: square — width tracks the control height, no inline padding.
+     `data-icon-only` is set by the `icon-*` sizes. */
+  [data-ui="button"][data-icon-only] {
+    min-width: var(--ctl-height);
+    padding-inline: 0;
+  }
+
+  /* Icons as children (the shadcn form): <Icon data-icon="inline-start" />Label.
+     The label wrapper is `display: contents`, so an icon beside the text is a flex
+     item of the button and takes its gap. The side that carries an icon gives back
+     a little padding, as shadcn does, so the glyph sits optically in the corner. */
+  [data-ui="button-label"] {
+    display: contents;
+  }
+  /* The component marks the side it sees (`data-icon-side`); the `:has()` rules below stay as a
+     fallback for icons it cannot see, such as ones inside a fragment. */
+  [data-ui="button"][data-icon-side="start"],
+  [data-ui="button"][data-icon-side="both"] {
+    padding-inline-start: var(--ctl-padding-x-icon);
+  }
+  [data-ui="button"][data-icon-side="end"],
+  [data-ui="button"][data-icon-side="both"] {
+    padding-inline-end: var(--ctl-padding-x-icon);
+  }
+  [data-ui="button"]:not([data-icon-only]):has(
+    > [data-icon="inline-start"],
+    > [data-ui="button-label"] > [data-icon="inline-start"]
+  ) {
+    padding-inline-start: var(--ctl-padding-x-icon);
+  }
+  [data-ui="button"]:not([data-icon-only]):has(
+    > [data-icon="inline-end"],
+    > [data-ui="button-label"] > [data-icon="inline-end"]
+  ) {
+    padding-inline-end: var(--ctl-padding-x-icon);
+  }
+
+  /* Icon position inferred when there is no data-icon: an icon component renders a bare svg,
+     and Code Connect emits the real instance, so CSS works out the side. An svg (or
+     [data-icon] without a side) that is the first element child, with no text before it, is a
+     start icon; the last element child with text before it (or another element before it) is
+     an end icon. Text is flagged on the label by the component (`data-has-text`,
+     `data-leading-text`) because CSS cannot see text nodes. An explicit data-icon side wins:
+     these rules skip it. No text means icon-only, which needs no position. */
+  [data-ui="button"]:not([data-icon-only]):has(
+    > [data-ui="button-label"][data-has-text]:not([data-leading-text])
+      > :is(svg, [data-icon]):not([data-icon="inline-start"], [data-icon="inline-end"]):first-child
+  ) {
+    padding-inline-start: var(--ctl-padding-x-icon);
+  }
+  [data-ui="button"]:not([data-icon-only]):has(
+    > [data-ui="button-label"][data-has-text][data-leading-text]
+      > :is(svg, [data-icon]):not([data-icon="inline-start"], [data-icon="inline-end"]):last-child,
+    > [data-ui="button-label"][data-has-text]
+      > :is(svg, [data-icon]):not(
+        [data-icon="inline-start"],
+        [data-icon="inline-end"]
+      ):last-child:not(:first-child)
+  ) {
+    padding-inline-end: var(--ctl-padding-x-icon);
+  }
+
+  /* Icon boxes — the component marks each icon child `data-ui="button-icon"` (the part
+     the Figma contract sizes); any svg or data-icon child that is not marked (nested in a
+     fragment, say) and the svg inside a data-icon wrapper get the same box. */
+  [data-ui="button-icon"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  [data-ui="button-icon"],
+  [data-ui="button"] > :is(svg, [data-icon]),
+  [data-ui="button-label"] > :is(svg, [data-icon]),
+  [data-ui="button-icon"] > svg,
+  [data-ui="button"] [data-icon] > svg {
+    width: var(--ctl-icon);
+    height: var(--ctl-icon);
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  /* =========================================================
+     Variant × Mode — Tonal
+     ========================================================= */
+
+  /* Primary */
+  [data-ui="button"][data-variant="primary"][data-mode="filled"] {
+    background-color: var(--color-primary-brand);
+    color: var(--color-primary-on-brand);
+  }
+  [data-ui="button"][data-variant="primary"][data-mode="lighter"] {
+    background-color: var(--color-primary-surface);
+    color: var(--color-primary-on-surface);
+  }
+  [data-ui="button"][data-variant="primary"][data-mode="stroke"] {
+    background-color: var(--color-primary-surface);
+    border: var(--stroke-width-selected) solid var(--color-primary-border);
+    color: var(--color-primary-on-surface-subtle);
+  }
+  [data-ui="button"][data-variant="primary"][data-mode="ghost"] {
+    color: var(--color-primary-on-surface-subtle);
+  }
+
+  /* Secondary */
+  [data-ui="button"][data-variant="secondary"][data-mode="filled"] {
+    background-color: var(--color-secondary-brand);
+    color: var(--color-secondary-on-brand);
+    /* border-color only — keeps stroke-width-none from the base rule so
+       secondary filled stays the same height as every other filled variant */
+    border-color: var(--color-surface-border-1);
+  }
+  [data-ui="button"][data-variant="secondary"][data-mode="lighter"] {
+    background-color: var(--color-secondary-surface);
+    color: var(--color-secondary-on-surface);
+  }
+  [data-ui="button"][data-variant="secondary"][data-mode="stroke"] {
+    background-color: var(--color-secondary-surface);
+    border: var(--stroke-width-selected) solid var(--color-secondary-border);
+    color: var(--color-secondary-on-surface-subtle);
+  }
+  [data-ui="button"][data-variant="secondary"][data-mode="ghost"] {
+    color: var(--color-secondary-on-surface-subtle);
+  }
+
+  /* Tertiary */
+  [data-ui="button"][data-variant="tertiary"][data-mode="filled"] {
+    background-color: var(--color-tertiary-brand);
+    color: var(--color-tertiary-on-brand);
+  }
+  [data-ui="button"][data-variant="tertiary"][data-mode="lighter"] {
+    background-color: var(--color-tertiary-surface);
+    color: var(--color-tertiary-on-surface);
+  }
+  [data-ui="button"][data-variant="tertiary"][data-mode="stroke"] {
+    background-color: var(--color-tertiary-surface);
+    border: var(--stroke-width-selected) solid var(--color-tertiary-border);
+    color: var(--color-tertiary-on-surface-subtle);
+  }
+  [data-ui="button"][data-variant="tertiary"][data-mode="ghost"] {
+    color: var(--color-tertiary-on-surface-subtle);
+  }
+
+  /* Destructive */
+  [data-ui="button"][data-variant="destructive"][data-mode="filled"] {
+    background-color: var(--color-intent-error);
+    color: var(--color-intent-error-on-error);
+  }
+  [data-ui="button"][data-variant="destructive"][data-mode="lighter"] {
+    background-color: var(--color-intent-error-surface);
+    color: var(--color-intent-error-on-surface);
+  }
+  [data-ui="button"][data-variant="destructive"][data-mode="stroke"] {
+    background-color: var(--color-intent-error-surface);
+    border: var(--stroke-width-selected) solid var(--color-intent-error-border-hover);
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+  [data-ui="button"][data-variant="destructive"][data-mode="ghost"] {
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+
+  /* Inverse keeps a control legible on a saturated brand surface. The brand
+     context below applies this same mode-preserving recipe to non-destructive
+     buttons inside a brand-finish container. */
+  [data-ui="button"][data-variant="inverse"][data-mode="filled"],
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"])[data-mode="filled"] {
+    background-color: var(--color-primary-on-brand);
+    color: var(--color-primary-brand);
+  }
+  [data-ui="button"][data-variant="inverse"][data-mode="lighter"],
+  [data-ui="button"][data-variant="inverse"][data-mode="stroke"],
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"])[data-mode="lighter"],
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"] {
+    background-color: color-mix(
+      in oklch,
+      var(--color-primary-on-brand) calc(var(--brand-opacity-15) * 100%),
+      transparent
+    );
+    color: var(--color-primary-on-brand);
+  }
+  [data-ui="button"][data-variant="inverse"][data-mode="stroke"],
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"] {
+    border: var(--stroke-width-selected) solid
+      color-mix(
+        in oklch,
+        var(--color-primary-on-brand) calc(var(--opacity-muted) * 100%),
+        transparent
+      );
+  }
+  [data-ui="button"][data-variant="inverse"][data-mode="ghost"],
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"])[data-mode="ghost"] {
+    color: var(--color-primary-on-brand);
+  }
+  [data-finish="brand"] [data-ui="button"][data-variant="destructive"][data-mode] {
+    background-color: var(--color-intent-error-surface);
+    border: var(--stroke-width-selected) solid var(--color-intent-error-border-hover);
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+
+  /* =========================================================
+     Hover — pointer devices only
+     ========================================================= */
+  @media (hover: hover) {
+    [data-ui="button"][data-variant="primary"][data-mode="filled"]:hover {
+      background-color: var(--color-primary-brand-hover);
+      color: var(--color-primary-on-brand-hover);
+    }
+    [data-ui="button"][data-variant="secondary"][data-mode="filled"]:hover {
+      background-color: var(--color-secondary-brand-hover);
+      color: var(--color-secondary-on-brand-hover);
+    }
+    [data-ui="button"][data-variant="tertiary"][data-mode="filled"]:hover {
+      background-color: var(--color-tertiary-brand-hover);
+      color: var(--color-tertiary-on-brand-hover);
+    }
+    [data-ui="button"][data-variant="destructive"][data-mode="filled"]:hover {
+      background-color: var(--color-intent-error-hover);
+      color: var(--color-intent-error-on-error-hover);
+    }
+
+    [data-ui="button"][data-variant="primary"]:is(
+        [data-mode="lighter"],
+        [data-mode="stroke"],
+        [data-mode="ghost"]
+      ):hover {
+      background-color: var(--color-primary-surface-hover);
+    }
+    [data-ui="button"][data-variant="secondary"]:is(
+        [data-mode="lighter"],
+        [data-mode="stroke"],
+        [data-mode="ghost"]
+      ):hover {
+      background-color: var(--color-secondary-surface-hover);
+    }
+    [data-ui="button"][data-variant="tertiary"]:is(
+        [data-mode="lighter"],
+        [data-mode="stroke"],
+        [data-mode="ghost"]
+      ):hover {
+      background-color: var(--color-tertiary-surface-hover);
+    }
+    [data-ui="button"][data-variant="destructive"]:is(
+        [data-mode="lighter"],
+        [data-mode="stroke"],
+        [data-mode="ghost"]
+      ):hover {
+      background-color: var(--color-intent-error-surface-hover);
+    }
+    [data-ui="button"][data-variant="destructive"][data-mode="lighter"]:hover {
+      color: var(--color-intent-error-on-surface-hover);
+    }
+
+    [data-ui="button"][data-variant="primary"][data-mode="stroke"]:hover {
+      border-color: var(--color-primary-border-hover);
+    }
+    [data-ui="button"][data-variant="secondary"][data-mode="stroke"]:hover {
+      border-color: var(--color-secondary-border-hover);
+    }
+    [data-ui="button"][data-variant="tertiary"][data-mode="stroke"]:hover {
+      border-color: var(--color-tertiary-border-hover);
+    }
+    [data-ui="button"][data-variant="destructive"][data-mode="stroke"]:hover {
+      border-color: var(--color-intent-error);
+    }
+
+    [data-ui="button"][data-variant="inverse"][data-mode="filled"]:hover,
+    [data-finish="brand"]
+      [data-ui="button"]:not([data-variant="destructive"])[data-mode="filled"]:hover {
+      background-color: var(--color-primary-on-brand);
+      color: var(--color-primary-brand);
+    }
+    [data-ui="button"][data-variant="inverse"][data-mode="lighter"]:hover,
+    [data-ui="button"][data-variant="inverse"][data-mode="stroke"]:hover,
+    [data-ui="button"][data-variant="inverse"][data-mode="ghost"]:hover,
+    [data-finish="brand"]
+      [data-ui="button"]:not([data-variant="destructive"])[data-mode="lighter"]:hover,
+    [data-finish="brand"]
+      [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"]:hover,
+    [data-finish="brand"]
+      [data-ui="button"]:not([data-variant="destructive"])[data-mode="ghost"]:hover {
+      background-color: color-mix(
+        in oklch,
+        var(--color-primary-on-brand) calc(var(--brand-opacity-20) * 100%),
+        transparent
+      );
+      color: var(--color-primary-on-brand);
+    }
+    [data-ui="button"][data-variant="inverse"][data-mode="stroke"]:hover,
+    [data-finish="brand"]
+      [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"]:hover {
+      border-color: color-mix(
+        in oklch,
+        var(--color-primary-on-brand) calc(var(--opacity-muted) * 100%),
+        transparent
+      );
+    }
+    [data-finish="brand"] [data-ui="button"][data-variant="destructive"][data-mode]:hover {
+      background-color: var(--color-intent-error-surface-hover);
+      border-color: var(--color-intent-error);
+      color: var(--color-intent-error-on-surface-subtle);
+    }
+  }
+
+  /* =========================================================
+     Pressed — the family's selected container wash.
+     Not gated on hover: touch presses show it too.
+     ========================================================= */
+  [data-ui="button"][data-variant="primary"]:is(
+    [data-mode="lighter"],
+    [data-mode="stroke"],
+    [data-mode="ghost"]
+  ):active {
+    background-color: var(--color-primary-surface-selected);
+  }
+  [data-ui="button"][data-variant="secondary"]:is(
+    [data-mode="lighter"],
+    [data-mode="stroke"],
+    [data-mode="ghost"]
+  ):active {
+    background-color: var(--color-secondary-surface-selected);
+  }
+  [data-ui="button"][data-variant="tertiary"]:is(
+    [data-mode="lighter"],
+    [data-mode="stroke"],
+    [data-mode="ghost"]
+  ):active {
+    background-color: var(--color-tertiary-surface-selected);
+  }
+  [data-ui="button"][data-variant="destructive"]:is(
+    [data-mode="lighter"],
+    [data-mode="stroke"],
+    [data-mode="ghost"]
+  ):active {
+    background-color: var(--color-intent-error-surface-selected);
+  }
+  [data-ui="button"][data-variant="destructive"][data-mode="lighter"]:active {
+    color: var(--color-intent-error-on-surface-selected);
+  }
+  [data-ui="button"][data-variant="inverse"][data-mode="lighter"]:active,
+  [data-ui="button"][data-variant="inverse"][data-mode="stroke"]:active,
+  [data-ui="button"][data-variant="inverse"][data-mode="ghost"]:active,
+  [data-finish="brand"]
+    [data-ui="button"]:not([data-variant="destructive"])[data-mode="lighter"]:active,
+  [data-finish="brand"]
+    [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"]:active,
+  [data-finish="brand"]
+    [data-ui="button"]:not([data-variant="destructive"])[data-mode="ghost"]:active {
+    background-color: color-mix(
+      in oklch,
+      var(--color-primary-on-brand) calc(var(--opacity-soft) * 100%),
+      transparent
+    );
+    color: var(--color-primary-on-brand);
+  }
+  [data-ui="button"][data-variant="inverse"][data-mode="stroke"]:active,
+  [data-finish="brand"]
+    [data-ui="button"]:not([data-variant="destructive"])[data-mode="stroke"]:active {
+    border-color: color-mix(
+      in oklch,
+      var(--color-primary-on-brand) calc(var(--opacity-muted) * 100%),
+      transparent
+    );
+  }
+  [data-finish="brand"] [data-ui="button"][data-variant="destructive"][data-mode]:active {
+    background-color: var(--color-intent-error-surface-selected);
+    border-color: var(--color-intent-error);
+    color: var(--color-intent-error-on-surface-subtle);
+  }
+
+  /* =========================================================
+     States
+     ========================================================= */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-ui="button"]:not(:disabled):not([data-disabled]):active {
+      scale: 0.96;
+    }
+  }
+  [data-ui="button"]:focus-visible {
+    outline: var(--stroke-width-focused) solid var(--color-control-focus-ring);
+    outline-offset: var(--spacing-050);
+  }
+  [data-ui="button"][data-variant="inverse"]:focus-visible,
+  [data-finish="brand"] [data-ui="button"]:not([data-variant="destructive"]):focus-visible {
+    outline-color: var(--color-primary-on-brand);
+  }
+  [data-finish="brand"] [data-ui="button"][data-variant="destructive"]:focus-visible {
+    outline-color: var(--color-intent-error-border);
+  }
+  [data-ui="button"][data-disabled],
+  [data-ui="button"]:disabled {
+    opacity: var(--opacity-soft);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="button"] {
+      transition: none;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+---
+title: Storybook Author
+description: Write component stories and interaction checks.
+---
+
+## Invoke this skill
+
+```text title="Skill command"
+/skill-storybook-author
+```
+
+Select this command in your agent's skill menu, then describe your task and acceptance criteria. If your client does not expose slash commands, ask it to invoke the named skill instead:
+
+```text title="Ask your agent"
+Invoke the skill-storybook-author skill for this task.
+```
+
+<Steps>
+<Step>
+### Give the agent a task
+Describe the outcome, constraints and acceptance criteria after invoking the skill. Let the skill guide the required workflow.
+</Step>
+<Step>
+### Review the proposed change
+Check the implementation and the skill's required evidence. A skill guides the work; it does not grant publishing permission or replace human review.
+</Step>
+</Steps>
+
+## When to use it
+
+Author Storybook stories for your @workspace/ui components to the story standard — one concept per story, JSDoc-driven autodocs, a per-component a11y + interaction + token-load baseline — so the Storybook MCP is a reliable, grounded source of component truth for agents. Use after Storybook is set up. Requires React + Vite Storybook and the Storybook MCP.
+
+**Canonical source:** `.agents/skills/skill-storybook-author/SKILL.md`. Claude Code uses `.claude/skills/skill-storybook-author/`; other clients use their installed skill paths.
+
+## Full instructions
+
+<ProjectDocument kind="skill" slug="skill-storybook-author" />
+
+<RelatedPage href="/docs/working-with-ai">How skills fit the project workflow.</RelatedPage>
+<RelatedPage href="/docs/skills">Browse the other installed skills.</RelatedPage>

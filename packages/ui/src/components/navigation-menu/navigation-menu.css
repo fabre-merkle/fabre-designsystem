@@ -1,0 +1,258 @@
+@layer components {
+  /* =========================================================
+     Root — horizontal bar of triggers
+     ========================================================= */
+  [data-ui="navigation-menu-root"] {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* =========================================================
+     List — flex row of items
+     ========================================================= */
+  [data-ui="navigation-menu-list"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-100);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* =========================================================
+     Item — wraps trigger + content
+     ========================================================= */
+  [data-ui="navigation-menu-item"] {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* =========================================================
+     Trigger — inline pill button
+     ========================================================= */
+  [data-ui="navigation-menu-trigger"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-150);
+    padding-block: var(--spacing-150);
+    padding-inline: var(--spacing-300);
+    border: 0;
+    border-radius: var(--radius-small-elements);
+    background-color: transparent;
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    letter-spacing: var(--typography-paragraph-md-letter-spacing);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition:
+      background-color var(--transition-default-duration) var(--transition-default-easing),
+      color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  @media (hover: hover) {
+    [data-ui="navigation-menu-trigger"]:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  [data-ui="navigation-menu-trigger"][data-popup-open] {
+    background-color: var(--color-surface-selected);
+  }
+
+  [data-ui="navigation-menu-trigger"]:focus-visible {
+    outline: var(--stroke-width-selected) solid var(--color-control-focus-ring);
+    outline-offset: var(--stroke-width-none);
+  }
+
+  [data-ui="navigation-menu-trigger"][data-disabled] {
+    opacity: var(--opacity-muted);
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Icon — trigger chevron (auto-rotates via data-open)
+     ========================================================= */
+  [data-ui="navigation-menu-icon"] {
+    display: inline-flex;
+    transition: rotate var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  [data-ui="navigation-menu-trigger"][data-popup-open] [data-ui="navigation-menu-icon"] {
+    rotate: 180deg;
+  }
+
+  /* =========================================================
+     Positioner — host for the popup
+     ========================================================= */
+  [data-slot="navigation-menu-positioner"] {
+    z-index: 50;
+    outline: none;
+  }
+
+  /* =========================================================
+     Backdrop — covers viewport while open (transparent)
+     ========================================================= */
+  [data-ui="navigation-menu-backdrop"] {
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+  }
+
+  /* =========================================================
+     Popup — outer surface wrapping the viewport
+     ========================================================= */
+  [data-ui="navigation-menu-popup"] {
+    /* Surface level substrate + 2 (3 on the page), shadow level 3.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-3);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-4),
+      var(--shadow-level-3);
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+    outline: none;
+    overflow: hidden;
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter),
+      translate var(--brand-duration-150) var(--brand-easing-enter);
+    transform-origin: var(--transform-origin, top);
+  }
+
+  [data-ui="navigation-menu-popup"][data-starting-style],
+  [data-ui="navigation-menu-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+    translate: 0 -8px;
+  }
+
+  [data-ui="navigation-menu-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Viewport — animated size container that holds Content
+     ========================================================= */
+  [data-ui="navigation-menu-viewport"] {
+    position: relative;
+    overflow: hidden;
+    transition:
+      width var(--brand-duration-150) var(--brand-easing-standard),
+      height var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  /* =========================================================
+     Content — the panel rendered inside the viewport
+     ========================================================= */
+  [data-ui="navigation-menu-content"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+    min-width: 16rem;
+    padding: var(--spacing-300);
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-standard),
+      translate var(--brand-duration-150) var(--brand-easing-standard);
+  }
+
+  [data-ui="navigation-menu-content"][data-starting-style],
+  [data-ui="navigation-menu-content"][data-ending-style] {
+    opacity: 0;
+  }
+
+  [data-ui="navigation-menu-content"][data-activation-direction="left"][data-starting-style],
+  [data-ui="navigation-menu-content"][data-activation-direction="right"][data-ending-style] {
+    translate: var(--spacing-300) 0;
+  }
+
+  [data-ui="navigation-menu-content"][data-activation-direction="right"][data-starting-style],
+  [data-ui="navigation-menu-content"][data-activation-direction="left"][data-ending-style] {
+    translate: calc(-1 * var(--spacing-300)) 0;
+  }
+
+  /* =========================================================
+     Link — content row inside a panel
+     ========================================================= */
+  [data-ui="navigation-menu-link"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-050);
+    padding-block: var(--spacing-200);
+    padding-inline: var(--spacing-250);
+    border-radius: var(--radius-small-elements);
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    letter-spacing: var(--typography-paragraph-md-letter-spacing);
+    text-decoration: none;
+    outline: none;
+    transition: background-color var(--transition-default-duration) var(--transition-default-easing);
+  }
+
+  @media (hover: hover) {
+    [data-ui="navigation-menu-link"]:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  [data-ui="navigation-menu-link"]:focus-visible {
+    outline: var(--stroke-width-selected) solid var(--color-control-focus-ring);
+    outline-offset: calc(-1 * var(--stroke-width-selected));
+  }
+
+  /* =========================================================
+     Arrow — directional pointer toward the trigger
+     ========================================================= */
+  [data-ui="navigation-menu-arrow"] {
+    display: flex;
+    width: var(--spacing-300);
+    height: var(--spacing-200);
+    /* On-page default; elevated.css matches the popup's actual level. */
+    color: var(--color-surface-level-3);
+  }
+
+  [data-ui="navigation-menu-arrow"][data-side="bottom"] {
+    rotate: 180deg;
+  }
+
+  [data-ui="navigation-menu-arrow"][data-side="left"] {
+    rotate: -90deg;
+  }
+
+  [data-ui="navigation-menu-arrow"][data-side="right"] {
+    rotate: 90deg;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="navigation-menu-trigger"],
+    [data-ui="navigation-menu-icon"],
+    [data-ui="navigation-menu-popup"],
+    [data-ui="navigation-menu-viewport"],
+    [data-ui="navigation-menu-content"],
+    [data-ui="navigation-menu-link"] {
+      transition: none;
+    }
+
+    [data-ui="navigation-menu-popup"][data-starting-style],
+    [data-ui="navigation-menu-popup"][data-ending-style],
+    [data-ui="navigation-menu-content"][data-starting-style],
+    [data-ui="navigation-menu-content"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+      translate: 0 0;
+    }
+  }
+}

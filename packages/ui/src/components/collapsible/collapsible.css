@@ -1,0 +1,44 @@
+@layer components {
+  /* =========================================================
+     Root — wraps trigger + panel, no layout enforced.
+     The Trigger is a render-prop target (typically rendered as
+     a Button), so we deliberately omit Trigger styling.
+     ========================================================= */
+  [data-ui="collapsible-root"] {
+    display: flex;
+    flex-direction: column;
+    /* Keep a button trigger at its own width when the panel widens the root. */
+    align-items: flex-start;
+    gap: var(--spacing-200);
+  }
+
+  /* =========================================================
+     Panel — Base UI exposes --collapsible-panel-height for animation.
+     Animates from 0 → measured height (and back) on open/close.
+     ========================================================= */
+  [data-ui="collapsible-panel"] {
+    align-self: stretch;
+    overflow: hidden;
+    height: var(--collapsible-panel-height);
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    transition: height var(--transition-move-duration) var(--transition-move-easing);
+  }
+
+  [data-ui="collapsible-panel"][data-starting-style],
+  [data-ui="collapsible-panel"][data-ending-style] {
+    height: 0;
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="collapsible-panel"] {
+      transition: none;
+    }
+  }
+}

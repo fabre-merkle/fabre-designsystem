@@ -1,0 +1,133 @@
+{
+  "backdrop": {
+    "high": {
+      "blur": {
+        "$value": "{brand.blur.500}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.high.saturate for background effects"
+      },
+      "saturate": {
+        "$value": "{brand.saturate.180}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.high.blur for background effects"
+      }
+    },
+    "low": {
+      "blur": {
+        "$value": "{brand.blur.300}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.low.saturate for background effects"
+      },
+      "saturate": {
+        "$value": "{brand.saturate.120}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.low.blur for background effects"
+      }
+    },
+    "mid": {
+      "blur": {
+        "$value": "{brand.blur.400}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.mid.saturate for background effects"
+      },
+      "saturate": {
+        "$value": "{brand.saturate.140}",
+        "$type": "text",
+        "$description": "Pairs with backdrop.mid.blur for background effects"
+      }
+    }
+  },
+  "elevation": {
+    "shadowHeadroom": {
+      "$value": "{brand.shadow.headroom}",
+      "$type": "number",
+      "$description": "How many levels a surface's shadow level may exceed its surface level before the design system warns in development. The default is 2. Set it to 8 to turn the warning off. Production builds never warn."
+    }
+  },
+  "shadow": {
+    "level": {
+      "1": {
+        "$value": "{theme.shadow.level.1}",
+        "$type": "shadow",
+        "$description": "Shadow level 1: tight drop below level 2 (content container default). Same geometry series as 2-8."
+      },
+      "2": {
+        "$value": "{theme.shadow.level.2}",
+        "$type": "shadow",
+        "$description": "Content container elevation. Pairs with color.surface.level.2 and color.surface.edge."
+      },
+      "3": {
+        "$value": "{theme.shadow.level.3}",
+        "$type": "shadow",
+        "$description": "Popover and menu elevation. Pairs with color.surface.level.3."
+      },
+      "4": {
+        "$value": "{theme.shadow.level.4}",
+        "$type": "shadow",
+        "$description": "Dialog elevation. Pairs with color.surface.level.4."
+      },
+      "5": {
+        "$value": "{theme.shadow.level.5}",
+        "$type": "shadow",
+        "$description": "Popover-in-dialog elevation. Pairs with color.surface.level.5."
+      },
+      "6": {
+        "$value": "{theme.shadow.level.6}",
+        "$type": "shadow",
+        "$description": "Shadow level 6: geometry of level 5 x1.5."
+      },
+      "7": {
+        "$value": "{theme.shadow.level.7}",
+        "$type": "shadow",
+        "$description": "Shadow level 7: geometry of level 5 x2.25."
+      },
+      "8": {
+        "$value": "{theme.shadow.level.8}",
+        "$type": "shadow",
+        "$description": "Shadow level 8: geometry of level 5 x3.375."
+      }
+    }
+  },
+  "z-index": {
+    "base": {
+      "$value": "{brand.z-index.00}",
+      "$type": "number",
+      "$description": "Default stacking layer for normal page content."
+    },
+    "behind": {
+      "$value": "{brand.z-index.behind}",
+      "$type": "number",
+      "$description": "Stacking layer for decorative elements that sit behind page content."
+    },
+    "floatingHigh": {
+      "$value": "{brand.z-index.30}",
+      "$type": "number",
+      "$description": "Stacking layer for popovers and menus above floating mid content. Pairs with z-index.floatingMid."
+    },
+    "floatingMid": {
+      "$value": "{brand.z-index.20}",
+      "$type": "number",
+      "$description": "Stacking layer for sticky headers and sidebars. Pairs with z-index.floatingHigh."
+    },
+    "modal": {
+      "$value": "{brand.z-index.40}",
+      "$type": "number",
+      "$description": "Stacking layer for dialogs and modals. Pairs with z-index.overlay."
+    },
+    "overlay": {
+      "$value": "{brand.z-index.50}",
+      "$type": "number",
+      "$description": "Stacking layer for backdrops that dim content behind a modal. Pairs with z-index.modal."
+    },
+    "raised": {
+      "$value": "{brand.z-index.10}",
+      "$type": "number",
+      "$description": "Stacking layer for content lifted slightly above the page, such as sticky table headers."
+    },
+    "toast": {
+      "$value": "{brand.z-index.60}",
+      "$type": "number",
+      "$description": "Top stacking layer for toasts, above dialogs and overlays."
+    }
+  }
+}

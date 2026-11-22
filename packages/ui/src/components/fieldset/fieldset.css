@@ -1,0 +1,20 @@
+@layer components {
+  [data-ui="fieldset"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  [data-ui="fieldset-legend"] {
+    padding: 0;
+    color: var(--color-on-surface);
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+  }
+}

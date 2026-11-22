@@ -1,0 +1,145 @@
+@layer fabre-designsystem-web {
+  [data-web="lg"] {
+    --brand-typography-code-lg-letterspacing: var(
+      --computed-lg-brand-typography-code-lg-letterspacing
+    );
+    --brand-typography-code-lg-line-height: var(--computed-lg-brand-typography-code-lg-line-height);
+    --brand-typography-code-lg-size: var(--computed-lg-brand-typography-code-lg-size);
+    --brand-typography-code-md-letterspacing: var(
+      --computed-lg-brand-typography-code-md-letterspacing
+    );
+    --brand-typography-code-md-line-height: var(--computed-lg-brand-typography-code-md-line-height);
+    --brand-typography-code-md-size: var(--computed-lg-brand-typography-code-md-size);
+    --brand-typography-code-sm-letterspacing: var(
+      --computed-lg-brand-typography-code-sm-letterspacing
+    );
+    --brand-typography-code-sm-line-height: var(--computed-lg-brand-typography-code-sm-line-height);
+    --brand-typography-code-sm-size: var(--computed-lg-brand-typography-code-sm-size);
+    --brand-typography-code-xs-letterspacing: var(
+      --computed-lg-brand-typography-code-xs-letterspacing
+    );
+    --brand-typography-code-xs-line-height: var(--computed-lg-brand-typography-code-xs-line-height);
+    --brand-typography-code-xs-size: var(--computed-lg-brand-typography-code-xs-size);
+    --brand-typography-control-lg-line-height: var(
+      --computed-lg-brand-typography-control-lg-line-height
+    );
+    --brand-typography-control-lg-size: var(--computed-lg-brand-typography-control-lg-size);
+    --brand-typography-control-md-line-height: var(
+      --computed-lg-brand-typography-control-md-line-height
+    );
+    --brand-typography-control-md-size: var(--computed-lg-brand-typography-control-md-size);
+    --brand-typography-control-sm-line-height: var(
+      --computed-lg-brand-typography-control-sm-line-height
+    );
+    --brand-typography-control-sm-size: var(--computed-lg-brand-typography-control-sm-size);
+    --brand-typography-display-lg-letterspacing: var(
+      --computed-lg-brand-typography-display-lg-letterspacing
+    );
+    --brand-typography-display-lg-line-height: var(
+      --computed-lg-brand-typography-display-lg-line-height
+    );
+    --brand-typography-display-lg-size: var(--computed-lg-brand-typography-display-lg-size);
+    --brand-typography-display-md-letterspacing: var(
+      --computed-lg-brand-typography-display-md-letterspacing
+    );
+    --brand-typography-display-md-line-height: var(
+      --computed-lg-brand-typography-display-md-line-height
+    );
+    --brand-typography-display-md-size: var(--computed-lg-brand-typography-display-md-size);
+    --brand-typography-display-sm-letterspacing: var(
+      --computed-lg-brand-typography-display-sm-letterspacing
+    );
+    --brand-typography-display-sm-line-height: var(
+      --computed-lg-brand-typography-display-sm-line-height
+    );
+    --brand-typography-display-sm-size: var(--computed-lg-brand-typography-display-sm-size);
+    --brand-typography-display-xs-letterspacing: var(
+      --computed-lg-brand-typography-display-xs-letterspacing
+    );
+    --brand-typography-display-xs-line-height: var(
+      --computed-lg-brand-typography-display-xs-line-height
+    );
+    --brand-typography-display-xs-size: var(--computed-lg-brand-typography-display-xs-size);
+    --brand-typography-eyebrow-lg-letterspacing: var(
+      --computed-lg-brand-typography-eyebrow-lg-letterspacing
+    );
+    --brand-typography-eyebrow-lg-line-height: var(
+      --computed-lg-brand-typography-eyebrow-lg-line-height
+    );
+    --brand-typography-eyebrow-lg-size: var(--computed-lg-brand-typography-eyebrow-lg-size);
+    --brand-typography-eyebrow-md-letterspacing: var(
+      --computed-lg-brand-typography-eyebrow-md-letterspacing
+    );
+    --brand-typography-eyebrow-md-line-height: var(
+      --computed-lg-brand-typography-eyebrow-md-line-height
+    );
+    --brand-typography-eyebrow-md-size: var(--computed-lg-brand-typography-eyebrow-md-size);
+    --brand-typography-eyebrow-sm-letterspacing: var(
+      --computed-lg-brand-typography-eyebrow-sm-letterspacing
+    );
+    --brand-typography-eyebrow-sm-line-height: var(
+      --computed-lg-brand-typography-eyebrow-sm-line-height
+    );
+    --brand-typography-eyebrow-sm-size: var(--computed-lg-brand-typography-eyebrow-sm-size);
+    --brand-typography-headline-lg-letterspacing: var(
+      --computed-lg-brand-typography-headline-lg-letterspacing
+    );
+    --brand-typography-headline-lg-line-height: var(
+      --computed-lg-brand-typography-headline-lg-line-height
+    );
+    --brand-typography-headline-lg-size: var(--computed-lg-brand-typography-headline-lg-size);
+    --brand-typography-headline-md-letterspacing: var(
+      --computed-lg-brand-typography-headline-md-letterspacing
+    );
+    --brand-typography-headline-md-line-height: var(
+      --computed-lg-brand-typography-headline-md-line-height
+    );
+    --brand-typography-headline-md-size: var(--computed-lg-brand-typography-headline-md-size);
+    --brand-typography-headline-sm-letterspacing: var(
+      --computed-lg-brand-typography-headline-sm-letterspacing
+    );
+    --brand-typography-headline-sm-line-height: var(
+      --computed-lg-brand-typography-headline-sm-line-height
+    );
+    --brand-typography-headline-sm-size: var(--computed-lg-brand-typography-headline-sm-size);
+    --brand-typography-headline-xs-letterspacing: var(
+      --computed-lg-brand-typography-headline-xs-letterspacing
+    );
+    --brand-typography-headline-xs-line-height: var(
+      --computed-lg-brand-typography-headline-xs-line-height
+    );
+    --brand-typography-paragraph-lg-letterspacing: var(
+      --computed-lg-brand-typography-paragraph-lg-letterspacing
+    );
+    --brand-typography-paragraph-lg-line-height: var(
+      --computed-lg-brand-typography-paragraph-lg-line-height
+    );
+    --brand-typography-paragraph-lg-size: var(--computed-lg-brand-typography-paragraph-lg-size);
+    --brand-typography-paragraph-md-letterspacing: var(
+      --computed-lg-brand-typography-paragraph-md-letterspacing
+    );
+    --brand-typography-paragraph-md-line-height: var(
+      --computed-lg-brand-typography-paragraph-md-line-height
+    );
+    --brand-typography-paragraph-sm-letterspacing: var(
+      --computed-lg-brand-typography-paragraph-sm-letterspacing
+    );
+    --brand-typography-paragraph-sm-line-height: var(
+      --computed-lg-brand-typography-paragraph-sm-line-height
+    );
+    --brand-typography-paragraph-sm-size: var(--computed-lg-brand-typography-paragraph-sm-size);
+    --brand-typography-paragraph-xs-letterspacing: var(
+      --computed-lg-brand-typography-paragraph-xs-letterspacing
+    );
+    --brand-typography-paragraph-xs-line-height: var(
+      --computed-lg-brand-typography-paragraph-xs-line-height
+    );
+    --brand-typography-paragraph-xs-size: var(--computed-lg-brand-typography-paragraph-xs-size);
+    --web-breakpoint-max: var(--brand-breakpoint-lg-max);
+    --web-breakpoint-min: var(--brand-breakpoint-lg-min);
+    --web-breakpoint-view: var(--brand-breakpoint-lg-view);
+    --web-font-size-scale: var(--brand-typography-scale-base-font-size-lg);
+    --web-grid-gutter: var(--spacing-500);
+    --web-grid-margin: var(--spacing-800);
+  }
+}

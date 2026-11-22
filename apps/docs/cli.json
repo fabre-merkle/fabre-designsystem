@@ -1,0 +1,7 @@
+{
+  "uiLibrary": "base-ui",
+  "aliases": {
+    "components": "@/components",
+    "lib": "@/lib"
+  }
+}

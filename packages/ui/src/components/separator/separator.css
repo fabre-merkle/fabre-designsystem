@@ -1,0 +1,122 @@
+@layer components {
+  [data-ui="separator"] {
+    color: var(--color-on-surface);
+  }
+
+  /* =========================================================
+     Variant: line — pure stroke
+     ========================================================= */
+  [data-ui="separator"][data-variant="line"] {
+    background-color: var(--color-surface-border-1);
+    border: 0;
+    flex-shrink: 0;
+  }
+  [data-ui="separator"][data-variant="line"][data-orientation="horizontal"] {
+    width: 100%;
+    height: var(--stroke-width-selected);
+  }
+  [data-ui="separator"][data-variant="line"][data-orientation="vertical"] {
+    width: var(--stroke-width-selected);
+    align-self: stretch;
+  }
+
+  /* =========================================================
+     Shared typography for label variants
+     ========================================================= */
+  [data-ui="separator"][data-variant="solid-text"],
+  [data-ui="separator"][data-variant="underline"],
+  [data-ui="separator"][data-variant="content"] {
+    /* family/size/weight track the `headline` tier that matches this size's
+       intended cap-height (family+size+weight must share one typography
+       tier for Figma to bind a text style — see resolver.ts
+       deriveTextStyle).
+       letter-spacing stays a literal: it is the deliberate wide, positive
+       eyebrow-style tracking for an uppercase label, which no typography
+       tier offers (headline tracking is tight and negative, meant for large
+       display type) — Figma tolerates a literal letter-spacing/line-height
+       here the same way it already does for line-height. */
+    font-family: var(--typography-headline-sm-font-family);
+    font-size: var(--typography-headline-sm-font-size);
+    font-weight: var(--typography-headline-sm-font-weight);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--color-on-surface-subtle);
+    text-transform: uppercase;
+  }
+
+  /* Size variants — sm uses headline-xs (16px), md default is headline-sm
+     (20px), lg is headline-md (24px). */
+  [data-ui="separator"][data-size="sm"] {
+    font-family: var(--typography-headline-xs-font-family);
+    font-size: var(--typography-headline-xs-font-size);
+    font-weight: var(--typography-headline-xs-font-weight);
+  }
+
+  [data-ui="separator"][data-size="lg"] {
+    font-family: var(--typography-headline-md-font-family);
+    font-size: var(--typography-headline-md-font-size);
+    font-weight: var(--typography-headline-md-font-weight);
+  }
+
+  /* =========================================================
+     Variant: solid-text — text on a single stroke
+     ========================================================= */
+  [data-ui="separator"][data-variant="solid-text"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    background-color: inherit;
+  }
+  [data-ui="separator"][data-variant="solid-text"]::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    height: var(--stroke-width-selected);
+    background-color: var(--color-surface-border-1);
+  }
+  [data-ui="separator"][data-variant="solid-text"] > * {
+    position: relative;
+    padding-inline: var(--spacing-300);
+    background-color: inherit;
+  }
+
+  /* =========================================================
+     Variant: underline — text with bottom stroke
+     ========================================================= */
+  [data-ui="separator"][data-variant="underline"] {
+    display: inline-flex;
+    align-items: flex-end;
+    padding-block-end: var(--spacing-100);
+    border-block-end: var(--stroke-width-selected) solid var(--color-surface-border-1);
+  }
+
+  /* =========================================================
+     Variant: content — text between two strokes
+     ========================================================= */
+  [data-ui="separator"][data-variant="content"] {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+    width: 100%;
+  }
+  [data-ui="separator"][data-variant="content"]::before,
+  [data-ui="separator"][data-variant="content"]::after {
+    content: "";
+    flex: 1;
+    height: var(--stroke-width-selected);
+    background-color: var(--color-surface-border-1);
+  }
+  [data-ui="separator"][data-variant="content"][data-orientation="vertical"] {
+    flex-direction: column;
+    height: 100%;
+    width: auto;
+  }
+  [data-ui="separator"][data-variant="content"][data-orientation="vertical"]::before,
+  [data-ui="separator"][data-variant="content"][data-orientation="vertical"]::after {
+    width: var(--stroke-width-selected);
+    height: auto;
+  }
+}

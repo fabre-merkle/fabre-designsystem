@@ -1,0 +1,146 @@
+@layer components {
+  /* =========================================================
+     Backdrop — full-viewport scrim behind the popup
+     ========================================================= */
+  [data-ui="alert-dialog-backdrop"] {
+    position: fixed;
+    inset: 0;
+    /* Backdrop must sit BELOW the popup. Token scale is modal=40 < overlay=50,
+       so backdrop=--z-index-modal, popup=--z-index-overlay; the reverse painted
+       the (opaque) backdrop OVER the popup and the dialog appeared blank. */
+    z-index: var(--z-index-modal);
+    background-color: color-mix(
+      in oklch,
+      var(--color-surface-level-1) calc(var(--opacity-strong) * 100%),
+      transparent
+    );
+    backdrop-filter: blur(var(--brand-blur-500)) saturate(var(--brand-saturate-180));
+    -webkit-backdrop-filter: blur(var(--brand-blur-500)) saturate(var(--brand-saturate-180));
+    transition: opacity var(--brand-duration-150) var(--brand-easing-enter);
+  }
+
+  [data-ui="alert-dialog-backdrop"][data-starting-style],
+  [data-ui="alert-dialog-backdrop"][data-ending-style] {
+    opacity: 0;
+  }
+
+  [data-ui="alert-dialog-backdrop"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Popup — centered modal panel
+     ========================================================= */
+  [data-ui="alert-dialog-popup"] {
+    /* Surface level substrate + 4 (5 on the page), shadow level 5.
+       The level actually painted comes from data-surface-level (elevated.css),
+       which wins over this. These static values are the on-page default and
+       what the Figma contract binds. */
+    background-color: var(--color-surface-level-5);
+    box-shadow:
+      0 0 0 var(--stroke-width-selected) var(--color-surface-border-6),
+      var(--shadow-level-5);
+    position: fixed;
+    z-index: var(--z-index-overlay);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-400);
+    width: min(calc(100vw - var(--spacing-600)), 480px);
+    max-height: calc(100vh - var(--spacing-600));
+    overflow-y: auto;
+    padding: var(--spacing-600);
+    border-radius: var(--radius-default);
+    color: var(--color-on-surface);
+    outline: none;
+    transition:
+      opacity var(--brand-duration-150) var(--brand-easing-enter),
+      scale var(--brand-duration-150) var(--brand-easing-enter);
+  }
+
+  [data-ui="alert-dialog-popup"][data-starting-style],
+  [data-ui="alert-dialog-popup"][data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  [data-ui="alert-dialog-popup"][data-ending-style] {
+    transition-duration: var(--brand-duration-100);
+    transition-timing-function: var(--brand-easing-exit);
+  }
+
+  /* =========================================================
+     Title — heading style
+     ========================================================= */
+  [data-ui="alert-dialog-title"] {
+    margin: 0;
+    font-family: var(--typography-headline-md-font-family);
+    font-size: var(--typography-headline-md-font-size);
+    font-weight: var(--typography-headline-md-font-weight);
+    line-height: var(--typography-headline-md-line-height);
+    color: var(--color-on-surface);
+  }
+
+  /* =========================================================
+     Description — body text under the title
+     ========================================================= */
+  [data-ui="alert-dialog-description"] {
+    margin: 0;
+    font-family: var(--typography-paragraph-md-font-family);
+    font-size: var(--typography-paragraph-md-font-size);
+    font-weight: var(--typography-paragraph-md-font-weight);
+    line-height: var(--typography-paragraph-md-line-height);
+    color: var(--color-on-surface-subtle);
+  }
+
+  /* =========================================================
+     Header — title and description as one block
+     ========================================================= */
+  [data-ui="alert-dialog-header"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+  }
+
+  /* =========================================================
+     Footer — actions in a row, aligned to the end
+     ========================================================= */
+  [data-ui="alert-dialog-footer"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: var(--spacing-200);
+  }
+
+  /* Below the small breakpoint (--brand-breakpoint-sm-max, 767px; a media query
+     cannot read a custom property) the actions stack, last in the DOM on top. */
+  @media (max-width: 767px) {
+    [data-ui="alert-dialog-footer"] {
+      flex-direction: column-reverse;
+    }
+  }
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    [data-ui="alert-dialog-backdrop"],
+    [data-ui="alert-dialog-popup"] {
+      transition: none;
+    }
+
+    [data-ui="alert-dialog-backdrop"][data-starting-style],
+    [data-ui="alert-dialog-backdrop"][data-ending-style] {
+      opacity: 1;
+    }
+
+    [data-ui="alert-dialog-popup"][data-starting-style],
+    [data-ui="alert-dialog-popup"][data-ending-style] {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+---
+title: Accessibility
+description: Build and check accessible interfaces.
+---
+
+{/* topic:start accessibility-target */}
+## Conformance target
+
+**WCAG 2.2 Level AA is the baseline accessibility target.** Confirm any additional legal,
+organisational or product requirements for the people and markets the product serves.
+Accessibility is part of the definition of done, not a final visual check.
+
+For text legibility, also target **APCA Silver** as a design-quality measure. It complements
+WCAG AA; it is not a replacement standard, a legal compliance claim or a guarantee of
+accessibility.
+{/* topic:end accessibility-target */}
+
+{/* topic:start accessibility-contrast */}
+## Contrast and legibility
+
+Follow the APCA Readability Criterion's Silver guidance, including font qualification,
+size-and-weight lookup, applicable minimum sizes and additional support requirements. Assess
+the actual font, polarity and reading context: Silver is not a single contrast-score threshold.
+
+The token system starts from absolute lightness-contrast values (Lc) of at least 75 for body
+and control text, and at least 60 for large text. These are starting points, not proof of
+Silver conformance. Where the actual size and weight need stronger contrast, follow the
+applicable lookup guidance.
+
+Check WCAG AA independently: normal text needs at least 4.5:1 and large text at least 3:1.
+Meaningful non-text indicators and component boundaries need at least 3:1 where WCAG's
+non-text contrast criterion applies. Check rendered foreground and background pairs in every
+supported mode and state, along with line length, spacing, zoom and text reflow. Do not rely
+on colour alone to communicate status or an action.
+{/* topic:end accessibility-contrast */}
+
+{/* topic:start accessibility-keyboard-focus */}
+## Keyboard and focus
+
+Make every interactive element reachable and operable with a keyboard. Preserve a visible
+focus indicator, use a logical focus order and return focus appropriately after temporary
+surfaces close. Avoid keyboard traps.
+{/* topic:end accessibility-keyboard-focus */}
+
+{/* topic:start accessibility-assistive-technology */}
+## Assistive technology
+
+Give controls meaningful accessible names, use appropriate native semantics and ensure
+status changes are announced when needed. Informative images need an equivalent description;
+decorative images should not add noise.
+{/* topic:end accessibility-assistive-technology */}
+
+{/* topic:start accessibility-reduced-motion */}
+## Reduced motion
+
+Respect the user's reduced-motion preference. Remove or replace non-essential movement while
+preserving the information and feedback the interaction provides.
+{/* topic:end accessibility-reduced-motion */}
+
+{/* topic:start accessibility-testing */}
+## Testing
+
+Combine automated checks with keyboard, zoom and screen-reader testing. Automation can find
+common failures but cannot establish whether the experience is understandable. Record WCAG
+checks and APCA text-legibility checks separately, including the rendered mode, size and
+weight tested.
+{/* topic:end accessibility-testing */}
+
+## International standards and regional requirements
+
+WCAG is a shared technical foundation; countries and regions have their own laws, policies
+and standards. This orientation list is not exhaustive or a legal compliance matrix. Confirm
+the applicable version, sector, scope and obligations with the relevant specialists.
+
+| Region | Standards and policies to investigate |
+| --- | --- |
+| International | [W3C WCAG](https://www.w3.org/TR/WCAG22/) |
+| United States | [Section 508](https://www.section508.gov/) |
+| European Union | EN 301 549 and the [European Accessibility Act](https://eur-lex.europa.eu/eli/dir/2019/882/oj) |
+| Canada | [Accessible Canada Act](https://www.canada.ca/en/employment-social-development/programs/accessible-canada.html) and AODA in Ontario |
+| United Kingdom | Equality Act 2010 and [public sector accessibility regulations](https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps) |
+| Australia | [Disability Discrimination Act](https://www.legislation.gov.au/C2004A04426/latest/text) |
+| Japan | JIS X 8341-3 |
+| India | [Guidelines for Indian Government Websites](https://guidelines.india.gov.in/) |
+| China | [GB/T 37668](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=35ECC696805C1A67C93B74FB6D0D8EFB) |
+
+Do not infer that every listed law mandates the same WCAG version or that the baseline
+satisfies every regional obligation.
+
+## Prior art
+
+- [Salesforce Lightning Design System global accessibility standards](https://www.lightningdesignsystem.com/2e1ef8501/p/23a1dd-global-accessibility-standards)
+  informed the regional orientation list; current primary sources take precedence.
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) is the AA conformance baseline.
+- [APCA](https://git.apcacontrast.com/) and the draft
+  [APCA Readability Criterion](https://readtech.org/ARC/tests/visual-readability-contrast/?tn=criterion)
+  inform the additional Silver legibility target, independently of WCAG conformance.

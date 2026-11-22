@@ -1,0 +1,53 @@
+---
+title: Input
+description: Enter a single line of text.
+primitive: https://base-ui.com/react/components/input
+---
+
+## Interactive example
+
+<DocsStory name="input" />
+
+## Installation
+
+`Input` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Input } from "@workspace/ui/components/input";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Input } from "@workspace/ui/components/input";
+
+<Input placeholder="you@example.com" />
+```
+
+State styling (invalid, disabled, dirty, touched, focused) is driven by data attributes set by Base UI's [Field](https://base-ui.com/react/components/field) wrapper. Use `Field.Root` with `invalid` or `disabled` to drive the matching states, or set `aria-invalid` on a standalone input.
+
+## API Reference
+
+Props `Input` adds. [Base UI Input](https://base-ui.com/react/components/input#api-reference) props are also supported.
+
+<AutoTypeTable path="input/input.tsx" name="InputProps" />
+
+## Figma contract
+
+<ComponentContract slug="input" />

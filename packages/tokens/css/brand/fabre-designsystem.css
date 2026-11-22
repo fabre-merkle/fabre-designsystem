@@ -1,0 +1,764 @@
+@layer fabre-designsystem-brand {
+  [data-brand="fabre-designsystem"] {
+    --brand-blur-000: 0px;
+    --brand-blur-100: 4px;
+    --brand-blur-200: 8px;
+    --brand-blur-300: 16px;
+    --brand-blur-400: 24px;
+    --brand-blur-500: 40px;
+    --brand-breakpoint-lg-max: 1600px;
+    --brand-breakpoint-lg-min: 1024px;
+    --brand-breakpoint-lg-view: 1440px;
+    --brand-breakpoint-md-max: 1023px;
+    --brand-breakpoint-md-min: 768px;
+    --brand-breakpoint-md-view: 768px;
+    --brand-breakpoint-sm-max: 767px;
+    --brand-breakpoint-sm-min: 320px;
+    --brand-breakpoint-sm-view: 375px;
+    --brand-color-base-neutral-dark: oklch(0.22 0.012 75);
+    --brand-color-base-neutral-light: oklch(0.72 0.012 75);
+    --brand-color-base-primary: oklch(0.45 0.1 152);
+    --brand-color-base-secondary: oklch(0.5 0.16 140);
+    --brand-color-base-tertiary: oklch(0.48 0.11 55);
+    --brand-color-base-utility-error: oklch(0.5 0.15 32);
+    --brand-color-base-utility-info: oklch(0.5 0.08 225);
+    --brand-color-base-utility-success: oklch(0.52 0.12 118);
+    --brand-color-base-utility-warning: oklch(0.87 0.13 82);
+    --brand-color-tint-dark-chroma-shadow: 0;
+    --brand-color-tint-dark-chroma-surface: 0;
+    --brand-color-tint-dark-source: var(--brand-color-base-neutral-dark);
+    --brand-color-tint-light-chroma-shadow: 0;
+    --brand-color-tint-light-chroma-surface: 0;
+    --brand-color-tint-light-source: var(--brand-color-base-neutral-light);
+    --brand-duration-000: 0ms;
+    --brand-duration-100: 100ms;
+    --brand-duration-150: 150ms;
+    --brand-duration-200: 200ms;
+    --brand-duration-300: 300ms;
+    --brand-duration-400: 400ms;
+    --brand-duration-500: 500ms;
+    --brand-easing-emphasis: cubic-bezier(0.2, 0, 0, 1);
+    --brand-easing-enter: cubic-bezier(0, 0, 0.58, 1);
+    --brand-easing-exit: cubic-bezier(0.42, 0, 1, 1);
+    --brand-easing-linear: cubic-bezier(0, 0, 1, 1);
+    --brand-easing-standard: cubic-bezier(0.42, 0, 0.58, 1);
+    --brand-grid-lg-margin: 80px;
+    --brand-grid-md-margin: 60px;
+    --brand-grid-sm-margin: 40px;
+    --brand-opacity-00: 0;
+    --brand-opacity-05: 0.05;
+    --brand-opacity-10: 0.1;
+    --brand-opacity-15: 0.15;
+    --brand-opacity-20: 0.2;
+    --brand-opacity-30: 0.3;
+    --brand-opacity-40: 0.4;
+    --brand-opacity-50: 0.5;
+    --brand-opacity-60: 0.6;
+    --brand-opacity-70: 0.7;
+    --brand-opacity-80: 0.8;
+    --brand-opacity-90: 0.9;
+    --brand-opacity-100: 1;
+    --brand-radius-000: 0px;
+    --brand-radius-100: calc(var(--brand-scale-base-ui) * 0.5);
+    --brand-radius-200: var(--brand-scale-base-ui);
+    --brand-radius-300: calc(var(--brand-scale-base-ui) * 2);
+    --brand-radius-400: calc(var(--brand-scale-base-ui) * 3);
+    --brand-radius-500: calc(var(--brand-scale-base-ui) * 4);
+    --brand-radius-600: calc(var(--brand-scale-base-ui) * 6);
+    --brand-radius-700: calc(var(--brand-scale-base-ui) * 8);
+    --brand-radius-800: calc(var(--brand-scale-base-ui) * 10);
+    --brand-radius-default: var(--brand-radius-300);
+    --brand-radius-full: 999px;
+    --brand-radius-inset-minimum: var(--brand-radius-default);
+    --brand-radius-large-elements: var(--brand-radius-500);
+    --brand-radius-none: var(--brand-radius-000);
+    --brand-radius-small-elements: var(--brand-radius-100);
+    --brand-saturate-100: 1;
+    --brand-saturate-120: 1.2;
+    --brand-saturate-140: 1.4;
+    --brand-saturate-180: 1.8;
+    --brand-scale-base-control: 4px;
+    --brand-scale-base-ui: 4px;
+    --brand-shadow-1-dark:
+      0.17px 0.33px 0.467px 0px oklch(0.1 0.012 75 / 0.2), 0.27px 0.53px 0.667px -0.8px oklch(
+        0.1 0.012 75 / 0.2
+      ), 0.67px 1.33px 1.667px -1.667px oklch(0.1 0.012 75 / 0.1);
+    --brand-shadow-1-light:
+      0.17px 0.33px 0.467px 0px oklch(0.65 0.012 75 / 0.2), 0.27px 0.53px 0.667px -0.8px oklch(
+        0.65 0.012 75 / 0.2
+      ), 0.67px 1.33px 1.667px -1.667px oklch(0.65 0.012 75 / 0.1);
+    --brand-shadow-2-dark:
+      0.25px 0.5px 0.7px 0px oklch(0.1 0.012 75 / 0.2), 0.4px 0.8px 1px -1.2px oklch(
+        0.1 0.012 75 / 0.2
+      ), 1px 2px 2.5px -2.5px oklch(0.1 0.012 75 / 0.1);
+    --brand-shadow-2-light:
+      0.25px 0.5px 0.7px 0px oklch(0.65 0.012 75 / 0.2), 0.4px 0.8px 1px -1.2px oklch(
+        0.65 0.012 75 / 0.2
+      ), 1px 2px 2.5px -2.5px oklch(0.65 0.012 75 / 0.1);
+    --brand-shadow-3-dark:
+      0.25px 0.5px 0.7px 0px oklch(0.1 0.012 75 / 0.2), 0.8px 1.6px 2px -0.8px oklch(
+        0.1 0.012 75 / 0.2
+      ), 2.05px 4.1px 5.2px -1.7px oklch(0.1 0.012 75 / 0.1), 5px 10px 12.6px -2.5px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-3-light:
+      0.25px 0.5px 0.7px 0px oklch(0.65 0.012 75 / 0.2), 0.8px 1.6px 2px -0.8px oklch(
+        0.65 0.012 75 / 0.2
+      ), 2.05px 4.1px 5.2px -1.7px oklch(0.65 0.012 75 / 0.1), 5px 10px 12.6px -2.5px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-4-dark:
+      0.25px 0.5px 0.6px 0px oklch(0.1 0.012 75 / 0.2), 1.05px 2.1px 2.3px -0.5px oklch(
+        0.1 0.012 75 / 0.2
+      ), 2px 4px 4.4px -1px oklch(0.1 0.012 75 / 0.2), 3.65px 7.3px 8px -1.5px oklch(
+        0.1 0.012 75 / 0.2
+      ), 6.4px 12.8px 14px -2px oklch(0.1 0.012 75 / 0.1), 10.7px 21.4px 23.3px -2.5px oklch(
+        0.1 0.012 75 / 0.1
+      ), 17px 34px 37px -3px oklch(0.1 0.012 75 / 0.1), 25.75px 51.5px 56.2px -3.5px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-4-light:
+      0.25px 0.5px 0.6px 0px oklch(0.65 0.012 75 / 0.2), 1.05px 2.1px 2.3px -0.5px oklch(
+        0.65 0.012 75 / 0.2
+      ), 2px 4px 4.4px -1px oklch(0.65 0.012 75 / 0.2), 3.65px 7.3px 8px -1.5px oklch(
+        0.65 0.012 75 / 0.2
+      ), 6.4px 12.8px 14px -2px oklch(0.65 0.012 75 / 0.1), 10.7px 21.4px 23.3px -2.5px oklch(
+        0.65 0.012 75 / 0.1
+      ), 17px 34px 37px -3px oklch(0.65 0.012 75 / 0.1), 25.75px 51.5px 56.2px -3.5px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-5-dark:
+      0.38px 0.75px 0.9px 0px oklch(0.1 0.012 75 / 0.2), 1.58px 3.15px 3.45px -0.75px oklch(
+        0.1 0.012 75 / 0.2
+      ), 3px 6px 6.6px -1.5px oklch(0.1 0.012 75 / 0.2), 5.48px 10.95px 12px -2.25px oklch(
+        0.1 0.012 75 / 0.2
+      ), 9.6px 19.2px 21px -3px oklch(0.1 0.012 75 / 0.1), 16.05px 32.1px 34.95px -3.75px oklch(
+        0.1 0.012 75 / 0.1
+      ), 25.5px 51px 55.5px -4.5px oklch(0.1 0.012 75 / 0.1), 38.63px 77.25px 84.3px -5.25px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-5-light:
+      0.38px 0.75px 0.9px 0px oklch(0.65 0.012 75 / 0.2), 1.58px 3.15px 3.45px -0.75px oklch(
+        0.65 0.012 75 / 0.2
+      ), 3px 6px 6.6px -1.5px oklch(0.65 0.012 75 / 0.2), 5.48px 10.95px 12px -2.25px oklch(
+        0.65 0.012 75 / 0.2
+      ), 9.6px 19.2px 21px -3px oklch(0.65 0.012 75 / 0.1), 16.05px 32.1px 34.95px -3.75px oklch(
+        0.65 0.012 75 / 0.1
+      ), 25.5px 51px 55.5px -4.5px oklch(0.65 0.012 75 / 0.1), 38.63px 77.25px 84.3px -5.25px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-6-dark:
+      0.56px 1.13px 1.35px 0px oklch(0.1 0.012 75 / 0.2), 2.36px 4.72px 5.175px -1.125px oklch(
+        0.1 0.012 75 / 0.2
+      ), 4.5px 9px 9.9px -2.25px oklch(0.1 0.012 75 / 0.2), 8.21px 16.43px 18px -3.375px oklch(
+        0.1 0.012 75 / 0.2
+      ), 14.4px 28.8px 31.5px -4.5px oklch(0.1 0.012 75 / 0.1), 24.08px 48.15px 52.425px -5.625px oklch(
+        0.1 0.012 75 / 0.1
+      ), 38.25px 76.5px 83.25px -6.75px oklch(0.1 0.012 75 / 0.1), 57.94px 115.88px 126.45px -7.875px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-6-light:
+      0.56px 1.13px 1.35px 0px oklch(0.65 0.012 75 / 0.2), 2.36px 4.72px 5.175px -1.125px oklch(
+        0.65 0.012 75 / 0.2
+      ), 4.5px 9px 9.9px -2.25px oklch(0.65 0.012 75 / 0.2), 8.21px 16.43px 18px -3.375px oklch(
+        0.65 0.012 75 / 0.2
+      ), 14.4px 28.8px 31.5px -4.5px oklch(0.65 0.012 75 / 0.1), 24.08px 48.15px 52.425px -5.625px oklch(
+        0.65 0.012 75 / 0.1
+      ), 38.25px 76.5px 83.25px -6.75px oklch(0.65 0.012 75 / 0.1), 57.94px 115.88px 126.45px -7.875px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-7-dark:
+      0.84px 1.69px 2.025px 0px oklch(0.1 0.012 75 / 0.2), 3.54px 7.09px 7.763px -1.687px oklch(
+        0.1 0.012 75 / 0.2
+      ), 6.75px 13.5px 14.85px -3.375px oklch(0.1 0.012 75 / 0.2), 12.32px 24.64px 27px -5.062px oklch(
+        0.1 0.012 75 / 0.2
+      ), 21.6px 43.2px 47.25px -6.75px oklch(0.1 0.012 75 / 0.1), 36.11px 72.22px 78.638px -8.437px oklch(
+        0.1 0.012 75 / 0.1
+      ), 57.38px 114.75px 124.875px -10.125px oklch(0.1 0.012 75 / 0.1), 86.91px 173.81px 189.675px -11.812px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-7-light:
+      0.84px 1.69px 2.025px 0px oklch(0.65 0.012 75 / 0.2), 3.54px 7.09px 7.763px -1.687px oklch(
+        0.65 0.012 75 / 0.2
+      ), 6.75px 13.5px 14.85px -3.375px oklch(0.65 0.012 75 / 0.2), 12.32px 24.64px 27px -5.062px oklch(
+        0.65 0.012 75 / 0.2
+      ), 21.6px 43.2px 47.25px -6.75px oklch(0.65 0.012 75 / 0.1), 36.11px 72.22px 78.638px -8.437px oklch(
+        0.65 0.012 75 / 0.1
+      ), 57.38px 114.75px 124.875px -10.125px oklch(0.65 0.012 75 / 0.1), 86.91px 173.81px 189.675px -11.812px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-8-dark:
+      1.27px 2.53px 3.038px 0px oklch(0.1 0.012 75 / 0.2), 5.32px 10.63px 11.644px -2.531px oklch(
+        0.1 0.012 75 / 0.2
+      ), 10.13px 20.25px 22.275px -5.062px oklch(0.1 0.012 75 / 0.2), 18.48px 36.96px 40.5px -7.594px oklch(
+        0.1 0.012 75 / 0.2
+      ), 32.4px 64.8px 70.875px -10.125px oklch(0.1 0.012 75 / 0.1), 54.17px 108.34px 117.956px -12.656px oklch(
+        0.1 0.012 75 / 0.1
+      ), 86.06px 172.13px 187.313px -15.187px oklch(0.1 0.012 75 / 0.1), 130.36px 260.72px 284.513px -17.719px oklch(
+        0.1 0.012 75 / 0.1
+      );
+    --brand-shadow-8-light:
+      1.27px 2.53px 3.038px 0px oklch(0.65 0.012 75 / 0.2), 5.32px 10.63px 11.644px -2.531px oklch(
+        0.65 0.012 75 / 0.2
+      ), 10.13px 20.25px 22.275px -5.062px oklch(0.65 0.012 75 / 0.2), 18.48px 36.96px 40.5px -7.594px oklch(
+        0.65 0.012 75 / 0.2
+      ), 32.4px 64.8px 70.875px -10.125px oklch(0.65 0.012 75 / 0.1), 54.17px 108.34px 117.956px -12.656px oklch(
+        0.65 0.012 75 / 0.1
+      ), 86.06px 172.13px 187.313px -15.187px oklch(0.65 0.012 75 / 0.1), 130.36px 260.72px 284.513px -17.719px oklch(
+        0.65 0.012 75 / 0.1
+      );
+    --brand-shadow-color-dark: oklch(0.1 0.012 75);
+    --brand-shadow-color-light: oklch(0.65 0.012 75);
+    --brand-shadow-headroom: 2;
+    --brand-shadow-light-source-x: -0.25;
+    --brand-shadow-light-source-y: -0.5;
+    --brand-stroke-width-000: 0px;
+    --brand-stroke-width-100: 1px;
+    --brand-stroke-width-200: 2px;
+    --brand-typography-code-font-family: "Geist Mono", monospace;
+    --brand-typography-code-font-weight-100: 100;
+    --brand-typography-code-font-weight-200: 200;
+    --brand-typography-code-font-weight-300: 300;
+    --brand-typography-code-font-weight-400: 400;
+    --brand-typography-code-font-weight-500: 500;
+    --brand-typography-code-font-weight-600: 600;
+    --brand-typography-code-font-weight-700: 700;
+    --brand-typography-code-font-weight-800: 800;
+    --brand-typography-code-font-weight-900: 900;
+    --brand-typography-code-lg-weight: var(--brand-typography-code-font-weight-400);
+    --brand-typography-code-md-weight: var(--brand-typography-code-font-weight-400);
+    --brand-typography-code-sm-weight: var(--brand-typography-code-font-weight-400);
+    --brand-typography-code-xs-weight: var(--brand-typography-code-font-weight-400);
+    --brand-typography-control-weight: var(--brand-typography-paragraph-font-weight-500);
+    --brand-typography-display-font-family: "Work Sans", sans-serif;
+    --brand-typography-display-font-weight-100: 100;
+    --brand-typography-display-font-weight-200: 200;
+    --brand-typography-display-font-weight-300: 300;
+    --brand-typography-display-font-weight-400: 400;
+    --brand-typography-display-font-weight-500: 500;
+    --brand-typography-display-font-weight-600: 600;
+    --brand-typography-display-font-weight-700: 700;
+    --brand-typography-display-font-weight-800: 800;
+    --brand-typography-display-font-weight-900: 900;
+    --brand-typography-display-lg-weight: var(--brand-typography-display-font-weight-600);
+    --brand-typography-display-md-weight: var(--brand-typography-display-font-weight-600);
+    --brand-typography-display-sm-weight: var(--brand-typography-display-font-weight-600);
+    --brand-typography-display-xs-weight: var(--brand-typography-display-font-weight-600);
+    --brand-typography-eyebrow-font-family: "Work Sans", sans-serif;
+    --brand-typography-eyebrow-font-weight-100: 100;
+    --brand-typography-eyebrow-font-weight-200: 200;
+    --brand-typography-eyebrow-font-weight-300: 300;
+    --brand-typography-eyebrow-font-weight-400: 400;
+    --brand-typography-eyebrow-font-weight-500: 500;
+    --brand-typography-eyebrow-font-weight-600: 600;
+    --brand-typography-eyebrow-font-weight-700: 700;
+    --brand-typography-eyebrow-font-weight-800: 800;
+    --brand-typography-eyebrow-font-weight-900: 900;
+    --brand-typography-eyebrow-lg-weight: var(--brand-typography-eyebrow-font-weight-400);
+    --brand-typography-eyebrow-md-weight: var(--brand-typography-eyebrow-font-weight-400);
+    --brand-typography-eyebrow-size-multiplier: 0.8;
+    --brand-typography-eyebrow-sm-weight: var(--brand-typography-eyebrow-font-weight-400);
+    --brand-typography-headline-font-family: "Work Sans", sans-serif;
+    --brand-typography-headline-font-weight-100: 100;
+    --brand-typography-headline-font-weight-200: 200;
+    --brand-typography-headline-font-weight-300: 300;
+    --brand-typography-headline-font-weight-400: 400;
+    --brand-typography-headline-font-weight-500: 500;
+    --brand-typography-headline-font-weight-600: 600;
+    --brand-typography-headline-font-weight-700: 700;
+    --brand-typography-headline-font-weight-800: 800;
+    --brand-typography-headline-font-weight-900: 900;
+    --brand-typography-headline-lg-weight: var(--brand-typography-headline-font-weight-700);
+    --brand-typography-headline-md-weight: var(--brand-typography-headline-font-weight-700);
+    --brand-typography-headline-sm-weight: var(--brand-typography-headline-font-weight-700);
+    --brand-typography-headline-xs-size: var(--web-font-size-scale);
+    --brand-typography-headline-xs-weight: var(--brand-typography-headline-font-weight-700);
+    --brand-typography-paragraph-font-family: "Inter", sans-serif;
+    --brand-typography-paragraph-font-weight-100: 100;
+    --brand-typography-paragraph-font-weight-200: 200;
+    --brand-typography-paragraph-font-weight-300: 300;
+    --brand-typography-paragraph-font-weight-400: 400;
+    --brand-typography-paragraph-font-weight-500: 500;
+    --brand-typography-paragraph-font-weight-600: 600;
+    --brand-typography-paragraph-font-weight-700: 700;
+    --brand-typography-paragraph-font-weight-800: 800;
+    --brand-typography-paragraph-font-weight-900: 900;
+    --brand-typography-paragraph-lg-weight: var(--brand-typography-paragraph-font-weight-400);
+    --brand-typography-paragraph-md-size: var(--web-font-size-scale);
+    --brand-typography-paragraph-md-weight: var(--brand-typography-paragraph-font-weight-400);
+    --brand-typography-paragraph-sm-weight: var(--brand-typography-paragraph-font-weight-400);
+    --brand-typography-paragraph-xs-weight: var(--brand-typography-paragraph-font-weight-400);
+    --brand-typography-scale-base-font-size-lg: 18px;
+    --brand-typography-scale-base-font-size-md: 16px;
+    --brand-typography-scale-base-font-size-sm: 14px;
+    --brand-z-index-00: 0;
+    --brand-z-index-10: 10;
+    --brand-z-index-20: 20;
+    --brand-z-index-30: 30;
+    --brand-z-index-40: 40;
+    --brand-z-index-50: 50;
+    --brand-z-index-60: 60;
+    --brand-z-index-behind: -1;
+    --computed-dark-account-action-destructive-foreground: oklch(0.97 0.0375 32);
+    --computed-dark-account-action-primary-foreground: oklch(0.97 0.025 152);
+    --computed-dark-brand-primary-hover: oklch(0.97 0.025 152);
+    --computed-dark-brand-white: oklch(0.97 0.025 152);
+    --computed-dark-color-fd-accent-foreground: oklch(0.97 0.04 140);
+    --computed-dark-color-intent-error-on-error: oklch(0.97 0.0375 32);
+    --computed-dark-color-intent-error-on-error-hover: oklch(0.1 0.045 32);
+    --computed-dark-color-intent-info-on-info: oklch(0.97 0.02 225);
+    --computed-dark-color-intent-info-on-info-hover: oklch(0.1 0.024 225);
+    --computed-dark-color-intent-success-on-success: oklch(0.97 0.03 118);
+    --computed-dark-color-intent-success-on-success-hover: oklch(0.1 0.036 118);
+    --computed-dark-color-intent-warning-on-warning: oklch(0.1 0.039 82);
+    --computed-dark-color-intent-warning-on-warning-hover: oklch(0.1 0.039 82);
+    --computed-dark-color-primary-on-brand: oklch(0.97 0.025 152);
+    --computed-dark-color-primary-on-brand-hover: oklch(0.1 0.03 152);
+    --computed-dark-color-secondary-on-brand: oklch(0.97 0.04 140);
+    --computed-dark-color-secondary-on-brand-hover: oklch(0.1 0.048 140);
+    --computed-dark-color-tertiary-on-brand: oklch(0.97 0.0275 55);
+    --computed-dark-color-tertiary-on-brand-hover: oklch(0.1 0.033 55);
+    --computed-dark-destructive-foreground: oklch(0.97 0.0375 32);
+    --computed-dark-info-foreground: oklch(0.97 0.02 225);
+    --computed-dark-primary-foreground: oklch(0.97 0.025 152);
+    --computed-dark-rating-foreground: oklch(0.97 0.025 152);
+    --computed-dark-secondary-foreground: oklch(0.97 0.04 140);
+    --computed-dark-sidebar-primary-foreground: oklch(0.97 0.025 152);
+    --computed-dark-success-foreground: oklch(0.97 0.03 118);
+    --computed-dark-swatch-text-selected: oklch(0.1 0.03 152);
+    --computed-dark-tertiary-foreground: oklch(0.97 0.0275 55);
+    --computed-dark-theme-color-neutral-1: oklch(0.1 0.0036 75);
+    --computed-dark-theme-color-neutral-2: oklch(0.145 0.0054 75);
+    --computed-dark-theme-color-neutral-3: oklch(0.19 0.0078 75);
+    --computed-dark-theme-color-neutral-4: oklch(0.24 0.0096 75);
+    --computed-dark-theme-color-neutral-5: oklch(0.295 0.011 75);
+    --computed-dark-theme-color-neutral-6: oklch(0.35 0.012 75);
+    --computed-dark-theme-color-neutral-7: oklch(0.4 0.012 75);
+    --computed-dark-theme-color-neutral-8: oklch(0.45 0.012 75);
+    --computed-dark-theme-color-neutral-10: oklch(0.86 0.0102 75);
+    --computed-dark-theme-color-neutral-11: oklch(0.94 0.0022 75);
+    --computed-dark-theme-color-neutral-12: oklch(0.97 0.003 75);
+    --computed-dark-theme-color-primary-1: oklch(0.1 0.03 152);
+    --computed-dark-theme-color-primary-2: oklch(0.145 0.045 152);
+    --computed-dark-theme-color-primary-3: oklch(0.19 0.065 152);
+    --computed-dark-theme-color-primary-4: oklch(0.24 0.08 152);
+    --computed-dark-theme-color-primary-5: oklch(0.295 0.092 152);
+    --computed-dark-theme-color-primary-6: oklch(0.35 0.1 152);
+    --computed-dark-theme-color-primary-7: oklch(0.4 0.1 152);
+    --computed-dark-theme-color-primary-8: oklch(0.45 0.1 152);
+    --computed-dark-theme-color-primary-10: oklch(0.86 0.085 152);
+    --computed-dark-theme-color-primary-11: oklch(0.94 0.018 152);
+    --computed-dark-theme-color-primary-12: oklch(0.97 0.025 152);
+    --computed-dark-theme-color-secondary-1: oklch(0.1 0.048 140);
+    --computed-dark-theme-color-secondary-2: oklch(0.145 0.072 140);
+    --computed-dark-theme-color-secondary-3: oklch(0.19 0.104 140);
+    --computed-dark-theme-color-secondary-4: oklch(0.24 0.128 140);
+    --computed-dark-theme-color-secondary-5: oklch(0.295 0.1472 140);
+    --computed-dark-theme-color-secondary-6: oklch(0.35 0.16 140);
+    --computed-dark-theme-color-secondary-7: oklch(0.4 0.16 140);
+    --computed-dark-theme-color-secondary-8: oklch(0.45 0.16 140);
+    --computed-dark-theme-color-secondary-10: oklch(0.86 0.136 140);
+    --computed-dark-theme-color-secondary-11: oklch(0.94 0.0288 140);
+    --computed-dark-theme-color-secondary-12: oklch(0.97 0.04 140);
+    --computed-dark-theme-color-tertiary-1: oklch(0.1 0.033 55);
+    --computed-dark-theme-color-tertiary-2: oklch(0.145 0.0495 55);
+    --computed-dark-theme-color-tertiary-3: oklch(0.19 0.0715 55);
+    --computed-dark-theme-color-tertiary-4: oklch(0.24 0.088 55);
+    --computed-dark-theme-color-tertiary-5: oklch(0.295 0.1012 55);
+    --computed-dark-theme-color-tertiary-6: oklch(0.35 0.11 55);
+    --computed-dark-theme-color-tertiary-7: oklch(0.4 0.11 55);
+    --computed-dark-theme-color-tertiary-8: oklch(0.45 0.11 55);
+    --computed-dark-theme-color-tertiary-10: oklch(0.86 0.0935 55);
+    --computed-dark-theme-color-tertiary-11: oklch(0.94 0.0198 55);
+    --computed-dark-theme-color-tertiary-12: oklch(0.97 0.0275 55);
+    --computed-dark-theme-color-utility-error-1: oklch(0.1 0.045 32);
+    --computed-dark-theme-color-utility-error-2: oklch(0.145 0.0675 32);
+    --computed-dark-theme-color-utility-error-3: oklch(0.19 0.0975 32);
+    --computed-dark-theme-color-utility-error-4: oklch(0.24 0.12 32);
+    --computed-dark-theme-color-utility-error-5: oklch(0.295 0.138 32);
+    --computed-dark-theme-color-utility-error-6: oklch(0.35 0.15 32);
+    --computed-dark-theme-color-utility-error-7: oklch(0.4 0.15 32);
+    --computed-dark-theme-color-utility-error-8: oklch(0.45 0.15 32);
+    --computed-dark-theme-color-utility-error-10: oklch(0.86 0.1275 32);
+    --computed-dark-theme-color-utility-error-11: oklch(0.94 0.027 32);
+    --computed-dark-theme-color-utility-error-12: oklch(0.97 0.0375 32);
+    --computed-dark-theme-color-utility-info-1: oklch(0.1 0.024 225);
+    --computed-dark-theme-color-utility-info-2: oklch(0.145 0.036 225);
+    --computed-dark-theme-color-utility-info-3: oklch(0.19 0.052 225);
+    --computed-dark-theme-color-utility-info-4: oklch(0.24 0.064 225);
+    --computed-dark-theme-color-utility-info-5: oklch(0.295 0.0736 225);
+    --computed-dark-theme-color-utility-info-6: oklch(0.35 0.08 225);
+    --computed-dark-theme-color-utility-info-7: oklch(0.4 0.08 225);
+    --computed-dark-theme-color-utility-info-8: oklch(0.45 0.08 225);
+    --computed-dark-theme-color-utility-info-10: oklch(0.86 0.068 225);
+    --computed-dark-theme-color-utility-info-11: oklch(0.94 0.0144 225);
+    --computed-dark-theme-color-utility-info-12: oklch(0.97 0.02 225);
+    --computed-dark-theme-color-utility-success-1: oklch(0.1 0.036 118);
+    --computed-dark-theme-color-utility-success-2: oklch(0.145 0.054 118);
+    --computed-dark-theme-color-utility-success-3: oklch(0.19 0.078 118);
+    --computed-dark-theme-color-utility-success-4: oklch(0.24 0.096 118);
+    --computed-dark-theme-color-utility-success-5: oklch(0.295 0.1104 118);
+    --computed-dark-theme-color-utility-success-6: oklch(0.35 0.12 118);
+    --computed-dark-theme-color-utility-success-7: oklch(0.4 0.12 118);
+    --computed-dark-theme-color-utility-success-8: oklch(0.45 0.12 118);
+    --computed-dark-theme-color-utility-success-10: oklch(0.86 0.102 118);
+    --computed-dark-theme-color-utility-success-11: oklch(0.94 0.0216 118);
+    --computed-dark-theme-color-utility-success-12: oklch(0.97 0.03 118);
+    --computed-dark-theme-color-utility-warning-1: oklch(0.1 0.039 82);
+    --computed-dark-theme-color-utility-warning-2: oklch(0.145 0.0585 82);
+    --computed-dark-theme-color-utility-warning-3: oklch(0.19 0.0845 82);
+    --computed-dark-theme-color-utility-warning-4: oklch(0.24 0.104 82);
+    --computed-dark-theme-color-utility-warning-5: oklch(0.295 0.1196 82);
+    --computed-dark-theme-color-utility-warning-6: oklch(0.35 0.13 82);
+    --computed-dark-theme-color-utility-warning-7: oklch(0.4 0.13 82);
+    --computed-dark-theme-color-utility-warning-8: oklch(0.45 0.13 82);
+    --computed-dark-theme-color-utility-warning-10: oklch(0.86 0.1105 82);
+    --computed-dark-theme-color-utility-warning-11: oklch(0.94 0.0234 82);
+    --computed-dark-theme-color-utility-warning-12: oklch(0.97 0.0325 82);
+    --computed-dark-theme-control-border: oklch(0.97 0.003 75 / 0.505);
+    --computed-dark-theme-control-border-hover: oklch(0.97 0.003 75 / 0.733);
+    --computed-dark-theme-surface-border-1: oklch(0.97 0.003 75 / 0.089);
+    --computed-dark-theme-surface-border-2: oklch(0.97 0.003 75 / 0.078);
+    --computed-dark-theme-surface-border-3: oklch(0.97 0.003 75 / 0.07);
+    --computed-dark-theme-surface-border-4: oklch(0.97 0.003 75 / 0.075);
+    --computed-dark-theme-surface-border-5: oklch(0.97 0.003 75 / 0.084);
+    --computed-dark-theme-surface-border-6: oklch(0.97 0.003 75 / 0.094);
+    --computed-dark-theme-surface-border-7: oklch(0.97 0.003 75 / 0.104);
+    --computed-dark-theme-surface-border-8: oklch(0.97 0.003 75 / 0.116);
+    --computed-dark-theme-surface-highlight: oklch(0.97 0.003 75 / 0.05);
+    --computed-dark-theme-surface-hover: oklch(0.97 0.003 75 / 0.05);
+    --computed-dark-theme-surface-recessed: oklch(0.97 0.003 75 / 0.044);
+    --computed-dark-theme-surface-selected: oklch(0.97 0.003 75 / 0.1);
+    --computed-dark-theme-surface-tint-level-1: oklch(0.1 0.0036 75);
+    --computed-dark-theme-surface-tint-level-2: oklch(0.145 0.0054 75);
+    --computed-dark-theme-surface-tint-level-3: oklch(0.19 0.0078 75);
+    --computed-dark-theme-surface-tint-level-4: oklch(0.24 0.0096 75);
+    --computed-dark-theme-surface-tint-level-5: oklch(0.295 0.011 75);
+    --computed-dark-theme-surface-tint-level-6: oklch(0.35 0.012 75);
+    --computed-dark-theme-surface-tint-level-7: oklch(0.4 0.012 75);
+    --computed-dark-theme-surface-tint-level-8: oklch(0.45 0.012 75);
+    --computed-dark-warning-foreground: oklch(0.1 0.039 82);
+    --computed-lg-brand-typography-code-lg-letterspacing: 0px;
+    --computed-lg-brand-typography-code-lg-line-height: 26px;
+    --computed-lg-brand-typography-code-lg-size: 20px;
+    --computed-lg-brand-typography-code-md-letterspacing: 0px;
+    --computed-lg-brand-typography-code-md-line-height: 23px;
+    --computed-lg-brand-typography-code-md-size: 18px;
+    --computed-lg-brand-typography-code-sm-letterspacing: 0px;
+    --computed-lg-brand-typography-code-sm-line-height: 21px;
+    --computed-lg-brand-typography-code-sm-size: 16px;
+    --computed-lg-brand-typography-code-xs-letterspacing: 0px;
+    --computed-lg-brand-typography-code-xs-line-height: 18px;
+    --computed-lg-brand-typography-code-xs-size: 14px;
+    --computed-lg-brand-typography-control-lg-line-height: 24px;
+    --computed-lg-brand-typography-control-lg-size: 18px;
+    --computed-lg-brand-typography-control-md-line-height: 22px;
+    --computed-lg-brand-typography-control-md-size: 16px;
+    --computed-lg-brand-typography-control-sm-line-height: 19px;
+    --computed-lg-brand-typography-control-sm-size: 14px;
+    --computed-lg-brand-typography-display-lg-letterspacing: -1.44px;
+    --computed-lg-brand-typography-display-lg-line-height: 79px;
+    --computed-lg-brand-typography-display-lg-size: 72px;
+    --computed-lg-brand-typography-display-md-letterspacing: -1.08px;
+    --computed-lg-brand-typography-display-md-line-height: 62px;
+    --computed-lg-brand-typography-display-md-size: 54px;
+    --computed-lg-brand-typography-display-sm-letterspacing: -0.9px;
+    --computed-lg-brand-typography-display-sm-line-height: 52px;
+    --computed-lg-brand-typography-display-sm-size: 45px;
+    --computed-lg-brand-typography-display-xs-letterspacing: -0.72px;
+    --computed-lg-brand-typography-display-xs-line-height: 41px;
+    --computed-lg-brand-typography-display-xs-size: 36px;
+    --computed-lg-brand-typography-eyebrow-lg-letterspacing: 2.9px;
+    --computed-lg-brand-typography-eyebrow-lg-line-height: 38px;
+    --computed-lg-brand-typography-eyebrow-lg-size: 29px;
+    --computed-lg-brand-typography-eyebrow-md-letterspacing: 2.2px;
+    --computed-lg-brand-typography-eyebrow-md-line-height: 29px;
+    --computed-lg-brand-typography-eyebrow-md-size: 22px;
+    --computed-lg-brand-typography-eyebrow-sm-letterspacing: 1.8px;
+    --computed-lg-brand-typography-eyebrow-sm-line-height: 23px;
+    --computed-lg-brand-typography-eyebrow-sm-size: 18px;
+    --computed-lg-brand-typography-headline-lg-letterspacing: -0.72px;
+    --computed-lg-brand-typography-headline-lg-line-height: 43px;
+    --computed-lg-brand-typography-headline-lg-size: 36px;
+    --computed-lg-brand-typography-headline-md-letterspacing: -0.27px;
+    --computed-lg-brand-typography-headline-md-line-height: 34px;
+    --computed-lg-brand-typography-headline-md-size: 27px;
+    --computed-lg-brand-typography-headline-sm-letterspacing: -0.23px;
+    --computed-lg-brand-typography-headline-sm-line-height: 30px;
+    --computed-lg-brand-typography-headline-sm-size: 23px;
+    --computed-lg-brand-typography-headline-xs-letterspacing: -0.18px;
+    --computed-lg-brand-typography-headline-xs-line-height: 23px;
+    --computed-lg-brand-typography-paragraph-lg-letterspacing: 0px;
+    --computed-lg-brand-typography-paragraph-lg-line-height: 26px;
+    --computed-lg-brand-typography-paragraph-lg-size: 20px;
+    --computed-lg-brand-typography-paragraph-md-letterspacing: 0px;
+    --computed-lg-brand-typography-paragraph-md-line-height: 23px;
+    --computed-lg-brand-typography-paragraph-sm-letterspacing: 0px;
+    --computed-lg-brand-typography-paragraph-sm-line-height: 21px;
+    --computed-lg-brand-typography-paragraph-sm-size: 16px;
+    --computed-lg-brand-typography-paragraph-xs-letterspacing: 0px;
+    --computed-lg-brand-typography-paragraph-xs-line-height: 18px;
+    --computed-lg-brand-typography-paragraph-xs-size: 14px;
+    --computed-light-account-action-destructive-foreground: oklch(0.995 0.0105 32);
+    --computed-light-account-action-primary-foreground: oklch(0.995 0.007 152);
+    --computed-light-brand-primary-hover: oklch(0.995 0.007 152);
+    --computed-light-brand-white: oklch(0.995 0.007 152);
+    --computed-light-color-fd-accent-foreground: oklch(0.995 0.0112 140);
+    --computed-light-color-intent-error-on-error: oklch(0.995 0.0105 32);
+    --computed-light-color-intent-error-on-error-hover: oklch(0.995 0.0105 32);
+    --computed-light-color-intent-info-on-info: oklch(0.995 0.0056 225);
+    --computed-light-color-intent-info-on-info-hover: oklch(0.995 0.0056 225);
+    --computed-light-color-intent-success-on-success: oklch(0.995 0.0084 118);
+    --computed-light-color-intent-success-on-success-hover: oklch(0.995 0.0084 118);
+    --computed-light-color-intent-warning-on-warning: oklch(0.24 0.0585 82);
+    --computed-light-color-intent-warning-on-warning-hover: oklch(0.995 0.0091 82);
+    --computed-light-color-primary-on-brand: oklch(0.995 0.007 152);
+    --computed-light-color-primary-on-brand-hover: oklch(0.995 0.007 152);
+    --computed-light-color-secondary-on-brand: oklch(0.995 0.0112 140);
+    --computed-light-color-secondary-on-brand-hover: oklch(0.995 0.0112 140);
+    --computed-light-color-tertiary-on-brand: oklch(0.995 0.0077 55);
+    --computed-light-color-tertiary-on-brand-hover: oklch(0.995 0.0077 55);
+    --computed-light-destructive-foreground: oklch(0.995 0.0105 32);
+    --computed-light-info-foreground: oklch(0.995 0.0056 225);
+    --computed-light-primary-foreground: oklch(0.995 0.007 152);
+    --computed-light-rating-foreground: oklch(0.995 0.007 152);
+    --computed-light-secondary-foreground: oklch(0.995 0.0112 140);
+    --computed-light-sidebar-primary-foreground: oklch(0.995 0.007 152);
+    --computed-light-success-foreground: oklch(0.995 0.0084 118);
+    --computed-light-swatch-text-selected: oklch(0.995 0.007 152);
+    --computed-light-tertiary-foreground: oklch(0.995 0.0077 55);
+    --computed-light-theme-color-neutral-1: oklch(0.995 0.0008 75);
+    --computed-light-theme-color-neutral-2: oklch(0.9775 0.0016 75);
+    --computed-light-theme-color-neutral-3: oklch(0.95 0.0026 75);
+    --computed-light-theme-color-neutral-4: oklch(0.915 0.0038 75);
+    --computed-light-theme-color-neutral-5: oklch(0.87 0.0054 75);
+    --computed-light-theme-color-neutral-6: oklch(0.83 0.0072 75);
+    --computed-light-theme-color-neutral-7: oklch(0.76 0.0094 75);
+    --computed-light-theme-color-neutral-8: oklch(0.65 0.0114 75);
+    --computed-light-theme-color-neutral-10: oklch(0.52 0.012 75);
+    --computed-light-theme-color-neutral-11: oklch(0.43 0.0094 75);
+    --computed-light-theme-color-neutral-12: oklch(0.24 0.0054 75);
+    --computed-light-theme-color-primary-1: oklch(0.995 0.007 152);
+    --computed-light-theme-color-primary-2: oklch(0.9775 0.013 152);
+    --computed-light-theme-color-primary-3: oklch(0.95 0.022 152);
+    --computed-light-theme-color-primary-4: oklch(0.915 0.032 152);
+    --computed-light-theme-color-primary-5: oklch(0.87 0.045 152);
+    --computed-light-theme-color-primary-6: oklch(0.83 0.06 152);
+    --computed-light-theme-color-primary-7: oklch(0.76 0.078 152);
+    --computed-light-theme-color-primary-8: oklch(0.65 0.095 152);
+    --computed-light-theme-color-primary-10: oklch(0.52 0.1 152);
+    --computed-light-theme-color-primary-11: oklch(0.43 0.078 152);
+    --computed-light-theme-color-primary-12: oklch(0.24 0.045 152);
+    --computed-light-theme-color-secondary-1: oklch(0.995 0.0112 140);
+    --computed-light-theme-color-secondary-2: oklch(0.9775 0.0208 140);
+    --computed-light-theme-color-secondary-3: oklch(0.95 0.0352 140);
+    --computed-light-theme-color-secondary-4: oklch(0.915 0.0512 140);
+    --computed-light-theme-color-secondary-5: oklch(0.87 0.072 140);
+    --computed-light-theme-color-secondary-6: oklch(0.83 0.096 140);
+    --computed-light-theme-color-secondary-7: oklch(0.76 0.1248 140);
+    --computed-light-theme-color-secondary-8: oklch(0.65 0.152 140);
+    --computed-light-theme-color-secondary-10: oklch(0.52 0.16 140);
+    --computed-light-theme-color-secondary-11: oklch(0.43 0.1248 140);
+    --computed-light-theme-color-secondary-12: oklch(0.24 0.072 140);
+    --computed-light-theme-color-tertiary-1: oklch(0.995 0.0077 55);
+    --computed-light-theme-color-tertiary-2: oklch(0.9775 0.0143 55);
+    --computed-light-theme-color-tertiary-3: oklch(0.95 0.0242 55);
+    --computed-light-theme-color-tertiary-4: oklch(0.915 0.0352 55);
+    --computed-light-theme-color-tertiary-5: oklch(0.87 0.0495 55);
+    --computed-light-theme-color-tertiary-6: oklch(0.83 0.066 55);
+    --computed-light-theme-color-tertiary-7: oklch(0.76 0.0858 55);
+    --computed-light-theme-color-tertiary-8: oklch(0.65 0.1045 55);
+    --computed-light-theme-color-tertiary-10: oklch(0.52 0.11 55);
+    --computed-light-theme-color-tertiary-11: oklch(0.43 0.0858 55);
+    --computed-light-theme-color-tertiary-12: oklch(0.24 0.0495 55);
+    --computed-light-theme-color-utility-error-1: oklch(0.995 0.0105 32);
+    --computed-light-theme-color-utility-error-2: oklch(0.9775 0.0195 32);
+    --computed-light-theme-color-utility-error-3: oklch(0.95 0.033 32);
+    --computed-light-theme-color-utility-error-4: oklch(0.915 0.048 32);
+    --computed-light-theme-color-utility-error-5: oklch(0.87 0.0675 32);
+    --computed-light-theme-color-utility-error-6: oklch(0.83 0.09 32);
+    --computed-light-theme-color-utility-error-7: oklch(0.76 0.117 32);
+    --computed-light-theme-color-utility-error-8: oklch(0.65 0.1425 32);
+    --computed-light-theme-color-utility-error-10: oklch(0.52 0.15 32);
+    --computed-light-theme-color-utility-error-11: oklch(0.43 0.117 32);
+    --computed-light-theme-color-utility-error-12: oklch(0.24 0.0675 32);
+    --computed-light-theme-color-utility-info-1: oklch(0.995 0.0056 225);
+    --computed-light-theme-color-utility-info-2: oklch(0.9775 0.0104 225);
+    --computed-light-theme-color-utility-info-3: oklch(0.95 0.0176 225);
+    --computed-light-theme-color-utility-info-4: oklch(0.915 0.0256 225);
+    --computed-light-theme-color-utility-info-5: oklch(0.87 0.036 225);
+    --computed-light-theme-color-utility-info-6: oklch(0.83 0.048 225);
+    --computed-light-theme-color-utility-info-7: oklch(0.76 0.0624 225);
+    --computed-light-theme-color-utility-info-8: oklch(0.65 0.076 225);
+    --computed-light-theme-color-utility-info-10: oklch(0.52 0.08 225);
+    --computed-light-theme-color-utility-info-11: oklch(0.43 0.0624 225);
+    --computed-light-theme-color-utility-info-12: oklch(0.24 0.036 225);
+    --computed-light-theme-color-utility-success-1: oklch(0.995 0.0084 118);
+    --computed-light-theme-color-utility-success-2: oklch(0.9775 0.0156 118);
+    --computed-light-theme-color-utility-success-3: oklch(0.95 0.0264 118);
+    --computed-light-theme-color-utility-success-4: oklch(0.915 0.0384 118);
+    --computed-light-theme-color-utility-success-5: oklch(0.87 0.054 118);
+    --computed-light-theme-color-utility-success-6: oklch(0.83 0.072 118);
+    --computed-light-theme-color-utility-success-7: oklch(0.76 0.0936 118);
+    --computed-light-theme-color-utility-success-8: oklch(0.65 0.114 118);
+    --computed-light-theme-color-utility-success-10: oklch(0.52 0.12 118);
+    --computed-light-theme-color-utility-success-11: oklch(0.43 0.0936 118);
+    --computed-light-theme-color-utility-success-12: oklch(0.24 0.054 118);
+    --computed-light-theme-color-utility-warning-1: oklch(0.995 0.0091 82);
+    --computed-light-theme-color-utility-warning-2: oklch(0.9775 0.0169 82);
+    --computed-light-theme-color-utility-warning-3: oklch(0.95 0.0286 82);
+    --computed-light-theme-color-utility-warning-4: oklch(0.915 0.0416 82);
+    --computed-light-theme-color-utility-warning-5: oklch(0.87 0.0585 82);
+    --computed-light-theme-color-utility-warning-6: oklch(0.83 0.078 82);
+    --computed-light-theme-color-utility-warning-7: oklch(0.76 0.1014 82);
+    --computed-light-theme-color-utility-warning-8: oklch(0.65 0.1235 82);
+    --computed-light-theme-color-utility-warning-10: oklch(0.52 0.13 82);
+    --computed-light-theme-color-utility-warning-11: oklch(0.43 0.1014 82);
+    --computed-light-theme-color-utility-warning-12: oklch(0.24 0.0585 82);
+    --computed-light-theme-control-border: oklch(0.24 0.0054 75 / 0.493);
+    --computed-light-theme-control-border-hover: oklch(0.24 0.0054 75 / 0.63);
+    --computed-light-theme-surface-border-1: oklch(0.24 0.0054 75 / 0.105);
+    --computed-light-theme-surface-border-2: oklch(0.24 0.0054 75 / 0.102);
+    --computed-light-theme-surface-border-3: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-border-4: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-border-5: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-border-6: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-border-7: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-border-8: oklch(0.24 0.0054 75 / 0.099);
+    --computed-light-theme-surface-highlight: oklch(0.995 0.0008 75 / 0);
+    --computed-light-theme-surface-hover: oklch(0.24 0.0054 75 / 0.05);
+    --computed-light-theme-surface-recessed: oklch(0.24 0.0054 75 / 0.05);
+    --computed-light-theme-surface-selected: oklch(0.24 0.0054 75 / 0.1);
+    --computed-light-theme-surface-tint-level-1: oklch(0.95 0.0026 75);
+    --computed-light-theme-surface-tint-level-2: oklch(0.9775 0.0016 75);
+    --computed-light-theme-surface-tint-level-3: oklch(0.995 0.0008 75);
+    --computed-light-theme-surface-tint-level-4: oklch(0.995 0.0008 75);
+    --computed-light-theme-surface-tint-level-5: oklch(0.995 0.0008 75);
+    --computed-light-theme-surface-tint-level-6: oklch(0.995 0.0008 75);
+    --computed-light-theme-surface-tint-level-7: oklch(0.995 0.0008 75);
+    --computed-light-theme-surface-tint-level-8: oklch(0.995 0.0008 75);
+    --computed-light-warning-foreground: oklch(0.24 0.0585 82);
+    --computed-md-brand-typography-code-lg-letterspacing: 0px;
+    --computed-md-brand-typography-code-lg-line-height: 23px;
+    --computed-md-brand-typography-code-lg-size: 18px;
+    --computed-md-brand-typography-code-md-letterspacing: 0px;
+    --computed-md-brand-typography-code-md-line-height: 21px;
+    --computed-md-brand-typography-code-md-size: 16px;
+    --computed-md-brand-typography-code-sm-letterspacing: 0px;
+    --computed-md-brand-typography-code-sm-line-height: 18px;
+    --computed-md-brand-typography-code-sm-size: 14px;
+    --computed-md-brand-typography-code-xs-letterspacing: 0px;
+    --computed-md-brand-typography-code-xs-line-height: 16px;
+    --computed-md-brand-typography-code-xs-size: 12px;
+    --computed-md-brand-typography-control-lg-line-height: 22px;
+    --computed-md-brand-typography-control-lg-size: 16px;
+    --computed-md-brand-typography-control-md-line-height: 19px;
+    --computed-md-brand-typography-control-md-size: 14px;
+    --computed-md-brand-typography-control-sm-line-height: 16px;
+    --computed-md-brand-typography-control-sm-size: 12px;
+    --computed-md-brand-typography-display-lg-letterspacing: -1.28px;
+    --computed-md-brand-typography-display-lg-line-height: 70px;
+    --computed-md-brand-typography-display-lg-size: 64px;
+    --computed-md-brand-typography-display-md-letterspacing: -0.96px;
+    --computed-md-brand-typography-display-md-line-height: 55px;
+    --computed-md-brand-typography-display-md-size: 48px;
+    --computed-md-brand-typography-display-sm-letterspacing: -0.8px;
+    --computed-md-brand-typography-display-sm-line-height: 46px;
+    --computed-md-brand-typography-display-sm-size: 40px;
+    --computed-md-brand-typography-display-xs-letterspacing: -0.64px;
+    --computed-md-brand-typography-display-xs-line-height: 37px;
+    --computed-md-brand-typography-display-xs-size: 32px;
+    --computed-md-brand-typography-eyebrow-lg-letterspacing: 2.6px;
+    --computed-md-brand-typography-eyebrow-lg-line-height: 34px;
+    --computed-md-brand-typography-eyebrow-lg-size: 26px;
+    --computed-md-brand-typography-eyebrow-md-letterspacing: 1.9px;
+    --computed-md-brand-typography-eyebrow-md-line-height: 25px;
+    --computed-md-brand-typography-eyebrow-md-size: 19px;
+    --computed-md-brand-typography-eyebrow-sm-letterspacing: 1.6px;
+    --computed-md-brand-typography-eyebrow-sm-line-height: 21px;
+    --computed-md-brand-typography-eyebrow-sm-size: 16px;
+    --computed-md-brand-typography-headline-lg-letterspacing: -0.64px;
+    --computed-md-brand-typography-headline-lg-line-height: 38px;
+    --computed-md-brand-typography-headline-lg-size: 32px;
+    --computed-md-brand-typography-headline-md-letterspacing: -0.24px;
+    --computed-md-brand-typography-headline-md-line-height: 30px;
+    --computed-md-brand-typography-headline-md-size: 24px;
+    --computed-md-brand-typography-headline-sm-letterspacing: -0.2px;
+    --computed-md-brand-typography-headline-sm-line-height: 26px;
+    --computed-md-brand-typography-headline-sm-size: 20px;
+    --computed-md-brand-typography-headline-xs-letterspacing: -0.16px;
+    --computed-md-brand-typography-headline-xs-line-height: 21px;
+    --computed-md-brand-typography-paragraph-lg-letterspacing: 0px;
+    --computed-md-brand-typography-paragraph-lg-line-height: 23px;
+    --computed-md-brand-typography-paragraph-lg-size: 18px;
+    --computed-md-brand-typography-paragraph-md-letterspacing: 0px;
+    --computed-md-brand-typography-paragraph-md-line-height: 21px;
+    --computed-md-brand-typography-paragraph-sm-letterspacing: 0px;
+    --computed-md-brand-typography-paragraph-sm-line-height: 18px;
+    --computed-md-brand-typography-paragraph-sm-size: 14px;
+    --computed-md-brand-typography-paragraph-xs-letterspacing: 0px;
+    --computed-md-brand-typography-paragraph-xs-line-height: 16px;
+    --computed-md-brand-typography-paragraph-xs-size: 12px;
+    --computed-sm-brand-typography-code-lg-letterspacing: 0px;
+    --computed-sm-brand-typography-code-lg-line-height: 21px;
+    --computed-sm-brand-typography-code-lg-size: 16px;
+    --computed-sm-brand-typography-code-md-letterspacing: 0px;
+    --computed-sm-brand-typography-code-md-line-height: 18px;
+    --computed-sm-brand-typography-code-md-size: 14px;
+    --computed-sm-brand-typography-code-sm-letterspacing: 0px;
+    --computed-sm-brand-typography-code-sm-line-height: 16px;
+    --computed-sm-brand-typography-code-sm-size: 12px;
+    --computed-sm-brand-typography-code-xs-letterspacing: 0px;
+    --computed-sm-brand-typography-code-xs-line-height: 14px;
+    --computed-sm-brand-typography-code-xs-size: 11px;
+    --computed-sm-brand-typography-control-lg-line-height: 19px;
+    --computed-sm-brand-typography-control-lg-size: 14px;
+    --computed-sm-brand-typography-control-md-line-height: 16px;
+    --computed-sm-brand-typography-control-md-size: 12px;
+    --computed-sm-brand-typography-control-sm-line-height: 16px;
+    --computed-sm-brand-typography-control-sm-size: 12px;
+    --computed-sm-brand-typography-display-lg-letterspacing: -1.12px;
+    --computed-sm-brand-typography-display-lg-line-height: 62px;
+    --computed-sm-brand-typography-display-lg-size: 56px;
+    --computed-sm-brand-typography-display-md-letterspacing: -0.84px;
+    --computed-sm-brand-typography-display-md-line-height: 48px;
+    --computed-sm-brand-typography-display-md-size: 42px;
+    --computed-sm-brand-typography-display-sm-letterspacing: -0.7px;
+    --computed-sm-brand-typography-display-sm-line-height: 40px;
+    --computed-sm-brand-typography-display-sm-size: 35px;
+    --computed-sm-brand-typography-display-xs-letterspacing: -0.56px;
+    --computed-sm-brand-typography-display-xs-line-height: 32px;
+    --computed-sm-brand-typography-display-xs-size: 28px;
+    --computed-sm-brand-typography-eyebrow-lg-letterspacing: 2.2px;
+    --computed-sm-brand-typography-eyebrow-lg-line-height: 29px;
+    --computed-sm-brand-typography-eyebrow-lg-size: 22px;
+    --computed-sm-brand-typography-eyebrow-md-letterspacing: 1.7px;
+    --computed-sm-brand-typography-eyebrow-md-line-height: 22px;
+    --computed-sm-brand-typography-eyebrow-md-size: 17px;
+    --computed-sm-brand-typography-eyebrow-sm-letterspacing: 1.4px;
+    --computed-sm-brand-typography-eyebrow-sm-line-height: 18px;
+    --computed-sm-brand-typography-eyebrow-sm-size: 14px;
+    --computed-sm-brand-typography-headline-lg-letterspacing: -0.56px;
+    --computed-sm-brand-typography-headline-lg-line-height: 34px;
+    --computed-sm-brand-typography-headline-lg-size: 28px;
+    --computed-sm-brand-typography-headline-md-letterspacing: -0.21px;
+    --computed-sm-brand-typography-headline-md-line-height: 26px;
+    --computed-sm-brand-typography-headline-md-size: 21px;
+    --computed-sm-brand-typography-headline-sm-letterspacing: -0.18px;
+    --computed-sm-brand-typography-headline-sm-line-height: 23px;
+    --computed-sm-brand-typography-headline-sm-size: 18px;
+    --computed-sm-brand-typography-headline-xs-letterspacing: -0.14px;
+    --computed-sm-brand-typography-headline-xs-line-height: 18px;
+    --computed-sm-brand-typography-paragraph-lg-letterspacing: 0px;
+    --computed-sm-brand-typography-paragraph-lg-line-height: 21px;
+    --computed-sm-brand-typography-paragraph-lg-size: 16px;
+    --computed-sm-brand-typography-paragraph-md-letterspacing: 0px;
+    --computed-sm-brand-typography-paragraph-md-line-height: 18px;
+    --computed-sm-brand-typography-paragraph-sm-letterspacing: 0px;
+    --computed-sm-brand-typography-paragraph-sm-line-height: 16px;
+    --computed-sm-brand-typography-paragraph-sm-size: 12px;
+    --computed-sm-brand-typography-paragraph-xs-letterspacing: 0px;
+    --computed-sm-brand-typography-paragraph-xs-line-height: 14px;
+    --computed-sm-brand-typography-paragraph-xs-size: 11px;
+  }
+}

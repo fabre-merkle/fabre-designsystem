@@ -1,0 +1,956 @@
+{
+  "text-style": {
+    "code": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.code.lg.fontSize}",
+          "fontFamily": "{typography.code.lg.fontFamily}",
+          "fontWeight": "{typography.code.lg.fontWeight}",
+          "lineHeight": "{typography.code.lg.lineHeight}",
+          "letterSpacing": "{typography.code.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Featured code and large technical text, in Geist Mono."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.code.md.fontSize}",
+          "fontFamily": "{typography.code.md.fontFamily}",
+          "fontWeight": "{typography.code.md.fontWeight}",
+          "lineHeight": "{typography.code.md.lineHeight}",
+          "letterSpacing": "{typography.code.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Default code blocks and technical annotations, in Geist Mono."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.code.sm.fontSize}",
+          "fontFamily": "{typography.code.sm.fontFamily}",
+          "fontWeight": "{typography.code.sm.fontWeight}",
+          "lineHeight": "{typography.code.sm.lineHeight}",
+          "letterSpacing": "{typography.code.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Inline code, IDs and data values, in Geist Mono."
+      },
+      "xs": {
+        "$value": {
+          "fontSize": "{typography.code.xs.fontSize}",
+          "fontFamily": "{typography.code.xs.fontFamily}",
+          "fontWeight": "{typography.code.xs.fontWeight}",
+          "lineHeight": "{typography.code.xs.lineHeight}",
+          "letterSpacing": "{typography.code.xs.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Compact technical annotations and data values, in Geist Mono."
+      }
+    },
+    "control": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.control.lg.fontSize}",
+          "fontFamily": "{typography.control.lg.fontFamily}",
+          "fontWeight": "{typography.control.lg.fontWeight}",
+          "lineHeight": "{typography.control.lg.lineHeight}",
+          "letterSpacing": "{typography.control.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Label text for large controls."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.control.md.fontSize}",
+          "fontFamily": "{typography.control.md.fontFamily}",
+          "fontWeight": "{typography.control.md.fontWeight}",
+          "lineHeight": "{typography.control.md.lineHeight}",
+          "letterSpacing": "{typography.control.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Label text for default-size controls."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.control.sm.fontSize}",
+          "fontFamily": "{typography.control.sm.fontFamily}",
+          "fontWeight": "{typography.control.sm.fontWeight}",
+          "lineHeight": "{typography.control.sm.lineHeight}",
+          "letterSpacing": "{typography.control.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Label text for small controls."
+      }
+    },
+    "display": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.display.lg.fontSize}",
+          "fontFamily": "{typography.display.lg.fontFamily}",
+          "fontWeight": "{typography.display.lg.fontWeight}",
+          "lineHeight": "{typography.display.lg.lineHeight}",
+          "letterSpacing": "{typography.display.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Large focal text for a hero or page introduction. Keep it to a short phrase."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.display.md.fontSize}",
+          "fontFamily": "{typography.display.md.fontFamily}",
+          "fontWeight": "{typography.display.md.fontWeight}",
+          "lineHeight": "{typography.display.md.lineHeight}",
+          "letterSpacing": "{typography.display.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Focal text for secondary heroes and feature introductions. Keep it brief."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.display.sm.fontSize}",
+          "fontFamily": "{typography.display.sm.fontFamily}",
+          "fontWeight": "{typography.display.sm.fontWeight}",
+          "lineHeight": "{typography.display.sm.lineHeight}",
+          "letterSpacing": "{typography.display.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Focal text for compact heroes and feature introductions. Keep it brief."
+      },
+      "xs": {
+        "$value": {
+          "fontSize": "{typography.display.xs.fontSize}",
+          "fontFamily": "{typography.display.xs.fontFamily}",
+          "fontWeight": "{typography.display.xs.fontWeight}",
+          "lineHeight": "{typography.display.xs.lineHeight}",
+          "letterSpacing": "{typography.display.xs.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Smallest display style for short feature headings. Keep it brief.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [],
+            "codeSyntax": {},
+            "hiddenFromPublishing": false
+          }
+        }
+      }
+    },
+    "eyebrow": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.eyebrow.lg.fontSize}",
+          "fontFamily": "{typography.eyebrow.lg.fontFamily}",
+          "fontWeight": "{typography.eyebrow.lg.fontWeight}",
+          "lineHeight": "{typography.eyebrow.lg.lineHeight}",
+          "letterSpacing": "{typography.eyebrow.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Short context label, such as a section or category, above a large heading."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.eyebrow.md.fontSize}",
+          "fontFamily": "{typography.eyebrow.md.fontFamily}",
+          "fontWeight": "{typography.eyebrow.md.fontWeight}",
+          "lineHeight": "{typography.eyebrow.md.lineHeight}",
+          "letterSpacing": "{typography.eyebrow.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Short context label above a section heading."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.eyebrow.sm.fontSize}",
+          "fontFamily": "{typography.eyebrow.sm.fontFamily}",
+          "fontWeight": "{typography.eyebrow.sm.fontWeight}",
+          "lineHeight": "{typography.eyebrow.sm.lineHeight}",
+          "letterSpacing": "{typography.eyebrow.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Compact context label for content containers and dense layouts."
+      }
+    },
+    "headline": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.headline.lg.fontSize}",
+          "fontFamily": "{typography.headline.lg.fontFamily}",
+          "fontWeight": "{typography.headline.lg.fontWeight}",
+          "lineHeight": "{typography.headline.lg.lineHeight}",
+          "letterSpacing": "{typography.headline.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Top-level heading that establishes the page hierarchy."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.headline.md.fontSize}",
+          "fontFamily": "{typography.headline.md.fontFamily}",
+          "fontWeight": "{typography.headline.md.fontWeight}",
+          "lineHeight": "{typography.headline.md.lineHeight}",
+          "letterSpacing": "{typography.headline.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Section heading within a page."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.headline.sm.fontSize}",
+          "fontFamily": "{typography.headline.sm.fontFamily}",
+          "fontWeight": "{typography.headline.sm.fontWeight}",
+          "lineHeight": "{typography.headline.sm.lineHeight}",
+          "letterSpacing": "{typography.headline.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Subsection heading within a section."
+      },
+      "xs": {
+        "$value": {
+          "fontSize": "{typography.headline.xs.fontSize}",
+          "fontFamily": "{typography.headline.xs.fontFamily}",
+          "fontWeight": "{typography.headline.xs.fontWeight}",
+          "lineHeight": "{typography.headline.xs.lineHeight}",
+          "letterSpacing": "{typography.headline.xs.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Compact heading for content containers and dense layouts."
+      }
+    },
+    "legal": {
+      "$value": {
+        "fontSize": "{typography.legal.fontSize}",
+        "fontFamily": "{typography.legal.fontFamily}",
+        "fontWeight": "{typography.legal.fontWeight}",
+        "lineHeight": "{typography.legal.lineHeight}",
+        "letterSpacing": "{typography.legal.letterSpacing}"
+      },
+      "$type": "typography",
+      "$description": "Short supporting notices. Check readability rather than applying it automatically to all legal content."
+    },
+    "link": {
+      "$value": {
+        "fontSize": "{typography.link.fontSize}",
+        "fontFamily": "{typography.link.fontFamily}",
+        "fontWeight": "{typography.link.fontWeight}",
+        "lineHeight": "{typography.link.lineHeight}",
+        "letterSpacing": "{typography.link.letterSpacing}"
+      },
+      "$type": "typography",
+      "$description": "Text recipe for a link. Use a real link with a visible interaction affordance."
+    },
+    "paragraph": {
+      "lg": {
+        "$value": {
+          "fontSize": "{typography.paragraph.lg.fontSize}",
+          "fontFamily": "{typography.paragraph.lg.fontFamily}",
+          "fontWeight": "{typography.paragraph.lg.fontWeight}",
+          "lineHeight": "{typography.paragraph.lg.lineHeight}",
+          "letterSpacing": "{typography.paragraph.lg.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Lead or introductory body copy."
+      },
+      "md": {
+        "$value": {
+          "fontSize": "{typography.paragraph.md.fontSize}",
+          "fontFamily": "{typography.paragraph.md.fontFamily}",
+          "fontWeight": "{typography.paragraph.md.fontWeight}",
+          "lineHeight": "{typography.paragraph.md.lineHeight}",
+          "letterSpacing": "{typography.paragraph.md.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Default body copy for most reading content."
+      },
+      "sm": {
+        "$value": {
+          "fontSize": "{typography.paragraph.sm.fontSize}",
+          "fontFamily": "{typography.paragraph.sm.fontFamily}",
+          "fontWeight": "{typography.paragraph.sm.fontWeight}",
+          "lineHeight": "{typography.paragraph.sm.lineHeight}",
+          "letterSpacing": "{typography.paragraph.sm.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Supporting text, such as captions and secondary descriptions."
+      },
+      "xs": {
+        "$value": {
+          "fontSize": "{typography.paragraph.xs.fontSize}",
+          "fontFamily": "{typography.paragraph.xs.fontFamily}",
+          "fontWeight": "{typography.paragraph.xs.fontWeight}",
+          "lineHeight": "{typography.paragraph.xs.lineHeight}",
+          "letterSpacing": "{typography.paragraph.xs.letterSpacing}"
+        },
+        "$type": "typography",
+        "$description": "Smallest supporting text for metadata. Check that it remains readable in its actual layout."
+      }
+    }
+  },
+  "typography": {
+    "code": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.code.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Monospace typeface for featured code. Pairs with typography.code.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.code.lg.size}",
+          "$type": "dimension",
+          "$description": "Font size for featured code and large technical text. Pairs with typography.code.lg.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.code.lg.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for featured code. Pairs with typography.code.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.code.lg.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for featured code. Pairs with typography.code.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.code.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for featured code. Pairs with typography.code.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.code.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Monospace typeface for code blocks. Pairs with typography.code.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.code.md.size}",
+          "$type": "dimension",
+          "$description": "Font size for default code blocks and technical annotations. Pairs with typography.code.md.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.code.md.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for code blocks. Pairs with typography.code.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.code.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for code blocks. Pairs with typography.code.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.code.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for code blocks. Pairs with typography.code.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.code.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Monospace typeface for inline code. Pairs with typography.code.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.code.sm.size}",
+          "$type": "dimension",
+          "$description": "Font size for inline code, IDs and data values. Pairs with typography.code.sm.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.code.sm.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for inline code. Pairs with typography.code.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.code.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for inline code. Pairs with typography.code.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.code.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for inline code. Pairs with typography.code.sm.fontSize."
+        }
+      },
+      "xs": {
+        "fontFamily": {
+          "$value": "{brand.typography.code.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Monospace typeface for compact annotations. Pairs with typography.code.xs.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.code.xs.size}",
+          "$type": "dimension",
+          "$description": "Font size for compact technical annotations and data values. Pairs with typography.code.xs.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.code.xs.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for compact annotations. Pairs with typography.code.xs.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.code.xs.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for compact annotations. Pairs with typography.code.xs.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.code.xs.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for compact annotations. Pairs with typography.code.xs.fontSize."
+        }
+      }
+    },
+    "control": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Font family for large control labels. Pairs with typography.control.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.control.lg.size}",
+          "$type": "dimension",
+          "$description": "Label size for large controls such as hero buttons. Pairs with control.height.lg."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.control.weight}",
+          "$type": "fontWeight",
+          "$description": "Label weight for large controls. Pairs with typography.control.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for large control labels. Pairs with typography.control.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.control.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Single-line height for large control labels. Pairs with typography.control.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Font family for default control labels. Pairs with typography.control.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.control.md.size}",
+          "$type": "dimension",
+          "$description": "Label size for default controls such as buttons, inputs and selects. Pairs with control.height.md."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.control.weight}",
+          "$type": "fontWeight",
+          "$description": "Label weight for default controls. Pairs with typography.control.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for default control labels. Pairs with typography.control.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.control.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Single-line height for default control labels. Pairs with typography.control.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Font family for small control labels. Pairs with typography.control.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.control.sm.size}",
+          "$type": "dimension",
+          "$description": "Label size for small controls such as compact buttons and tabs. Pairs with control.height.sm."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.control.weight}",
+          "$type": "fontWeight",
+          "$description": "Label weight for small controls. Pairs with typography.control.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.xs.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for small control labels. Pairs with typography.control.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.control.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Single-line height for small control labels. Pairs with typography.control.sm.fontSize."
+        }
+      }
+    },
+    "display": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.display.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Display typeface for large hero text. Pairs with typography.display.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.display.lg.size}",
+          "$type": "dimension",
+          "$description": "Font size for large hero text. Pairs with typography.display.lg.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.display.lg.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for large hero text. Pairs with typography.display.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.display.lg.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for large hero text. Pairs with typography.display.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.display.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for large hero text. Pairs with typography.display.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.display.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Display typeface for secondary hero text. Pairs with typography.display.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.display.md.size}",
+          "$type": "dimension",
+          "$description": "Font size for secondary heroes and feature introductions. Pairs with typography.display.md.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.display.md.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for secondary hero text. Pairs with typography.display.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.display.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for secondary hero text. Pairs with typography.display.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.display.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for secondary hero text. Pairs with typography.display.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.display.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Display typeface for compact hero text. Pairs with typography.display.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.display.sm.size}",
+          "$type": "dimension",
+          "$description": "Font size for compact heroes and feature introductions. Pairs with typography.display.sm.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.display.sm.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for compact hero text. Pairs with typography.display.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.display.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for compact hero text. Pairs with typography.display.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.display.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for compact hero text. Pairs with typography.display.sm.fontSize."
+        }
+      },
+      "xs": {
+        "fontFamily": {
+          "$value": "{brand.typography.display.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Display typeface for short feature headings. Pairs with typography.display.xs.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.display.xs.size}",
+          "$type": "dimension",
+          "$description": "Font size for short feature headings, the smallest display style. Pairs with typography.display.xs.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.display.xs.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for short feature headings. Pairs with typography.display.xs.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.display.xs.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for short feature headings. Pairs with typography.display.xs.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.display.xs.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for short feature headings. Pairs with typography.display.xs.fontSize."
+        }
+      }
+    },
+    "eyebrow": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.eyebrow.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for large eyebrow labels. Pairs with typography.eyebrow.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.eyebrow.lg.size}",
+          "$type": "dimension",
+          "$description": "Font size for context labels above large headings. Pairs with typography.eyebrow.lg.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.eyebrow.lg.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for large eyebrow labels. Pairs with typography.eyebrow.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.eyebrow.lg.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for large eyebrow labels. Pairs with typography.eyebrow.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.eyebrow.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for large eyebrow labels. Pairs with typography.eyebrow.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.eyebrow.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for default eyebrow labels. Pairs with typography.eyebrow.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.eyebrow.md.size}",
+          "$type": "dimension",
+          "$description": "Font size for context labels above section headings. Pairs with typography.eyebrow.md.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.eyebrow.md.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for default eyebrow labels. Pairs with typography.eyebrow.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.eyebrow.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for default eyebrow labels. Pairs with typography.eyebrow.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.eyebrow.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for default eyebrow labels. Pairs with typography.eyebrow.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.eyebrow.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for compact eyebrow labels. Pairs with typography.eyebrow.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.eyebrow.sm.size}",
+          "$type": "dimension",
+          "$description": "Font size for compact context labels in content containers and dense layouts. Pairs with typography.eyebrow.sm.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.eyebrow.sm.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for compact eyebrow labels. Pairs with typography.eyebrow.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.eyebrow.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for compact eyebrow labels. Pairs with typography.eyebrow.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.eyebrow.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for compact eyebrow labels. Pairs with typography.eyebrow.sm.fontSize."
+        }
+      }
+    },
+    "headline": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.headline.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for top-level headings. Pairs with typography.headline.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.headline.lg.size}",
+          "$type": "dimension",
+          "$description": "Font size for top-level page headings. Pairs with typography.headline.lg.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.headline.lg.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for top-level headings. Pairs with typography.headline.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.headline.lg.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for top-level headings. Pairs with typography.headline.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.headline.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for top-level headings. Pairs with typography.headline.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.headline.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for section headings. Pairs with typography.headline.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.headline.md.size}",
+          "$type": "dimension",
+          "$description": "Font size for section headings within a page. Pairs with typography.headline.md.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.headline.md.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for section headings. Pairs with typography.headline.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.headline.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for section headings. Pairs with typography.headline.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.headline.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for section headings. Pairs with typography.headline.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.headline.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for subsection headings. Pairs with typography.headline.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.headline.sm.size}",
+          "$type": "dimension",
+          "$description": "Font size for subsection headings within a section. Pairs with typography.headline.sm.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.headline.sm.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for subsection headings. Pairs with typography.headline.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.headline.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for subsection headings. Pairs with typography.headline.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.headline.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for subsection headings. Pairs with typography.headline.sm.fontSize."
+        }
+      },
+      "xs": {
+        "fontFamily": {
+          "$value": "{brand.typography.headline.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for compact headings. Pairs with typography.headline.xs.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.headline.xs.size}",
+          "$type": "dimension",
+          "$description": "Font size for compact headings in content containers and dense layouts. Pairs with typography.headline.xs.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.headline.xs.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for compact headings. Pairs with typography.headline.xs.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.headline.xs.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for compact headings. Pairs with typography.headline.xs.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.headline.xs.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for compact headings. Pairs with typography.headline.xs.fontSize."
+        }
+      }
+    },
+    "label": {
+      "fontWeight": {
+        "$value": "{brand.typography.paragraph.fontWeight.500}",
+        "$type": "fontWeight",
+        "$description": "Weight for form and UI labels that sit beside inputs. Medium."
+      }
+    },
+    "legal": {
+      "fontFamily": {
+        "$value": "{brand.typography.paragraph.fontFamily}",
+        "$type": "fontFamily",
+        "$description": "Typeface for legal notices. Pairs with typography.legal.fontSize."
+      },
+      "fontSize": {
+        "$value": "{brand.typography.paragraph.xs.size}",
+        "$type": "dimension",
+        "$description": "Font size for short legal and supporting notices. Pairs with typography.legal.lineHeight."
+      },
+      "fontWeight": {
+        "$value": "{brand.typography.paragraph.xs.weight}",
+        "$type": "fontWeight",
+        "$description": "Weight for legal notices. Pairs with typography.legal.fontSize."
+      },
+      "letterSpacing": {
+        "$value": "{brand.typography.paragraph.xs.letterspacing}",
+        "$type": "letterSpacing",
+        "$description": "Tracking for legal notices. Pairs with typography.legal.fontSize."
+      },
+      "lineHeight": {
+        "$value": "{brand.typography.paragraph.xs.lineHeight}",
+        "$type": "lineHeight",
+        "$description": "Line height for legal notices. Pairs with typography.legal.fontSize."
+      }
+    },
+    "link": {
+      "fontFamily": {
+        "$value": "{brand.typography.paragraph.fontFamily}",
+        "$type": "fontFamily",
+        "$description": "Typeface for links. Pairs with typography.link.fontSize."
+      },
+      "fontSize": {
+        "$value": "{brand.typography.paragraph.md.size}",
+        "$type": "dimension",
+        "$description": "Font size for inline links in body copy. Pairs with typography.link.lineHeight."
+      },
+      "fontWeight": {
+        "$value": "{brand.typography.paragraph.md.weight}",
+        "$type": "fontWeight",
+        "$description": "Weight for links. Pairs with typography.link.fontSize."
+      },
+      "letterSpacing": {
+        "$value": "{brand.typography.paragraph.md.letterspacing}",
+        "$type": "letterSpacing",
+        "$description": "Tracking for links. Pairs with typography.link.fontSize."
+      },
+      "lineHeight": {
+        "$value": "{brand.typography.paragraph.md.lineHeight}",
+        "$type": "lineHeight",
+        "$description": "Line height for links. Pairs with typography.link.fontSize."
+      }
+    },
+    "paragraph": {
+      "lg": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for lead body copy. Pairs with typography.paragraph.lg.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.paragraph.lg.size}",
+          "$type": "dimension",
+          "$description": "Font size for lead and introductory body copy. Pairs with typography.paragraph.lg.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.paragraph.lg.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for lead body copy. Pairs with typography.paragraph.lg.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.lg.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for lead body copy. Pairs with typography.paragraph.lg.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.paragraph.lg.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for lead body copy. Pairs with typography.paragraph.lg.fontSize."
+        }
+      },
+      "md": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for default body copy. Pairs with typography.paragraph.md.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.paragraph.md.size}",
+          "$type": "dimension",
+          "$description": "Font size for default body copy in most reading content. Pairs with typography.paragraph.md.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.paragraph.md.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for default body copy. Pairs with typography.paragraph.md.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.md.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for default body copy. Pairs with typography.paragraph.md.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.paragraph.md.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for default body copy. Pairs with typography.paragraph.md.fontSize."
+        }
+      },
+      "sm": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for supporting text. Pairs with typography.paragraph.sm.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.paragraph.sm.size}",
+          "$type": "dimension",
+          "$description": "Font size for supporting text such as captions and secondary descriptions. Pairs with typography.paragraph.sm.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.paragraph.sm.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for supporting text. Pairs with typography.paragraph.sm.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.sm.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for supporting text. Pairs with typography.paragraph.sm.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.paragraph.sm.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for supporting text. Pairs with typography.paragraph.sm.fontSize."
+        }
+      },
+      "xs": {
+        "fontFamily": {
+          "$value": "{brand.typography.paragraph.fontFamily}",
+          "$type": "fontFamily",
+          "$description": "Typeface for metadata text. Pairs with typography.paragraph.xs.fontSize."
+        },
+        "fontSize": {
+          "$value": "{brand.typography.paragraph.xs.size}",
+          "$type": "dimension",
+          "$description": "Font size for the smallest supporting text, such as metadata. Pairs with typography.paragraph.xs.lineHeight."
+        },
+        "fontWeight": {
+          "$value": "{brand.typography.paragraph.xs.weight}",
+          "$type": "fontWeight",
+          "$description": "Weight for metadata text. Pairs with typography.paragraph.xs.fontSize."
+        },
+        "letterSpacing": {
+          "$value": "{brand.typography.paragraph.xs.letterspacing}",
+          "$type": "letterSpacing",
+          "$description": "Tracking for metadata text. Pairs with typography.paragraph.xs.fontSize."
+        },
+        "lineHeight": {
+          "$value": "{brand.typography.paragraph.xs.lineHeight}",
+          "$type": "lineHeight",
+          "$description": "Line height for metadata text. Pairs with typography.paragraph.xs.fontSize."
+        }
+      }
+    }
+  }
+}

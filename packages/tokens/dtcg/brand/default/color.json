@@ -1,0 +1,97 @@
+{
+  "brand": {
+    "color": {
+      "base": {
+        "neutral": {
+          "dark": {
+            "$value": "oklch(0.22, 0.012, 75)",
+            "$type": "color",
+            "$description": "Autumn default neutral (dark mode): bark."
+          },
+          "light": {
+            "$value": "oklch(0.72, 0.012, 75)",
+            "$type": "color",
+            "$description": "Autumn default neutral (light mode): stone."
+          }
+        },
+        "primary": {
+          "$value": "oklch(0.45, 0.1, 152)",
+          "$type": "color",
+          "$description": "Autumn default: pine."
+        },
+        "secondary": {
+          "$value": "oklch(0.5, 0.16, 140)",
+          "$type": "color",
+          "$description": "Autumn default: fern."
+        },
+        "tertiary": {
+          "$value": "oklch(0.48, 0.11, 55)",
+          "$type": "color",
+          "$description": "Autumn default: copper."
+        },
+        "utility": {
+          "error": {
+            "$value": "oklch(0.5, 0.15, 32)",
+            "$type": "color",
+            "$description": "Autumn default error: brick."
+          },
+          "info": {
+            "$value": "oklch(0.5, 0.08, 225)",
+            "$type": "color",
+            "$description": "Autumn default info: slate."
+          },
+          "success": {
+            "$value": "oklch(0.52, 0.12, 118)",
+            "$type": "color",
+            "$description": "Autumn default success: olive."
+          },
+          "warning": {
+            "$value": "oklch(0.87, 0.13, 82)",
+            "$type": "color",
+            "$description": "Autumn default warning: harvest."
+          }
+        }
+      },
+      "tint": {
+        "dark": {
+          "chroma": {
+            "shadow": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "dark mode shadow tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            },
+            "surface": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "dark mode surface tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            }
+          },
+          "source": {
+            "$value": "{brand.color.base.neutral.dark}",
+            "$type": "color",
+            "$description": "dark mode shared structural-surface/shadow hue source. Brand-specific primitive behind the corresponding theme tint control."
+          }
+        },
+        "light": {
+          "chroma": {
+            "shadow": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "light mode shadow tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            },
+            "surface": {
+              "$value": 0,
+              "$type": "number",
+              "$description": "light mode surface tint strength. Brand-specific primitive behind the corresponding theme tint control."
+            }
+          },
+          "source": {
+            "$value": "{brand.color.base.neutral.light}",
+            "$type": "color",
+            "$description": "light mode shared structural-surface/shadow hue source. Brand-specific primitive behind the corresponding theme tint control."
+          }
+        }
+      }
+    }
+  }
+}

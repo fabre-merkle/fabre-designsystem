@@ -1,0 +1,130 @@
+---
+title: Web Grid
+description: Arrange responsive columns, gaps and page insets.
+---
+
+## Interactive example
+
+<DocsStory name="web-grid" />
+
+## Overview
+
+`Grid` lays children out in columns. `Grid.Root` picks the column layout and the gap, `Grid.Item`
+spans columns where a cell needs more than one. Gap, inset and collapse come from the web layer's
+tokens (`--web-grid-gutter`, `--web-grid-margin` and the `data-web` breakpoint), so the same markup
+reads correctly on a phone, a tablet and a desktop with no media queries of your own.
+
+<Callout type="info" title="Not a component">
+  Web Grid is a layout utility with no paint of its own and no Figma form. It is a thin wrapper over
+  CSS grid; reach for plain CSS grid when you need a layout it does not describe.
+</Callout>
+
+## Installation
+
+`Grid` already ships in this project's component library, in the directory chosen when the project
+was scaffolded. Import it from the project's namespace:
+
+```tsx
+import { Grid } from "@workspace/ui/components/web-grid";
+```
+
+### Add or update from the design-system registry
+
+This component is already installed in the design-system repository. To use it in another product, install from this design system's own published registry.
+
+<RelatedPage href="/docs/registry">Configure the design-system namespace, published URL and any required credentials.</RelatedPage>
+
+After publication, search for the component and use the exact item name returned by the registry:
+
+```npm
+npx shadcn@latest search @fabre-designsystem
+npx shadcn@latest add @fabre-designsystem/<item>
+```
+
+Replace `<registry>` with this design system's namespace and `<item>` with the published name. If the registry is not published, use the installed source; do not substitute a different library. Review the diff before accepting an overwrite.
+
+## Usage
+
+```tsx
+import { Grid } from "@workspace/ui/components/web-grid";
+
+<Grid.Root variant="3up" gap="gutter">
+  <Grid.Item>One</Grid.Item>
+  <Grid.Item>Two</Grid.Item>
+  <Grid.Item span={2}>Wide</Grid.Item>
+</Grid.Root>;
+```
+
+Columns collapse on the `data-web` attribute, which [Surface Provider](/docs/components/surface-provider)
+sets on the root element. Mount it once near the root of the app, or the grid keeps its full column
+count at every width.
+
+## Variants
+
+`variant` sets the columns. `1up` to `4up` are equal columns, `2-1` and `1-2` split the row two to
+one, and `auto` fits as many columns as the width allows, each at least 256px at the default scale.
+`2up` is the default.
+
+## Gap
+
+`gap` is `none`, `sm`, `base`, `lg` or `gutter`. The first four map to spacing tokens; `gutter` reads
+`--web-grid-gutter`, which is tighter on a phone and wider on a desktop. `base` is the default.
+
+## Spans
+
+`span` on `Grid.Item` takes 2, 3 or 4 columns, or `full` for the whole row.
+
+## Page margin
+
+`margin` insets the grid by `--web-grid-margin`, the breakpoint-aware page margin, as inline padding.
+Use it on the outermost grid of a page, not on grids nested inside it.
+
+## Container mode
+
+By default a grid collapses on the page breakpoint. A grid inside a sidebar, a panel or a resizable
+region is narrower than the page says it is, so set `container` and it collapses against its own
+width instead, using the same 767px and 1023px steps as the page breakpoints. The grid is wrapped in
+one extra element that carries the container. The Container mode preset puts both grids in the
+same narrow box on a desktop page.
+
+## Collapse
+
+| Web breakpoint | `3up` and `4up` | Other variants |
+| --- | --- | --- |
+| `lg` | Full columns | Full columns |
+| `md` | Two columns | Full columns |
+| `sm` | One column | One column |
+
+`auto` never collapses by breakpoint, because it already fits columns to the width. A `span` wider
+than the columns left collapses with the grid and takes the whole row. Keep a span at or below the
+grid's column count; a wider span on a wider grid adds columns the layout does not define.
+
+## API Reference
+
+`Grid.Root` renders a `<div>` and `Grid.Item` renders a `<div>`. Both forward native props and take
+`render` to swap the element (for example `render={<ul />}` and `render={<li />}`).
+
+### Grid.Root
+
+<AutoTypeTable path="web-grid/web-grid.tsx" name="GridProps" />
+
+### Grid.Item
+
+<AutoTypeTable path="web-grid/web-grid.tsx" name="GridItemProps" />
+
+### Data attributes
+
+| Attribute | On | Value |
+| --- | --- | --- |
+| `data-ui="grid"` | Root | The grid element. |
+| `data-variant` | Root | The column layout. |
+| `data-gap` | Root | The gap. |
+| `data-margin` | Root | Present when `margin` is set. |
+| `data-ui="grid-container"` | Wrapper | The container element, only when `container` is set. |
+| `data-ui="grid-item"` | Item | The grid cell. |
+| `data-span` | Item | The span, when set. |
+
+## Related
+
+- [Surface Provider](/docs/components/surface-provider): sets the `data-web` breakpoint the grid collapses on.
+- [Elevated](/docs/components/elevated): the raised surface the preview cells use.
