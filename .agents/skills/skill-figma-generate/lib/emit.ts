@@ -207,6 +207,17 @@ function textStyleFor(token: string, index: TextStyleIndex): string | null {
 }
 
 /**
+ * Load the font a text style carries, so applying that style leaves the node writable.
+ * `setTextStyleIdAsync` re-fonts the node; Figma then rejects every further write to it
+ * (`characters`, `fontSize`, `textCase`, …) with "Cannot write to node with unloaded font"
+ * unless that font is already loaded. Call this BEFORE applying any DS text style.
+ */
+async function loadTextStyleFont(styleId: string): Promise<void> {
+  const style = await figma.getStyleByIdAsync(styleId);
+  if (style?.type === "TEXT") await figma.loadFontAsync(style.fontName);
+}
+
+/**
  * Heal local text styles BEFORE any component is generated (see `heal.ts`).
  *
  * Tokens Studio (and any pipeline that maps a `%` line-height token to a Figma
@@ -270,8 +281,7 @@ async function createChromeLabel(
   const token = chrome[node.style];
   const styleId = textStyleFor(token, ctx.textStyles);
   if (!styleId) throw new Error(`Documentation chrome text-style role "${node.style}" requires local text style "${token}".`);
-  const style = await figma.getStyleByIdAsync(styleId);
-  if (style?.type === "TEXT") await figma.loadFontAsync(style.fontName);
+  await loadTextStyleFont(styleId);
   const text = figma.createText();
   await text.setTextStyleIdAsync(styleId);
   text.characters = node.content;
@@ -586,8 +596,18 @@ interface AnatomyRun {
   properties?: PropertyResources;
 }
 
-/** Plugin-data key stamped on a private icon component an instance swap defaults to. */
-const ICON_COMPONENT_KEY = "focus.generated.icon";
+/**
+ * Namespace for the emitter's own node metadata. SHARED plugin data, not private
+ * plugin data: `setPluginData` / `getPluginData` are private-plugin-only and are
+ * rejected outright by several hosts — including the Figma MCP `use_figma` runtime
+ * ("figma.setPluginData is not supported in this host runtime"). Shared plugin data
+ * works everywhere and across plugins. Namespace rules: >= 3 chars, alphanumeric/_/.
+ */
+const SHARED_DATA_NAMESPACE = "focus.generated";
+/** Shared-data key stamped on a private icon component an instance swap defaults to. */
+const ICON_COMPONENT_KEY = "icon";
+/** `__icon/<name>`: the icon component's name, used to recover its key where metadata is unavailable. */
+const ICON_COMPONENT_NAME_PREFIX = "__icon/";
 
 /** One node a component property is wired to once the set exists. */
 interface PropertyBinding {
@@ -627,15 +647,30 @@ function ensureIconComponent(
   // The paths carry SCALE constraints, so they scale with the frame.
   if (size.width >= 0.01 && size.height >= 0.01) frame.resize(size.width, size.height);
   const component = figma.createComponent();
-  component.name = `__icon/${iconName}`;
+  component.name = `${ICON_COMPONENT_NAME_PREFIX}${iconName}`;
   component.fills = [];
   component.resize(frame.width, frame.height);
   for (const child of [...frame.children]) component.appendChild(child);
   frame.remove();
-  component.setPluginData(ICON_COMPONENT_KEY, iconName);
+  component.setSharedPluginData(SHARED_DATA_NAMESPACE, ICON_COMPONENT_KEY, iconName);
   resources.parent.appendChild(component);
   resources.icons.set(iconName, component);
   return component;
+}
+
+/**
+ * The icon key an icon component was generated under. Reads the shared plugin data the
+ * emitter wrote, and falls back to the component's own `__icon/<name>` name so a host that
+ * refuses node metadata still resolves the documentation page's icon definitions.
+ */
+function iconComponentKey(icon: ComponentNode): string {
+  let stored = "";
+  try {
+    stored = icon.getSharedPluginData(SHARED_DATA_NAMESPACE, ICON_COMPONENT_KEY);
+  } catch {
+    stored = "";
+  }
+  return stored || icon.name.slice(ICON_COMPONENT_NAME_PREFIX.length);
 }
 
 /**
@@ -1142,6 +1177,11 @@ async function createAnatomyText(characters: string, plan: AnatomyNodePlan, ctx:
   const g = plan.geometry;
   const styleId = g.textStyle ? textStyleFor(g.textStyle, ctx.textStyles) : null;
   if (styleId) {
+    // The style re-fonts the node, so its font must be loaded BEFORE it is applied:
+    // every mutation below (`fontSize`, `lineHeight`, `textAlignHorizontal`, `textCase`)
+    // writes to a node that now carries the style's font, and Figma rejects a write to a
+    // node with an unloaded font. `createText` only loaded the fallback family.
+    await loadTextStyleFont(styleId);
     await text.setTextStyleIdAsync(styleId);
   } else {
     bindTypography(text, g, ctx);
@@ -1978,8 +2018,12 @@ async function createVariantCell(
     // other token. Falls back to the raw font when the file lacks the style.
     if (geom.textStyle) {
       const styleId = textStyleFor(geom.textStyle, ctx.textStyles);
-      if (styleId) await label.setTextStyleIdAsync(styleId);
-      else bindTypography(label, geom, ctx);
+      if (styleId) {
+        // Load the style's font before it re-fonts the label: everything after this
+        // (the text-colour bind, `appendChild`) writes to a node carrying that font.
+        await loadTextStyleFont(styleId);
+        await label.setTextStyleIdAsync(styleId);
+      } else bindTypography(label, geom, ctx);
     } else {
       bindTypography(label, geom, ctx);
     }
@@ -2008,8 +2052,8 @@ async function createVariantCell(
 // The plan (`viewport.ts`) says WHAT; this only
 // carries it out, and reports what it cannot.
 
-/** Plugin-data key stamped on the popup node, the same key the plugin stamps. */
-const POPUP_COMPONENT_KEY = "focus.generated.popup";
+/** Shared-data key stamped on the popup node, under `SHARED_DATA_NAMESPACE`. */
+const POPUP_COMPONENT_KEY = "popup";
 
 /** Bind one frame field to a variable by name; a missing variable is reported, never a literal. */
 /**
@@ -2187,7 +2231,7 @@ async function buildPopupComponent(
     node = combineGrid(cells, cells.length, page);
     node.name = popup.name;
   }
-  node.setPluginData(POPUP_COMPONENT_KEY, plan.component);
+  node.setSharedPluginData(SHARED_DATA_NAMESPACE, POPUP_COMPONENT_KEY, plan.component);
   return { node, variantsByName };
 }
 
@@ -2323,21 +2367,44 @@ export interface RenderContext {
 async function resolveComposedChildren(plan: ComponentBody, ctx: RenderContext): Promise<void> {
   ctx.composedChildren.clear();
   ctx.composedChildLabels = {};
-  let pagesLoaded = false;
+  const setsByName = new Map<string, ComponentSetNode | null>();
   for (const child of plan.composedChildren) {
     ctx.composedChildLabels[composedChildRequestKey(child.slot, child.axisValues)] = child.label;
     if (!child.label) continue;
     let variant = ctx.generated.get(child.component)?.get(child.label);
     if (!variant && child.setName && child.variantName) {
-      if (!pagesLoaded) {
-        await figma.loadAllPagesAsync();
-        pagesLoaded = true;
-      }
-      const set = figma.root.findOne((node) => node.type === "COMPONENT_SET" && node.name === child.setName) as ComponentSetNode | null;
+      // One document scan per distinct set, however many variants ask for it.
+      if (!setsByName.has(child.setName)) setsByName.set(child.setName, await findComponentSetByName(child.setName));
+      const set = setsByName.get(child.setName);
       variant = set?.children.find((node): node is ComponentNode => node.type === "COMPONENT" && node.name === child.variantName);
     }
     if (variant) ctx.composedChildren.set(composedChildKeyOf(child.component, child.label), variant);
   }
+}
+
+/**
+ * Find a component set anywhere in the document by name — a child this run did not
+ * generate itself, built by an earlier `use_figma` call.
+ *
+ * Loads ONE page at a time (`PageNode.loadAsync()`) instead of `figma.loadAllPagesAsync()`:
+ * that API is rejected by several hosts, the Figma MCP `use_figma` runtime among them
+ * ("loadAllPagesAsync is not a supported API"), and `figma.root.findOne` needs the whole
+ * document loaded before it may run. A page that refuses to load is skipped, so the worst
+ * case is no match — which the caller already reports as an unresolved composed child
+ * rather than substituting something else. Loading a page is not a page switch, so this
+ * keeps the one-`setCurrentPageAsync`-per-script rule intact.
+ */
+async function findComponentSetByName(name: string): Promise<ComponentSetNode | null> {
+  for (const page of figma.root.children) {
+    try {
+      await page.loadAsync();
+    } catch {
+      continue;
+    }
+    const match = page.findOne((node) => node.type === "COMPONENT_SET" && node.name === name);
+    if (match) return match as ComponentSetNode;
+  }
+  return null;
 }
 
 /**
@@ -2393,7 +2460,7 @@ export async function renderComponentPlan(plan: ComponentPlan, ctx: RenderContex
       blocks,
       variantsByName: built.variantsByLabel,
       ...(built.popup ? { popup: built.popup } : {}),
-      icons: new Map(iconComponents.map((icon) => [icon.getPluginData(ICON_COMPONENT_KEY), icon])),
+      icons: new Map(iconComponents.map((icon) => [iconComponentKey(icon), icon])),
     },
     page,
     ctx,
