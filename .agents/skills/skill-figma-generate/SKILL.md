@@ -293,6 +293,35 @@ a write landed, screenshot validation, and Plugin API pitfalls. Project-specific
 - The documentation chrome is inline nodes on the component's own page, never an instance of a shared kit.
 - Upsert variable collections by name; deleting pages does not remove them, so a blind create duplicates.
 
+### Host API constraints (the MCP `use_figma` runtime)
+
+The emitter is written against these; keep it that way, and don't "simplify" back to the API the
+Plugin docs show, which only exists for private plugins or in the full editor runtime:
+
+- **`setPluginData` / `getPluginData` are rejected** ("not supported in this host runtime (only
+  private plugins on web can use it)"). The emitter tags its icon and popup components with
+  `setSharedPluginData` under the `focus.generated` namespace instead. A shared-data namespace must
+  be >= 3 chars, alphanumeric/`_`/`.`.
+- **`loadAllPagesAsync` is rejected** ("not a supported API"), and `figma.root.findOne` requires the
+  whole document loaded. `findComponentSetByName` loads one page at a time with
+  `PageNode.loadAsync()`, which this host does support, and skips a page that refuses.
+- **A script does not read back its own writes.** `setSharedPluginData` is committed when the script
+  ends, so a later `getSharedPluginData` in the SAME script returns the OLD value. Staging data for
+  the emitter therefore takes one call to write and a separate call to read.
+- **`code` is capped at 50 000 characters**, and each shared-plugin-data entry at 100 kB. A large
+  plan has to be chunked across calls; chunk the text, don't trim the plan.
+- Text passed into a script is **NFC-normalised in transit**. Any encoding of the plan must survive
+  that: avoid combining marks (`U+0300`–`U+036F`) and canonical singletons (`U+037E` → `;`,
+  `U+0387` → `·`) as sentinel characters.
+
+### Loading fonts before applying a text style
+
+`setTextStyleIdAsync` re-fonts the node. Every write after it — `characters`, `fontSize`,
+`lineHeight`, `textAlignHorizontal`, `textCase`, even `appendChild` — then targets a node carrying
+the style's font, and Figma rejects writes to a node with an unloaded font. **Call
+`loadTextStyleFont(styleId)` before every `setTextStyleIdAsync`.** The fallback family loaded by
+`createText` is not enough: the DS styles use the brand family (Work Sans here, not Inter).
+
 ## Generation contract — Definition-of-Done (NON-OPTIONAL, do not skip any)
 
 For EVERY component (the planner produces 0–6; the emitter renders + asserts them):
