@@ -313,11 +313,11 @@ function applyThemeMode(frame: FrameNode, collection: VariableCollection | undef
 /** The pieces a documentation page embeds: the master sets and their variant COMPONENTs by full label. */
 interface DocumentationParts {
   /** The component's first set: the one a definition without a set name means. */
-  componentSet: ComponentSetNode;
+  componentSet: GeneratedSetNode;
   /** Every set of the component by name (a split contract has several). */
-  sets: Map<string, ComponentSetNode>;
+  sets: Map<string, GeneratedSetNode>;
   /** Every Building Block set by its Figma name (a split block has one per split value). */
-  blocks: Map<string, ComponentSetNode>;
+  blocks: Map<string, GeneratedSetNode>;
   variantsByName: Map<string, ComponentNode>;
   /** The popup component (or set) a viewport set instances; shown above it as the Code Connect target. */
   popup?: ComponentNode | ComponentSetNode;
@@ -458,6 +458,48 @@ function setLayoutSizing(node: SceneNode, layoutAxis: "layoutSizingHorizontal" |
 }
 
 /**
+ * Give a root the width its content would hug to, after `width: 100%` was refused.
+ *
+ * A refused FILL leaves the node hugging, which is harmless on its own. It is NOT
+ * harmless when the whole subtree below it also says FILL, down to the text: then
+ * nothing in the box declares a width, and Figma collapses the root to its 10px
+ * minimum — the variant renders as an unreadable sliver (Accordion did exactly
+ * this). Measure instead of guessing: flip every FILL descendant to HUG, read the
+ * width the real content wants, put every node back as it was, and pin the root
+ * there. Nothing is invented and no descendant's sizing changes.
+ */
+function fitRefusedFillWidth(comp: SceneNode & LayoutMixin): void {
+  const frame = comp as unknown as FrameNode;
+  if (!("children" in frame) || frame.layoutMode === "NONE") return;
+  const restore: Array<() => void> = [];
+  const visit = (node: SceneNode): void => {
+    if (node.type === "TEXT" && node.textAutoResize === "HEIGHT") {
+      node.textAutoResize = "WIDTH_AND_HEIGHT";
+      restore.push(() => {
+        node.textAutoResize = "HEIGHT";
+      });
+    }
+    const sizing = node as unknown as { layoutSizingHorizontal?: string };
+    if (sizing.layoutSizingHorizontal === "FILL" && setLayoutSizing(node, "layoutSizingHorizontal", "HUG")) {
+      restore.push(() => {
+        setLayoutSizing(node, "layoutSizingHorizontal", "FILL");
+      });
+    }
+    if ("children" in node) for (const child of node.children) visit(child);
+  };
+  for (const child of frame.children) visit(child);
+  if (!restore.length) return; // nothing was filling: the hug box is already honest
+  const width = frame.width;
+  for (const undo of restore.reverse()) undo();
+  if (!isFigmaLength(width)) return;
+  // `resize` is ignored while the axis hugs, and `layoutSizing*` throws on a root,
+  // so the axis is pinned through the sizing mode that owns the width here.
+  if (frame.layoutMode === "VERTICAL") frame.counterAxisSizingMode = "FIXED";
+  else frame.primaryAxisSizingMode = "FIXED";
+  frame.resize(width, frame.height);
+}
+
+/**
  * Apply one axis's sizing decision. Order matters twice over: an explicit size is
  * SILENTLY IGNORED while the axis is `AUTO` (so a applied size sets the axis FIXED
  * first), and `layoutSizing*` is only writable under an auto-layout parent. A
@@ -485,6 +527,7 @@ function applyAxisSizing(
     if (!setLayoutSizing(comp, layoutAxis, "FILL")) {
       // Only legal for a child of an auto-layout frame; a root keeps its own size.
       ctx.refusedSizes.push(`${label} ${axis}: 100% outside an auto-layout parent`);
+      if (axis === "width") fitRefusedFillWidth(comp);
       return;
     }
     // A text node that fills the width must wrap and grow downward; Figma's default for new text
@@ -2236,9 +2279,15 @@ async function buildPopupComponent(
 }
 
 /** The component sets built for one component (or one Building Block), with their variants. */
+/**
+ * What a plan's set entry becomes on the canvas: a COMPONENT_SET, or a plain
+ * COMPONENT when the component has no variant axes to combine.
+ */
+type GeneratedSetNode = ComponentSetNode | ComponentNode;
+
 interface BuiltSets {
   /** Every set by its Figma name, in plan order. */
-  sets: Array<{ name: string; node: ComponentSetNode }>;
+  sets: Array<{ name: string; node: GeneratedSetNode }>;
   /** Every variant of every set by the cell's full label (a split set's variant names omit the split axes). */
   variantsByLabel: Map<string, ComponentNode>;
   popup?: ComponentNode | ComponentSetNode;
@@ -2281,9 +2330,17 @@ async function buildComponentSets(plan: ComponentBody, ctx: RenderContext, page:
       cells.push(comp);
       built.variantsByLabel.set(cell.label, comp);
     }
-    const set = combineGrid(cells, setPlan.gridColumns, page);
+    // A component with no variant axes has nothing to combine. `combineAsVariants`
+    // derives a set's properties from its children's names, so a lone cell named
+    // `default` (no `prop=value` pair) yields the invalid variant `"="`: Figma marks
+    // the set as having errors, reading `variantGroupProperties` throws, and a later
+    // component composing this one finds no `default` variant to instance. Emit the
+    // cell as a plain COMPONENT instead — the rule `buildPopupComponent` already
+    // follows when `context` is a popup's only axis.
+    const loneCell = cells.length === 1 && !setPlan.cells[0]?.variantName.includes("=");
+    const set: GeneratedSetNode = loneCell && cells[0] ? cells[0] : combineGrid(cells, setPlan.gridColumns, page);
     set.name = setPlan.name;
-    if (properties) applyComponentProperties(set, setPlan.properties ?? [], properties);
+    if (properties && set.type === "COMPONENT_SET") applyComponentProperties(set, setPlan.properties ?? [], properties);
     built.sets.push({ name: setPlan.name, node: set });
   }
   ctx.nativeSlotsAvailable = ctx.nativeSlotsAvailable || capability.available;
@@ -2367,7 +2424,7 @@ export interface RenderContext {
 async function resolveComposedChildren(plan: ComponentBody, ctx: RenderContext): Promise<void> {
   ctx.composedChildren.clear();
   ctx.composedChildLabels = {};
-  const setsByName = new Map<string, ComponentSetNode | null>();
+  const setsByName = new Map<string, GeneratedSetNode | null>();
   for (const child of plan.composedChildren) {
     ctx.composedChildLabels[composedChildRequestKey(child.slot, child.axisValues)] = child.label;
     if (!child.label) continue;
@@ -2376,7 +2433,11 @@ async function resolveComposedChildren(plan: ComponentBody, ctx: RenderContext):
       // One document scan per distinct set, however many variants ask for it.
       if (!setsByName.has(child.setName)) setsByName.set(child.setName, await findComponentSetByName(child.setName));
       const set = setsByName.get(child.setName);
-      variant = set?.children.find((node): node is ComponentNode => node.type === "COMPONENT" && node.name === child.variantName);
+      // A bare COMPONENT IS the only variant there is, whatever name the plan asked for.
+      variant =
+        set?.type === "COMPONENT"
+          ? set
+          : set?.children.find((node): node is ComponentNode => node.type === "COMPONENT" && node.name === child.variantName);
     }
     if (variant) ctx.composedChildren.set(composedChildKeyOf(child.component, child.label), variant);
   }
@@ -2394,15 +2455,16 @@ async function resolveComposedChildren(plan: ComponentBody, ctx: RenderContext):
  * rather than substituting something else. Loading a page is not a page switch, so this
  * keeps the one-`setCurrentPageAsync`-per-script rule intact.
  */
-async function findComponentSetByName(name: string): Promise<ComponentSetNode | null> {
+async function findComponentSetByName(name: string): Promise<GeneratedSetNode | null> {
   for (const page of figma.root.children) {
     try {
       await page.loadAsync();
     } catch {
       continue;
     }
-    const match = page.findOne((node) => node.type === "COMPONENT_SET" && node.name === name);
-    if (match) return match as ComponentSetNode;
+    // A zero-axis component is published as a bare COMPONENT, so both types count.
+    const match = page.findOne((node) => (node.type === "COMPONENT_SET" || node.type === "COMPONENT") && node.name === name);
+    if (match) return match as GeneratedSetNode;
   }
   return null;
 }
@@ -2435,7 +2497,7 @@ export async function renderComponentPlan(plan: ComponentPlan, ctx: RenderContex
   // One private icon component per icon, shared by every set of the component and its blocks.
   const icons = new Map<string, ComponentNode>();
   // The hidden Building Block sets first: the component's own variants hold instances of them.
-  const blocks = new Map<string, ComponentSetNode>();
+  const blocks = new Map<string, GeneratedSetNode>();
   ctx.buildingBlocks = new Map();
   for (const block of plan.buildingBlocks) {
     // A block's composed children are its own requests, resolved before its variants are built.
