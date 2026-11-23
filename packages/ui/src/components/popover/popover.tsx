@@ -9,6 +9,16 @@ import {
   useElevation,
 } from "../elevated/surface-level";
 
+/**
+ * A panel anchored to the control that opened it, for content the reader may want rather
+ * than must answer. Unlike Dialog it does not block the page, so it suits filters, a
+ * detail card or a short form; unlike Tooltip it may hold interactive content, and it
+ * opens on click rather than hover so it works on touch.
+ *
+ * Compose it: `Popover.Root` holds a `Popover.Trigger` and a `Popover.Portal` containing
+ * `Popover.Positioner` > `Popover.Popup`, with optional `Popover.Title`,
+ * `Popover.Description` and `Popover.Close`.
+ */
 function Root(props: React.ComponentProps<typeof PopoverPrimitive.Root>) {
   return <PopoverPrimitive.Root {...props} />;
 }

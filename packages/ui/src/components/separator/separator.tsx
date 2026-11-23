@@ -27,6 +27,14 @@ export interface SeparatorProps extends React.ComponentProps<typeof SeparatorPri
   orientation?: SeparatorOrientation;
 }
 
+/**
+ * A divider between groups of content. By default it is decorative — Base UI gives it
+ * `role="separator"`, and screen readers treat a plain rule as presentational — so reach
+ * for it to show a boundary the layout alone does not, not to carry meaning.
+ *
+ * The labelled variants (`solid-text`, `underline`, `content`) put a word on the rule, for
+ * a boundary that needs naming: "or", "Today", "Archived".
+ */
 export function Separator({
   variant = "line",
   size = "md",

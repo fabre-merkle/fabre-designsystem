@@ -21,6 +21,19 @@ export type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> &
     size: SliderSize;
   }>;
 
+/**
+ * Picks a number from a range by position, when the approximate value is what matters —
+ * volume, zoom, a price filter. Use NumberField instead when the exact figure matters, or
+ * pair the two when both do: a slider alone cannot be typed into.
+ *
+ * Compose it: `Slider.Root` holds an optional `Slider.Value` and a `Slider.Control`
+ * containing `Slider.Track` > `Slider.Indicator` and one `Slider.Thumb` per value.
+ *
+ * `Slider.Thumb` renders a `div` around a native `<input type="range">`, and that input is
+ * the control: it carries `role="slider"`, takes its accessible name from its OWN
+ * `aria-label`, and reports its bounds through the native `min` / `max` attributes rather
+ * than `aria-valuemin` / `aria-valuemax`. Name every thumb, not the root.
+ */
 function Root({ size = "md", ...rest }: SliderProps) {
   const contextValue = React.useMemo(() => ({ size }), [size]);
   return (

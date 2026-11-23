@@ -4,6 +4,15 @@ import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 import { CaretDown } from "@phosphor-icons/react";
 import type React from "react";
 
+/**
+ * Collapses long content into labelled sections the reader opens as needed. Worth it only
+ * when most readers want one section: hiding content costs a click and keeps it out of
+ * in-page search, so an accordion of things everyone reads is a tax, not a tidy-up.
+ *
+ * Compose it: `Accordion.Root` holds `Accordion.Item`s, each with an
+ * `Accordion.Header` + `Accordion.Trigger` and an `Accordion.Panel`. Several panels may
+ * be open at once unless `multiple={false}`.
+ */
 function Root(props: React.ComponentProps<typeof AccordionPrimitive.Root>) {
   return <AccordionPrimitive.Root data-ui="accordion-root" {...props} />;
 }
