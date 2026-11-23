@@ -22,6 +22,15 @@ interface RootProps extends React.ComponentProps<typeof SelectPrimitive.Root> {
   size?: SelectSize;
 }
 
+/**
+ * Choose one value from a list that is too long to show at once. Use RadioGroup instead
+ * when there are only a few options and seeing them all matters, and Combobox when the
+ * list is long enough to need filtering.
+ *
+ * Compose it: `Select.Root` holds a `Select.Trigger` (with `Select.Value` and
+ * `Select.Icon`) and a `Select.Popup` of `Select.Item`s. The popup renders in a portal, so
+ * test it through the document rather than the story canvas.
+ */
 function Root({ size = "md", children, ...rest }: RootProps) {
   return (
     <SelectContext.Provider value={{ size }}>

@@ -30,6 +30,14 @@ interface RootProps extends React.ComponentProps<typeof TabsPrimitive.Root> {
   variant?: TabsVariant;
 }
 
+/**
+ * Switches between views of the SAME kind of thing in one place — never for steps in a
+ * sequence (use a wizard) or for navigation between pages (use links). All panels stay
+ * mounted, so a tab is cheap to return to but not a place to lazily load from.
+ *
+ * Compose it: `Tabs.Root` holds a `Tabs.List` of `Tabs.Tab`s (plus an optional
+ * `Tabs.Indicator`) and one `Tabs.Panel` per tab, matched by `value`.
+ */
 function Root({ size = "md", variant = "line", ...rest }: RootProps) {
   return (
     <TabsContext.Provider value={{ size, variant }}>

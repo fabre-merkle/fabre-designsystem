@@ -17,6 +17,14 @@ interface RootProps extends React.ComponentProps<typeof ProgressPrimitive.Root> 
   size?: ProgressSize;
 }
 
+/**
+ * How far along a task is, when the share done is known — an upload, an import, a
+ * multi-step form. Use Spinner instead when the end is unknown, and Meter for a static
+ * measurement such as disk usage, which is a level rather than progress.
+ *
+ * Compose it: `Progress.Root` takes `value` (0–100, or `null` for indeterminate) and holds
+ * `Progress.Label`, `Progress.Value` and a `Progress.Track` wrapping `Progress.Indicator`.
+ */
 function Root({ size = "md", ...rest }: RootProps) {
   return (
     <ProgressContext.Provider value={{ size }}>

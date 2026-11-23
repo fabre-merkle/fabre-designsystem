@@ -29,6 +29,14 @@ export interface AvatarProps extends React.ComponentProps<typeof AvatarPrimitive
   shape?: AvatarShape;
 }
 
+/**
+ * A person or organisation's picture, with initials or an icon when there is none. Compose
+ * it: `Avatar.Root` holds `Avatar.Image` and `Avatar.Fallback`, and the fallback shows
+ * whenever the image is missing, still loading or fails to load — so always supply one.
+ *
+ * The avatar is decorative next to a name that is already on screen; give the image an
+ * empty `alt` there, and a real one only when the avatar stands alone.
+ */
 function Root({ size = "md", shape = "circle", ...rest }: AvatarProps) {
   // Memoise the context value so Fallback (the only consumer) doesn't
   // re-render on every parent render — only when size or shape change.
