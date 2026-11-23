@@ -2,7 +2,7 @@
   "version": 2,
   "host": "https://api-production.tokens.studio",
   "source": {
-    "project": "PROJECT_UUID",
+    "project": "d79b9a85-d293-433d-aaff-e604110a5df4",
     "ref": {
       "type": "branch",
       "name": "main"
