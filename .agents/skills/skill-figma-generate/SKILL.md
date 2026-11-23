@@ -308,11 +308,54 @@ Plugin docs show, which only exists for private plugins or in the full editor ru
 - **A script does not read back its own writes.** `setSharedPluginData` is committed when the script
   ends, so a later `getSharedPluginData` in the SAME script returns the OLD value. Staging data for
   the emitter therefore takes one call to write and a separate call to read.
-- **`code` is capped at 50 000 characters**, and each shared-plugin-data entry at 100 kB. A large
-  plan has to be chunked across calls; chunk the text, don't trim the plan.
+- **`code` is capped at 50 000 characters**, and each shared-plugin-data entry at 100 kB. Past a few
+  tens of kB, do not chunk the plan through `code` at all — use the image channel below.
 - Text passed into a script is **NFC-normalised in transit**. Any encoding of the plan must survive
   that: avoid combining marks (`U+0300`–`U+036F`) and canonical singletons (`U+037E` → `;`,
   `U+0387` → `·`) as sentinel characters.
+
+### Moving a large plan in: the image channel (`utils/png-transport.mjs`)
+
+The 50 000-character `code` cap is not a data limit, it is a **typing** limit: every character in
+`code` is authored by the agent, one token at a time. Splitting a plan into verified chunks works at
+tens of kB and stops working well before a megabyte — the transcription becomes the unreliable step,
+and a wrong chunk is indistinguishable from a right one until a hash disagrees. Button's plan is
+5 076 795 bytes (~111 kB of base64). Do not try to type it.
+
+`upload_assets` is a byte channel that sidesteps the cap entirely. Encode the plan as the **pixel
+data** of an 8-bit grayscale PNG, POST the file with `curl`, and read the bytes back in-plugin with
+`figma.getImageByHash(hash).getBytesAsync()`. Figma stores the PNG verbatim, so the round trip is
+lossless — a 5 MB plan decodes in-plugin in about 1.2 s.
+
+```bash
+node .agents/skills/skill-figma-generate/utils/png-transport.mjs plan.json plan.png
+# -> {"payloadLen":5076795,"djb2":"9076ae4d","width":2048,"height":2479,...}
+curl -sS -X POST "<submitUrl>" -F "file=@plan.png;type=image/png"
+# -> {"success":true,"imageHash":"...","sizeBytes":5080309}
+```
+
+Rules that matter:
+
+- **`sizeBytes` in the POST response must equal the local file size.** That is the proof Figma did
+  not re-encode the image. If it differs, stop — the pixels are not your bytes.
+- **The IDAT stream uses stored (uncompressed) deflate blocks** (`deflateSync(raw, { level: 0 })`).
+  A general inflater inside `use_figma` would be ~2 kB of hand-written Huffman decoding, which is
+  back to typing; a stored-block reader is ~15 lines. Size costs nothing because `curl` uploads it.
+- **Assert the djb2 of the decoded payload before rendering.** It is the only thing between a
+  truncated read and a half-generated page. Inline `DECODER_SOURCE` from `png-transport.mjs`; it is
+  small enough to author by hand, and it is the one piece that still has to be.
+- **Globals do not survive between `use_figma` calls.** Decode the bundle, `eval` it, decode the
+  plan, and render in the SAME call.
+- **`figma.root.getSharedPluginData` is read-only** — you cannot monkey-patch the accessor to feed a
+  plan to a runner that reads from plugin data. Give the runner an explicit plan argument instead.
+- **Each upload places a frame on the canvas** — on `currentPageId`, or on the FIRST PAGE when that
+  is omitted. That is a real mutation of a page you may have been told to leave alone. Pass
+  `currentPageId`, remove the node once the render lands, and verify the page's children are back to
+  what they were. Clear any staging keys you wrote with `setSharedPluginData(ns, key, "")`.
+
+The same channel carries the compiled emitter bundle itself (~41 kB), which removes the last reason
+to paste minified code into `code`. Note the bundle is UTF-8 while a plan is pure ASCII — pass
+`toStr(bytes, true)` for the bundle, `toStr(bytes, false)` for the plan.
 
 ### Loading fonts before applying a text style
 
@@ -507,6 +550,8 @@ drifts from the plugin's for any component of the committed artifact; (4) `skill
   plan (`documentation-page.ts`), the emitter (`emit.ts` — inlined into `use_figma`). Tests +
   golden snapshots in `tests/`.
 - `utils/typography-to-figma.ts` — DTCG→Figma typography normalizer (co-located, ships with this skill)
+- `utils/png-transport.mjs` — PNG byte channel for payloads past the `use_figma` `code` cap: Node-side
+  encoder (CLI) plus `DECODER_SOURCE` to inline in-plugin
 - `figma-use` (first-party) — Plugin API rules
 - `cloudflare/kumo` `packages/kumo-figma` — `shared.ts` auto-layout/binding primitives + `drift-detection`
 - Design rules: generation contracts are explicit and complete; one build-time resolved plan is walked
