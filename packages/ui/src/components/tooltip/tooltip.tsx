@@ -3,6 +3,19 @@ import "./tooltip.css";
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 import type * as React from "react";
 
+/**
+ * A short label for a control whose purpose is not obvious — almost always an icon-only
+ * button. A tooltip appears on hover and on keyboard focus, but never on touch, so it can
+ * only ever REPEAT information available elsewhere. Never put instructions, a form, or
+ * anything interactive in one: use Popover for that.
+ *
+ * It labels the trigger rather than describing it, so keep it to a couple of words and do
+ * not duplicate the trigger's own `aria-label`.
+ *
+ * Compose it: `Tooltip.Root` holds a `Tooltip.Trigger` and a `Tooltip.Portal` containing
+ * `Tooltip.Positioner` > `Tooltip.Popup`. Wrap a group in `Tooltip.Provider` so moving
+ * between neighbouring triggers skips the delay.
+ */
 function Root(props: React.ComponentProps<typeof TooltipPrimitive.Root>) {
   return <TooltipPrimitive.Root {...props} />;
 }
