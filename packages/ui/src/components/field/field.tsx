@@ -3,6 +3,16 @@ import "./field.css";
 import { Field as FieldPrimitive } from "@base-ui/react/field";
 import type React from "react";
 
+/**
+ * The anatomy around a form control: its label, its description, and its error. Input,
+ * Select and the rest render the control ALONE, so Field is what makes one usable — it
+ * wires the label to the control and the error to `aria-describedby` without ids being
+ * passed around by hand.
+ *
+ * Compose it: `Field.Root` holds a `Field.Label`, a `Field.Control` (or any control
+ * rendered through it), an optional `Field.Description`, and a `Field.Error` that appears
+ * only when validation fails.
+ */
 function Root(props: React.ComponentProps<typeof FieldPrimitive.Root>) {
   return <FieldPrimitive.Root {...props} data-ui="field" />;
 }
