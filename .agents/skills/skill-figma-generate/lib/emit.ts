@@ -631,6 +631,13 @@ interface AnatomyRun {
     insetPercent: NonNullable<AnatomyNodePlan["geometry"]["insetPercent"]>;
     label: string;
   }>;
+  /** `100%` on a child of an overlay frame: stretched once the parent's box is final. */
+  deferredAbsoluteFill: Array<{
+    child: SceneNode;
+    parent: BaseNode & ChildrenMixin;
+    axis: "width" | "height";
+    label: string;
+  }>;
   /** Focus ring layers awaiting the root's final box, which they are placed outside of. */
   deferredFocusRings: DeferredFocusRing[];
   /** Set inside a native slot's default content: Figma does not nest a slot in a slot, so slots there are plain content. */
@@ -1087,6 +1094,64 @@ export function applyLayoutExtras(node: SceneNode, g: LayoutExtrasGeometry, labe
  * Place a child of an overlay frame at its percentage insets and pin it with `constraints` SCALE,
  * mirroring the plugin's `applyDeferredInsetPlacement`: position first, then constraints.
  */
+/**
+ * `100%` on a part, routed by where the part actually lives.
+ *
+ * Inside an auto-layout parent that is FILL, which `applyAxisSizing` handles.
+ * Inside an overlay frame (`layoutMode: NONE`) `layoutSizing*` throws — the
+ * parent flows nothing — but the CSS is not unsupported there, merely expressed
+ * differently: an absolutely positioned box of `100%` spans its containing
+ * block, which in Figma is a STRETCH constraint over a full-bleed box. Deferring
+ * it matters because the parent's own size lands last (see `applyCellBox`), so
+ * the span is taken from the final box rather than the hug it had mid-build.
+ */
+function applyPartAxisSizing(
+  node: SceneNode & LayoutMixin,
+  axis: "width" | "height",
+  sizing: AxisSizing | undefined,
+  label: string,
+  run: AnatomyRun,
+): void {
+  const parent = node.parent;
+  const overlay = parent as unknown as { layoutMode?: string } | null;
+  if (sizing?.mode === "fill" && parent && "layoutMode" in parent && overlay?.layoutMode === "NONE") {
+    run.deferredAbsoluteFill.push({ child: node, parent, axis, label });
+    return;
+  }
+  applyAxisSizing(node, axis, sizing, label, run.ctx);
+}
+
+/**
+ * Stretch each `100%` child of an overlay frame over the parent's final box.
+ * Runs FIRST of the deferred passes: it is the fallback for a part that declares
+ * `100%` and nothing else, so the more specific instructions that follow — an
+ * `overlayCrossAlign` placement, an explicit percentage inset — still win.
+ */
+function applyDeferredAbsoluteFill(run: AnatomyRun): void {
+  for (const { child, parent, axis, label } of run.deferredAbsoluteFill) {
+    if (!("constraints" in child) || !("resize" in child)) {
+      run.ctx.refusedSizes.push(`${label} ${axis}: 100% on a node that takes no constraints`);
+      continue;
+    }
+    const frame = parent as unknown as { width: number; height: number };
+    const length = axis === "width" ? frame.width : frame.height;
+    if (!isFigmaLength(length)) {
+      run.ctx.refusedSizes.push(`${label} ${axis}: 100% of an unusable parent length (${length})`);
+      continue;
+    }
+    const node = child as SceneNode & ConstraintMixin & LayoutMixin;
+    if (axis === "width") {
+      node.resize(length, node.height);
+      node.x = 0;
+      node.constraints = { horizontal: "STRETCH", vertical: node.constraints.vertical };
+    } else {
+      node.resize(node.width, length);
+      node.y = 0;
+      node.constraints = { horizontal: node.constraints.horizontal, vertical: "STRETCH" };
+    }
+  }
+}
+
 function applyDeferredInsetPlacement(run: AnatomyRun): void {
   for (const { child, parent, constraints, insetPercent, label } of run.deferredInsetPlacement) {
     const frame = parent as unknown as { layoutMode?: string; width: number; height: number };
@@ -1785,8 +1850,8 @@ async function materializeAnatomyNode(
       // The item's own copy for each text slot the block owns, on the instance.
       for (const entry of copy) await setBlockInstanceText(instance, entry, copy.length === 1, part, ctx);
       // AFTER appendChild: `layoutSizing*` is only writable on a parented node.
-      applyAxisSizing(instance, "width", iteration.sizing.width, iteration.part, ctx);
-      applyAxisSizing(instance, "height", iteration.sizing.height, iteration.part, ctx);
+      applyPartAxisSizing(instance, "width", iteration.sizing.width, iteration.part, run);
+      applyPartAxisSizing(instance, "height", iteration.sizing.height, iteration.part, run);
       continue;
     }
     let node: SceneNode;
@@ -1880,8 +1945,8 @@ async function materializeAnatomyNode(
       }
     }
     // AFTER appendChild: `layoutSizing*` is only writable on a parented node.
-    applyAxisSizing(node as SceneNode & LayoutMixin, "width", iteration.sizing.width, iteration.part, ctx);
-    applyAxisSizing(node as SceneNode & LayoutMixin, "height", iteration.sizing.height, iteration.part, ctx);
+    applyPartAxisSizing(node as SceneNode & LayoutMixin, "width", iteration.sizing.width, iteration.part, run);
+    applyPartAxisSizing(node as SceneNode & LayoutMixin, "height", iteration.sizing.height, iteration.part, run);
     applyAlignSelf(iteration.part, iteration.geometry.alignSelf, run.ctx.refusedSizes);
     // Size limits, clipping and wrapping, after the node is parented (a limit is legal only on an
     // auto-layout frame or a direct child of one).
@@ -1934,7 +1999,12 @@ async function materializeAnatomyNode(
         parent: parent as FrameNode,
         align: iteration.overlayCrossAlign,
         label: iteration.part,
-        mainAxis: parentOverlayMainAxis,
+        // The child's OWN fill axis first: a part with `width: 10px; height: 100%` has
+        // stated which way it runs. `parentOverlayMainAxis` is the parent's long
+        // direction, a fallback for a part that declares neither axis — and it is wrong
+        // for a vertical scrollbar in a landscape viewport, which is how ScrollArea's
+        // vertical variants came out full-width and docked to the bottom.
+        mainAxis: overlayMainAxis(iteration) ?? parentOverlayMainAxis,
         positionAlongMain: iteration.positionAlongMain,
         sizeAlongMain: iteration.sizeAlongMain,
       });
@@ -1960,7 +2030,7 @@ async function materializeCellAnatomy(
   ctx: RenderContext,
   properties?: PropertyResources,
 ): Promise<AnatomyRun> {
-  const run: AnatomyRun = { root, capability, ctx, deferredOverlay: [], deferredRemoveFromFlow: [], deferredInsetPlacement: [], deferredFocusRings: [], properties };
+  const run: AnatomyRun = { root, capability, ctx, deferredOverlay: [], deferredRemoveFromFlow: [], deferredInsetPlacement: [], deferredAbsoluteFill: [], deferredFocusRings: [], properties };
   for (const entry of anatomy.unplaced) if (!ctx.unplacedParts.includes(entry)) ctx.unplacedParts.push(entry);
   await appendAnatomyContent(root, anatomy, run);
   const rootOverlay = root.layoutMode === "NONE" ? overlayMainAxis(anatomy) : undefined;
@@ -2080,6 +2150,7 @@ async function createVariantCell(
   // Then the overlay children and the out-of-flow children (in the plugin's order): the root's
   // final box is what they align against.
   if (run) {
+    applyDeferredAbsoluteFill(run);
     applyDeferredOverlayAlignment(run);
     applyDeferredInsetPlacement(run);
     applyDeferredRemoveFromFlow(run);
