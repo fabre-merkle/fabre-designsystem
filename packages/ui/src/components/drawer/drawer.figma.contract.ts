@@ -157,13 +157,13 @@ export const drawerFigmaContract = defineFigmaContract({
               },
               {
                 // The docs' inner `<span>`: title over description, `marginTop:
-                // var(--spacing-50)` on the description.
+                // var(--spacing-050)` on the description.
                 part: "drawer-checklist-text",
                 kind: "frame",
                 layout: "vertical",
                 synthetic: true,
                 docsLayout: {
-                  gap: "var(--spacing-50)",
+                  gap: "var(--spacing-050)",
                   source: "apps/docs/content/docs/components/drawer.mdx:32",
                 },
                 children: [
