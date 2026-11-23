@@ -186737,7 +186737,7 @@
                       "layout": "vertical",
                       "synthetic": true,
                       "docsLayout": {
-                        "gap": "var(--spacing-50)",
+                        "gap": "var(--spacing-050)",
                         "source": "apps/docs/content/docs/components/drawer.mdx:32"
                       },
                       "children": [
