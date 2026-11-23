@@ -346,6 +346,18 @@ Rules that matter:
   small enough to author by hand, and it is the one piece that still has to be.
 - **Globals do not survive between `use_figma` calls.** Decode the bundle, `eval` it, decode the
   plan, and render in the SAME call.
+- **`getImageByHash` returns `null` unless the page holding the uploaded frame is loaded.** Pages
+  load incrementally, and the image is only registered once its page is in memory. The first call
+  after the upload may work anyway and the next one will not, which reads like a corrupted hash.
+  Do not hardcode the hash: load the transport page and take the hash off the frame's own fill, so
+  the lookup is self-locating and the page is loaded by construction.
+
+  ```js
+  const tp = figma.root.children.find((p) => p.name === "<transport page>");
+  await tp.loadAsync(); // NOT setCurrentPageAsync — the render owns the one page switch
+  const holder = tp.children.find((n) => Array.isArray(n.fills) && n.fills.some((f) => f.type === "IMAGE" && f.imageHash));
+  const hash = holder.fills.find((f) => f.type === "IMAGE" && f.imageHash).imageHash;
+  ```
 - **`figma.root.getSharedPluginData` is read-only** — you cannot monkey-patch the accessor to feed a
   plan to a runner that reads from plugin data. Give the runner an explicit plan argument instead.
 - **Each upload places a frame on the canvas** — on `currentPageId`, or on the FIRST PAGE when that
